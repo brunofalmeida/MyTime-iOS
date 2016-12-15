@@ -2,7 +2,7 @@
 //  DetailViewController.swift
 //  MyTime
 //
-//  Created by Bruno Almeida on 2016-11-11.
+//  Created by Bruno Almeida on 2016-12-14.
 //  Copyright © 2016 Bruno Almeida. All rights reserved.
 //
 
@@ -17,7 +17,7 @@ class DetailViewController: UIViewController {
         // Update the user interface for the detail item.
         if let detail = self.detailItem {
             if let label = self.detailDescriptionLabel {
-                label.text = detail.timestamp!.description
+                label.text = detail.description
             }
         }
     }
@@ -33,7 +33,7 @@ class DetailViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    var detailItem: Event? {
+    var detailItem: NSDate? {
         didSet {
             // Update the view.
             self.configureView()

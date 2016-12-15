@@ -7,68 +7,66 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		15BB3A591DD6AFB30019B8D1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BB3A581DD6AFB30019B8D1 /* AppDelegate.swift */; };
-		15BB3A5C1DD6AFB30019B8D1 /* MyTime.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 15BB3A5A1DD6AFB30019B8D1 /* MyTime.xcdatamodeld */; };
-		15BB3A5E1DD6AFB30019B8D1 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BB3A5D1DD6AFB30019B8D1 /* MasterViewController.swift */; };
-		15BB3A601DD6AFB30019B8D1 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BB3A5F1DD6AFB30019B8D1 /* DetailViewController.swift */; };
-		15BB3A631DD6AFB30019B8D1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 15BB3A611DD6AFB30019B8D1 /* Main.storyboard */; };
-		15BB3A651DD6AFB30019B8D1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 15BB3A641DD6AFB30019B8D1 /* Assets.xcassets */; };
-		15BB3A681DD6AFB30019B8D1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 15BB3A661DD6AFB30019B8D1 /* LaunchScreen.storyboard */; };
-		15BB3A731DD6AFB30019B8D1 /* MyTimeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BB3A721DD6AFB30019B8D1 /* MyTimeTests.swift */; };
-		15BB3A7E1DD6AFB30019B8D1 /* MyTimeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BB3A7D1DD6AFB30019B8D1 /* MyTimeUITests.swift */; };
+		15E9BB8C1E024815007004C8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15E9BB8B1E024815007004C8 /* AppDelegate.swift */; };
+		15E9BB8E1E024815007004C8 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15E9BB8D1E024815007004C8 /* MasterViewController.swift */; };
+		15E9BB901E024815007004C8 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15E9BB8F1E024815007004C8 /* DetailViewController.swift */; };
+		15E9BB931E024815007004C8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 15E9BB911E024815007004C8 /* Main.storyboard */; };
+		15E9BB951E024815007004C8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 15E9BB941E024815007004C8 /* Assets.xcassets */; };
+		15E9BB981E024815007004C8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 15E9BB961E024815007004C8 /* LaunchScreen.storyboard */; };
+		15E9BBA31E024815007004C8 /* MyTimeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15E9BBA21E024815007004C8 /* MyTimeTests.swift */; };
+		15E9BBAE1E024815007004C8 /* MyTimeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15E9BBAD1E024815007004C8 /* MyTimeUITests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		15BB3A6F1DD6AFB30019B8D1 /* PBXContainerItemProxy */ = {
+		15E9BB9F1E024815007004C8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 15BB3A4D1DD6AFB30019B8D1 /* Project object */;
+			containerPortal = 15E9BB801E024814007004C8 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 15BB3A541DD6AFB30019B8D1;
+			remoteGlobalIDString = 15E9BB871E024815007004C8;
 			remoteInfo = MyTime;
 		};
-		15BB3A7A1DD6AFB30019B8D1 /* PBXContainerItemProxy */ = {
+		15E9BBAA1E024815007004C8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 15BB3A4D1DD6AFB30019B8D1 /* Project object */;
+			containerPortal = 15E9BB801E024814007004C8 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 15BB3A541DD6AFB30019B8D1;
+			remoteGlobalIDString = 15E9BB871E024815007004C8;
 			remoteInfo = MyTime;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		15BB3A551DD6AFB30019B8D1 /* MyTime.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyTime.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		15BB3A581DD6AFB30019B8D1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		15BB3A5B1DD6AFB30019B8D1 /* MyTime.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MyTime.xcdatamodel; sourceTree = "<group>"; };
-		15BB3A5D1DD6AFB30019B8D1 /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
-		15BB3A5F1DD6AFB30019B8D1 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
-		15BB3A621DD6AFB30019B8D1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		15BB3A641DD6AFB30019B8D1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		15BB3A671DD6AFB30019B8D1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		15BB3A691DD6AFB30019B8D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		15BB3A6E1DD6AFB30019B8D1 /* MyTimeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyTimeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		15BB3A721DD6AFB30019B8D1 /* MyTimeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTimeTests.swift; sourceTree = "<group>"; };
-		15BB3A741DD6AFB30019B8D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		15BB3A791DD6AFB30019B8D1 /* MyTimeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyTimeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		15BB3A7D1DD6AFB30019B8D1 /* MyTimeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTimeUITests.swift; sourceTree = "<group>"; };
-		15BB3A7F1DD6AFB40019B8D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		15E9BB881E024815007004C8 /* MyTime.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyTime.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		15E9BB8B1E024815007004C8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		15E9BB8D1E024815007004C8 /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
+		15E9BB8F1E024815007004C8 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		15E9BB921E024815007004C8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		15E9BB941E024815007004C8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		15E9BB971E024815007004C8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		15E9BB991E024815007004C8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		15E9BB9E1E024815007004C8 /* MyTimeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyTimeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		15E9BBA21E024815007004C8 /* MyTimeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTimeTests.swift; sourceTree = "<group>"; };
+		15E9BBA41E024815007004C8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		15E9BBA91E024815007004C8 /* MyTimeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyTimeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		15E9BBAD1E024815007004C8 /* MyTimeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTimeUITests.swift; sourceTree = "<group>"; };
+		15E9BBAF1E024815007004C8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		15BB3A521DD6AFB30019B8D1 /* Frameworks */ = {
+		15E9BB851E024815007004C8 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		15BB3A6B1DD6AFB30019B8D1 /* Frameworks */ = {
+		15E9BB9B1E024815007004C8 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		15BB3A761DD6AFB30019B8D1 /* Frameworks */ = {
+		15E9BBA61E024815007004C8 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -78,55 +76,54 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		15BB3A4C1DD6AFB30019B8D1 = {
+		15E9BB7F1E024814007004C8 = {
 			isa = PBXGroup;
 			children = (
-				15BB3A571DD6AFB30019B8D1 /* MyTime */,
-				15BB3A711DD6AFB30019B8D1 /* MyTimeTests */,
-				15BB3A7C1DD6AFB30019B8D1 /* MyTimeUITests */,
-				15BB3A561DD6AFB30019B8D1 /* Products */,
+				15E9BB8A1E024815007004C8 /* MyTime */,
+				15E9BBA11E024815007004C8 /* MyTimeTests */,
+				15E9BBAC1E024815007004C8 /* MyTimeUITests */,
+				15E9BB891E024815007004C8 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		15BB3A561DD6AFB30019B8D1 /* Products */ = {
+		15E9BB891E024815007004C8 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				15BB3A551DD6AFB30019B8D1 /* MyTime.app */,
-				15BB3A6E1DD6AFB30019B8D1 /* MyTimeTests.xctest */,
-				15BB3A791DD6AFB30019B8D1 /* MyTimeUITests.xctest */,
+				15E9BB881E024815007004C8 /* MyTime.app */,
+				15E9BB9E1E024815007004C8 /* MyTimeTests.xctest */,
+				15E9BBA91E024815007004C8 /* MyTimeUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		15BB3A571DD6AFB30019B8D1 /* MyTime */ = {
+		15E9BB8A1E024815007004C8 /* MyTime */ = {
 			isa = PBXGroup;
 			children = (
-				15BB3A581DD6AFB30019B8D1 /* AppDelegate.swift */,
-				15BB3A5D1DD6AFB30019B8D1 /* MasterViewController.swift */,
-				15BB3A5F1DD6AFB30019B8D1 /* DetailViewController.swift */,
-				15BB3A611DD6AFB30019B8D1 /* Main.storyboard */,
-				15BB3A641DD6AFB30019B8D1 /* Assets.xcassets */,
-				15BB3A661DD6AFB30019B8D1 /* LaunchScreen.storyboard */,
-				15BB3A691DD6AFB30019B8D1 /* Info.plist */,
-				15BB3A5A1DD6AFB30019B8D1 /* MyTime.xcdatamodeld */,
+				15E9BB8B1E024815007004C8 /* AppDelegate.swift */,
+				15E9BB8D1E024815007004C8 /* MasterViewController.swift */,
+				15E9BB8F1E024815007004C8 /* DetailViewController.swift */,
+				15E9BB911E024815007004C8 /* Main.storyboard */,
+				15E9BB941E024815007004C8 /* Assets.xcassets */,
+				15E9BB961E024815007004C8 /* LaunchScreen.storyboard */,
+				15E9BB991E024815007004C8 /* Info.plist */,
 			);
 			path = MyTime;
 			sourceTree = "<group>";
 		};
-		15BB3A711DD6AFB30019B8D1 /* MyTimeTests */ = {
+		15E9BBA11E024815007004C8 /* MyTimeTests */ = {
 			isa = PBXGroup;
 			children = (
-				15BB3A721DD6AFB30019B8D1 /* MyTimeTests.swift */,
-				15BB3A741DD6AFB30019B8D1 /* Info.plist */,
+				15E9BBA21E024815007004C8 /* MyTimeTests.swift */,
+				15E9BBA41E024815007004C8 /* Info.plist */,
 			);
 			path = MyTimeTests;
 			sourceTree = "<group>";
 		};
-		15BB3A7C1DD6AFB30019B8D1 /* MyTimeUITests */ = {
+		15E9BBAC1E024815007004C8 /* MyTimeUITests */ = {
 			isa = PBXGroup;
 			children = (
-				15BB3A7D1DD6AFB30019B8D1 /* MyTimeUITests.swift */,
-				15BB3A7F1DD6AFB40019B8D1 /* Info.plist */,
+				15E9BBAD1E024815007004C8 /* MyTimeUITests.swift */,
+				15E9BBAF1E024815007004C8 /* Info.plist */,
 			);
 			path = MyTimeUITests;
 			sourceTree = "<group>";
@@ -134,13 +131,13 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		15BB3A541DD6AFB30019B8D1 /* MyTime */ = {
+		15E9BB871E024815007004C8 /* MyTime */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 15BB3A821DD6AFB40019B8D1 /* Build configuration list for PBXNativeTarget "MyTime" */;
+			buildConfigurationList = 15E9BBB21E024815007004C8 /* Build configuration list for PBXNativeTarget "MyTime" */;
 			buildPhases = (
-				15BB3A511DD6AFB30019B8D1 /* Sources */,
-				15BB3A521DD6AFB30019B8D1 /* Frameworks */,
-				15BB3A531DD6AFB30019B8D1 /* Resources */,
+				15E9BB841E024815007004C8 /* Sources */,
+				15E9BB851E024815007004C8 /* Frameworks */,
+				15E9BB861E024815007004C8 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -148,75 +145,75 @@
 			);
 			name = MyTime;
 			productName = MyTime;
-			productReference = 15BB3A551DD6AFB30019B8D1 /* MyTime.app */;
+			productReference = 15E9BB881E024815007004C8 /* MyTime.app */;
 			productType = "com.apple.product-type.application";
 		};
-		15BB3A6D1DD6AFB30019B8D1 /* MyTimeTests */ = {
+		15E9BB9D1E024815007004C8 /* MyTimeTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 15BB3A851DD6AFB40019B8D1 /* Build configuration list for PBXNativeTarget "MyTimeTests" */;
+			buildConfigurationList = 15E9BBB51E024815007004C8 /* Build configuration list for PBXNativeTarget "MyTimeTests" */;
 			buildPhases = (
-				15BB3A6A1DD6AFB30019B8D1 /* Sources */,
-				15BB3A6B1DD6AFB30019B8D1 /* Frameworks */,
-				15BB3A6C1DD6AFB30019B8D1 /* Resources */,
+				15E9BB9A1E024815007004C8 /* Sources */,
+				15E9BB9B1E024815007004C8 /* Frameworks */,
+				15E9BB9C1E024815007004C8 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				15BB3A701DD6AFB30019B8D1 /* PBXTargetDependency */,
+				15E9BBA01E024815007004C8 /* PBXTargetDependency */,
 			);
 			name = MyTimeTests;
 			productName = MyTimeTests;
-			productReference = 15BB3A6E1DD6AFB30019B8D1 /* MyTimeTests.xctest */;
+			productReference = 15E9BB9E1E024815007004C8 /* MyTimeTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		15BB3A781DD6AFB30019B8D1 /* MyTimeUITests */ = {
+		15E9BBA81E024815007004C8 /* MyTimeUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 15BB3A881DD6AFB40019B8D1 /* Build configuration list for PBXNativeTarget "MyTimeUITests" */;
+			buildConfigurationList = 15E9BBB81E024815007004C8 /* Build configuration list for PBXNativeTarget "MyTimeUITests" */;
 			buildPhases = (
-				15BB3A751DD6AFB30019B8D1 /* Sources */,
-				15BB3A761DD6AFB30019B8D1 /* Frameworks */,
-				15BB3A771DD6AFB30019B8D1 /* Resources */,
+				15E9BBA51E024815007004C8 /* Sources */,
+				15E9BBA61E024815007004C8 /* Frameworks */,
+				15E9BBA71E024815007004C8 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				15BB3A7B1DD6AFB30019B8D1 /* PBXTargetDependency */,
+				15E9BBAB1E024815007004C8 /* PBXTargetDependency */,
 			);
 			name = MyTimeUITests;
 			productName = MyTimeUITests;
-			productReference = 15BB3A791DD6AFB30019B8D1 /* MyTimeUITests.xctest */;
+			productReference = 15E9BBA91E024815007004C8 /* MyTimeUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		15BB3A4D1DD6AFB30019B8D1 /* Project object */ = {
+		15E9BB801E024814007004C8 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0810;
 				LastUpgradeCheck = 0810;
 				ORGANIZATIONNAME = "Bruno Almeida";
 				TargetAttributes = {
-					15BB3A541DD6AFB30019B8D1 = {
+					15E9BB871E024815007004C8 = {
 						CreatedOnToolsVersion = 8.1;
 						DevelopmentTeam = Q8A32W8MGA;
 						ProvisioningStyle = Automatic;
 					};
-					15BB3A6D1DD6AFB30019B8D1 = {
+					15E9BB9D1E024815007004C8 = {
 						CreatedOnToolsVersion = 8.1;
 						DevelopmentTeam = Q8A32W8MGA;
 						ProvisioningStyle = Automatic;
-						TestTargetID = 15BB3A541DD6AFB30019B8D1;
+						TestTargetID = 15E9BB871E024815007004C8;
 					};
-					15BB3A781DD6AFB30019B8D1 = {
+					15E9BBA81E024815007004C8 = {
 						CreatedOnToolsVersion = 8.1;
 						DevelopmentTeam = Q8A32W8MGA;
 						ProvisioningStyle = Automatic;
-						TestTargetID = 15BB3A541DD6AFB30019B8D1;
+						TestTargetID = 15E9BB871E024815007004C8;
 					};
 				};
 			};
-			buildConfigurationList = 15BB3A501DD6AFB30019B8D1 /* Build configuration list for PBXProject "MyTime" */;
+			buildConfigurationList = 15E9BB831E024814007004C8 /* Build configuration list for PBXProject "MyTime" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -224,37 +221,37 @@
 				en,
 				Base,
 			);
-			mainGroup = 15BB3A4C1DD6AFB30019B8D1;
-			productRefGroup = 15BB3A561DD6AFB30019B8D1 /* Products */;
+			mainGroup = 15E9BB7F1E024814007004C8;
+			productRefGroup = 15E9BB891E024815007004C8 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				15BB3A541DD6AFB30019B8D1 /* MyTime */,
-				15BB3A6D1DD6AFB30019B8D1 /* MyTimeTests */,
-				15BB3A781DD6AFB30019B8D1 /* MyTimeUITests */,
+				15E9BB871E024815007004C8 /* MyTime */,
+				15E9BB9D1E024815007004C8 /* MyTimeTests */,
+				15E9BBA81E024815007004C8 /* MyTimeUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		15BB3A531DD6AFB30019B8D1 /* Resources */ = {
+		15E9BB861E024815007004C8 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				15BB3A681DD6AFB30019B8D1 /* LaunchScreen.storyboard in Resources */,
-				15BB3A651DD6AFB30019B8D1 /* Assets.xcassets in Resources */,
-				15BB3A631DD6AFB30019B8D1 /* Main.storyboard in Resources */,
+				15E9BB981E024815007004C8 /* LaunchScreen.storyboard in Resources */,
+				15E9BB951E024815007004C8 /* Assets.xcassets in Resources */,
+				15E9BB931E024815007004C8 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		15BB3A6C1DD6AFB30019B8D1 /* Resources */ = {
+		15E9BB9C1E024815007004C8 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		15BB3A771DD6AFB30019B8D1 /* Resources */ = {
+		15E9BBA71E024815007004C8 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -264,61 +261,60 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		15BB3A511DD6AFB30019B8D1 /* Sources */ = {
+		15E9BB841E024815007004C8 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				15BB3A5C1DD6AFB30019B8D1 /* MyTime.xcdatamodeld in Sources */,
-				15BB3A591DD6AFB30019B8D1 /* AppDelegate.swift in Sources */,
-				15BB3A5E1DD6AFB30019B8D1 /* MasterViewController.swift in Sources */,
-				15BB3A601DD6AFB30019B8D1 /* DetailViewController.swift in Sources */,
+				15E9BB901E024815007004C8 /* DetailViewController.swift in Sources */,
+				15E9BB8E1E024815007004C8 /* MasterViewController.swift in Sources */,
+				15E9BB8C1E024815007004C8 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		15BB3A6A1DD6AFB30019B8D1 /* Sources */ = {
+		15E9BB9A1E024815007004C8 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				15BB3A731DD6AFB30019B8D1 /* MyTimeTests.swift in Sources */,
+				15E9BBA31E024815007004C8 /* MyTimeTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		15BB3A751DD6AFB30019B8D1 /* Sources */ = {
+		15E9BBA51E024815007004C8 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				15BB3A7E1DD6AFB30019B8D1 /* MyTimeUITests.swift in Sources */,
+				15E9BBAE1E024815007004C8 /* MyTimeUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		15BB3A701DD6AFB30019B8D1 /* PBXTargetDependency */ = {
+		15E9BBA01E024815007004C8 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 15BB3A541DD6AFB30019B8D1 /* MyTime */;
-			targetProxy = 15BB3A6F1DD6AFB30019B8D1 /* PBXContainerItemProxy */;
+			target = 15E9BB871E024815007004C8 /* MyTime */;
+			targetProxy = 15E9BB9F1E024815007004C8 /* PBXContainerItemProxy */;
 		};
-		15BB3A7B1DD6AFB30019B8D1 /* PBXTargetDependency */ = {
+		15E9BBAB1E024815007004C8 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 15BB3A541DD6AFB30019B8D1 /* MyTime */;
-			targetProxy = 15BB3A7A1DD6AFB30019B8D1 /* PBXContainerItemProxy */;
+			target = 15E9BB871E024815007004C8 /* MyTime */;
+			targetProxy = 15E9BBAA1E024815007004C8 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		15BB3A611DD6AFB30019B8D1 /* Main.storyboard */ = {
+		15E9BB911E024815007004C8 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				15BB3A621DD6AFB30019B8D1 /* Base */,
+				15E9BB921E024815007004C8 /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
-		15BB3A661DD6AFB30019B8D1 /* LaunchScreen.storyboard */ = {
+		15E9BB961E024815007004C8 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				15BB3A671DD6AFB30019B8D1 /* Base */,
+				15E9BB971E024815007004C8 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -326,7 +322,7 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		15BB3A801DD6AFB40019B8D1 /* Debug */ = {
+		15E9BBB01E024815007004C8 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -376,7 +372,7 @@
 			};
 			name = Debug;
 		};
-		15BB3A811DD6AFB40019B8D1 /* Release */ = {
+		15E9BBB11E024815007004C8 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -419,7 +415,7 @@
 			};
 			name = Release;
 		};
-		15BB3A831DD6AFB40019B8D1 /* Debug */ = {
+		15E9BBB31E024815007004C8 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -432,7 +428,7 @@
 			};
 			name = Debug;
 		};
-		15BB3A841DD6AFB40019B8D1 /* Release */ = {
+		15E9BBB41E024815007004C8 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -445,7 +441,7 @@
 			};
 			name = Release;
 		};
-		15BB3A861DD6AFB40019B8D1 /* Debug */ = {
+		15E9BBB61E024815007004C8 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
@@ -460,7 +456,7 @@
 			};
 			name = Debug;
 		};
-		15BB3A871DD6AFB40019B8D1 /* Release */ = {
+		15E9BBB71E024815007004C8 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
@@ -475,7 +471,7 @@
 			};
 			name = Release;
 		};
-		15BB3A891DD6AFB40019B8D1 /* Debug */ = {
+		15E9BBB91E024815007004C8 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
@@ -489,7 +485,7 @@
 			};
 			name = Debug;
 		};
-		15BB3A8A1DD6AFB40019B8D1 /* Release */ = {
+		15E9BBBA1E024815007004C8 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
@@ -506,53 +502,40 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		15BB3A501DD6AFB30019B8D1 /* Build configuration list for PBXProject "MyTime" */ = {
+		15E9BB831E024814007004C8 /* Build configuration list for PBXProject "MyTime" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				15BB3A801DD6AFB40019B8D1 /* Debug */,
-				15BB3A811DD6AFB40019B8D1 /* Release */,
+				15E9BBB01E024815007004C8 /* Debug */,
+				15E9BBB11E024815007004C8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		15BB3A821DD6AFB40019B8D1 /* Build configuration list for PBXNativeTarget "MyTime" */ = {
+		15E9BBB21E024815007004C8 /* Build configuration list for PBXNativeTarget "MyTime" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				15BB3A831DD6AFB40019B8D1 /* Debug */,
-				15BB3A841DD6AFB40019B8D1 /* Release */,
+				15E9BBB31E024815007004C8 /* Debug */,
+				15E9BBB41E024815007004C8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};
-		15BB3A851DD6AFB40019B8D1 /* Build configuration list for PBXNativeTarget "MyTimeTests" */ = {
+		15E9BBB51E024815007004C8 /* Build configuration list for PBXNativeTarget "MyTimeTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				15BB3A861DD6AFB40019B8D1 /* Debug */,
-				15BB3A871DD6AFB40019B8D1 /* Release */,
+				15E9BBB61E024815007004C8 /* Debug */,
+				15E9BBB71E024815007004C8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};
-		15BB3A881DD6AFB40019B8D1 /* Build configuration list for PBXNativeTarget "MyTimeUITests" */ = {
+		15E9BBB81E024815007004C8 /* Build configuration list for PBXNativeTarget "MyTimeUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				15BB3A891DD6AFB40019B8D1 /* Debug */,
-				15BB3A8A1DD6AFB40019B8D1 /* Release */,
+				15E9BBB91E024815007004C8 /* Debug */,
+				15E9BBBA1E024815007004C8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		15BB3A5A1DD6AFB30019B8D1 /* MyTime.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				15BB3A5B1DD6AFB30019B8D1 /* MyTime.xcdatamodel */,
-			);
-			currentVersion = 15BB3A5B1DD6AFB30019B8D1 /* MyTime.xcdatamodel */;
-			path = MyTime.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
-	rootObject = 15BB3A4D1DD6AFB30019B8D1 /* Project object */;
+	rootObject = 15E9BB801E024814007004C8 /* Project object */;
 }

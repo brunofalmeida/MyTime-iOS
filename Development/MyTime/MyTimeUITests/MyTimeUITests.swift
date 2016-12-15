@@ -2,7 +2,7 @@
 //  MyTimeUITests.swift
 //  MyTimeUITests
 //
-//  Created by Bruno Almeida on 2016-11-11.
+//  Created by Bruno Almeida on 2016-12-14.
 //  Copyright © 2016 Bruno Almeida. All rights reserved.
 //
 
