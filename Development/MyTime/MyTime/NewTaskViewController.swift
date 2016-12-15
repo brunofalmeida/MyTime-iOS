@@ -10,10 +10,17 @@ import UIKit
 
 class NewTaskViewController: UIViewController {
 
+    @IBOutlet weak var circleView: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        //circleView.alpha = 0.5
+        circleView.layer.cornerRadius = circleView.frame.size.width / 2
+        // rgb(135,206,250) - lightskyblue from http://www.rapidtables.com/web/color/blue-color.htm
+        circleView.backgroundColor = UIColor(red: 135/255.0, green: 206/255.0, blue: 250/255.0, alpha: 0.5)
     }
 
     override func didReceiveMemoryWarning() {

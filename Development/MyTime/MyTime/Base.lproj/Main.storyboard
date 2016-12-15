@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -113,7 +114,7 @@
                             <outlet property="delegate" destination="7bK-jq-Zjz" id="RA6-mI-bju"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Master" id="Zdf-7t-Un8"/>
+                    <navigationItem key="navigationItem" title="Tasks" id="Zdf-7t-Un8"/>
                     <connections>
                         <segue destination="1bz-hO-tsT" kind="show" identifier="newTask" id="ZJh-vF-2ZR"/>
                     </connections>
@@ -133,13 +134,42 @@
                     <view key="view" contentMode="scaleToFill" id="aJE-vQ-U0t">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="le5-YM-kEi">
+                                <rect key="frame" x="87" y="234" width="200" height="200"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0:00" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iwj-g1-Wzp">
+                                        <rect key="frame" x="0.0" y="0.5" width="200" height="200"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="48"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="le5-YM-kEi" secondAttribute="height" multiplier="1:1" id="GZl-oF-fJb"/>
+                                    <constraint firstAttribute="width" constant="200" id="LIi-Ro-eH7"/>
+                                    <constraint firstAttribute="trailing" secondItem="iwj-g1-Wzp" secondAttribute="trailing" id="Nxd-K9-ZwR"/>
+                                    <constraint firstAttribute="bottom" secondItem="iwj-g1-Wzp" secondAttribute="bottom" id="OgD-eo-7ga"/>
+                                    <constraint firstItem="iwj-g1-Wzp" firstAttribute="leading" secondItem="le5-YM-kEi" secondAttribute="leading" id="VZ9-6A-gpg"/>
+                                    <constraint firstItem="iwj-g1-Wzp" firstAttribute="top" secondItem="le5-YM-kEi" secondAttribute="top" id="zMY-H1-W5q"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="le5-YM-kEi" firstAttribute="centerY" secondItem="aJE-vQ-U0t" secondAttribute="centerY" id="3g1-EN-3uk"/>
+                            <constraint firstItem="le5-YM-kEi" firstAttribute="centerX" secondItem="aJE-vQ-U0t" secondAttribute="centerX" id="JIU-gp-QOm"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="New Task" id="VKp-Yu-KQL"/>
+                    <connections>
+                        <outlet property="circleView" destination="le5-YM-kEi" id="4Kn-fh-BNc"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="21d-it-A2m" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1533" y="-579"/>
+            <point key="canvasLocation" x="1532" y="-579.76011994002999"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="r7l-gg-dq7">
