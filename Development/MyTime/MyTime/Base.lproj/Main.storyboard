@@ -165,6 +165,7 @@
                     <navigationItem key="navigationItem" title="New Task" id="VKp-Yu-KQL"/>
                     <connections>
                         <outlet property="circleView" destination="le5-YM-kEi" id="4Kn-fh-BNc"/>
+                        <outlet property="timerLabel" destination="iwj-g1-Wzp" id="gLa-on-FKA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="21d-it-A2m" userLabel="First Responder" sceneMemberID="firstResponder"/>

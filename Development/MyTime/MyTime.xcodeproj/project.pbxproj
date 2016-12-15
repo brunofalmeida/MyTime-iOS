@@ -104,11 +104,11 @@
 				15E9BB8B1E024815007004C8 /* AppDelegate.swift */,
 				15E9BB8D1E024815007004C8 /* MasterViewController.swift */,
 				15E9BB8F1E024815007004C8 /* DetailViewController.swift */,
+				155D77721E024CBF00560215 /* NewTaskViewController.swift */,
 				15E9BB911E024815007004C8 /* Main.storyboard */,
 				15E9BB941E024815007004C8 /* Assets.xcassets */,
 				15E9BB961E024815007004C8 /* LaunchScreen.storyboard */,
 				15E9BB991E024815007004C8 /* Info.plist */,
-				155D77721E024CBF00560215 /* NewTaskViewController.swift */,
 			);
 			path = MyTime;
 			sourceTree = "<group>";
