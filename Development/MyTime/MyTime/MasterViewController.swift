@@ -12,10 +12,12 @@ class MasterViewController: UITableViewController {
 
     var detailViewController: DetailViewController? = nil
     var objects = [Any]()
+    fileprivate var tasks: [Int] = []
 
 
     override func viewDidLoad() {
         super.viewDidLoad()
+                
         // Do any additional setup after loading the view, typically from a nib.
         self.navigationItem.leftBarButtonItem = self.editButtonItem
 
@@ -60,6 +62,8 @@ class MasterViewController: UITableViewController {
                 controller.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem
                 controller.navigationItem.leftItemsSupplementBackButton = true
             }
+        } else if segue.identifier == "newTask" {
+            (segue.destination as? NewTaskViewController)?.parentMasterViewController = self
         }
     }
 
@@ -93,6 +97,13 @@ class MasterViewController: UITableViewController {
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
         }
+    }
+    
+    func addNewTask(timeInSeconds: Int) {
+        print("addNewTask()")
+        
+        tasks.append(timeInSeconds)
+        print(tasks)
     }
 
 

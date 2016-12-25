@@ -15,6 +15,9 @@ class NewTaskViewController: UIViewController {
     
     fileprivate var startTime: Date!
     
+    var parentMasterViewController: MasterViewController?
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -47,6 +50,18 @@ class NewTaskViewController: UIViewController {
         return String(format: "%d:%02d", seconds / 60, seconds % 60)
     }
     
+    override func willMove(toParentViewController parent: UIViewController?) {
+        print()
+        print("willMove(toParentViewController:)")
+        super.willMove(toParentViewController: parent)
+        
+        print("parent = \(parent)")
+        print("self.parent = \(self.parent)")
+        
+        if parent == nil {
+            self.parentMasterViewController?.addNewTask(timeInSeconds: 1)
+        }
+    }
 
     /*
     // MARK: - Navigation
