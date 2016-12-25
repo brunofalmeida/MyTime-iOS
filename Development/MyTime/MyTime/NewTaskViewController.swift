@@ -13,7 +13,10 @@ class NewTaskViewController: UIViewController {
     @IBOutlet weak var circleView: UIView!
     @IBOutlet weak var timerLabel: UILabel!
     
-    fileprivate var startTime: Date!
+    fileprivate var startTime: Date = Date()
+    fileprivate var elapsedTimeInSeconds: Int {
+        return -Int(startTime.timeIntervalSinceNow)
+    }
     
     var parentMasterViewController: MasterViewController?
     
@@ -43,7 +46,7 @@ class NewTaskViewController: UIViewController {
     }
     
     func handleTimer() {
-        timerLabel.text = formatTime(seconds: -Int(startTime.timeIntervalSinceNow))
+        timerLabel.text = formatTime(seconds: elapsedTimeInSeconds)
     }
     
     fileprivate func formatTime(seconds: Int) -> String {
@@ -59,7 +62,7 @@ class NewTaskViewController: UIViewController {
         print("self.parent = \(self.parent)")
         
         if parent == nil {
-            self.parentMasterViewController?.addNewTask(timeInSeconds: 1)
+            self.parentMasterViewController?.addNewTask(timeInSeconds: elapsedTimeInSeconds)
         }
     }
 
