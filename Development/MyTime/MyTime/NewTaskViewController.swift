@@ -46,10 +46,10 @@ class NewTaskViewController: UIViewController {
     }
     
     func handleTimer() {
-        timerLabel.text = formatTime(seconds: elapsedTimeInSeconds)
+        timerLabel.text = NewTaskViewController.formatTime(seconds: elapsedTimeInSeconds)
     }
     
-    fileprivate func formatTime(seconds: Int) -> String {
+    static func formatTime(seconds: Int) -> String {
         return String(format: "%d:%02d", seconds / 60, seconds % 60)
     }
     
