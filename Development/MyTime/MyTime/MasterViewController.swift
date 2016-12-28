@@ -12,7 +12,10 @@ class MasterViewController: UITableViewController {
 
     var detailViewController: DetailViewController? = nil
 //    var objects = [Any]()
-    fileprivate var tasks: [Int] = []
+    
+    /// Stores the time when the back button was pressed, not after the user has typed in the task's name
+    var latestTaskTime: Int?
+    fileprivate var tasks: [(name: String, time: Int)] = []
 
 
     override func viewDidLoad() {
@@ -82,7 +85,7 @@ class MasterViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
 
         let task = tasks[indexPath.row]
-        cell.textLabel?.text = NewTaskViewController.formatTime(seconds: task)
+        cell.textLabel?.text = "\(task.name) (\(NewTaskViewController.formatTime(seconds: task.time)))"
         
 //        let object = objects[indexPath.row] as! NSDate
 //        cell.textLabel!.text = object.description
@@ -105,15 +108,33 @@ class MasterViewController: UITableViewController {
         }
     }
     
-    func addNewTask(timeInSeconds: Int) {
-        print("addNewTask()")
+    /**
+     Stores a task's time so it is accurate.
+     */
+    func addTaskTime(timeInSeconds: Int) {
+        print()
+        print("addTaskTime()")
         
-        tasks.append(timeInSeconds)
-        print(tasks)
-        
-        tableView.reloadData()
+        latestTaskTime = timeInSeconds
+        print(latestTaskTime as Any)
     }
-
+    
+    func addTaskName(name: String) {
+        print()
+        print("addTaskName()")
+        
+        if let time = latestTaskTime {
+            tasks.append((name, time))
+            latestTaskTime = nil
+            tableView.reloadData()
+            
+            print("Task added")
+        } else {
+            print("No time stored - task not added")
+        }
+        
+        print(tasks)
+    }
 
 }
 

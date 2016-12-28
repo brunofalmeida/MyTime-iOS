@@ -18,7 +18,7 @@ class NewTaskViewController: UIViewController {
         return -Int(startTime.timeIntervalSinceNow)
     }
     
-    var parentMasterViewController: MasterViewController?
+    weak var parentMasterViewController: MasterViewController?
     
     
     override func viewDidLoad() {
@@ -54,15 +54,24 @@ class NewTaskViewController: UIViewController {
     }
     
     override func willMove(toParentViewController parent: UIViewController?) {
-        print()
+        //print()
         print("willMove(toParentViewController:)")
         super.willMove(toParentViewController: parent)
         
-        print("parent = \(parent)")
-        print("self.parent = \(self.parent)")
+//        print("parent = \(parent)")
+//        print("self.parent = \(self.parent)")
         
         if parent == nil {
-            self.parentMasterViewController?.addNewTask(timeInSeconds: elapsedTimeInSeconds)
+            parentMasterViewController?.addTaskTime(timeInSeconds: elapsedTimeInSeconds)
+            
+            let nameAlert = UIAlertController(title: "Task Name", message: nil, preferredStyle: .alert)
+            nameAlert.addTextField(configurationHandler: nil)
+            nameAlert.addAction(UIAlertAction(title: "OK", style: .default) {
+                alertAction in
+                self.parentMasterViewController?.addTaskName(name: nameAlert.textFields?[0].text ?? "")
+            })
+            
+            present(nameAlert, animated: true, completion: nil)
         }
     }
 
