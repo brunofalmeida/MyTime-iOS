@@ -11,7 +11,6 @@ import UIKit
 class MasterViewController: UITableViewController {
 
     var detailViewController: DetailViewController? = nil
-//    var objects = [Any]()
     
     /// Stores the time when the back button was pressed, not after the user has typed in the task's name
     var latestTaskTime: Int?
@@ -28,7 +27,7 @@ class MasterViewController: UITableViewController {
         self.navigationItem.rightBarButtonItem = addButton
         if let split = self.splitViewController {
             let controllers = split.viewControllers
-            self.detailViewController = (controllers[controllers.count-1] as! UINavigationController).topViewController as? DetailViewController
+            self.detailViewController = (controllers[controllers.count - 1] as! UINavigationController).topViewController as? DetailViewController
         }
     }
 
@@ -37,35 +36,28 @@ class MasterViewController: UITableViewController {
         super.viewWillAppear(animated)
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+//    override func didReceiveMemoryWarning() {
+//        super.didReceiveMemoryWarning()
+//        // Dispose of any resources that can be recreated.
+//    }
 
     func addButtonTapped() {
+        print()
         print("addButtonTapped()")
         
         performSegue(withIdentifier: "newTask", sender: self)
     }
     
-//    func insertNewObject(_ sender: Any) {
-//        objects.insert(NSDate(), at: 0)
-//        let indexPath = IndexPath(row: 0, section: 0)
-//        self.tableView.insertRows(at: [indexPath], with: .automatic)
-//    }
-
     // MARK: - Segues
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        print()
+        print("prepare(for:, sender:)")
+        
         if segue.identifier == "showDetail" {
-//            if let indexPath = self.tableView.indexPathForSelectedRow {
-//                let object = objects[indexPath.row] as! NSDate
-//                let controller = (segue.destination as! UINavigationController).topViewController as! DetailViewController
-//                controller.detailItem = object
-//                controller.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem
-//                controller.navigationItem.leftItemsSupplementBackButton = true
-//            }
+            print("showDetail")
         } else if segue.identifier == "newTask" {
+            print("newTask")
             (segue.destination as? NewTaskViewController)?.parentMasterViewController = self
         }
     }
@@ -77,7 +69,6 @@ class MasterViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return objects.count
         return tasks.count
     }
 
@@ -86,9 +77,6 @@ class MasterViewController: UITableViewController {
 
         let task = tasks[indexPath.row]
         cell.textLabel?.text = "\(task.name) (\(NewTaskViewController.formatTime(seconds: task.time)))"
-        
-//        let object = objects[indexPath.row] as! NSDate
-//        cell.textLabel!.text = object.description
         
         return cell
     }
@@ -100,7 +88,6 @@ class MasterViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-//            objects.remove(at: indexPath.row)
             tasks.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
         } else if editingStyle == .insert {

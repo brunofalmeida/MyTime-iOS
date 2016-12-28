@@ -23,11 +23,10 @@ class NewTaskViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
         
-        //circleView.alpha = 0.5
         circleView.layer.cornerRadius = circleView.frame.size.width / 2
+        
         // rgb(135,206,250) - lightskyblue from http://www.rapidtables.com/web/color/blue-color.htm
         circleView.backgroundColor = UIColor(red: 135/255.0, green: 206/255.0, blue: 250/255.0, alpha: 0.5)
         
@@ -40,10 +39,10 @@ class NewTaskViewController: UIViewController {
                                  repeats: true)
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+//    override func didReceiveMemoryWarning() {
+//        super.didReceiveMemoryWarning()
+//        // Dispose of any resources that can be recreated.
+//    }
     
     func handleTimer() {
         timerLabel.text = NewTaskViewController.formatTime(seconds: elapsedTimeInSeconds)
@@ -54,12 +53,9 @@ class NewTaskViewController: UIViewController {
     }
     
     override func willMove(toParentViewController parent: UIViewController?) {
-        //print()
+        print()
         print("willMove(toParentViewController:)")
         super.willMove(toParentViewController: parent)
-        
-//        print("parent = \(parent)")
-//        print("self.parent = \(self.parent)")
         
         if parent == nil {
             parentMasterViewController?.addTaskTime(timeInSeconds: elapsedTimeInSeconds)
