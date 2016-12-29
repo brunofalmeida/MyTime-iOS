@@ -14,8 +14,13 @@ class NewTaskViewController: UIViewController {
     @IBOutlet weak var timerLabel: UILabel!
     
     fileprivate var startTime: Date = Date()
+    
     fileprivate var elapsedTimeInSeconds: Int {
         return -Int(startTime.timeIntervalSinceNow)
+    }
+    
+    fileprivate var elapsedTime: TimeInterval {
+        return TimeInterval(totalSeconds: elapsedTimeInSeconds)
     }
     
     weak var parentMasterViewController: MasterViewController?
@@ -45,11 +50,7 @@ class NewTaskViewController: UIViewController {
 //    }
     
     func handleTimer() {
-        timerLabel.text = NewTaskViewController.formatTime(seconds: elapsedTimeInSeconds)
-    }
-    
-    static func formatTime(seconds: Int) -> String {
-        return String(format: "%d:%02d", seconds / 60, seconds % 60)
+        timerLabel.text = elapsedTime.description
     }
     
     override func willMove(toParentViewController parent: UIViewController?) {
@@ -58,13 +59,13 @@ class NewTaskViewController: UIViewController {
         super.willMove(toParentViewController: parent)
         
         if parent == nil {
-            parentMasterViewController?.addTaskTime(timeInSeconds: elapsedTimeInSeconds)
+            parentMasterViewController?.newTaskTimeInterval = elapsedTime
             
             let nameAlert = UIAlertController(title: "Task Name", message: nil, preferredStyle: .alert)
             nameAlert.addTextField(configurationHandler: nil)
             nameAlert.addAction(UIAlertAction(title: "OK", style: .default) {
                 alertAction in
-                self.parentMasterViewController?.addTaskName(name: nameAlert.textFields?[0].text ?? "")
+                self.parentMasterViewController?.addTask(name: nameAlert.textFields?[0].text ?? "")
             })
             
             present(nameAlert, animated: true, completion: nil)
