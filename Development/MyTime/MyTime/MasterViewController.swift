@@ -14,7 +14,7 @@ class MasterViewController: UITableViewController {
     
     /// Stores the time when the back button was pressed, not after the user has typed in the task's name
     var newTaskTimeInterval: TimeInterval?
-    fileprivate var tasks: [(name: String, timeInterval: TimeInterval)] = []
+    fileprivate var tasks: [Task] = []
 
 
     override func viewDidLoad() {
@@ -76,7 +76,7 @@ class MasterViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
 
         let task = tasks[indexPath.row]
-        cell.textLabel?.text = "\(task.name) (\(task.timeInterval))"
+        cell.textLabel?.text = task.description
         
         return cell
     }
@@ -100,7 +100,7 @@ class MasterViewController: UITableViewController {
         print("addTask()")
         
         if let timeInterval = newTaskTimeInterval {
-            tasks.append((name, timeInterval))
+            tasks.append(Task(name: name, timeInterval: timeInterval))
             newTaskTimeInterval = nil
             tableView.reloadData()
             
@@ -113,4 +113,3 @@ class MasterViewController: UITableViewController {
     }
 
 }
-

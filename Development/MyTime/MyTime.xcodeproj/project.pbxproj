@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		155D77731E024CBF00560215 /* NewTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 155D77721E024CBF00560215 /* NewTaskViewController.swift */; };
 		157F79C71E15CFC400ED6452 /* TimeInterval.swift in Sources */ = {isa = PBXBuildFile; fileRef = 157F79C61E15CFC400ED6452 /* TimeInterval.swift */; };
+		157F79C91E15DA7000ED6452 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 157F79C81E15DA7000ED6452 /* Task.swift */; };
 		15E9BB8C1E024815007004C8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15E9BB8B1E024815007004C8 /* AppDelegate.swift */; };
 		15E9BB8E1E024815007004C8 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15E9BB8D1E024815007004C8 /* MasterViewController.swift */; };
 		15E9BB901E024815007004C8 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15E9BB8F1E024815007004C8 /* DetailViewController.swift */; };
@@ -39,6 +40,7 @@
 /* Begin PBXFileReference section */
 		155D77721E024CBF00560215 /* NewTaskViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewTaskViewController.swift; sourceTree = "<group>"; };
 		157F79C61E15CFC400ED6452 /* TimeInterval.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeInterval.swift; sourceTree = "<group>"; };
+		157F79C81E15DA7000ED6452 /* Task.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		15E9BB881E024815007004C8 /* MyTime.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyTime.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		15E9BB8B1E024815007004C8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		15E9BB8D1E024815007004C8 /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
@@ -108,6 +110,7 @@
 				155D77721E024CBF00560215 /* NewTaskViewController.swift */,
 				15E9BB8F1E024815007004C8 /* DetailViewController.swift */,
 				157F79C61E15CFC400ED6452 /* TimeInterval.swift */,
+				157F79C81E15DA7000ED6452 /* Task.swift */,
 				15E9BB911E024815007004C8 /* Main.storyboard */,
 				15E9BB941E024815007004C8 /* Assets.xcassets */,
 				15E9BB961E024815007004C8 /* LaunchScreen.storyboard */,
@@ -275,6 +278,7 @@
 				157F79C71E15CFC400ED6452 /* TimeInterval.swift in Sources */,
 				15E9BB8E1E024815007004C8 /* MasterViewController.swift in Sources */,
 				155D77731E024CBF00560215 /* NewTaskViewController.swift in Sources */,
+				157F79C91E15DA7000ED6452 /* Task.swift in Sources */,
 				15E9BB8C1E024815007004C8 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
