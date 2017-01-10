@@ -33,4 +33,25 @@ class MyTimeTests: XCTestCase {
         }
     }
     
+    func testTask() {
+        XCTAssert(
+            Task(name: "test", timeInterval: TimeInterval(totalSeconds: 10)) ==
+            Task(name: "test", timeInterval: TimeInterval(totalSeconds: 10)))
+        
+        XCTAssertFalse(
+            Task(name: "tes", timeInterval: TimeInterval(totalSeconds: 10)) ==
+            Task(name: "test", timeInterval: TimeInterval(totalSeconds: 10)))
+        XCTAssertFalse(
+            Task(name: "test", timeInterval: TimeInterval(totalSeconds: 9)) ==
+            Task(name: "test", timeInterval: TimeInterval(totalSeconds: 10)))
+        XCTAssertFalse(
+            Task(name: "tes", timeInterval: TimeInterval(totalSeconds: 9)) ==
+            Task(name: "test", timeInterval: TimeInterval(totalSeconds: 10)))
+    }
+    
+    func testTimeInterval() {
+        XCTAssert(TimeInterval(totalSeconds: 9000) == TimeInterval(totalSeconds: 9000))
+        XCTAssertFalse(TimeInterval(totalSeconds: 9000) == TimeInterval(totalSeconds: 9001))
+    }
+    
 }

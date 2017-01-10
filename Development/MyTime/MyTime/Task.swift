@@ -51,3 +51,9 @@ extension Task: CustomDebugStringConvertible {
         return "Task(name = \(name), timeInterval = \(timeInterval.debugDescription))"
     }
 }
+
+extension Task: Equatable {}
+func ==(left: Task, right: Task) -> Bool {
+    return left.name == right.name && left.timeInterval == right.timeInterval
+}
+

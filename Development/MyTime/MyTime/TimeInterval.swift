@@ -62,3 +62,8 @@ extension TimeInterval: CustomDebugStringConvertible {
     }
 }
 
+extension TimeInterval: Equatable {}
+func ==(left: TimeInterval, right: TimeInterval) -> Bool {
+    return left.totalSeconds == right.totalSeconds
+}
+
