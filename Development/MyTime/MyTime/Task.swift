@@ -23,3 +23,9 @@ extension Task: CustomStringConvertible {
         return "\(name) (\(timeInterval))"
     }
 }
+
+extension Task: CustomDebugStringConvertible {
+    var debugDescription: String {
+        return "Task(name = \(name), timeInterval = \(timeInterval.debugDescription))"
+    }
+}

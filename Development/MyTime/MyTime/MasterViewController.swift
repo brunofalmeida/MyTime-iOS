@@ -109,7 +109,12 @@ class MasterViewController: UITableViewController {
             print("No time interval stored - task not added")
         }
         
-        print(tasks)
+        //print(tasks)
+        
+        print("tasks:")
+        for task in tasks {
+            debugPrint(task)
+        }
     }
 
 }

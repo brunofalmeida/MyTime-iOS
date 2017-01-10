@@ -33,3 +33,9 @@ extension TimeInterval: CustomStringConvertible {
         }
     }
 }
+
+extension TimeInterval: CustomDebugStringConvertible {
+    var debugDescription: String {
+        return "TimeInterval(totalSeconds = \(totalSeconds), hours = \(hours), minutes = \(minutes), seconds = \(seconds))"
+    }
+}
