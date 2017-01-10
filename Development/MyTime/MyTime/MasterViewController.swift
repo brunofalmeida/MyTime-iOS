@@ -113,7 +113,7 @@ class MasterViewController: UITableViewController {
         
         print("tasks:")
         for task in tasks {
-            debugPrint(task)
+            print(task)
         }
     }
 

@@ -8,7 +8,13 @@
 
 import Foundation
 
-struct TimeInterval {
+class TimeInterval: NSCoding {
+    
+    fileprivate enum CodingKeys: String {
+        case totalSeconds
+    }
+    
+    
     fileprivate let totalSeconds: Int
     
     let hours: Int
@@ -21,6 +27,22 @@ struct TimeInterval {
         self.hours = totalSeconds / 3600
         self.minutes = (totalSeconds / 60) % 60
         self.seconds = totalSeconds % 60
+    }
+    
+    // MARK: NSCoding
+    
+    required convenience init?(coder aDecoder: NSCoder) {
+        let totalSeconds = aDecoder.decodeInteger(forKey: CodingKeys.totalSeconds.rawValue)
+        
+        if totalSeconds != 0 {
+            self.init(totalSeconds: totalSeconds)
+        } else {
+            return nil
+        }
+    }
+    
+    func encode(with aCoder: NSCoder) {
+        aCoder.encode(totalSeconds, forKey: CodingKeys.totalSeconds.rawValue)
     }
 }
 
@@ -39,3 +61,4 @@ extension TimeInterval: CustomDebugStringConvertible {
         return "TimeInterval(totalSeconds = \(totalSeconds), hours = \(hours), minutes = \(minutes), seconds = \(seconds))"
     }
 }
+

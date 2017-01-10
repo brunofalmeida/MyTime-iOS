@@ -8,7 +8,13 @@
 
 import Foundation
 
-class Task {
+class Task: NSCoding {
+    
+    fileprivate enum CodingKeys: String {
+        case name
+        case timeInterval
+    }
+    
     let name: String
     let timeInterval: TimeInterval
     
@@ -16,6 +22,22 @@ class Task {
         self.name = name
         self.timeInterval = timeInterval
     }
+    
+    // MARK: NSCoding
+    
+    required convenience init?(coder aDecoder: NSCoder) {
+        guard let name = aDecoder.decodeObject(forKey: CodingKeys.name.rawValue) as? String,
+            let timeInterval = aDecoder.decodeObject(forKey: CodingKeys.timeInterval.rawValue) as? TimeInterval
+            else { return nil }
+        
+        self.init(name: name, timeInterval: timeInterval)
+    }
+    
+    func encode(with aCoder: NSCoder) {
+        aCoder.encode(name, forKey: CodingKeys.name.rawValue)
+        aCoder.encode(timeInterval, forKey: CodingKeys.timeInterval.rawValue)
+    }
+    
 }
 
 extension Task: CustomStringConvertible {
