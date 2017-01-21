@@ -19,7 +19,8 @@ class MasterViewController: UITableViewController {
     fileprivate var tasks: [Task] = []
     
     fileprivate var documentsURL: URL? {
-        print("documentsURL")
+        //print()
+        //print("documentsURL")
         
         // Set up file
         guard let documentsDirectory = NSSearchPathForDirectoriesInDomains(
@@ -57,7 +58,7 @@ class MasterViewController: UITableViewController {
         }
         
         // Read tasks from file
-        readTasksFromFile()
+        tasks = readTasksFromFile() ?? []
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -140,17 +141,13 @@ class MasterViewController: UITableViewController {
             print("No time interval stored - task not added")
         }
         
-        //print(tasks)
+        print(tasks as NSArray)
         
-        print("tasks:")
-        for task in tasks {
-            print(task)
-        }
-        
-        writeTasksToFile()
+        writeTasksToFile(tasks: tasks)
     }
     
-    func writeTasksToFile() {
+    func writeTasksToFile(tasks: [Task]) {
+        print()
         print("writeTasksToFile()")
         
         guard let tasksURL = self.tasksURL else {
@@ -158,9 +155,9 @@ class MasterViewController: UITableViewController {
             return
         }
         
-        print("Path: \(tasksURL.path)")
+        print("File: \(tasksURL.path)")
         print("Tasks:")
-        print(tasks)
+        print(tasks as NSArray)
         
         if NSKeyedArchiver.archiveRootObject(tasks, toFile: tasksURL.path) {
             print("Write succeeded")
@@ -171,15 +168,16 @@ class MasterViewController: UITableViewController {
         print("File existence: \(FileManager.default.fileExists(atPath: tasksURL.path))")
     }
     
-    func readTasksFromFile() {
+    func readTasksFromFile() -> [Task]? {
+        print()
         print("readTasksFromFile()")
         
         guard let tasksURL = self.tasksURL else {
             print("tasksURL doesn't exist")
-            return
+            return nil
         }
         
-        print("Path: \(tasksURL.path)")
+        print("File: \(tasksURL.path)")
         print("File existence: \(FileManager.default.fileExists(atPath: tasksURL.path))")
         
         if let readTasks = NSKeyedUnarchiver.unarchiveObject(withFile: tasksURL.path) as? NSArray {
@@ -189,13 +187,15 @@ class MasterViewController: UITableViewController {
             
             // Convert from NSArray to Swift Array
             if let readTasksSwiftArray = readTasks as? [Task] {
-                tasks = readTasksSwiftArray
+                return readTasksSwiftArray
             } else {
                 print("Failed to convert tasks from NSArray to [Task]")
             }
         } else {
             print("Read failed")
         }
+        
+        return nil
     }
 
 }
