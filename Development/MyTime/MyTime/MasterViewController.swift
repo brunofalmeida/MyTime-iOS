@@ -10,12 +10,38 @@ import UIKit
 
 class MasterViewController: UITableViewController {
 
+    // MARK: - Properties
+    
     var detailViewController: DetailViewController? = nil
     
     /// Stores the time when the back button was pressed, not after the user has typed in the task's name
     var newTaskTimeInterval: TimeInterval?
     fileprivate var tasks: [Task] = []
+    
+    fileprivate var documentsURL: URL? {
+        print("documentsURL")
+        
+        // Set up file
+        guard let documentsDirectory = NSSearchPathForDirectoriesInDomains(
+            .documentDirectory, .userDomainMask, true).first else {
+                
+            print("Couldn't find document directory")
+            return nil
+        }
+        guard let documentsURL = URL(string: documentsDirectory) else {
+            print("Couldn't convert document directory to a URL")
+            return nil
+        }
+        
+        return documentsURL
+    }
+    
+    fileprivate var tasksURL: URL? {
+        return documentsURL?.appendingPathComponent("Tasks.plist")
+    }
 
+    
+    // MARK: - View Management
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,7 +56,7 @@ class MasterViewController: UITableViewController {
             self.detailViewController = (controllers[controllers.count - 1] as! UINavigationController).topViewController as? DetailViewController
         }
     }
-
+    
     override func viewWillAppear(_ animated: Bool) {
         self.clearsSelectionOnViewWillAppear = self.splitViewController!.isCollapsed
         super.viewWillAppear(animated)
@@ -95,6 +121,8 @@ class MasterViewController: UITableViewController {
         }
     }
     
+    // MARK: - Task Management
+    
     func addTask(name: String) {
         print()
         print("addTask()")
@@ -116,5 +144,47 @@ class MasterViewController: UITableViewController {
             print(task)
         }
     }
+    
+    func writeTasksToFile() {
+        print("writeTasksToFile()")
+        
+        guard let tasksURL = self.tasksURL else {
+            print("tasksURL doesn't exist")
+            return
+        }
+        
+        print("Path: \(tasksURL.path)")
+        print("Tasks:")
+        print(tasks)
+        
+        if NSKeyedArchiver.archiveRootObject(tasks, toFile: tasksURL.path) {
+            print("Write succeeded")
+        } else {
+            print("Write failed")
+        }
+        
+        print("File existence: \(FileManager.default.fileExists(atPath: tasksURL.path))")
+    }
+    
+    func readTasksFromFile() {
+        print("readTasksFromFile()")
+        
+        guard let tasksURL = self.tasksURL else {
+            print("tasksURL doesn't exist")
+            return
+        }
+        
+        print("Path: \(tasksURL.path)")
+        print("File existence: \(FileManager.default.fileExists(atPath: tasksURL.path))")
+        
+        if let readTasks = NSKeyedUnarchiver.unarchiveObject(withFile: tasksURL.path) as? NSArray {
+            print("Read succeeded")
+            print("Read tasks:")
+            print(readTasks)
+        } else {
+            print("Read failed")
+        }
+    }
 
 }
+

@@ -54,14 +54,11 @@ class MyTimeTests: XCTestCase {
         XCTAssertFalse(TimeInterval(totalSeconds: 9000) == TimeInterval(totalSeconds: 9001))
     }
     
-    
-    
-    
     func testPropertyListCoding() {
         // Set up file
         guard let documentsDirectory = NSSearchPathForDirectoriesInDomains(
-                .documentDirectory, .userDomainMask, true).first else {
-                
+            .documentDirectory, .userDomainMask, true).first else {
+            
             XCTFail("Couldn't find document directory")
             return
         }
@@ -74,7 +71,6 @@ class MyTimeTests: XCTestCase {
         print("Path: \(tasksURL.path)")
         
         // Create data
-        //let tasks = [TimeInterval(totalSeconds: 61)] as NSArray
         let tasks = [
             Task(name: "test1", timeInterval: TimeInterval(totalSeconds: 101)),
             Task(name: "test2", timeInterval: TimeInterval(totalSeconds: 2017))
