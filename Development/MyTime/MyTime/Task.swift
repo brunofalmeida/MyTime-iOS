@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Task: NSCoding {
+class Task: NSObject, NSCoding {
     
     fileprivate enum CodingKeys: String {
         case name
@@ -40,19 +40,21 @@ class Task: NSCoding {
     
 }
 
-extension Task: CustomStringConvertible {
-    var description: String {
+// CustomStringConvertible
+extension Task {
+    override var description: String {
         return "\(name) (\(timeInterval))"
     }
 }
 
-extension Task: CustomDebugStringConvertible {
-    var debugDescription: String {
+// CustomDebugStringConvertible
+extension Task {
+    override var debugDescription: String {
         return "Task(name = \(name), timeInterval = \(timeInterval.debugDescription))"
     }
 }
 
-extension Task: Equatable {}
+// Equatable
 func ==(left: Task, right: Task) -> Bool {
     return left.name == right.name && left.timeInterval == right.timeInterval
 }

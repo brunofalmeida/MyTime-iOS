@@ -8,7 +8,7 @@
 
 import Foundation
 
-class TimeInterval: NSCoding {
+class TimeInterval: NSObject, NSCoding {
     
     fileprivate enum CodingKeys: String {
         case totalSeconds
@@ -46,8 +46,9 @@ class TimeInterval: NSCoding {
     }
 }
 
-extension TimeInterval: CustomStringConvertible {
-    var description: String {
+// CustomStringConvertible
+extension TimeInterval {
+    override var description: String {
         if hours == 0 {
             return String(format: "%d:%02d", minutes, seconds)
         } else {
@@ -56,13 +57,14 @@ extension TimeInterval: CustomStringConvertible {
     }
 }
 
-extension TimeInterval: CustomDebugStringConvertible {
-    var debugDescription: String {
+// CustomDebugStringConvertible
+extension TimeInterval {
+    override var debugDescription: String {
         return "TimeInterval(totalSeconds = \(totalSeconds), hours = \(hours), minutes = \(minutes), seconds = \(seconds))"
     }
 }
 
-extension TimeInterval: Equatable {}
+// Equatable
 func ==(left: TimeInterval, right: TimeInterval) -> Bool {
     return left.totalSeconds == right.totalSeconds
 }

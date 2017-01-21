@@ -54,4 +54,46 @@ class MyTimeTests: XCTestCase {
         XCTAssertFalse(TimeInterval(totalSeconds: 9000) == TimeInterval(totalSeconds: 9001))
     }
     
+    
+    
+    
+    func testPropertyListCoding() {
+        // Set up file
+        guard let documentsDirectory = NSSearchPathForDirectoriesInDomains(
+                .documentDirectory, .userDomainMask, true).first else {
+                
+            XCTFail("Couldn't find document directory")
+            return
+        }
+        guard let documentsURL = URL(string: documentsDirectory) else {
+            XCTFail("Couldn't convert document directory to a URL")
+            return
+        }
+        
+        let urlTasks = documentsURL.appendingPathComponent("testPropertyListCoding.plist")
+        print("Path: \(urlTasks.path)")
+        
+        // Create data
+        //let tasks = [TimeInterval(totalSeconds: 61)] as NSArray
+        let tasks = [
+            Task(name: "test1", timeInterval: TimeInterval(totalSeconds: 101)),
+            Task(name: "test2", timeInterval: TimeInterval(totalSeconds: 2017))
+        ] as NSArray
+        
+        // Write data
+        XCTAssert(NSKeyedArchiver.archiveRootObject(tasks, toFile: urlTasks.path))
+        XCTAssert(FileManager.default.fileExists(atPath: urlTasks.path))
+        
+        // Read data
+        if let readTasks = NSKeyedUnarchiver.unarchiveObject(withFile: urlTasks.path) as? NSArray {
+            print("Written tasks:")
+            print(tasks)
+            print("Read tasks:")
+            print(readTasks)
+            return
+        } else {
+            XCTFail("Failed to unarchive data from file")
+        }
+    }
+    
 }
