@@ -18,22 +18,24 @@ This application will be designed to allow the user to track their time spend on
 - Compare goals to actual use of time
 - Actively provide suggestions and advice for time management
 
-## General Development Stages
+## Version History
 
-1. Start and stop a timer
+0.1: Start and stop a timer
 
-2. Store a list of tasks and the time spend on each
+0.2: Store a list of tasks and the time spent on each
 
-3. Add a description and notes for each task
+## Future Development Stages
 
-4. Group tasks into categories (e.g. courses, priorities)
+- Add a description and notes for each task
 
-5. View grouped time statistics (e.g. time spent on calculus this week)
+- Group tasks into categories (e.g. courses, priorities)
 
-6. Set goals for time to spend on categories/tasks
+- View grouped time statistics (e.g. time spent on calculus this week)
 
-7. Interactively compare goals to results
+- Set goals for time to spend on categories/tasks
 
-8. Allow tasks timer to run in the background, provide notification reminders (e.g. take a break, 30 minutes elapsed)
+- Interactively compare goals to results
 
-9. Provide general notifications for time management tips
+- Allow tasks timer to run in the background, provide notification reminders (e.g. take a break, 30 minutes elapsed)
+
+- Provide general notifications for time management tips
