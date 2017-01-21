@@ -55,6 +55,9 @@ class MasterViewController: UITableViewController {
             let controllers = split.viewControllers
             self.detailViewController = (controllers[controllers.count - 1] as! UINavigationController).topViewController as? DetailViewController
         }
+        
+        // Read tasks from file
+        readTasksFromFile()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -143,6 +146,8 @@ class MasterViewController: UITableViewController {
         for task in tasks {
             print(task)
         }
+        
+        writeTasksToFile()
     }
     
     func writeTasksToFile() {
@@ -181,6 +186,13 @@ class MasterViewController: UITableViewController {
             print("Read succeeded")
             print("Read tasks:")
             print(readTasks)
+            
+            // Convert from NSArray to Swift Array
+            if let readTasksSwiftArray = readTasks as? [Task] {
+                tasks = readTasksSwiftArray
+            } else {
+                print("Failed to convert tasks from NSArray to [Task]")
+            }
         } else {
             print("Read failed")
         }
