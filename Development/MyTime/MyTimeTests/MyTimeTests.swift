@@ -11,27 +11,27 @@ import XCTest
 
 class MyTimeTests: XCTestCase {
     
-    override func setUp() {
-        super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
+//    override func setUp() {
+//        super.setUp()
+//        // Put setup code here. This method is called before the invocation of each test method in the class.
+//    }
     
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-        super.tearDown()
-    }
+//    override func tearDown() {
+//        // Put teardown code here. This method is called after the invocation of each test method in the class.
+//        super.tearDown()
+//    }
     
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
+//    func testExample() {
+//        // This is an example of a functional test case.
+//        // Use XCTAssert and related functions to verify your tests produce the correct results.
+//    }
     
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
-    }
+//    func testPerformanceExample() {
+//        // This is an example of a performance test case.
+//        self.measure {
+//            // Put the code you want to measure the time of here.
+//        }
+//    }
     
     func testTask() {
         XCTAssert(
@@ -70,8 +70,8 @@ class MyTimeTests: XCTestCase {
             return
         }
         
-        let urlTasks = documentsURL.appendingPathComponent("testPropertyListCoding.plist")
-        print("Path: \(urlTasks.path)")
+        let tasksURL = documentsURL.appendingPathComponent("testPropertyListCoding.plist")
+        print("Path: \(tasksURL.path)")
         
         // Create data
         //let tasks = [TimeInterval(totalSeconds: 61)] as NSArray
@@ -81,11 +81,11 @@ class MyTimeTests: XCTestCase {
         ] as NSArray
         
         // Write data
-        XCTAssert(NSKeyedArchiver.archiveRootObject(tasks, toFile: urlTasks.path))
-        XCTAssert(FileManager.default.fileExists(atPath: urlTasks.path))
+        XCTAssert(NSKeyedArchiver.archiveRootObject(tasks, toFile: tasksURL.path))
+        XCTAssert(FileManager.default.fileExists(atPath: tasksURL.path))
         
         // Read data
-        if let readTasks = NSKeyedUnarchiver.unarchiveObject(withFile: urlTasks.path) as? NSArray {
+        if let readTasks = NSKeyedUnarchiver.unarchiveObject(withFile: tasksURL.path) as? NSArray {
             print("Written tasks:")
             print(tasks)
             print("Read tasks:")
