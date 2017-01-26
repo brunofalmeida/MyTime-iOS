@@ -86,6 +86,16 @@ class MasterViewController: UITableViewController {
         
         if segue.identifier == "showDetail" {
             print("showDetail")
+            
+            if let indexPath = tableView.indexPathForSelectedRow {
+                let task = tasks[indexPath.row]
+                let destination = (segue.destination as? UINavigationController)?.topViewController as? DetailViewController
+                
+                print("Setting DetailViewController task: task = \(task), destination = \(destination)")
+                
+                destination?.task = task
+            }
+            
         } else if segue.identifier == "newTask" {
             print("newTask")
             (segue.destination as? NewTaskViewController)?.parentMasterViewController = self

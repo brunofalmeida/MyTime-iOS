@@ -11,9 +11,11 @@ import UIKit
 class DetailViewController: UIViewController {
 
     @IBOutlet weak var detailDescriptionLabel: UILabel!
+    @IBOutlet weak var timeIntervalLabel: UILabel!
     
     var task: Task? {
         didSet {
+            print("task.didSet")
             // Update the view.
             self.configureView()
         }
@@ -24,8 +26,12 @@ class DetailViewController: UIViewController {
         // Update the user interface for the detail item.
         if let task = self.task {
             if let label = self.detailDescriptionLabel {
-                label.text = task.description
+                label.text = "Name: \(task.name)"
             }
+            if let timeIntervalLabel = self.timeIntervalLabel {
+                timeIntervalLabel.text = "Time: \(task.timeInterval.description)"
+            }
+            //title = task.name
         }
     }
 
