@@ -11,13 +11,20 @@ import UIKit
 class DetailViewController: UIViewController {
 
     @IBOutlet weak var detailDescriptionLabel: UILabel!
+    
+    var task: Task? {
+        didSet {
+            // Update the view.
+            self.configureView()
+        }
+    }
 
 
     func configureView() {
         // Update the user interface for the detail item.
-        if let detail = self.detailItem {
+        if let task = self.task {
             if let label = self.detailDescriptionLabel {
-                label.text = detail.description
+                label.text = task.description
             }
         }
     }
@@ -28,18 +35,10 @@ class DetailViewController: UIViewController {
         self.configureView()
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
-    var detailItem: NSDate? {
-        didSet {
-            // Update the view.
-            self.configureView()
-        }
-    }
-
+//    override func didReceiveMemoryWarning() {
+//        super.didReceiveMemoryWarning()
+//        // Dispose of any resources that can be recreated.
+//    }
 
 }
 
