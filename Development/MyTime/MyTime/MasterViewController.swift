@@ -59,6 +59,8 @@ class MasterViewController: UITableViewController {
         
         // Read tasks from file
         tasks = readTasksFromFile() ?? []
+        
+        splitViewController?.preferredDisplayMode = .allVisible
     }
     
     override func viewWillAppear(_ animated: Bool) {

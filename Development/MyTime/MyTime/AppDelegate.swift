@@ -48,14 +48,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
     // MARK: - Split view
 
     func splitViewController(_ splitViewController: UISplitViewController, collapseSecondary secondaryViewController:UIViewController, onto primaryViewController:UIViewController) -> Bool {
+        print("splitViewController(collapseSecondary:, onto:)")
+        
         guard let secondaryAsNavController = secondaryViewController as? UINavigationController else { return false }
-        guard let topAsDetailController = secondaryAsNavController.topViewController as? DetailViewController else { return false }
-        if topAsDetailController.task == nil {
-            // Return true to indicate that we have handled the collapse by doing nothing; the secondary controller will be discarded.
+//        guard let topAsDetailController = secondaryAsNavController.topViewController as? DetailViewController else { return false }
+//        if topAsDetailController.task == nil {
+//            // Return true to indicate that we have handled the collapse by doing nothing; the secondary controller will be discarded.
+//            return true
+//        }
+        
+        if (secondaryAsNavController.topViewController as? UITableViewController) != nil {
+            print("Successfully handled collapse")
             return true
         }
+        
         return false
     }
+
 
 }
 
