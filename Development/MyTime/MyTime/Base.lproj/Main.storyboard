@@ -108,7 +108,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hmG-SM-s5k" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="734" y="128"/>
+            <point key="canvasLocation" x="709" y="234"/>
         </scene>
         <!--Split View Controller-->
         <scene sceneID="Nki-YV-4Qg">
@@ -183,30 +183,28 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="le5-YM-kEi">
-                                <rect key="frame" x="87" y="234" width="200" height="200"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0:00" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iwj-g1-Wzp">
-                                        <rect key="frame" x="0.0" y="0.5" width="200" height="200"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="48"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
+                                <rect key="frame" x="87" y="72" width="200" height="200"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="le5-YM-kEi" secondAttribute="height" multiplier="1:1" id="GZl-oF-fJb"/>
                                     <constraint firstAttribute="width" constant="200" id="LIi-Ro-eH7"/>
-                                    <constraint firstAttribute="trailing" secondItem="iwj-g1-Wzp" secondAttribute="trailing" id="Nxd-K9-ZwR"/>
-                                    <constraint firstAttribute="bottom" secondItem="iwj-g1-Wzp" secondAttribute="bottom" id="OgD-eo-7ga"/>
-                                    <constraint firstItem="iwj-g1-Wzp" firstAttribute="leading" secondItem="le5-YM-kEi" secondAttribute="leading" id="VZ9-6A-gpg"/>
-                                    <constraint firstItem="iwj-g1-Wzp" firstAttribute="top" secondItem="le5-YM-kEi" secondAttribute="top" id="zMY-H1-W5q"/>
                                 </constraints>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0:00" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iwj-g1-Wzp">
+                                <rect key="frame" x="87" y="72" width="200" height="200"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="48"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="le5-YM-kEi" firstAttribute="centerY" secondItem="aJE-vQ-U0t" secondAttribute="centerY" id="3g1-EN-3uk"/>
+                            <constraint firstItem="iwj-g1-Wzp" firstAttribute="top" secondItem="le5-YM-kEi" secondAttribute="top" id="Cq6-0B-0pr"/>
+                            <constraint firstItem="iwj-g1-Wzp" firstAttribute="leading" secondItem="le5-YM-kEi" secondAttribute="leading" id="ESk-gd-Lzk"/>
                             <constraint firstItem="le5-YM-kEi" firstAttribute="centerX" secondItem="aJE-vQ-U0t" secondAttribute="centerX" id="JIU-gp-QOm"/>
+                            <constraint firstItem="iwj-g1-Wzp" firstAttribute="bottom" secondItem="le5-YM-kEi" secondAttribute="bottom" id="c7a-7h-4Lc"/>
+                            <constraint firstItem="le5-YM-kEi" firstAttribute="top" secondItem="Chd-hx-wqQ" secondAttribute="bottom" constant="8" id="eYk-eg-nPF"/>
+                            <constraint firstItem="iwj-g1-Wzp" firstAttribute="trailing" secondItem="le5-YM-kEi" secondAttribute="trailing" id="lLV-km-d4E"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="New Task" id="VKp-Yu-KQL"/>
@@ -217,7 +215,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="21d-it-A2m" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1532" y="-579.76011994002999"/>
+            <point key="canvasLocation" x="1345.5" y="-631.5"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="r7l-gg-dq7">
@@ -233,10 +231,10 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SLD-UC-DBI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-45" y="129"/>
+            <point key="canvasLocation" x="-39" y="234"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Tll-UG-LXB"/>
+        <segue reference="6S0-TO-JiA"/>
     </inferredMetricsTieBreakers>
 </document>
