@@ -8,14 +8,14 @@
 
 import UIKit
 
-class DetailViewController: UIViewController {
-
-    @IBOutlet weak var detailDescriptionLabel: UILabel!
-    @IBOutlet weak var timeIntervalLabel: UILabel!
+class DetailViewController: UITableViewController {
+    
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var timeLabel: UILabel!
     
     var task: Task? {
         didSet {
-            print("task.didSet")
+            print("task.didSet: \(task)")
             // Update the view.
             self.configureView()
         }
@@ -24,14 +24,18 @@ class DetailViewController: UIViewController {
 
     func configureView() {
         // Update the user interface for the detail item.
-        if let task = self.task {
-            if let label = self.detailDescriptionLabel {
-                label.text = "Name: \(task.name)"
-            }
-            if let timeIntervalLabel = self.timeIntervalLabel {
-                timeIntervalLabel.text = "Time: \(task.timeInterval.description)"
-            }
-            //title = task.name
+        if let timeLabel = self.timeLabel {
+            print("timeLabel exists")
+            timeLabel.text = task?.timeInterval.description
+        } else {
+            print("timeLabel doesn't exist")
+        }
+        
+        if let nameLabel = self.nameLabel {
+            print("nameLabel exists")
+            nameLabel.text = task?.name
+        } else {
+            print("nameLabel doesn't exist")
         }
     }
 
