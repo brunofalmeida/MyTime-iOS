@@ -15,11 +15,13 @@ class NewTaskViewController: UIViewController {
     
     fileprivate var startTime: Date = Date()
     
+    /// The timer's elapsed time
     fileprivate var elapsedTimeInSeconds: Int {
         return -Int(startTime.timeIntervalSinceNow)
     }
     
-    fileprivate var elapsedTime: TimeInterval {
+    /// The timer's' elapsed time interval
+    fileprivate var elapsedTimeInterval: TimeInterval {
         return TimeInterval(totalSeconds: elapsedTimeInSeconds)
     }
     
@@ -30,48 +32,49 @@ class NewTaskViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        circleView.layer.cornerRadius = circleView.frame.size.width / 2
-        
+        // Set the timer circle's size and colour
         // rgb(135,206,250) - lightskyblue from http://www.rapidtables.com/web/color/blue-color.htm
+        circleView.layer.cornerRadius = circleView.frame.size.width / 2
         circleView.backgroundColor = UIColor(red: 135/255.0, green: 206/255.0, blue: 250/255.0, alpha: 0.5)
         
+        // Initialize the timer's start time
         startTime = Date()
         
+        // Fire a timer every 0.1s, to update the timer
         _ = Timer.scheduledTimer(timeInterval: 0.1,
                                  target: self,
                                  selector: #selector(handleTimer),
                                  userInfo: nil,
                                  repeats: true)
     }
-
-//    override func didReceiveMemoryWarning() {
-//        super.didReceiveMemoryWarning()
-//        // Dispose of any resources that can be recreated.
-//    }
     
+    /// Timer loop handler
     func handleTimer() {
-        timerLabel.text = elapsedTime.description
+        timerLabel.text = elapsedTimeInterval.description
     }
+    
     
     override func willMove(toParentViewController parent: UIViewController?) {
         print()
         print("willMove(toParentViewController:)")
         super.willMove(toParentViewController: parent)
         
+        // If it is being removed
         if parent == nil {
-            parentMasterViewController?.newTaskTimeInterval = elapsedTime
+            // Update the parent with the elapsed time
+            parentMasterViewController?.newTaskTimeInterval = elapsedTimeInterval
             
+            // Create an alert to ask the user to name the task
             let nameAlert = UIAlertController(title: "Task Name", message: nil, preferredStyle: .alert)
             nameAlert.addTextField(configurationHandler: nil)
-            nameAlert.addAction(UIAlertAction(title: "OK", style: .default) {
-                alertAction in
+            nameAlert.addAction(UIAlertAction(title: "OK", style: .default) { alertAction in
                 self.parentMasterViewController?.addTask(name: nameAlert.textFields?[0].text ?? "")
             })
-            
             present(nameAlert, animated: true, completion: nil)
         }
     }
 
+    
     /*
     // MARK: - Navigation
 

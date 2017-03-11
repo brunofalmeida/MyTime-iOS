@@ -8,8 +8,11 @@
 
 import Foundation
 
+
+/// A distinct activity or event for the user to keep track of
 class Task: NSObject, NSCoding {
     
+    /// Keys for reading/writing the object from/to a file
     fileprivate enum CodingKeys: String {
         case name
         case timeInterval
@@ -23,8 +26,10 @@ class Task: NSObject, NSCoding {
         self.timeInterval = timeInterval
     }
     
+    
     // MARK: NSCoding
     
+    // Read the object from a file
     required convenience init?(coder aDecoder: NSCoder) {
         guard let name = aDecoder.decodeObject(forKey: CodingKeys.name.rawValue) as? String,
             let timeInterval = aDecoder.decodeObject(forKey: CodingKeys.timeInterval.rawValue) as? TimeInterval
@@ -33,6 +38,7 @@ class Task: NSObject, NSCoding {
         self.init(name: name, timeInterval: timeInterval)
     }
     
+    // Write the object to a file
     func encode(with aCoder: NSCoder) {
         aCoder.encode(name, forKey: CodingKeys.name.rawValue)
         aCoder.encode(timeInterval, forKey: CodingKeys.timeInterval.rawValue)

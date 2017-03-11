@@ -8,17 +8,26 @@
 
 import Foundation
 
+
+/// A period of time elapsed. Only stores the length of time elapsed, not when it started and ended
 class TimeInterval: NSObject, NSCoding {
     
+    /// Keys for reading/writing the object from/to a file
     fileprivate enum CodingKeys: String {
         case totalSeconds
     }
     
     
+    /// Total time elapsed
     fileprivate let totalSeconds: Int
     
+    /// Hours time component
     let hours: Int
+    
+    /// Minutes time component
     let minutes: Int
+    
+    /// Seconds time component
     let seconds: Int
     
     init(totalSeconds: Int) {
@@ -29,8 +38,10 @@ class TimeInterval: NSObject, NSCoding {
         self.seconds = totalSeconds % 60
     }
     
+    
     // MARK: NSCoding
     
+    // Read the object from a file
     required convenience init?(coder aDecoder: NSCoder) {
         let totalSeconds = aDecoder.decodeInteger(forKey: CodingKeys.totalSeconds.rawValue)
         
@@ -41,9 +52,11 @@ class TimeInterval: NSObject, NSCoding {
         }
     }
     
+    // Write the object to a file
     func encode(with aCoder: NSCoder) {
         aCoder.encode(totalSeconds, forKey: CodingKeys.totalSeconds.rawValue)
     }
+    
 }
 
 // CustomStringConvertible

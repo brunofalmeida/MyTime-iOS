@@ -22,8 +22,8 @@ class DetailViewController: UITableViewController {
     }
 
 
+    /// Update the interface for the detail item
     func configureView() {
-        // Update the user interface for the detail item.
         if let timeLabel = self.timeLabel {
             print("timeLabel exists")
             timeLabel.text = task?.timeInterval.description
@@ -42,13 +42,9 @@ class DetailViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
         self.configureView()
     }
-
-//    override func didReceiveMemoryWarning() {
-//        super.didReceiveMemoryWarning()
-//        // Dispose of any resources that can be recreated.
-//    }
 
 }
 
