@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MasterViewController: UITableViewController {
+class TaskListViewController: UITableViewController {
 
     // MARK: - Properties
     

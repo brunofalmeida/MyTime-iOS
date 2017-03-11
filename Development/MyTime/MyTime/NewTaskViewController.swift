@@ -25,7 +25,7 @@ class NewTaskViewController: UIViewController {
         return TimeInterval(totalSeconds: elapsedTimeInSeconds)
     }
     
-    weak var parentMasterViewController: MasterViewController?
+    weak var parentMasterViewController: TaskListViewController?
     
     
     override func viewDidLoad() {
