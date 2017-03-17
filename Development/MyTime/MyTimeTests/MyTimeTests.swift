@@ -61,25 +61,28 @@ class MyTimeTests: XCTestCase {
             return
         }
         
-        let tasksURL = documentsURL.appendingPathComponent("testPropertyListCoding.plist")
+        let tasksURL = documentsURL.appendingPathComponent("\(type(of: self))-\(#function).plist")
         print("Path: \(tasksURL.path)")
         
         // Create data
         let tasks = [
             Task(name: "test1", timeInterval: TimeInterval(totalSeconds: 101)),
             Task(name: "test2", timeInterval: TimeInterval(totalSeconds: 2017))
-        ] as NSArray
+        ]
         
         // Write data
         XCTAssert(NSKeyedArchiver.archiveRootObject(tasks, toFile: tasksURL.path))
         XCTAssert(FileManager.default.fileExists(atPath: tasksURL.path))
         
         // Read data
-        if let readTasks = NSKeyedUnarchiver.unarchiveObject(withFile: tasksURL.path) as? NSArray {
+        if let readTasks = NSKeyedUnarchiver.unarchiveObject(withFile: tasksURL.path) as? [Task] {
             print("Written tasks:")
-            print(tasks)
+            print(tasks as NSArray)
+            
             print("Read tasks:")
-            print(readTasks)
+            print(readTasks as NSArray)
+            
+            XCTAssert(tasks == readTasks)
         } else {
             XCTFail("Failed to unarchive data from file")
         }
@@ -92,7 +95,7 @@ class MyTimeTests: XCTestCase {
             return
         }
         
-        let fileURL = documentsURL.appendingPathComponent("testDataModelCoding.plist")
+        let fileURL = documentsURL.appendingPathComponent("\(type(of: self))-\(#function).plist")
         print("Path: \(fileURL.path)")
         
         // Create data
@@ -118,10 +121,6 @@ class MyTimeTests: XCTestCase {
             
             print("Read data model:")
             print(readDataModel)
-            
-            print()
-            //print("1: \(dataModel.priorities[0].tasks[0] == readDataModel.priorities[0].tasks[0])")
-            print()
             
             XCTAssert(dataModel == readDataModel)
         } else {

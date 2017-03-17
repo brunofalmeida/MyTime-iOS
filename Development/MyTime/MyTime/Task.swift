@@ -48,21 +48,16 @@ class Task: NSObject, NSCoding {
 }
 
 
-// CustomStringConvertible
 extension Task {
     override var description: String {
         return "\(name) (\(timeInterval))"
     }
-}
-
-// CustomDebugStringConvertible
-extension Task {
     override var debugDescription: String {
-        return "Task(name = \(name), timeInterval = \(timeInterval.debugDescription))"
+        return "\(type(of: self))(name = \(name), timeInterval = \(timeInterval.debugDescription))"
     }
 }
 
-// Equatable
+
 func ==(left: Task, right: Task) -> Bool {
     return left.name == right.name && left.timeInterval == right.timeInterval
 }
@@ -71,7 +66,6 @@ func !=(left: Task, right: Task) -> Bool {
     return !(left == right)
 }
 
-/// Generic element-by-element Array comparison
 func ==(left: [Task], right: [Task]) -> Bool {
     guard left.count == right.count else {
         return false

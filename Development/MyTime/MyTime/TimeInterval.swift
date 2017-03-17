@@ -59,7 +59,7 @@ class TimeInterval: NSObject, NSCoding {
     
 }
 
-// CustomStringConvertible
+
 extension TimeInterval {
     override var description: String {
         if hours == 0 {
@@ -68,16 +68,13 @@ extension TimeInterval {
             return String(format: "%d:%02d:%02d", hours, minutes, seconds)
         }
     }
-}
-
-// CustomDebugStringConvertible
-extension TimeInterval {
+    
     override var debugDescription: String {
-        return "TimeInterval(totalSeconds = \(totalSeconds), hours = \(hours), minutes = \(minutes), seconds = \(seconds))"
+        return "\(type(of: self))(totalSeconds = \(totalSeconds), hours = \(hours), minutes = \(minutes), seconds = \(seconds))"
     }
 }
 
-// Equatable
+
 func ==(left: TimeInterval, right: TimeInterval) -> Bool {
     return left.totalSeconds == right.totalSeconds
 }

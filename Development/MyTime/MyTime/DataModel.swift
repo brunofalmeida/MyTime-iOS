@@ -38,27 +38,17 @@ class DataModel: NSObject, NSCoding {
         aCoder.encode(priorities, forKey: CodingKeys.priorities.rawValue)
     }
     
-    
-    
-    
-    
-//    // Load tasks from file
-//    tasks = readTasksFromFile() ?? []
-    
-//    func update() {
-//    }
-    
-    
+
     /// URL to documents directory
     internal static var documentsURL: URL? {
         //print()
-        //print("documentsURL")
+        print(#function)
         
         // Look for app documents directory
         guard let documentsDirectory = NSSearchPathForDirectoriesInDomains(
-            .documentDirectory, .userDomainMask, true).first else {
-                print("Couldn't find document directory")
-                return nil
+                .documentDirectory, .userDomainMask, true).first else {
+            print("Couldn't find document directory")
+            return nil
         }
         
         // Convert documents directory from a string to a URL
@@ -72,19 +62,21 @@ class DataModel: NSObject, NSCoding {
     
     /// URL to the main tasks file
     fileprivate static var tasksURL: URL? {
-        return documentsURL?.appendingPathComponent("Tasks.plist")
+        return documentsURL?.appendingPathComponent("\(type(of: self)).plist")
     }
     
 }
 
+
 extension DataModel {
     override var description: String {
-        return (priorities as NSArray).description
+        return type(of: self).description()
     }
     override var debugDescription: String {
-        return priorities.description
+        return "\(type(of: self))(priorities = \(priorities as NSArray))"
     }
 }
+
 
 func ==(left: DataModel, right: DataModel) -> Bool {
     return left.priorities == right.priorities
@@ -100,7 +92,11 @@ func !=(left: DataModel, right: DataModel) -> Bool {
 
 
 
+//    // Load tasks from file
+//    tasks = readTasksFromFile() ?? []
 
+//    func update() {
+//    }
 
 
 

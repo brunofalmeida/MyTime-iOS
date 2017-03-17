@@ -32,8 +32,6 @@ class Priority: NSObject, NSCoding {
             return nil
         }
         
-        print("name = \(name), tasks = \(tasks)")
-        
         self.init(name: name, tasks: tasks)
     }
     
@@ -45,25 +43,16 @@ class Priority: NSObject, NSCoding {
 }
 
 
-// CustomStringConvertible, CustomDebugStringConvertible
 extension Priority {
-    
     override var description: String {
-        var string = "\(name) [ "
-        for task in tasks {
-            string += "\(task), "
-        }
-        string += " ]"
-        return string
+        return name
     }
-    
     override var debugDescription: String {
-        return "\(name) \(tasks)"
+        return "\(type(of: self))(name = \(name), tasks = \(tasks as NSArray)"
     }
-    
 }
 
-// Equatable
+
 func ==(left: Priority, right: Priority) -> Bool {
     return left.name == right.name && left.tasks == right.tasks
 }
@@ -72,7 +61,7 @@ func !=(left: Priority, right: Priority) -> Bool {
     return !(left == right)
 }
 
-/// Generic element-by-element Array comparison
+/// Generic element-wise Array comparison
 func ==(left: [Priority], right: [Priority]) -> Bool {
     guard left.count == right.count else {
         return false
@@ -86,5 +75,6 @@ func ==(left: [Priority], right: [Priority]) -> Bool {
     
     return true
 }
+
 
 
