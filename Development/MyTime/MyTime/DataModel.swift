@@ -45,24 +45,70 @@ class DataModel: NSObject, NSCoding {
         print(#function)
         
         // Look for app documents directory
-        guard let documentsDirectory = NSSearchPathForDirectoriesInDomains(
+        guard let directory = NSSearchPathForDirectoriesInDomains(
                 .documentDirectory, .userDomainMask, true).first else {
-            print("Couldn't find document directory")
+            print("Couldn't find documents directory")
             return nil
         }
         
         // Convert documents directory from a string to a URL
-        guard let documentsURL = URL(string: documentsDirectory) else {
+        guard let url = URL(string: directory) else {
             print("Couldn't convert document directory to a URL")
             return nil
         }
         
-        return documentsURL
+        return url
     }
     
     /// URL to the main tasks file
-    fileprivate static var tasksURL: URL? {
+    fileprivate static var dataModelURL: URL? {
         return documentsURL?.appendingPathComponent("\(type(of: self)).plist")
+    }
+    
+    
+    
+    
+    internal static func fromFile() -> DataModel? {
+        //print()
+        print(#function)
+        
+        guard let url = dataModelURL else {
+            return nil
+        }
+        
+        print("Path: \(url.path)")
+        print("File existence: \(FileManager.default.fileExists(atPath: url.path))")
+        
+        if let readDataModel = NSKeyedUnarchiver.unarchiveObject(withFile: url.path) as? DataModel {
+            print("Read succeeded")
+            print("Read data model: \(readDataModel)")
+            
+            return readDataModel
+        } else {
+            print("Read failed")
+        }
+        
+        return nil
+    }
+    
+    func writeToFile(tasks: [Task]) {
+        //print()
+        print(#function)
+        
+        guard let url = DataModel.dataModelURL else {
+            return
+        }
+        
+        print("Path: \(url.path)")
+        print("File existence: \(FileManager.default.fileExists(atPath: url.path))")
+        
+        if NSKeyedArchiver.archiveRootObject(tasks, toFile: url.path) {
+            print("Write succeeded")
+        } else {
+            print("Write failed")
+        }
+        
+        print("File existence: \(FileManager.default.fileExists(atPath: url.path))")
     }
     
 }
@@ -86,72 +132,5 @@ func !=(left: DataModel, right: DataModel) -> Bool {
     return !(left == right)
 }
 
-
-
-
-
-
-
-//    // Load tasks from file
-//    tasks = readTasksFromFile() ?? []
-
-//    func update() {
-//    }
-
-
-
-
-//    func writeToFile(tasks: [Task]) {
-//        print()
-//        print("writeTasksToFile()")
-//        
-//        guard let tasksURL = self.tasksURL else {
-//            print("tasksURL doesn't exist")
-//            return
-//        }
-//        
-//        print("File: \(tasksURL.path)")
-//        print("Tasks:")
-//        print(tasks as NSArray)
-//        
-//        if NSKeyedArchiver.archiveRootObject(tasks, toFile: tasksURL.path) {
-//            print("Write succeeded")
-//        } else {
-//            print("Write failed")
-//        }
-//        
-//        print("File existence: \(FileManager.default.fileExists(atPath: tasksURL.path))")
-//    }
-//    
-//    func readFromFile() -> [Task]? {
-//        print()
-//        print("readTasksFromFile()")
-//        
-//        guard let tasksURL = self.tasksURL else {
-//            print("tasksURL doesn't exist")
-//            return nil
-//        }
-//        
-//        print("File: \(tasksURL.path)")
-//        print("File existence: \(FileManager.default.fileExists(atPath: tasksURL.path))")
-//        
-//        if let readTasks = NSKeyedUnarchiver.unarchiveObject(withFile: tasksURL.path) as? NSArray {
-//            print("Read succeeded")
-//            print("Read tasks:")
-//            print(readTasks)
-//            
-//            // Convert from NSArray to Swift Array
-//            if let readTasksSwiftArray = readTasks as? [Task] {
-//                return readTasksSwiftArray
-//            } else {
-//                print("Failed to convert tasks from NSArray to [Task]")
-//            }
-//        } else {
-//            print("Read failed")
-//        }
-//        
-//        return nil
-//    }
-    
 
 

@@ -11,6 +11,7 @@ import XCTest
 
 class TestDataModel: XCTestCase {
     
+    // TODO - refactor tests to use `DataModel`'s `fromFile()` and `writeToFile()`
     func testCoding() {
         // Set up file
         guard let documentsURL = DataModel.documentsURL else {
