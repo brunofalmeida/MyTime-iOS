@@ -41,7 +41,7 @@ class TimeInterval: NSObject, NSCoding {
     
     // MARK: NSCoding
     
-    // Read the object from a file
+    // Read from a file
     required convenience init?(coder aDecoder: NSCoder) {
         let totalSeconds = aDecoder.decodeInteger(forKey: CodingKeys.totalSeconds.rawValue)
         
@@ -52,7 +52,7 @@ class TimeInterval: NSObject, NSCoding {
         }
     }
     
-    // Write the object to a file
+    // Write to a file
     func encode(with aCoder: NSCoder) {
         aCoder.encode(totalSeconds, forKey: CodingKeys.totalSeconds.rawValue)
     }
@@ -81,4 +81,10 @@ extension TimeInterval {
 func ==(left: TimeInterval, right: TimeInterval) -> Bool {
     return left.totalSeconds == right.totalSeconds
 }
+
+func !=(left: TimeInterval, right: TimeInterval) -> Bool {
+    return !(left == right)
+}
+
+
 

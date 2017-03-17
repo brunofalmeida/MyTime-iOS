@@ -8,19 +8,49 @@
 
 import Foundation
 
-class DataModel {
-    var priorities: [Priority] = []
+class DataModel: NSObject, NSCoding {
+    
+    var priorities: [Priority]
+    
+    init(priorities: [Priority] = []) {
+        self.priorities = priorities
+    }
+    
+    
+    // MARK: NSCoding
+    
+    /// Keys for reading/writing the object from/to a file
+    fileprivate enum CodingKeys: String {
+        case priorities
+    }
+    
+    // Reads from file
+    required convenience init?(coder aDecoder: NSCoder) {
+        guard let priorities = aDecoder.decodeObject(forKey: CodingKeys.priorities.rawValue) as? [Priority] else {
+            return nil
+        }
+        
+        self.init(priorities: priorities)
+    }
+    
+    // Writes to file
+    func encode(with aCoder: NSCoder) {
+        aCoder.encode(priorities, forKey: CodingKeys.priorities.rawValue)
+    }
+    
+    
+    
+    
     
 //    // Load tasks from file
 //    tasks = readTasksFromFile() ?? []
     
-    func update() {
-        
-    }
+//    func update() {
+//    }
     
     
     /// URL to documents directory
-    fileprivate static var documentsURL: URL? {
+    internal static var documentsURL: URL? {
         //print()
         //print("documentsURL")
         
@@ -40,13 +70,41 @@ class DataModel {
         return documentsURL
     }
     
-    /// The tasks URL, with the output file name appended
+    /// URL to the main tasks file
     fileprivate static var tasksURL: URL? {
         return documentsURL?.appendingPathComponent("Tasks.plist")
     }
     
-    
-    
+}
+
+extension DataModel {
+    override var description: String {
+        return (priorities as NSArray).description
+    }
+    override var debugDescription: String {
+        return priorities.description
+    }
+}
+
+func ==(left: DataModel, right: DataModel) -> Bool {
+    return left.priorities == right.priorities
+}
+
+func !=(left: DataModel, right: DataModel) -> Bool {
+    return !(left == right)
+}
+
+
+
+
+
+
+
+
+
+
+
+
 //    func writeToFile(tasks: [Task]) {
 //        print()
 //        print("writeTasksToFile()")
@@ -99,5 +157,5 @@ class DataModel {
 //        return nil
 //    }
     
-    
-}
+
+

@@ -56,14 +56,8 @@ class MyTimeTests: XCTestCase {
     
     func testPropertyListCoding() {
         // Set up file
-        guard let documentsDirectory = NSSearchPathForDirectoriesInDomains(
-            .documentDirectory, .userDomainMask, true).first else {
-            
-            XCTFail("Couldn't find document directory")
-            return
-        }
-        guard let documentsURL = URL(string: documentsDirectory) else {
-            XCTFail("Couldn't convert document directory to a URL")
+        guard let documentsURL = DataModel.documentsURL else {
+            XCTFail("Failed to get documents URL")
             return
         }
         
@@ -86,7 +80,50 @@ class MyTimeTests: XCTestCase {
             print(tasks)
             print("Read tasks:")
             print(readTasks)
+        } else {
+            XCTFail("Failed to unarchive data from file")
+        }
+    }
+    
+    func testDataModelCoding() {
+        // Set up file
+        guard let documentsURL = DataModel.documentsURL else {
+            XCTFail("Failed to get documents URL")
             return
+        }
+        
+        let fileURL = documentsURL.appendingPathComponent("testDataModelCoding.plist")
+        print("Path: \(fileURL.path)")
+        
+        // Create data
+        let dataModel = DataModel(priorities: [
+            Priority(name: "Priority1", tasks: [
+                Task(name: "Task11", timeInterval: TimeInterval(totalSeconds: 49)),
+                Task(name: "Task12", timeInterval: TimeInterval(totalSeconds: 1500001))
+            ]),
+            Priority(name: "Priority2", tasks: [
+                Task(name: "Task21", timeInterval: TimeInterval(totalSeconds: 1)),
+                Task(name: "Task22", timeInterval: TimeInterval(totalSeconds: 99))
+            ])
+        ])
+        
+        // Write data
+        XCTAssert(NSKeyedArchiver.archiveRootObject(dataModel, toFile: fileURL.path))
+        XCTAssert(FileManager.default.fileExists(atPath: fileURL.path))
+        
+        // Read data
+        if let readDataModel = NSKeyedUnarchiver.unarchiveObject(withFile: fileURL.path) as? DataModel {
+            print("Written data model:")
+            print(dataModel)
+            
+            print("Read data model:")
+            print(readDataModel)
+            
+            print()
+            //print("1: \(dataModel.priorities[0].tasks[0] == readDataModel.priorities[0].tasks[0])")
+            print()
+            
+            XCTAssert(dataModel == readDataModel)
         } else {
             XCTFail("Failed to unarchive data from file")
         }

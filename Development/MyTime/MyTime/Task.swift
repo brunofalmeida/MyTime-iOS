@@ -31,9 +31,10 @@ class Task: NSObject, NSCoding {
     
     // Read the object from a file
     required convenience init?(coder aDecoder: NSCoder) {
-        guard let name = aDecoder.decodeObject(forKey: CodingKeys.name.rawValue) as? String,
-            let timeInterval = aDecoder.decodeObject(forKey: CodingKeys.timeInterval.rawValue) as? TimeInterval
-            else { return nil }
+        guard   let name = aDecoder.decodeObject(forKey: CodingKeys.name.rawValue) as? String,
+                let timeInterval = aDecoder.decodeObject(forKey: CodingKeys.timeInterval.rawValue) as? TimeInterval else {
+            return nil
+        }
         
         self.init(name: name, timeInterval: timeInterval)
     }
@@ -45,6 +46,7 @@ class Task: NSObject, NSCoding {
     }
     
 }
+
 
 // CustomStringConvertible
 extension Task {
@@ -64,4 +66,25 @@ extension Task {
 func ==(left: Task, right: Task) -> Bool {
     return left.name == right.name && left.timeInterval == right.timeInterval
 }
+
+func !=(left: Task, right: Task) -> Bool {
+    return !(left == right)
+}
+
+/// Generic element-by-element Array comparison
+func ==(left: [Task], right: [Task]) -> Bool {
+    guard left.count == right.count else {
+        return false
+    }
+    
+    for i in 0 ..< left.count {
+        if left[i] != right[i] {
+            return false
+        }
+    }
+    
+    return true
+}
+
+
 
