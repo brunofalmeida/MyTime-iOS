@@ -13,6 +13,9 @@
 		15B776731E73B40700595C27 /* PriorityListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B776721E73B40700595C27 /* PriorityListViewController.swift */; };
 		15B776751E73B63C00595C27 /* Priority.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B776741E73B63C00595C27 /* Priority.swift */; };
 		15B776771E73B8E700595C27 /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B776761E73B8E700595C27 /* DataModel.swift */; };
+		15CDA3C81E7C38CF0032CFD0 /* TestDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15CDA3C71E7C38CF0032CFD0 /* TestDataModel.swift */; };
+		15CDA3CA1E7C39690032CFD0 /* TestTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15CDA3C91E7C39690032CFD0 /* TestTask.swift */; };
+		15CDA3CC1E7C39860032CFD0 /* TestTimeInterval.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15CDA3CB1E7C39860032CFD0 /* TestTimeInterval.swift */; };
 		15E9BB8C1E024815007004C8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15E9BB8B1E024815007004C8 /* AppDelegate.swift */; };
 		15E9BB8E1E024815007004C8 /* TaskListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15E9BB8D1E024815007004C8 /* TaskListViewController.swift */; };
 		15E9BB901E024815007004C8 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15E9BB8F1E024815007004C8 /* DetailViewController.swift */; };
@@ -47,6 +50,9 @@
 		15B776721E73B40700595C27 /* PriorityListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PriorityListViewController.swift; sourceTree = "<group>"; };
 		15B776741E73B63C00595C27 /* Priority.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Priority.swift; sourceTree = "<group>"; };
 		15B776761E73B8E700595C27 /* DataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
+		15CDA3C71E7C38CF0032CFD0 /* TestDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestDataModel.swift; sourceTree = "<group>"; };
+		15CDA3C91E7C39690032CFD0 /* TestTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestTask.swift; sourceTree = "<group>"; };
+		15CDA3CB1E7C39860032CFD0 /* TestTimeInterval.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestTimeInterval.swift; sourceTree = "<group>"; };
 		15E9BB881E024815007004C8 /* MyTime.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyTime.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		15E9BB8B1E024815007004C8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		15E9BB8D1E024815007004C8 /* TaskListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListViewController.swift; sourceTree = "<group>"; };
@@ -140,6 +146,9 @@
 			isa = PBXGroup;
 			children = (
 				15E9BBA21E024815007004C8 /* MyTimeTests.swift */,
+				15CDA3C71E7C38CF0032CFD0 /* TestDataModel.swift */,
+				15CDA3C91E7C39690032CFD0 /* TestTask.swift */,
+				15CDA3CB1E7C39860032CFD0 /* TestTimeInterval.swift */,
 				15E9BBA41E024815007004C8 /* Info.plist */,
 			);
 			path = MyTimeTests;
@@ -307,7 +316,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				15CDA3CA1E7C39690032CFD0 /* TestTask.swift in Sources */,
+				15CDA3CC1E7C39860032CFD0 /* TestTimeInterval.swift in Sources */,
 				15E9BBA31E024815007004C8 /* MyTimeTests.swift in Sources */,
+				15CDA3C81E7C38CF0032CFD0 /* TestDataModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
