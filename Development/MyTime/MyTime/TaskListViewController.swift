@@ -1,5 +1,5 @@
 //
-//  MasterViewController.swift
+//  TaskListViewController.swift
 //  MyTime
 //
 //  Created by Bruno Almeida on 2016-12-14.
@@ -12,7 +12,7 @@ class TaskListViewController: UITableViewController {
 
     // MARK: - Properties
     
-    var detailViewController: DetailViewController? = nil
+    var detailViewController: TaskDetailViewController? = nil
     
     /// Stores the time when the back button was pressed, not after the user has typed in the task's name
     var newTaskTimeInterval: TimeInterval?
@@ -34,7 +34,7 @@ class TaskListViewController: UITableViewController {
         // Track the detail view controller
         if let split = self.splitViewController {
             let controllers = split.viewControllers
-            self.detailViewController = (controllers[controllers.count - 1] as! UINavigationController).topViewController as? DetailViewController
+            self.detailViewController = (controllers[controllers.count - 1] as! UINavigationController).topViewController as? TaskDetailViewController
         }
         
         // Show the primary and secondary view controllers side by side
@@ -69,7 +69,7 @@ class TaskListViewController: UITableViewController {
             // Get the selected task
             if let indexPath = tableView.indexPathForSelectedRow {
 //                let task = tasks[indexPath.row]
-                let destination = (segue.destination as? UINavigationController)?.topViewController as? DetailViewController
+                let destination = (segue.destination as? UINavigationController)?.topViewController as? TaskDetailViewController
                 
 //                print("Setting DetailViewController task: task = \(task), destination = \(destination)")
                 

@@ -1,5 +1,5 @@
 //
-//  DetailViewController.swift
+//  TaskDetailViewController.swift
 //  MyTime
 //
 //  Created by Bruno Almeida on 2016-12-14.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DetailViewController: UITableViewController {
+class TaskDetailViewController: UITableViewController {
     
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!

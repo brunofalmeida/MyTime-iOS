@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PriorityListViewController: UIViewController {
+class PriorityListViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
