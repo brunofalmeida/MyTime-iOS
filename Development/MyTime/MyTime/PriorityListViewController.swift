@@ -18,7 +18,7 @@ class PriorityListViewController: UITableViewController {
         super.viewDidLoad()
         
         print("dataModel:")
-        debugPrint(dataModel)
+        debugPrint(dataModel as Any)
 
 //        // Uncomment the following line to preserve selection between presentations
 //        self.clearsSelectionOnViewWillAppear = false

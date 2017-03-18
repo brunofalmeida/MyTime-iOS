@@ -61,7 +61,7 @@ class DataModel: NSObject, NSCoding {
     }
     
     /// Name of actual file to store the data model
-    fileprivate static var dataModelFilePath = "\(type(of: self)).plist"
+    fileprivate static var dataModelFilePath = "DataModel.plist"
     
     /// URL to the main tasks file
     fileprivate static var dataModelURL: URL? {
@@ -92,25 +92,47 @@ class DataModel: NSObject, NSCoding {
             return readDataModel
         } else {
             print("Read failed")
+            
+            return nil
         }
-        
-        return nil
     }
     
-    /**
-     - returns: true if the write operation succeeded
-    */
-    func writeToFile() -> Bool {
+    /// Deletes the file if it exists
+    internal static func deleteFile(url: URL? = dataModelURL) {
         //print()
         print(#function)
         
-        guard let url = DataModel.dataModelURL else {
-            return false
+        guard let url = url else {
+            print("URL is nil")
+            return
         }
         
         print("Path: \(url.path)")
         print("File existence: \(FileManager.default.fileExists(atPath: url.path))")
         
+        do {
+            try FileManager.default.removeItem(atPath: url.path)
+            print("File deletion succeeded")
+        } catch {
+            print("File deletion failed")
+        }
+        
+        print("File existence: \(FileManager.default.fileExists(atPath: url.path))")
+    }
+    
+    /**
+     - returns: true if the write operation succeeded
+    */
+    func writeToFile(url: URL? = dataModelURL) -> Bool {
+        //print()
+        print(#function)
+        
+        guard let url = url else {
+            print("URL is nil")
+            return false
+        }
+        
+        print("Path: \(url.path)")
         defer {
             print("File existence: \(FileManager.default.fileExists(atPath: url.path))")
         }

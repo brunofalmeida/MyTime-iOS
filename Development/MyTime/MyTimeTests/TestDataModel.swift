@@ -11,6 +11,11 @@ import XCTest
 
 class TestDataModel: XCTestCase {
     
+    func test() {
+        // Delete main data model file
+        //DataModel.deleteFile()
+    }
+    
     /// Tests writing a `DataModel` object to a file and reading the object back from the file
     func testCoding() {
         // Get the file URL
@@ -19,6 +24,8 @@ class TestDataModel: XCTestCase {
             XCTFail()
             return
         }
+        
+        print("Path: \(url.path)")
         
         // Create data
         let dataModel = DataModel(priorities: [
@@ -32,11 +39,14 @@ class TestDataModel: XCTestCase {
             ])
         ])
         
+        // Delete existing file
+        DataModel.deleteFile(url: url)
+        XCTAssertFalse(FileManager.default.fileExists(atPath: url.path))
+        
         // Write data
-        XCTAssert(dataModel.writeToFile())
+        XCTAssert(dataModel.writeToFile(url: url))
         print("Written data model:")
         debugPrint(dataModel)
-        
         XCTAssert(FileManager.default.fileExists(atPath: url.path))
         
         // Read data
