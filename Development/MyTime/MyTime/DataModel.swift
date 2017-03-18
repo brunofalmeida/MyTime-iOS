@@ -71,7 +71,7 @@ class DataModel: NSObject, NSCoding {
     
     
     
-    internal static func from(url: URL? = dataModelURL) -> DataModel? {
+    internal static func readFromFile(url: URL? = dataModelURL) -> DataModel? {
         //print()
         print(#function)
         

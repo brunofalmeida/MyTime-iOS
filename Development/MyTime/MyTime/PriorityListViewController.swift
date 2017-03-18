@@ -10,22 +10,27 @@ import UIKit
 
 class PriorityListViewController: UITableViewController {
 
+    weak var dataModel = (UIApplication.shared.delegate as? AppDelegate)?.dataModel
+    
+    
     override func viewDidLoad() {
         print(#function)
-        
         super.viewDidLoad()
+        
+        print("dataModel:")
+        debugPrint(dataModel)
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
+//        // Uncomment the following line to preserve selection between presentations
+//        self.clearsSelectionOnViewWillAppear = false
 
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        // Display an Edit button in the navigation bar
+        navigationItem.leftBarButtonItem = editButtonItem
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+//    override func didReceiveMemoryWarning() {
+//        super.didReceiveMemoryWarning()
+//        // Dispose of any resources that can be recreated.
+//    }
 
     // MARK: - Table view data source
 

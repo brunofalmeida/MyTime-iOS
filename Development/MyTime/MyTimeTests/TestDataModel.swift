@@ -40,7 +40,7 @@ class TestDataModel: XCTestCase {
         XCTAssert(FileManager.default.fileExists(atPath: url.path))
         
         // Read data
-        if let readDataModel = DataModel.from(url: url) {
+        if let readDataModel = DataModel.readFromFile(url: url) {
             print("Read data model:")
             debugPrint(readDataModel)
             
