@@ -11,16 +11,14 @@ import XCTest
 
 class TestDataModel: XCTestCase {
     
-    // TODO - refactor tests to use `DataModel`'s `fromFile()` and `writeToFile()`
+    /// Tests writing a `DataModel` object to a file and reading the object back from the file
     func testCoding() {
-        // Set up file
-        guard let documentsURL = DataModel.documentsURL else {
-            XCTFail("Failed to get documents URL")
+        // Get the file URL
+        guard let url = DataModel.documentsURL?.appendingPathComponent(
+                "\(type(of: self))-\(#function).plist") else {
+            XCTFail()
             return
         }
-        
-        let fileURL = documentsURL.appendingPathComponent("\(type(of: self))-\(#function).plist")
-        print("Path: \(fileURL.path)")
         
         // Create data
         let dataModel = DataModel(priorities: [
@@ -35,20 +33,20 @@ class TestDataModel: XCTestCase {
         ])
         
         // Write data
-        XCTAssert(NSKeyedArchiver.archiveRootObject(dataModel, toFile: fileURL.path))
-        XCTAssert(FileManager.default.fileExists(atPath: fileURL.path))
+        XCTAssert(dataModel.writeToFile())
+        print("Written data model:")
+        debugPrint(dataModel)
+        
+        XCTAssert(FileManager.default.fileExists(atPath: url.path))
         
         // Read data
-        if let readDataModel = NSKeyedUnarchiver.unarchiveObject(withFile: fileURL.path) as? DataModel {
-            print("Written data model:")
-            print(dataModel)
-            
+        if let readDataModel = DataModel.from(url: url) {
             print("Read data model:")
-            print(readDataModel)
+            debugPrint(readDataModel)
             
             XCTAssert(dataModel == readDataModel)
         } else {
-            XCTFail("Failed to unarchive data from file")
+            XCTFail()
         }
     }
     

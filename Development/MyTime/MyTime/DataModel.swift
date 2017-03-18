@@ -60,19 +60,23 @@ class DataModel: NSObject, NSCoding {
         return url
     }
     
+    /// Name of actual file to store the data model
+    fileprivate static var dataModelFilePath = "\(type(of: self)).plist"
+    
     /// URL to the main tasks file
     fileprivate static var dataModelURL: URL? {
-        return documentsURL?.appendingPathComponent("\(type(of: self)).plist")
+        return documentsURL?.appendingPathComponent(dataModelFilePath)
     }
     
     
     
     
-    internal static func fromFile() -> DataModel? {
+    internal static func from(url: URL? = dataModelURL) -> DataModel? {
         //print()
         print(#function)
         
-        guard let url = dataModelURL else {
+        guard let url = url else {
+            print("URL is nil")
             return nil
         }
         
@@ -81,7 +85,9 @@ class DataModel: NSObject, NSCoding {
         
         if let readDataModel = NSKeyedUnarchiver.unarchiveObject(withFile: url.path) as? DataModel {
             print("Read succeeded")
-            print("Read data model: \(readDataModel)")
+            
+            //print("Read data model:")
+            //debugPrint(readDataModel)
             
             return readDataModel
         } else {
@@ -91,24 +97,35 @@ class DataModel: NSObject, NSCoding {
         return nil
     }
     
-    func writeToFile(tasks: [Task]) {
+    /**
+     - returns: true if the write operation succeeded
+    */
+    func writeToFile() -> Bool {
         //print()
         print(#function)
         
         guard let url = DataModel.dataModelURL else {
-            return
+            return false
         }
         
         print("Path: \(url.path)")
         print("File existence: \(FileManager.default.fileExists(atPath: url.path))")
         
-        if NSKeyedArchiver.archiveRootObject(tasks, toFile: url.path) {
-            print("Write succeeded")
-        } else {
-            print("Write failed")
+        defer {
+            print("File existence: \(FileManager.default.fileExists(atPath: url.path))")
         }
         
-        print("File existence: \(FileManager.default.fileExists(atPath: url.path))")
+        if NSKeyedArchiver.archiveRootObject(self, toFile: url.path) {
+            print("Write succeeded")
+            
+            //print("Written data model:")
+            //debugPrint(self)
+            
+            return true
+        } else {
+            print("Write failed")
+            return false
+        }
     }
     
 }
