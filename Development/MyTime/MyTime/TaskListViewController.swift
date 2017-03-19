@@ -33,8 +33,13 @@ class TaskListViewController: UITableViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-//        // Enable the button to edit the table cells
-//        self.navigationItem.leftBarButtonItem = self.editButtonItem
+        // Enable the button to edit the table cells
+        //navigationItem.rightBarButtonItem = editButtonItem
+        
+        title = priority?.name
+        
+        let addButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: nil, action: nil)
+        navigationItem.rightBarButtonItems = [addButtonItem, editButtonItem]
 //
 //        // Add an add button
 //        let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addButtonTapped))
@@ -102,34 +107,34 @@ class TaskListViewController: UITableViewController {
         return 1
     }
 
-//    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return tasks.count
-//    }
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return priority?.tasks.count ?? 0
+    }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
 
-        // Label the cell with the task name
-//        let task = tasks[indexPath.row]
-//        cell.textLabel?.text = task.description
+        // Label the cell
+        cell.textLabel?.text = priority?.tasks[indexPath.row].name
         
         return cell
     }
 
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         // Return false if you do not want the specified item to be editable.
+        // All items editable
         return true
     }
     
     // Table view edit operations
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         
-        // Delete task, rewrite updated tasks to a file
-//        if editingStyle == .delete {
-//            tasks.remove(at: indexPath.row)
-//            tableView.deleteRows(at: [indexPath], with: .fade)
-//            writeTasksToFile(tasks: tasks)
-//        }
+        // Delete task, update data model
+        if editingStyle == .delete {
+            priority?.tasks.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+            dataModel?.writeToFile()
+        }
         
 //        else if editingStyle == .insert {
 //            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.

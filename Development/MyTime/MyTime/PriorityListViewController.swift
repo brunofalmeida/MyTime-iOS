@@ -20,15 +20,15 @@ class PriorityListViewController: UITableViewController {
         print("dataModel:")
         debugPrint(dataModel as Any)
         
-        // TODO - TEST - sample priorities
-        dataModel?.priorities.append(Priority(name: "Priority1", tasks: [
-            Task(name: "Task11", timeInterval: TimeInterval(totalSeconds: 49)),
-            Task(name: "Task12", timeInterval: TimeInterval(totalSeconds: 1500001))
-        ]))
-        dataModel?.priorities.append(Priority(name: "Priority2", tasks: [
-            Task(name: "Task21", timeInterval: TimeInterval(totalSeconds: 1)),
-            Task(name: "Task22", timeInterval: TimeInterval(totalSeconds: 99))
-        ]))
+//        Test - sample priorities
+//        dataModel?.priorities.append(Priority(name: "Priority1", tasks: [
+//            Task(name: "Task11", timeInterval: TimeInterval(totalSeconds: 49)),
+//            Task(name: "Task12", timeInterval: TimeInterval(totalSeconds: 1500001))
+//        ]))
+//        dataModel?.priorities.append(Priority(name: "Priority2", tasks: [
+//            Task(name: "Task21", timeInterval: TimeInterval(totalSeconds: 1)),
+//            Task(name: "Task22", timeInterval: TimeInterval(totalSeconds: 99))
+//        ]))
         
         print("dataModel with sample data:")
         debugPrint(dataModel as Any)
