@@ -12,10 +12,19 @@ class TaskListViewController: UITableViewController {
 
     // MARK: - Properties
     
-    var detailViewController: TaskDetailViewController? = nil
+    weak var dataModel = (UIApplication.shared.delegate as? AppDelegate)?.dataModel
     
-    /// Stores the time when the back button was pressed, not after the user has typed in the task's name
-    var newTaskTimeInterval: TimeInterval?
+    var priority: Priority? {
+        didSet {
+            print("\(#function): priority received")
+        }
+    }
+    
+//    var detailViewController: TaskDetailViewController? = nil
+//    
+//    /// Stores the time when the back button was pressed,
+//    /// not after the user has typed in the task's name
+//    var newTaskTimeInterval: TimeInterval?
     
     
     // MARK: - View Management
@@ -24,35 +33,34 @@ class TaskListViewController: UITableViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        // Enable the button to edit the table cells
-        self.navigationItem.leftBarButtonItem = self.editButtonItem
-
-        // Add an add button
-        let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addButtonTapped))
-        self.navigationItem.rightBarButtonItem = addButton
-        
-        // Track the detail view controller
-        if let split = self.splitViewController {
-            let controllers = split.viewControllers
-            self.detailViewController = (controllers[controllers.count - 1] as! UINavigationController).topViewController as? TaskDetailViewController
-        }
-        
-        // Show the primary and secondary view controllers side by side
-        splitViewController?.preferredDisplayMode = .allVisible
+//        // Enable the button to edit the table cells
+//        self.navigationItem.leftBarButtonItem = self.editButtonItem
+//
+//        // Add an add button
+//        let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addButtonTapped))
+//        self.navigationItem.rightBarButtonItem = addButton
+//        
+//        // Track the detail view controller
+//        if let split = self.splitViewController {
+//            let controllers = split.viewControllers
+//            self.detailViewController = (controllers[controllers.count - 1] as! UINavigationController).topViewController as? TaskDetailViewController
+//        }
+//        
+//        // Show the primary and secondary view controllers side by side
+//        splitViewController?.preferredDisplayMode = .allVisible
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        self.clearsSelectionOnViewWillAppear = self.splitViewController!.isCollapsed
-        
         super.viewWillAppear(animated)
+        clearsSelectionOnViewWillAppear = splitViewController?.isCollapsed ?? true
     }
 
     func addButtonTapped() {
         print()
-        print("addButtonTapped()")
+        print(#function)
         
-        // Go to the new task interface
-        performSegue(withIdentifier: "newTask", sender: self)
+//        // Go to the new task interface
+//        performSegue(withIdentifier: "newTask", sender: self)
     }
     
     
@@ -60,31 +68,31 @@ class TaskListViewController: UITableViewController {
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         print()
-        print("prepare(for:, sender:)")
+        print(#function)
         
-        // Show task detail interface
-        if segue.identifier == "showDetail" {
-            print("showDetail")
-            
-            // Get the selected task
-            if let indexPath = tableView.indexPathForSelectedRow {
+//        // Show task detail interface
+//        if segue.identifier == "showDetail" {
+//            print("showDetail")
+//            
+//            // Get the selected task
+//            if let indexPath = tableView.indexPathForSelectedRow {
 //                let task = tasks[indexPath.row]
-                let destination = (segue.destination as? UINavigationController)?.topViewController as? TaskDetailViewController
-                
+//                let destination = (segue.destination as? UINavigationController)?.topViewController as? TaskDetailViewController
+//                
 //                print("Setting DetailViewController task: task = \(task), destination = \(destination)")
-                
-                // Update the destination with the selected task
+//                
+//                // Update the destination with the selected task
 //                destination?.task = task
-            }
-        }
-        
-        // Show new task interface
-        else if segue.identifier == "newTask" {
-            print("newTask")
-            
-            // Update destination
-            (segue.destination as? NewTaskViewController)?.parentMasterViewController = self
-        }
+//            }
+//        }
+//        
+//        // Show new task interface
+//        else if segue.identifier == "newTask" {
+//            print("newTask")
+//            
+//            // Update destination
+//            (segue.destination as? NewTaskViewController)?.parentMasterViewController = self
+//        }
     }
 
     
@@ -134,26 +142,24 @@ class TaskListViewController: UITableViewController {
     /// Adds a new task, updates the table view and data on disk
     func addTask(name: String) {
         print()
-        print("addTask()")
+        print(#function)
         
-        // Check if a time interval has been stored for the task
-        if let timeInterval = newTaskTimeInterval {
+//        // Check if a time interval has been stored for the task
+//        if let timeInterval = newTaskTimeInterval {
 //            tasks.append(Task(name: name, timeInterval: timeInterval))
-            newTaskTimeInterval = nil
-            
-            tableView.reloadData()
-            
-            print("Task added")
-        } else {
-            print("No time interval stored - task not added")
-        }
-        
+//            newTaskTimeInterval = nil
+//            
+//            tableView.reloadData()
+//            
+//            print("Task added")
+//        } else {
+//            print("No time interval stored - task not added")
+//        }
+//        
 //        print(tasks as NSArray)
 //        
 //        writeTasksToFile(tasks: tasks)
     }
-    
-    
 
 }
 

@@ -62,7 +62,7 @@ class NewTaskViewController: UIViewController {
         // If it is being removed
         if parent == nil {
             // Update the parent with the elapsed time
-            parentMasterViewController?.newTaskTimeInterval = elapsedTimeInterval
+//            parentMasterViewController?.newTaskTimeInterval = elapsedTimeInterval
             
             // Create an alert to ask the user to name the task
             let nameAlert = UIAlertController(title: "Task Name", message: nil, preferredStyle: .alert)
