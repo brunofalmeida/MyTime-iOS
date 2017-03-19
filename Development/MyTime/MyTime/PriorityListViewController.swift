@@ -19,6 +19,19 @@ class PriorityListViewController: UITableViewController {
         
         print("dataModel:")
         debugPrint(dataModel as Any)
+        
+        // TODO - TEST - sample priorities
+        dataModel?.priorities.append(Priority(name: "Priority1", tasks: [
+            Task(name: "Task11", timeInterval: TimeInterval(totalSeconds: 49)),
+            Task(name: "Task12", timeInterval: TimeInterval(totalSeconds: 1500001))
+        ]))
+        dataModel?.priorities.append(Priority(name: "Priority2", tasks: [
+            Task(name: "Task21", timeInterval: TimeInterval(totalSeconds: 1)),
+            Task(name: "Task22", timeInterval: TimeInterval(totalSeconds: 99))
+        ]))
+        
+        print("dataModel with sample data:")
+        debugPrint(dataModel as Any)
 
 //        // Uncomment the following line to preserve selection between presentations
 //        self.clearsSelectionOnViewWillAppear = false
@@ -26,53 +39,56 @@ class PriorityListViewController: UITableViewController {
         // Display an Edit button in the navigation bar
         navigationItem.leftBarButtonItem = editButtonItem
     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        print(#function)
+        super.viewWillDisappear(animated)
+        
+        dataModel?.writeToFile()
+    }
 
-//    override func didReceiveMemoryWarning() {
-//        super.didReceiveMemoryWarning()
-//        // Dispose of any resources that can be recreated.
-//    }
-
+    
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        return dataModel?.priorities.count ?? 0
     }
 
-    /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        
+        // Configure the cell
+        cell.textLabel?.text = dataModel?.priorities[indexPath.row].name
 
         return cell
     }
-    */
 
-    /*
-    // Override to support conditional editing of the table view.
+    
+    // Support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
+        // All items editable
         return true
     }
-    */
 
-    /*
-    // Override to support editing the table view.
+    
+    // Support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        // Delete the row from the data source
         if editingStyle == .delete {
-            // Delete the row from the data source
+            dataModel?.priorities.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+            
+            debugPrint(dataModel as Any)
+        }
+//        else if editingStyle == .insert {
+//            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+//        }
     }
-    */
+    
 
     /*
     // Override to support rearranging the table view.
@@ -89,6 +105,7 @@ class PriorityListViewController: UITableViewController {
     }
     */
 
+    
     /*
     // MARK: - Navigation
 

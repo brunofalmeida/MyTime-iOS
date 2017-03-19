@@ -123,6 +123,7 @@ class DataModel: NSObject, NSCoding {
     /**
      - returns: true if the write operation succeeded
     */
+    @discardableResult
     func writeToFile(url: URL? = dataModelURL) -> Bool {
         //print()
         print(#function)
