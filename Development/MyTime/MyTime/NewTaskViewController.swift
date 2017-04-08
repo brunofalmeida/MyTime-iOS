@@ -10,9 +10,12 @@ import UIKit
 
 class NewTaskViewController: UIViewController {
 
+    weak var dataModel = (UIApplication.shared.delegate as? AppDelegate)?.dataModel
+    
     @IBOutlet weak var circleView: UIView!
     @IBOutlet weak var timerLabel: UILabel!
     
+    // Set a temporary Date value
     fileprivate var startTime: Date = Date()
     
     /// The timer's elapsed time
@@ -20,13 +23,10 @@ class NewTaskViewController: UIViewController {
         return -Int(startTime.timeIntervalSinceNow)
     }
     
-    /// The timer's' elapsed time interval
+    /// The timer's elapsed time interval
     fileprivate var elapsedTimeInterval: TimeInterval {
         return TimeInterval(totalSeconds: elapsedTimeInSeconds)
     }
-    
-    weak var parentMasterViewController: TaskListViewController?
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,7 +37,7 @@ class NewTaskViewController: UIViewController {
         circleView.layer.cornerRadius = circleView.frame.size.width / 2
         circleView.backgroundColor = UIColor(red: 135/255.0, green: 206/255.0, blue: 250/255.0, alpha: 0.5)
         
-        // Initialize the timer's start time
+        // Initialize the timer's start time (now is more accurate than object initialization)
         startTime = Date()
         
         // Fire a timer every 0.1s, to update the timer
@@ -56,19 +56,21 @@ class NewTaskViewController: UIViewController {
     
     override func willMove(toParentViewController parent: UIViewController?) {
         print()
-        print("willMove(toParentViewController:)")
+        print(#function)
         super.willMove(toParentViewController: parent)
         
         // If it is being removed
         if parent == nil {
             // Update the parent with the elapsed time
-//            parentMasterViewController?.newTaskTimeInterval = elapsedTimeInterval
+            
+            let savedTimeInterval = elapsedTimeInterval
             
             // Create an alert to ask the user to name the task
-            let nameAlert = UIAlertController(title: "Task Name", message: nil, preferredStyle: .alert)
+            let nameAlert = UIAlertController(title: "New Task", message: nil, preferredStyle: .alert)
             nameAlert.addTextField(configurationHandler: nil)
             nameAlert.addAction(UIAlertAction(title: "OK", style: .default) { alertAction in
-                self.parentMasterViewController?.addTask(name: nameAlert.textFields?[0].text ?? "")
+                //self.dataModel?.priorities[
+                //self.dataModel.addTask(name: nameAlert.textFields?[0].text ?? "")
             })
             present(nameAlert, animated: true, completion: nil)
         }

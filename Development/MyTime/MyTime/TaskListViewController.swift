@@ -38,19 +38,16 @@ class TaskListViewController: UITableViewController {
         
         title = priority?.name
         
-        let addButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: nil, action: nil)
+        
+        let addButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addButtonTapped))
         navigationItem.rightBarButtonItems = [addButtonItem, editButtonItem]
-//
-//        // Add an add button
-//        let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addButtonTapped))
-//        self.navigationItem.rightBarButtonItem = addButton
-//        
+        
 //        // Track the detail view controller
 //        if let split = self.splitViewController {
 //            let controllers = split.viewControllers
 //            self.detailViewController = (controllers[controllers.count - 1] as! UINavigationController).topViewController as? TaskDetailViewController
 //        }
-//        
+        
 //        // Show the primary and secondary view controllers side by side
 //        splitViewController?.preferredDisplayMode = .allVisible
     }
@@ -64,8 +61,8 @@ class TaskListViewController: UITableViewController {
         print()
         print(#function)
         
-//        // Go to the new task interface
-//        performSegue(withIdentifier: "newTask", sender: self)
+        // Go to the new task interface
+        performSegue(withIdentifier: "newTask", sender: self)
     }
     
     

@@ -19,19 +19,6 @@ class PriorityListViewController: UITableViewController {
         
         print("dataModel:")
         debugPrint(dataModel as Any)
-        
-//        Test - sample priorities
-//        dataModel?.priorities.append(Priority(name: "Priority1", tasks: [
-//            Task(name: "Task11", timeInterval: TimeInterval(totalSeconds: 49)),
-//            Task(name: "Task12", timeInterval: TimeInterval(totalSeconds: 1500001))
-//        ]))
-//        dataModel?.priorities.append(Priority(name: "Priority2", tasks: [
-//            Task(name: "Task21", timeInterval: TimeInterval(totalSeconds: 1)),
-//            Task(name: "Task22", timeInterval: TimeInterval(totalSeconds: 99))
-//        ]))
-        
-        print("dataModel with sample data:")
-        debugPrint(dataModel as Any)
 
         // Display an Edit button in the navigation bar
         navigationItem.leftBarButtonItem = editButtonItem
@@ -108,6 +95,13 @@ class PriorityListViewController: UITableViewController {
 //        }
     }
     
+    override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
+        if dataModel?.priorities[indexPath.row].name == DataModel.defaultPriorityName {
+            return .none
+        } else {
+            return .delete
+        }
+    }
 
     /*
     // Override to support rearranging the table view.

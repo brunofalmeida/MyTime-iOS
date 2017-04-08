@@ -10,10 +10,17 @@ import Foundation
 
 class DataModel: NSObject, NSCoding {
     
+    static let defaultPriorityName = "General"
+    
     var priorities: [Priority]
     
     init(priorities: [Priority] = []) {
         self.priorities = priorities
+        
+        // Add the default priority if it does not exist
+        if (!priorities.map { priority in priority.name }.contains(type(of: self).defaultPriorityName)) {
+            self.priorities.append(Priority(name: type(of: self).defaultPriorityName))
+        }
     }
     
     
