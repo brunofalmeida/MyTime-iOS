@@ -15,7 +15,7 @@ class NewTaskViewController: UIViewController {
     @IBOutlet weak var circleView: UIView!
     @IBOutlet weak var timerLabel: UILabel!
     
-    // Set a temporary Date value
+    // The timer's start time (set a temporary value so it's non-nil)
     fileprivate var startTime: Date = Date()
     
     /// The timer's elapsed time
@@ -28,16 +28,29 @@ class NewTaskViewController: UIViewController {
         return TimeInterval(totalSeconds: elapsedTimeInSeconds)
     }
     
+//    override var preferredStatusBarStyle: UIStatusBarStyle {
+//        return .default
+//    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        
+        let cancelButton = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelButtonTapped))
+        navigationItem.leftBarButtonItem = cancelButton
+        
+        let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneButtonTapped))
+        navigationItem.rightBarButtonItem = doneButton
+        
+        //UIApplication.shared.setStatusBarStyle(.lightContent, animated: true)
+        //preferredStatusBarStyle = .lightContent
         
         // Set the timer circle's size and colour
         // rgb(135,206,250) - lightskyblue from http://www.rapidtables.com/web/color/blue-color.htm
         circleView.layer.cornerRadius = circleView.frame.size.width / 2
         circleView.backgroundColor = UIColor(red: 135/255.0, green: 206/255.0, blue: 250/255.0, alpha: 0.5)
         
-        // Initialize the timer's start time (now is more accurate than object initialization)
+        // Initialize the timer's start time (setting it now is more accurate than when the object is initialized)
         startTime = Date()
         
         // Fire a timer every 0.1s, to update the timer
@@ -48,43 +61,47 @@ class NewTaskViewController: UIViewController {
                                  repeats: true)
     }
     
+    func cancelButtonTapped() {
+        print(#function)
+        _ = navigationController?.popViewController(animated: true)
+    }
+    
+    func doneButtonTapped() {
+        print(#function)
+        performSegue(withIdentifier: "showTaskDetail", sender: self)
+    }
+    
+    
     /// Timer loop handler
     func handleTimer() {
         timerLabel.text = elapsedTimeInterval.description
     }
     
     
-    override func willMove(toParentViewController parent: UIViewController?) {
-        print()
-        print(#function)
-        super.willMove(toParentViewController: parent)
-        
-        // If it is being removed
-        if parent == nil {
-            // Update the parent with the elapsed time
-            
-            let savedTimeInterval = elapsedTimeInterval
-            
-            // Create an alert to ask the user to name the task
-            let nameAlert = UIAlertController(title: "New Task", message: nil, preferredStyle: .alert)
-            nameAlert.addTextField(configurationHandler: nil)
-            nameAlert.addAction(UIAlertAction(title: "OK", style: .default) { alertAction in
-                //self.dataModel?.priorities[
-                //self.dataModel.addTask(name: nameAlert.textFields?[0].text ?? "")
-            })
-            present(nameAlert, animated: true, completion: nil)
-        }
-    }
+//    override func willMove(toParentViewController parent: UIViewController?) {
+//        print()
+//        print(#function)
+//        super.willMove(toParentViewController: parent)
+//        
+//        // If the view is being removed
+//        if parent == nil {
+//            let task = Task(name: "Untitled", timeInterval: elapsedTimeInterval)
+//            performSegue(withIdentifier: "showTaskDetail", sender: self)
+//        }
+//    }
 
     
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        
+        if let destination = segue.destination as? TaskDetailViewController {
+            destination.priority = Priority(name: DataModel.defaultPriorityName)
+            destination.task = Task(name: "Untitled", timeInterval: elapsedTimeInterval)
+        }
     }
-    */
 
 }

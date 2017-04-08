@@ -10,6 +10,10 @@ import UIKit
 
 class TaskListViewController: UITableViewController {
 
+    enum Segues: String {
+        case showNewTask
+    }
+    
     // MARK: - Properties
     
     weak var dataModel = (UIApplication.shared.delegate as? AppDelegate)?.dataModel
@@ -62,7 +66,7 @@ class TaskListViewController: UITableViewController {
         print(#function)
         
         // Go to the new task interface
-        performSegue(withIdentifier: "newTask", sender: self)
+        performSegue(withIdentifier: "showNewTask", sender: self)
     }
     
     
@@ -72,8 +76,17 @@ class TaskListViewController: UITableViewController {
         print()
         print(#function)
         
+        
+        // Show new task interface
+        if segue.identifier == Segues.showNewTask.rawValue {
+            print(Segues.showNewTask.rawValue)
+            
+            // Update destination
+            //(segue.destination as? NewTaskViewController)?.parentMasterViewController = self
+        }
+        
 //        // Show task detail interface
-//        if segue.identifier == "showDetail" {
+//        else if segue.identifier == "showDetail" {
 //            print("showDetail")
 //            
 //            // Get the selected task
@@ -86,14 +99,6 @@ class TaskListViewController: UITableViewController {
 //                // Update the destination with the selected task
 //                destination?.task = task
 //            }
-//        }
-//        
-//        // Show new task interface
-//        else if segue.identifier == "newTask" {
-//            print("newTask")
-//            
-//            // Update destination
-//            (segue.destination as? NewTaskViewController)?.parentMasterViewController = self
 //        }
     }
 

@@ -14,12 +14,30 @@ class DataModel: NSObject, NSCoding {
     
     var priorities: [Priority]
     
+    var defaultPriority: Priority? {
+        ensureDefaultPriorityExists()
+        
+        for priority in priorities {
+            if priority.name == DataModel.defaultPriorityName {
+                return priority
+            }
+        }
+        
+        assertionFailure()
+        return nil
+    }
+    
     init(priorities: [Priority] = []) {
         self.priorities = priorities
+        super.init()
         
-        // Add the default priority if it does not exist
-        if (!priorities.map { priority in priority.name }.contains(type(of: self).defaultPriorityName)) {
-            self.priorities.append(Priority(name: type(of: self).defaultPriorityName))
+        ensureDefaultPriorityExists()
+    }
+    
+    /// Adds the default priority if it does not exist
+    func ensureDefaultPriorityExists() {
+        if (!priorities.map { $0.name }.contains(DataModel.defaultPriorityName)) {
+            priorities.insert(Priority(name: DataModel.defaultPriorityName), at: 0)
         }
     }
     

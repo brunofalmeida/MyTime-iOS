@@ -13,14 +13,24 @@ class TaskDetailViewController: UITableViewController {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
     
+    var priority: Priority? {
+        didSet {
+            print("\(#function) \(priority)")
+        }
+    }
     var task: Task? {
         didSet {
-            print("task.didSet: \(task)")
+            print("\(#function): \(task)")
+            
             // Update the view.
-            self.configureView()
+            //self.configureView()
         }
     }
 
+    func setup(priority: Priority, task: Task) {
+        self.priority = priority
+        self.task = task
+    }
 
     /// Update the interface for the detail item
     func configureView() {
