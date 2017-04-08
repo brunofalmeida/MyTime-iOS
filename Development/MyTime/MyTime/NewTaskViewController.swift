@@ -28,9 +28,6 @@ class NewTaskViewController: UIViewController {
         return TimeInterval(totalSeconds: elapsedTimeInSeconds)
     }
     
-//    override var preferredStatusBarStyle: UIStatusBarStyle {
-//        return .default
-//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,9 +38,6 @@ class NewTaskViewController: UIViewController {
         
         let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneButtonTapped))
         navigationItem.rightBarButtonItem = doneButton
-        
-        //UIApplication.shared.setStatusBarStyle(.lightContent, animated: true)
-        //preferredStatusBarStyle = .lightContent
         
         // Set the timer circle's size and colour
         // rgb(135,206,250) - lightskyblue from http://www.rapidtables.com/web/color/blue-color.htm
@@ -76,19 +70,6 @@ class NewTaskViewController: UIViewController {
     func handleTimer() {
         timerLabel.text = elapsedTimeInterval.description
     }
-    
-    
-//    override func willMove(toParentViewController parent: UIViewController?) {
-//        print()
-//        print(#function)
-//        super.willMove(toParentViewController: parent)
-//        
-//        // If the view is being removed
-//        if parent == nil {
-//            let task = Task(name: "Untitled", timeInterval: elapsedTimeInterval)
-//            performSegue(withIdentifier: "showTaskDetail", sender: self)
-//        }
-//    }
 
     
     // MARK: - Navigation
@@ -105,3 +86,6 @@ class NewTaskViewController: UIViewController {
     }
 
 }
+
+
+

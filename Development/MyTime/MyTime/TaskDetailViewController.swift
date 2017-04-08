@@ -21,9 +21,6 @@ class TaskDetailViewController: UITableViewController {
     var task: Task? {
         didSet {
             print("\(#function): \(task)")
-            
-            // Update the view.
-            //self.configureView()
         }
     }
 
@@ -57,4 +54,6 @@ class TaskDetailViewController: UITableViewController {
     }
 
 }
+
+
 

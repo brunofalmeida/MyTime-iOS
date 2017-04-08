@@ -55,7 +55,7 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="None" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="apf-aP-Kgo">
                                                     <rect key="frame" x="326" y="11" width="41" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
+                                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -82,7 +82,7 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="None" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rfn-Q2-0eH">
                                                     <rect key="frame" x="326" y="11" width="41" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
+                                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -167,7 +167,7 @@
             </objects>
             <point key="canvasLocation" x="758" y="-630"/>
         </scene>
-        <!--Title-->
+        <!--New Task-->
         <scene sceneID="rvJ-oN-g7d">
             <objects>
                 <viewController id="1bz-hO-tsT" customClass="NewTaskViewController" customModule="MyTime" customModuleProvider="target" sceneMemberID="viewController">
@@ -206,7 +206,7 @@
                             <constraint firstItem="le5-YM-kEi" firstAttribute="centerX" secondItem="aJE-vQ-U0t" secondAttribute="centerX" id="JIU-gp-QOm"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Title" id="oJ0-KT-VMM"/>
+                    <navigationItem key="navigationItem" title="New Task" id="oJ0-KT-VMM"/>
                     <connections>
                         <outlet property="circleView" destination="le5-YM-kEi" id="4Kn-fh-BNc"/>
                         <outlet property="timerLabel" destination="iwj-g1-Wzp" id="gLa-on-FKA"/>

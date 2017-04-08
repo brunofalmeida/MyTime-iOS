@@ -37,12 +37,10 @@ class TaskListViewController: UITableViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        // Enable the button to edit the table cells
-        //navigationItem.rightBarButtonItem = editButtonItem
-        
+        // Set the title to match the priority
         title = priority?.name
         
-        
+        // Put Add and Edit buttons on the right
         let addButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addButtonTapped))
         navigationItem.rightBarButtonItems = [addButtonItem, editButtonItem]
         
@@ -150,22 +148,6 @@ class TaskListViewController: UITableViewController {
     func addTask(name: String) {
         print()
         print(#function)
-        
-//        // Check if a time interval has been stored for the task
-//        if let timeInterval = newTaskTimeInterval {
-//            tasks.append(Task(name: name, timeInterval: timeInterval))
-//            newTaskTimeInterval = nil
-//            
-//            tableView.reloadData()
-//            
-//            print("Task added")
-//        } else {
-//            print("No time interval stored - task not added")
-//        }
-//        
-//        print(tasks as NSArray)
-//        
-//        writeTasksToFile(tasks: tasks)
     }
 
 }
