@@ -33,11 +33,11 @@ class PriorityListViewController: UITableViewController {
         print("dataModel with sample data:")
         debugPrint(dataModel as Any)
 
-//        // Uncomment the following line to preserve selection between presentations
-//        self.clearsSelectionOnViewWillAppear = false
-
         // Display an Edit button in the navigation bar
         navigationItem.leftBarButtonItem = editButtonItem
+        
+        let addButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addButtonTapped))
+        navigationItem.rightBarButtonItem = addButtonItem
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -45,6 +45,24 @@ class PriorityListViewController: UITableViewController {
         super.viewWillDisappear(animated)
         
         dataModel?.writeToFile()
+    }
+    
+    /// Prompts the user to create a new priority
+    func addButtonTapped() {
+        print(#function)
+        
+        let nameAlert = UIAlertController(title: "New Priority", message: nil, preferredStyle: .alert)
+        nameAlert.addTextField(configurationHandler: nil)
+        
+        nameAlert.addAction(UIAlertAction(title: "OK", style: .default) { alertAction in
+            self.dataModel?.priorities.append(Priority(name: nameAlert.textFields?[0].text ?? ""))
+            print(self.dataModel as Any)
+            self.dataModel?.writeToFile()
+            self.tableView.reloadData()
+        })
+        nameAlert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: nil))
+        
+        present(nameAlert, animated: true, completion: nil)
     }
 
     
@@ -81,6 +99,7 @@ class PriorityListViewController: UITableViewController {
         if editingStyle == .delete {
             dataModel?.priorities.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
+            dataModel?.writeToFile()
             
             debugPrint(dataModel as Any)
         }
