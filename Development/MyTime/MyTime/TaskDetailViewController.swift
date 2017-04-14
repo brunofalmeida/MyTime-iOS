@@ -10,6 +10,7 @@ import UIKit
 
 class TaskDetailViewController: UITableViewController {
     
+    @IBOutlet weak var priorityLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
     
@@ -31,11 +32,11 @@ class TaskDetailViewController: UITableViewController {
 
     /// Update the interface for the detail item
     func configureView() {
-        if let timeLabel = self.timeLabel {
-            print("timeLabel exists")
-            timeLabel.text = task?.timeInterval.description
+        if let priorityLabel = self.priorityLabel {
+            print("priorityLabel exists")
+            priorityLabel.text = priority?.description
         } else {
-            print("timeLabel doesn't exist")
+            print("priorityLabel doesn't exist")
         }
         
         if let nameLabel = self.nameLabel {
@@ -43,6 +44,13 @@ class TaskDetailViewController: UITableViewController {
             nameLabel.text = task?.name
         } else {
             print("nameLabel doesn't exist")
+        }
+        
+        if let timeLabel = self.timeLabel {
+            print("timeLabel exists")
+            timeLabel.text = task?.timeInterval.description
+        } else {
+            print("timeLabel doesn't exist")
         }
     }
 
