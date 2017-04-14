@@ -10,9 +10,10 @@ import UIKit
 
 class TaskDetailViewController: UITableViewController {
     
-    @IBOutlet weak var priorityLabel: UILabel!
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var timeLabel: UILabel!
+    @IBOutlet weak var priorityTextField: UITextField!
+    @IBOutlet weak var nameTextField: UITextField!
+    @IBOutlet weak var timeTextField: UITextField!
+    
     
     var priority: Priority? {
         didSet {
@@ -32,25 +33,25 @@ class TaskDetailViewController: UITableViewController {
 
     /// Update the interface for the detail item
     func configureView() {
-        if let priorityLabel = self.priorityLabel {
-            print("priorityLabel exists")
-            priorityLabel.text = priority?.description
+        if let priorityTextField = self.priorityTextField {
+            print("priorityTextField exists")
+            priorityTextField.text = priority?.description
         } else {
-            print("priorityLabel doesn't exist")
+            print("priorityTextField doesn't exist")
         }
         
-        if let nameLabel = self.nameLabel {
-            print("nameLabel exists")
-            nameLabel.text = task?.name
+        if let nameTextField = self.nameTextField {
+            print("nameTextField exists")
+            nameTextField.text = task?.name
         } else {
-            print("nameLabel doesn't exist")
+            print("nameTextField doesn't exist")
         }
         
-        if let timeLabel = self.timeLabel {
-            print("timeLabel exists")
-            timeLabel.text = task?.timeInterval.description
+        if let timeTextField = self.timeTextField {
+            print("timeTextField exists")
+            timeTextField.text = task?.timeInterval.description
         } else {
-            print("timeLabel doesn't exist")
+            print("timeTextField doesn't exist")
         }
     }
 
