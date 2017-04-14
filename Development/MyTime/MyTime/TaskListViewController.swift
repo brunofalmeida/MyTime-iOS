@@ -12,6 +12,7 @@ class TaskListViewController: UITableViewController {
 
     enum Segues: String {
         case showNewTask
+        case showTaskDetail
     }
     
     // MARK: - Properties
@@ -23,12 +24,6 @@ class TaskListViewController: UITableViewController {
             print("\(#function): priority received")
         }
     }
-    
-//    var detailViewController: TaskDetailViewController? = nil
-//    
-//    /// Stores the time when the back button was pressed,
-//    /// not after the user has typed in the task's name
-//    var newTaskTimeInterval: TimeInterval?
     
     
     // MARK: - View Management
@@ -64,7 +59,7 @@ class TaskListViewController: UITableViewController {
         print(#function)
         
         // Go to the new task interface
-        performSegue(withIdentifier: "showNewTask", sender: self)
+        performSegue(withIdentifier: Segues.showNewTask.rawValue, sender: self)
     }
     
     
@@ -73,31 +68,21 @@ class TaskListViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         print()
         print(#function)
+        print(segue.identifier)
         
         
         // Show new task interface
         if segue.identifier == Segues.showNewTask.rawValue {
             print(Segues.showNewTask.rawValue)
-            
-            // Update destination
-            //(segue.destination as? NewTaskViewController)?.parentMasterViewController = self
         }
         
-//        // Show task detail interface
-//        else if segue.identifier == "showDetail" {
-//            print("showDetail")
-//            
-//            // Get the selected task
-//            if let indexPath = tableView.indexPathForSelectedRow {
-//                let task = tasks[indexPath.row]
-//                let destination = (segue.destination as? UINavigationController)?.topViewController as? TaskDetailViewController
-//                
-//                print("Setting DetailViewController task: task = \(task), destination = \(destination)")
-//                
-//                // Update the destination with the selected task
-//                destination?.task = task
-//            }
-//        }
+        if segue.identifier == Segues.showTaskDetail.rawValue {
+            if let destination = segue.destination as? TaskDetailViewController,
+                    let indexPath = tableView.indexPathForSelectedRow {
+                destination.priority = priority
+                destination.task = priority?.tasks[indexPath.row]
+            }
+        }
     }
 
     
