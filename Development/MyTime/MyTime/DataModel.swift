@@ -11,6 +11,7 @@ import Foundation
 class DataModel: NSObject, NSCoding {
     
     static let defaultPriorityName = "General"
+    static let defaultTaskName = "Untitled"
     
     var priorities: [Priority]
     

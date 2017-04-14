@@ -80,8 +80,12 @@ class NewTaskViewController: UIViewController {
         // Pass the selected object to the new view controller.
         
         if let destination = segue.destination as? TaskDetailViewController {
-            destination.priority = Priority(name: DataModel.defaultPriorityName)
-            destination.task = Task(name: "Untitled", timeInterval: elapsedTimeInterval)
+            let priority = dataModel?.defaultPriority
+            let task = Task(name: DataModel.defaultTaskName, timeInterval: elapsedTimeInterval)
+            priority?.tasks.append(task)
+            
+            destination.priority = priority
+            destination.task = task
         }
     }
 
