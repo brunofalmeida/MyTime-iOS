@@ -16,11 +16,12 @@ class Priority: NSObject, NSCoding {
     }
     
     var name: String
-    var tasks: [Task]
+    private(set) var tasks: [Task]
     
     init(name: String, tasks: [Task] = []) {
         self.name = name
         self.tasks = tasks
+        super.init()
     }
     
     
@@ -38,6 +39,16 @@ class Priority: NSObject, NSCoding {
     func encode(with aCoder: NSCoder) {
         aCoder.encode(name, forKey: CodingKeys.name.rawValue)
         aCoder.encode(tasks as NSArray, forKey: CodingKeys.tasks.rawValue)
+    }
+    
+    func add(task: Task) {
+        tasks.append(task)
+        task.priority = self
+    }
+    
+    func removeTask(at index: Int) {
+        let task = tasks.remove(at: index)
+        task.priority = nil
     }
     
 }

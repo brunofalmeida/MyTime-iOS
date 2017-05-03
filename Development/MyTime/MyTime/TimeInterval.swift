@@ -36,6 +36,8 @@ class TimeInterval: NSObject, NSCoding {
         self.hours = totalSeconds / 3600
         self.minutes = (totalSeconds / 60) % 60
         self.seconds = totalSeconds % 60
+        
+        super.init()
     }
     
     

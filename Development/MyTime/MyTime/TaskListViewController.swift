@@ -116,7 +116,7 @@ class TaskListViewController: UITableViewController {
         
         // Delete task, update data model
         if editingStyle == .delete {
-            priority?.tasks.remove(at: indexPath.row)
+            priority?.removeTask(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
             dataModel?.writeToFile()
         }

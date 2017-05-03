@@ -82,7 +82,7 @@ class NewTaskViewController: UIViewController {
         if let destination = segue.destination as? TaskDetailViewController {
             let priority = dataModel?.defaultPriority
             let task = Task(name: DataModel.defaultTaskName, timeInterval: elapsedTimeInterval)
-            priority?.tasks.append(task)
+            priority?.add(task: task)
             
             destination.priority = priority
             destination.task = task

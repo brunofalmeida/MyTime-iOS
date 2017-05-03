@@ -18,12 +18,14 @@ class Task: NSObject, NSCoding {
         case timeInterval
     }
     
+    var priority: Priority? = nil
     let name: String
     let timeInterval: TimeInterval
     
     init(name: String, timeInterval: TimeInterval) {
         self.name = name
         self.timeInterval = timeInterval
+        super.init()
     }
     
     
