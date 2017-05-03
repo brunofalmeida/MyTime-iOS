@@ -28,7 +28,7 @@ class Priority: NSObject, NSCoding {
     // MARK: NSCoding
     
     required convenience init?(coder aDecoder: NSCoder) {
-        guard   let name = aDecoder.decodeObject(forKey: CodingKeys.name.rawValue) as? String,
+        guard let name = aDecoder.decodeObject(forKey: CodingKeys.name.rawValue) as? String,
                 let tasks = aDecoder.decodeObject(forKey: CodingKeys.tasks.rawValue) as? [Task] else {
             return nil
         }

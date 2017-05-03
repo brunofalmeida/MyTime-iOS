@@ -25,6 +25,8 @@ class PriorityListViewController: UITableViewController {
         
         let addButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addButtonTapped))
         navigationItem.rightBarButtonItem = addButtonItem
+        
+        clearsSelectionOnViewWillAppear = true
     }
     
     override func viewWillDisappear(_ animated: Bool) {

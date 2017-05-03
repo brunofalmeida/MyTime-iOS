@@ -61,6 +61,27 @@ class TaskDetailViewController: UITableViewController {
         
         self.configureView()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        if let navigationController = navigationController,
+                navigationController.viewControllers.count >= 2 {
+            print("Navigation stack: \(navigationController.viewControllers)")
+            
+            // Remove the new task view controller
+            if (navigationController.viewControllers[navigationController.viewControllers.count - 2] is NewTaskViewController) {
+                navigationController.viewControllers.remove(at: navigationController.viewControllers.count - 2)
+            }
+            
+            // Print the navigation stack after 1 second since the remove operation doesn't appear immediately
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                print("Navigation stack: \(navigationController.viewControllers)")
+            }
+            
+            // Might need this later
+//            navigationController.popToRootViewController(animated: true)
+            
+        }
+    }
 
 }
 
