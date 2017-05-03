@@ -17,12 +17,12 @@ class TaskDetailViewController: UITableViewController {
     
     var priority: Priority? {
         didSet {
-            print("\(#function) \(priority)")
+            print("\(#function) \(String(describing: priority))")
         }
     }
     var task: Task? {
         didSet {
-            print("\(#function): \(task)")
+            print("\(#function): \(String(describing: task))")
         }
     }
 
