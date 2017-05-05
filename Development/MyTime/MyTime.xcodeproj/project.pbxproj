@@ -11,6 +11,7 @@
 		155D77731E024CBF00560215 /* NewTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 155D77721E024CBF00560215 /* NewTaskViewController.swift */; };
 		157F79C71E15CFC400ED6452 /* TimeInterval.swift in Sources */ = {isa = PBXBuildFile; fileRef = 157F79C61E15CFC400ED6452 /* TimeInterval.swift */; };
 		157F79C91E15DA7000ED6452 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 157F79C81E15DA7000ED6452 /* Task.swift */; };
+		158DF2CB1EBA53E100AD98E0 /* PrioritySelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158DF2CA1EBA53E100AD98E0 /* PrioritySelectionViewController.swift */; };
 		15B776751E73B63C00595C27 /* Priority.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B776741E73B63C00595C27 /* Priority.swift */; };
 		15B776771E73B8E700595C27 /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B776761E73B8E700595C27 /* DataModel.swift */; };
 		15CDA3C81E7C38CF0032CFD0 /* TestDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15CDA3C71E7C38CF0032CFD0 /* TestDataModel.swift */; };
@@ -48,6 +49,7 @@
 		155D77721E024CBF00560215 /* NewTaskViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewTaskViewController.swift; sourceTree = "<group>"; };
 		157F79C61E15CFC400ED6452 /* TimeInterval.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeInterval.swift; sourceTree = "<group>"; };
 		157F79C81E15DA7000ED6452 /* Task.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
+		158DF2CA1EBA53E100AD98E0 /* PrioritySelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrioritySelectionViewController.swift; sourceTree = "<group>"; };
 		15B776741E73B63C00595C27 /* Priority.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Priority.swift; sourceTree = "<group>"; };
 		15B776761E73B8E700595C27 /* DataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
 		15CDA3C71E7C38CF0032CFD0 /* TestDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestDataModel.swift; sourceTree = "<group>"; };
@@ -133,6 +135,7 @@
 				15E9BB8D1E024815007004C8 /* TaskListViewController.swift */,
 				155D77721E024CBF00560215 /* NewTaskViewController.swift */,
 				15E9BB8F1E024815007004C8 /* TaskDetailViewController.swift */,
+				158DF2CA1EBA53E100AD98E0 /* PrioritySelectionViewController.swift */,
 				15B776781E73B96E00595C27 /* Model */,
 				15E9BB911E024815007004C8 /* Main.storyboard */,
 				15E9BB941E024815007004C8 /* Assets.xcassets */,
@@ -303,6 +306,7 @@
 				15E9BB901E024815007004C8 /* TaskDetailViewController.swift in Sources */,
 				157F79C71E15CFC400ED6452 /* TimeInterval.swift in Sources */,
 				15E9BB8E1E024815007004C8 /* TaskListViewController.swift in Sources */,
+				158DF2CB1EBA53E100AD98E0 /* PrioritySelectionViewController.swift in Sources */,
 				15B776751E73B63C00595C27 /* Priority.swift in Sources */,
 				155D77731E024CBF00560215 /* NewTaskViewController.swift in Sources */,
 				157F79C91E15DA7000ED6452 /* Task.swift in Sources */,

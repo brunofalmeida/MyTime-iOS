@@ -52,6 +52,7 @@ class TaskListViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         clearsSelectionOnViewWillAppear = splitViewController?.isCollapsed ?? true
+        tableView.reloadData()
     }
 
     func addButtonTapped() {
@@ -79,8 +80,7 @@ class TaskListViewController: UITableViewController {
         if segue.identifier == Segues.showTaskDetail.rawValue {
             if let destination = segue.destination as? TaskDetailViewController,
                     let indexPath = tableView.indexPathForSelectedRow {
-                destination.priority = priority
-                destination.task = priority?.tasks[indexPath.row]
+                destination.setup(task: priority?.tasks[indexPath.row])
             }
         }
     }

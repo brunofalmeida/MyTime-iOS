@@ -10,34 +10,28 @@ import UIKit
 
 class TaskDetailViewController: UITableViewController {
     
-    @IBOutlet weak var priorityTextField: UITextField!
+    @IBOutlet weak var priorityLabel: UILabel!
     @IBOutlet weak var nameTextField: UITextField!
-    @IBOutlet weak var timeTextField: UITextField!
+    @IBOutlet weak var timeLabel: UILabel!
     
     
-    var priority: Priority? {
-        didSet {
-            print("\(#function) \(String(describing: priority))")
-        }
-    }
     var task: Task? {
         didSet {
             print("\(#function): \(String(describing: task))")
         }
     }
 
-    func setup(priority: Priority, task: Task) {
-        self.priority = priority
+    func setup(task: Task?) {
         self.task = task
     }
 
     /// Update the interface for the detail item
     func configureView() {
-        if let priorityTextField = self.priorityTextField {
-            print("priorityTextField exists")
-            priorityTextField.text = priority?.description
+        if let priorityLabel = self.priorityLabel {
+            print("priorityLabel exists")
+            priorityLabel.text = task?.priority?.description
         } else {
-            print("priorityTextField doesn't exist")
+            print("priorityLabel doesn't exist")
         }
         
         if let nameTextField = self.nameTextField {
@@ -47,22 +41,34 @@ class TaskDetailViewController: UITableViewController {
             print("nameTextField doesn't exist")
         }
         
-        if let timeTextField = self.timeTextField {
-            print("timeTextField exists")
-            timeTextField.text = task?.timeInterval.description
+        if let timeLabel = self.timeLabel {
+            print("timeLabel exists")
+            timeLabel.text = task?.timeInterval.description
         } else {
-            print("timeTextField doesn't exist")
+            print("timeLabel doesn't exist")
         }
+        
+        tableView.deselectRow(at: IndexPath(row: 0, section: 0), animated: true)
     }
+//    
+//    override func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
+//        return false
+//    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        self.configureView()
+        //self.configureView()
     }
     
+    
+    
     override func viewWillAppear(_ animated: Bool) {
+        print("\(#file) \(#function)")
+        configureView()
+        
+        
         if let navigationController = navigationController,
                 navigationController.viewControllers.count >= 2 {
             print("Navigation stack: \(navigationController.viewControllers)")
@@ -81,6 +87,19 @@ class TaskDetailViewController: UITableViewController {
 //            navigationController.popToRootViewController(animated: true)
             
         }
+    }
+    
+    
+    // MARK: - Navigation
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destination = segue.destination as? PrioritySelectionViewController {
+            destination.setup(task: task)
+        }
+        
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
     }
 
 }

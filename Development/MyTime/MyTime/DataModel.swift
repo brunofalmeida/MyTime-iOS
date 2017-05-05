@@ -33,12 +33,21 @@ class DataModel: NSObject, NSCoding {
         super.init()
         
         ensureDefaultPriorityExists()
+        ensureCorrect()
     }
     
     /// Adds the default priority if it does not exist
     func ensureDefaultPriorityExists() {
         if (!priorities.map { $0.name }.contains(DataModel.defaultPriorityName)) {
             priorities.insert(Priority(name: DataModel.defaultPriorityName), at: 0)
+        }
+    }
+    
+    func ensureCorrect() {
+        for priority in priorities {
+            for task in priority.tasks {
+                task.priority = priority
+            }
         }
     }
     
@@ -160,6 +169,7 @@ class DataModel: NSObject, NSCoding {
         }
         
         print("Path: \(url.path)")
+        print("Data: \(self.debugDescription)")
         defer {
             print("File existence: \(FileManager.default.fileExists(atPath: url.path))")
         }
@@ -185,7 +195,7 @@ extension DataModel {
         return type(of: self).description()
     }
     override var debugDescription: String {
-        return "\(type(of: self))(priorities = \(priorities as NSArray))"
+        return "\(type(of: self))(priorities = \(priorities.map { $0.debugDescription } as NSArray))"
     }
 }
 

@@ -41,7 +41,7 @@ class Priority: NSObject, NSCoding {
         aCoder.encode(tasks as NSArray, forKey: CodingKeys.tasks.rawValue)
     }
     
-    func add(task: Task) {
+    func addTask(_ task: Task) {
         tasks.append(task)
         task.priority = self
     }
@@ -49,6 +49,14 @@ class Priority: NSObject, NSCoding {
     func removeTask(at index: Int) {
         let task = tasks.remove(at: index)
         task.priority = nil
+    }
+    
+    func removeTask(_ task: Task) {
+        if let index = tasks.index(of: task) {
+            removeTask(at: index)
+        } else {
+            assertionFailure()
+        }
     }
     
 }
