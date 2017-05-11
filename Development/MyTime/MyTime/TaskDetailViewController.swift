@@ -89,6 +89,11 @@ class TaskDetailViewController: UITableViewController {
         }
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        print(#function)
+        super.viewWillDisappear(animated)
+    }
+    
     
     // MARK: - Navigation
 
@@ -102,6 +107,22 @@ class TaskDetailViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
 
+}
+
+extension TaskDetailViewController: UITextFieldDelegate {
+    
+    // Be alerted when the text in the field changes
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        print(#function)
+        
+        if let newName: String = (textField.text as NSString?)?.replacingCharacters(in: range, with: string) {
+            task?.name = newName
+            title = newName
+        }
+        
+        return true
+    }
+    
 }
 
 

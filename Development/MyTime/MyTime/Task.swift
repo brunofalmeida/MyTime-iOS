@@ -19,7 +19,7 @@ class Task: NSObject, NSCoding {
     }
     
     var priority: Priority? = nil
-    let name: String
+    var name: String
     let timeInterval: TimeInterval
     
     init(name: String, timeInterval: TimeInterval) {
