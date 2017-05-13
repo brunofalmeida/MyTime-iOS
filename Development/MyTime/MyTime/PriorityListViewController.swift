@@ -10,7 +10,7 @@ import UIKit
 
 class PriorityListViewController: UITableViewController {
 
-    weak var dataModel = (UIApplication.shared.delegate as? AppDelegate)?.dataModel
+    fileprivate weak var dataModel = (UIApplication.shared.delegate as? AppDelegate)?.dataModel
     
     
     override func viewDidLoad() {
@@ -20,12 +20,14 @@ class PriorityListViewController: UITableViewController {
         print("dataModel:")
         debugPrint(dataModel as Any)
 
-        // Display an Edit button in the navigation bar
+        // Edit button in top left
         navigationItem.leftBarButtonItem = editButtonItem
         
+        // Add button in top right
         let addButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addButtonTapped))
         navigationItem.rightBarButtonItem = addButtonItem
         
+        // Clear row selection on apperance
         clearsSelectionOnViewWillAppear = true
     }
     
@@ -33,54 +35,48 @@ class PriorityListViewController: UITableViewController {
         print(#function)
         super.viewWillDisappear(animated)
         
+        // Save data
         dataModel?.writeToFile()
     }
     
-    /// Prompts the user to create a new priority
+    /**
+     Add button event handler
+     
+     Prompts the user to create a new priority
+     */
     func addButtonTapped() {
         print(#function)
         
+        // Create an alert
         let nameAlert = UIAlertController(title: "New Priority", message: nil, preferredStyle: .alert)
         nameAlert.addTextField(configurationHandler: nil)
         
-        nameAlert.addAction(UIAlertAction(title: "OK", style: .default) { alertAction in
-            self.dataModel?.priorities.append(Priority(name: nameAlert.textFields?[0].text ?? ""))
-            print(self.dataModel as Any)
-            self.dataModel?.writeToFile()
-            self.tableView.reloadData()
-        })
         nameAlert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: nil))
+        nameAlert.addAction(UIAlertAction(title: "OK", style: .default) { alertAction in
+            self.dataModel?.priorities.append(Priority(name: nameAlert.textFields?[0].text ?? DataModel.defaultPriorityName))
+            self.tableView.reloadData()
+            
+            print(self.dataModel as Any)
+        })
         
+        // Present the alert
         present(nameAlert, animated: true, completion: nil)
     }
 
     
     // MARK: - Table view data source
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-
+    // Number of rows = number of priorities
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return dataModel?.priorities.count ?? 0
     }
 
+    // Cell creation
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        
-        // Configure the cell
         cell.textLabel?.text = dataModel?.priorities[indexPath.row].name
-
         return cell
     }
-
-    
-    // Support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // All items editable
-        return true
-    }
-
     
     // Support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
@@ -97,6 +93,7 @@ class PriorityListViewController: UITableViewController {
 //        }
     }
     
+    // Allow all rows to be deleted except the first row (default priority)
     override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
         if dataModel?.priorities[indexPath.row].name == DataModel.defaultPriorityName {
             return .none
@@ -124,19 +121,13 @@ class PriorityListViewController: UITableViewController {
     
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    // Preparate for segue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-        
-        if segue.identifier == "showTaskList" {
-            if let destination = segue.destination as? TaskListViewController,
-                    let indexPath = tableView.indexPathForSelectedRow {
-                destination.priority = dataModel?.priorities[indexPath.row]
-            }
+        if let destination = segue.destination as? TaskListViewController,
+                let indexPath = tableView.indexPathForSelectedRow {
+            destination.setup(priority: dataModel?.priorities[indexPath.row])
         }
     }
-    
 
 }
 

@@ -37,13 +37,14 @@ class DataModel: NSObject, NSCoding {
     }
     
     /// Adds the default priority if it does not exist
-    func ensureDefaultPriorityExists() {
+    fileprivate func ensureDefaultPriorityExists() {
         if (!priorities.map { $0.name }.contains(DataModel.defaultPriorityName)) {
             priorities.insert(Priority(name: DataModel.defaultPriorityName), at: 0)
         }
     }
     
-    func ensureCorrect() {
+    /// Ensures that weak pointers from tasks to priorities exist
+    fileprivate func ensureCorrect() {
         for priority in priorities {
             for task in priority.tasks {
                 task.priority = priority
@@ -75,7 +76,7 @@ class DataModel: NSObject, NSCoding {
     
 
     /// URL to documents directory
-    internal static var documentsURL: URL? {
+    fileprivate static var documentsURL: URL? {
         //print()
         print(#function)
         
@@ -106,7 +107,7 @@ class DataModel: NSObject, NSCoding {
     
     
     
-    internal static func readFromFile(url: URL? = dataModelURL) -> DataModel? {
+    static func readFromFile(url: URL? = dataModelURL) -> DataModel? {
         //print()
         print(#function)
         
@@ -133,7 +134,7 @@ class DataModel: NSObject, NSCoding {
     }
     
     /// Deletes the file if it exists
-    internal static func deleteFile(url: URL? = dataModelURL) {
+    static func deleteFile(url: URL? = dataModelURL) {
         //print()
         print(#function)
         
@@ -156,7 +157,7 @@ class DataModel: NSObject, NSCoding {
     }
     
     /**
-     - returns: true if the write operation succeeded
+     - Returns: true if the write operation succeeded
     */
     @discardableResult
     func writeToFile(url: URL? = dataModelURL) -> Bool {
