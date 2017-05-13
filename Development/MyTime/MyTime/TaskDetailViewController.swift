@@ -10,8 +10,8 @@ import UIKit
 
 class TaskDetailViewController: UITableViewController {
     
-    @IBOutlet weak var priorityLabel: UILabel!
     @IBOutlet weak var nameTextField: UITextField!
+    @IBOutlet weak var priorityLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
     
     
@@ -27,6 +27,9 @@ class TaskDetailViewController: UITableViewController {
 
     /// Update the interface for the detail item
     func configureView() {
+        clearsSelectionOnViewWillAppear = true
+        title = task?.name
+        
         if let priorityLabel = self.priorityLabel {
             print("priorityLabel exists")
             priorityLabel.text = task?.priority?.description
@@ -48,7 +51,8 @@ class TaskDetailViewController: UITableViewController {
             print("timeLabel doesn't exist")
         }
         
-        tableView.deselectRow(at: IndexPath(row: 0, section: 0), animated: true)
+        // Clear the priority row's highlighted selection
+        tableView.deselectRow(at: IndexPath(row: 1, section: 0), animated: true)
     }
 //    
 //    override func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
@@ -58,8 +62,6 @@ class TaskDetailViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
-        //self.configureView()
     }
     
     
