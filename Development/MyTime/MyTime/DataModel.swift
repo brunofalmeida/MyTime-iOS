@@ -76,7 +76,7 @@ class DataModel: NSObject, NSCoding {
     
 
     /// URL to documents directory
-    fileprivate static var documentsURL: URL? {
+    static var documentsURL: URL? {
         //print()
         print(#function)
         
