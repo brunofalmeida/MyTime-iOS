@@ -49,7 +49,8 @@ class NewTaskViewController: UIViewController {
         circleView.layer.cornerRadius = circleView.frame.size.width / 2
         circleView.backgroundColor = UIColor(red: 135/255.0, green: 206/255.0, blue: 250/255.0, alpha: 0.5)
         
-        // Initialize the timer's start time (setting it now is more accurate than when the object is initialized)
+        // Initialize the timer's start time
+        // (setting it now is more accurate than when the object is initialized)
         startTime = Date()
         
         // Fire a system timer every 0.1s, to update the task timer
@@ -95,9 +96,9 @@ class NewTaskViewController: UIViewController {
         // Task detail
         if let destination = segue.destination as? TaskDetailViewController {
             
-            // Create a new task - default priority and name
+            // Create a new task - default priority and name, end time is now
             let priority = dataModel?.defaultPriority
-            let task = Task(name: DataModel.defaultTaskName, timeSpent: elapsedTimeInterval)
+            let task = Task(name: DataModel.defaultTaskName, startTime: startTime, endTime: Date())
             priority?.addTask(task)
             
             destination.setup(task: task)

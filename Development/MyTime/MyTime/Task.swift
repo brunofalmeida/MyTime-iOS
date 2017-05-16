@@ -15,36 +15,51 @@ class Task: NSObject, NSCoding {
     /// Keys for reading/writing the object from/to a file
     fileprivate enum CodingKeys: String {
         case name
-        case timeSpent
+        case startTime
+        case endTime
     }
     
-    var priority: Priority? = nil
     var name: String
-    let timeSpent: TimeInterval
+    var priority: Priority? = nil
     
-    init(name: String, timeSpent: TimeInterval) {
+    let startTime: Date
+    let endTime: Date
+    var timeSpent: TimeInterval {
+        // Make it at least 1 second
+        return TimeInterval(totalSeconds: Int( max(endTime.timeIntervalSince(startTime), 1) ))
+    }
+    
+    
+    init(name: String, startTime: Date, endTime: Date) {
         self.name = name
-        self.timeSpent = timeSpent
+        self.startTime = startTime
+        self.endTime = endTime
         super.init()
+    }
+    
+    convenience init(name: String, startTime: Date, timeSpent: TimeInterval) {
+        self.init(name: name, startTime: startTime, endTime: startTime + Double(timeSpent.totalSeconds))
     }
     
     
     // MARK: NSCoding
     
-    // Read the object from a file
+    // Write to file
+    func encode(with aCoder: NSCoder) {
+        aCoder.encode(name, forKey: CodingKeys.name.rawValue)
+        aCoder.encode(startTime, forKey: CodingKeys.startTime.rawValue)
+        aCoder.encode(endTime, forKey: CodingKeys.endTime.rawValue)
+    }
+    
+    // Read from file
     required convenience init?(coder aDecoder: NSCoder) {
         guard let name = aDecoder.decodeObject(forKey: CodingKeys.name.rawValue) as? String,
-                let timeSpent = aDecoder.decodeObject(forKey: CodingKeys.timeSpent.rawValue) as? TimeInterval else {
+                let startTime = aDecoder.decodeObject(forKey: CodingKeys.startTime.rawValue) as? Date,
+                let endTime = aDecoder.decodeObject(forKey: CodingKeys.endTime.rawValue) as? Date else {
             return nil
         }
         
-        self.init(name: name, timeSpent: timeSpent)
-    }
-    
-    // Write the object to a file
-    func encode(with aCoder: NSCoder) {
-        aCoder.encode(name, forKey: CodingKeys.name.rawValue)
-        aCoder.encode(timeSpent, forKey: CodingKeys.timeSpent.rawValue)
+        self.init(name: name, startTime: startTime, endTime: endTime)
     }
     
 }
@@ -55,13 +70,14 @@ extension Task {
         return "\(name) (\(timeSpent))"
     }
     override var debugDescription: String {
-        return "\(type(of: self))(name = \(name), timeSpent = \(timeSpent.debugDescription))"
+        return "\(type(of: self))(name = \(name), priority = \(String(describing: priority))" +
+            ", startTime = \(startTime), endTime = \(endTime), timeSpent = \(timeSpent.debugDescription))"
     }
 }
 
 
 func ==(left: Task, right: Task) -> Bool {
-    return left.name == right.name && left.timeSpent == right.timeSpent
+    return left.name == right.name && left.startTime == right.startTime && left.endTime == right.endTime
 }
 
 func !=(left: Task, right: Task) -> Bool {

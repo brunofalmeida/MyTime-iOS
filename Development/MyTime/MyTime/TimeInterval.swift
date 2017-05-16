@@ -19,7 +19,7 @@ class TimeInterval: NSObject, NSCoding {
     
     
     /// Total time elapsed
-    fileprivate let totalSeconds: Int
+    let totalSeconds: Int
     
     /// Hours time component
     let hours: Int

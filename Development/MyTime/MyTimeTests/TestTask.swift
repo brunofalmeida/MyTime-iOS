@@ -11,25 +11,25 @@ import XCTest
 
 class TestTask: XCTestCase {
     
-    func testEqual() {
+    func testEqualOperator() {
         XCTAssert(
-            Task(name: "test", timeSpent: TimeInterval(totalSeconds: 10)) ==
-            Task(name: "test", timeSpent: TimeInterval(totalSeconds: 10)))
+            Task(name: "test", startTime: Date(timeIntervalSince1970: 0), timeSpent: TimeInterval(totalSeconds: 10)) ==
+            Task(name: "test", startTime: Date(timeIntervalSince1970: 0), endTime: Date(timeIntervalSince1970: 10)))
         XCTAssertFalse(
-            Task(name: "tes", timeSpent: TimeInterval(totalSeconds: 10)) ==
-            Task(name: "test", timeSpent: TimeInterval(totalSeconds: 10)))
+            Task(name: "tes", startTime: Date(timeIntervalSince1970: 0), timeSpent: TimeInterval(totalSeconds: 10)) ==
+            Task(name: "test", startTime: Date(timeIntervalSince1970: 0), timeSpent: TimeInterval(totalSeconds: 10)))
         XCTAssertFalse(
-            Task(name: "test", timeSpent: TimeInterval(totalSeconds: 9)) ==
-            Task(name: "test", timeSpent: TimeInterval(totalSeconds: 10)))
+            Task(name: "test", startTime: Date(timeIntervalSince1970: 0), timeSpent: TimeInterval(totalSeconds: 9)) ==
+            Task(name: "test", startTime: Date(timeIntervalSince1970: 0), timeSpent: TimeInterval(totalSeconds: 10)))
     }
     
-    func testNotEqual() {
+    func testNotEqualOperator() {
         XCTAssert(
-            Task(name: "te", timeSpent: TimeInterval(totalSeconds: 9)) !=
-            Task(name: "test", timeSpent: TimeInterval(totalSeconds: 10)))
+            Task(name: "te", startTime: Date(timeIntervalSinceReferenceDate: 0), timeSpent: TimeInterval(totalSeconds: 9)) !=
+            Task(name: "test", startTime: Date(timeIntervalSinceReferenceDate: 0), timeSpent: TimeInterval(totalSeconds: 10)))
         XCTAssertFalse(
-            Task(name: "Work", timeSpent: TimeInterval(totalSeconds: 5)) !=
-            Task(name: "Work", timeSpent: TimeInterval(totalSeconds: 5)))
+            Task(name: "Work", startTime: Date(timeIntervalSinceReferenceDate: 0), timeSpent: TimeInterval(totalSeconds: 5)) !=
+            Task(name: "Work", startTime: Date(timeIntervalSinceReferenceDate: 0), timeSpent: TimeInterval(totalSeconds: 5)))
     }
     
 }
