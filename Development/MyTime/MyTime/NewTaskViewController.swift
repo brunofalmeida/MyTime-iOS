@@ -97,7 +97,7 @@ class NewTaskViewController: UIViewController {
             
             // Create a new task - default priority and name
             let priority = dataModel?.defaultPriority
-            let task = Task(name: DataModel.defaultTaskName, timeInterval: elapsedTimeInterval)
+            let task = Task(name: DataModel.defaultTaskName, timeSpent: elapsedTimeInterval)
             priority?.addTask(task)
             
             destination.setup(task: task)

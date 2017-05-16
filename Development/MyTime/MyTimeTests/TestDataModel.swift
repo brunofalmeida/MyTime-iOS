@@ -30,12 +30,12 @@ class TestDataModel: XCTestCase {
         // Create data
         let dataModel = DataModel(priorities: [
             Priority(name: "Priority1", tasks: [
-                Task(name: "Task11", timeInterval: TimeInterval(totalSeconds: 49)),
-                Task(name: "Task12", timeInterval: TimeInterval(totalSeconds: 1500001))
+                Task(name: "Task11", timeSpent: TimeInterval(totalSeconds: 49)),
+                Task(name: "Task12", timeSpent: TimeInterval(totalSeconds: 1500001))
             ]),
             Priority(name: "Priority2", tasks: [
-                Task(name: "Task21", timeInterval: TimeInterval(totalSeconds: 1)),
-                Task(name: "Task22", timeInterval: TimeInterval(totalSeconds: 99))
+                Task(name: "Task21", timeSpent: TimeInterval(totalSeconds: 1)),
+                Task(name: "Task22", timeSpent: TimeInterval(totalSeconds: 99))
             ])
         ])
         

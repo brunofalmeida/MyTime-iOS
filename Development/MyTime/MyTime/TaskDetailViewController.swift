@@ -51,7 +51,7 @@ class TaskDetailViewController: UITableViewController {
         // Time
         if let timeLabel = self.timeLabel {
             print("timeLabel exists")
-            timeLabel.text = task?.timeInterval.description
+            timeLabel.text = task?.timeSpent.description
         } else {
             print("timeLabel doesn't exist")
         }

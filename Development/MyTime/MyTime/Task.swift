@@ -15,16 +15,16 @@ class Task: NSObject, NSCoding {
     /// Keys for reading/writing the object from/to a file
     fileprivate enum CodingKeys: String {
         case name
-        case timeInterval
+        case timeSpent
     }
     
     var priority: Priority? = nil
     var name: String
-    let timeInterval: TimeInterval
+    let timeSpent: TimeInterval
     
-    init(name: String, timeInterval: TimeInterval) {
+    init(name: String, timeSpent: TimeInterval) {
         self.name = name
-        self.timeInterval = timeInterval
+        self.timeSpent = timeSpent
         super.init()
     }
     
@@ -33,18 +33,18 @@ class Task: NSObject, NSCoding {
     
     // Read the object from a file
     required convenience init?(coder aDecoder: NSCoder) {
-        guard   let name = aDecoder.decodeObject(forKey: CodingKeys.name.rawValue) as? String,
-                let timeInterval = aDecoder.decodeObject(forKey: CodingKeys.timeInterval.rawValue) as? TimeInterval else {
+        guard let name = aDecoder.decodeObject(forKey: CodingKeys.name.rawValue) as? String,
+                let timeSpent = aDecoder.decodeObject(forKey: CodingKeys.timeSpent.rawValue) as? TimeInterval else {
             return nil
         }
         
-        self.init(name: name, timeInterval: timeInterval)
+        self.init(name: name, timeSpent: timeSpent)
     }
     
     // Write the object to a file
     func encode(with aCoder: NSCoder) {
         aCoder.encode(name, forKey: CodingKeys.name.rawValue)
-        aCoder.encode(timeInterval, forKey: CodingKeys.timeInterval.rawValue)
+        aCoder.encode(timeSpent, forKey: CodingKeys.timeSpent.rawValue)
     }
     
 }
@@ -52,16 +52,16 @@ class Task: NSObject, NSCoding {
 
 extension Task {
     override var description: String {
-        return "\(name) (\(timeInterval))"
+        return "\(name) (\(timeSpent))"
     }
     override var debugDescription: String {
-        return "\(type(of: self))(name = \(name), timeInterval = \(timeInterval.debugDescription))"
+        return "\(type(of: self))(name = \(name), timeSpent = \(timeSpent.debugDescription))"
     }
 }
 
 
 func ==(left: Task, right: Task) -> Bool {
-    return left.name == right.name && left.timeInterval == right.timeInterval
+    return left.name == right.name && left.timeSpent == right.timeSpent
 }
 
 func !=(left: Task, right: Task) -> Bool {
