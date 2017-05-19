@@ -12,7 +12,11 @@ class TaskDetailViewController: UITableViewController {
     
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var priorityLabel: UILabel!
-    @IBOutlet weak var timeLabel: UILabel!
+    
+    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var startTimeLabel: UILabel!
+    @IBOutlet weak var endTimeLabel: UILabel!
+    @IBOutlet weak var timeSpentLabel: UILabel!
     
     // The task to display and edit
     fileprivate var task: Task? {
@@ -25,43 +29,97 @@ class TaskDetailViewController: UITableViewController {
         self.task = task
     }
 
-    /// Update the interface
+    /// Updates the interface
     fileprivate func configureView() {
         clearsSelectionOnViewWillAppear = true
         
-        // Title = task name
-        title = task?.name
-        
-        // Priority
-        if let priorityLabel = self.priorityLabel {
-            print("priorityLabel exists")
-            priorityLabel.text = task?.priority?.description
+        // Title - task name
+        if let task = task {
+            title = task.name
         } else {
-            print("priorityLabel doesn't exist")
+            assertionFailure()
         }
         
-        // Name
-        if let nameTextField = self.nameTextField {
-            print("nameTextField exists")
-            nameTextField.text = task?.name
-        } else {
-            print("nameTextField doesn't exist")
-        }
-        
-        // Time
-        if let timeLabel = self.timeLabel {
-            print("timeLabel exists")
-            timeLabel.text = task?.timeSpent.description
-        } else {
-            print("timeLabel doesn't exist")
-        }
-        
+        // Table view
+        configureGeneralTableSection()
+        configureDateAndTimeTableSection()
+    
         // Clear the priority row's highlighted selection
         tableView.deselectRow(at: IndexPath(row: 1, section: 0), animated: true)
     }
     
+    fileprivate func configureGeneralTableSection() {
+        if let task = task {
+            // Name
+            if let nameTextField = self.nameTextField {
+                nameTextField.text = task.name
+            } else {
+                assertionFailure()
+            }
+            
+            // Priority
+            if let priorityLabel = self.priorityLabel {
+                priorityLabel.text = task.priority?.description
+            } else {
+                assertionFailure()
+            }
+        }
+        
+        else {
+            assertionFailure()
+        }
+    }
+    
+    fileprivate func configureDateAndTimeTableSection() {
+        // Date and time formatting
+        // http://www.codingexplorer.com/swiftly-getting-human-readable-date-nsdateformatter/
+        
+        // Date format - Full day name, full month name, day with at least 1 digit
+        let dateFormat = DateFormatter()
+        dateFormat.dateFormat = "EEEE, MMMM d"
+        
+        // Time format - Hour, minute, AM/PM
+        let timeFormat = DateFormatter()
+        timeFormat.timeStyle = .short
+        
+        
+        if let task = task {
+            // Date
+            if let dateLabel = self.dateLabel {
+                dateLabel.text = dateFormat.string(from: task.startTime)
+            } else {
+                assertionFailure()
+            }
+            
+            // Start time
+            if let startTimeLabel = self.startTimeLabel {
+                startTimeLabel.text = timeFormat.string(from: task.startTime)
+            } else {
+                assertionFailure()
+            }
+            
+            // End time
+            if let endTimeLabel = self.endTimeLabel {
+                endTimeLabel.text = timeFormat.string(from: task.endTime)
+            } else {
+                assertionFailure()
+            }
+            
+            // Time spent
+            if let timeSpentLabel = self.timeSpentLabel {
+                timeSpentLabel.text = task.timeSpent.listDescription
+            } else {
+                assertionFailure()
+            }
+        }
+        
+        else {
+            assertionFailure()
+        }
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
-        print("\(#file) \(#function)")
+        print("\(#file)-\(#function)")
         super.viewWillAppear(animated)
         
         configureView()

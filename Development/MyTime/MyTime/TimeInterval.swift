@@ -71,6 +71,16 @@ extension TimeInterval {
         }
     }
     
+    var listDescription: String {
+        if hours == 0 && minutes == 0 {
+            return "\(seconds)s"
+        } else if hours == 0 {
+            return "\(minutes)m, \(seconds)s"
+        } else {
+            return "\(hours)h, \(minutes)m, \(seconds)s"
+        }
+    }
+    
     override var debugDescription: String {
         return "\(type(of: self))(totalSeconds = \(totalSeconds), hours = \(hours), minutes = \(minutes), seconds = \(seconds))"
     }
