@@ -77,8 +77,7 @@ class DataModel: NSObject, NSCoding {
 
     /// URL to documents directory
     static var documentsURL: URL? {
-        //print()
-        print(#function)
+//        print(#function)
         
         // Look for app documents directory
         guard let directory = NSSearchPathForDirectoriesInDomains(
@@ -116,8 +115,8 @@ class DataModel: NSObject, NSCoding {
             return nil
         }
         
-        print("Path: \(url.path)")
-        print("File existence: \(FileManager.default.fileExists(atPath: url.path))")
+//        print("Path: \(url.path)")
+//        print("File existence: \(FileManager.default.fileExists(atPath: url.path))")
         
         if let readDataModel = NSKeyedUnarchiver.unarchiveObject(withFile: url.path) as? DataModel {
             print("Read succeeded")
@@ -169,10 +168,10 @@ class DataModel: NSObject, NSCoding {
             return false
         }
         
-        print("Path: \(url.path)")
+//        print("Path: \(url.path)")
         print("Data: \(self.debugDescription)")
         defer {
-            print("File existence: \(FileManager.default.fileExists(atPath: url.path))")
+//            print("File existence: \(FileManager.default.fileExists(atPath: url.path))")
         }
         
         if NSKeyedArchiver.archiveRootObject(self, toFile: url.path) {

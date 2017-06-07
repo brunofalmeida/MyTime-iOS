@@ -14,11 +14,10 @@ class PriorityListViewController: UITableViewController {
     
     
     override func viewDidLoad() {
-        print(#function)
+//        print(#function)
         super.viewDidLoad()
         
-        print("dataModel:")
-        debugPrint(dataModel as Any)
+        print("dataModel: \(dataModel as Any)")
 
         // Edit button in top left
         navigationItem.leftBarButtonItem = editButtonItem
@@ -32,7 +31,7 @@ class PriorityListViewController: UITableViewController {
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        print(#function)
+//        print(#function)
         super.viewWillDisappear(animated)
         
         // Save data

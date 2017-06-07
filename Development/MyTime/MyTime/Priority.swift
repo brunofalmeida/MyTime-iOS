@@ -67,7 +67,7 @@ extension Priority {
         return name
     }
     override var debugDescription: String {
-        return "\(type(of: self))(name = \(name), tasks = \(tasks as NSArray)"
+        return "\(type(of: self))(name = \(name), tasks = \(tasks.map { $0.name })"
     }
 }
 

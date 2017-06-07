@@ -70,7 +70,7 @@ extension Task {
         return "\(name) (\(timeSpent))"
     }
     override var debugDescription: String {
-        return "\(type(of: self))(name = \(name), priority = \(String(describing: priority))" +
+        return "\(type(of: self))(name = \(name), priority = \(priority?.name ?? "")" +
             ", startTime = \(startTime), endTime = \(endTime), timeSpent = \(timeSpent.debugDescription))"
     }
 }

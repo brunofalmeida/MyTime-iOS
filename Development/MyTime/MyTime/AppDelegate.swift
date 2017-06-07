@@ -57,7 +57,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
     func splitViewController(_ splitViewController: UISplitViewController,
                              collapseSecondary secondaryViewController: UIViewController,
                              onto primaryViewController: UIViewController) -> Bool {
-        print(#function)
+//        print(#function)
         
         // Apply default behaviour, try to incorporate the navigation controller into the interface
         guard let secondaryAsNavController = secondaryViewController as? UINavigationController else {
@@ -66,7 +66,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         
         // Do not do anything, discard table view controller
         if let _ = (secondaryAsNavController.topViewController as? UITableViewController) {
-            print("Successfully handled collapse")
+//            print("Successfully handled collapse")
             return true
         }
         

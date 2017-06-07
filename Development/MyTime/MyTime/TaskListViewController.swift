@@ -21,7 +21,7 @@ class TaskListViewController: UITableViewController {
     
     fileprivate var priority: Priority? {
         didSet {
-            print("\(#function): priority received")
+//            print("\(#function): priority received")
         }
     }
     
@@ -73,7 +73,7 @@ class TaskListViewController: UITableViewController {
     // MARK: - Segues
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        print(#function)
+//        print(#function)
         
         // Task detail
         if let destination = segue.destination as? TaskDetailViewController,

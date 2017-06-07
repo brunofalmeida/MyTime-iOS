@@ -21,7 +21,7 @@ class TaskDetailViewController: UITableViewController {
     // The task to display and edit
     fileprivate var task: Task? {
         didSet {
-            print("\(#function): \(String(describing: task))")
+//            print("\(#function): \(String(describing: task))")
         }
     }
 
@@ -119,7 +119,7 @@ class TaskDetailViewController: UITableViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        print("\(#file)-\(#function)")
+//        print(#function)
         super.viewWillAppear(animated)
         
         configureView()
@@ -130,7 +130,7 @@ class TaskDetailViewController: UITableViewController {
         // If there are 2 or more view controllers in the navigation controller
         if let navigationController = navigationController,
                 navigationController.viewControllers.count >= 2 {
-            print("Navigation stack: \(navigationController.viewControllers)")
+//            print("Navigation stack: \(navigationController.viewControllers)")
             
             // Remove the new task view controller if it exists (2nd last in navigation stack)
             if (navigationController.viewControllers[navigationController.viewControllers.count - 2] is NewTaskViewController) {
@@ -139,7 +139,7 @@ class TaskDetailViewController: UITableViewController {
             
             // To verify, print the navigation stack after 1 second since the remove operation doesn't appear immediately
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                print("Navigation stack: \(navigationController.viewControllers)")
+//                print("Navigation stack: \(navigationController.viewControllers)")
             }
             
 //            // Might need this later

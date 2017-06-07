@@ -59,7 +59,7 @@ class PrioritySelectionViewController: UITableViewController {
  
     // Row selection
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(#function)
+//        print(#function)
         
         // If a row was previously selected, deselect it
         if let selectedIndexPath = selectedIndexPath {
