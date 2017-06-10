@@ -38,9 +38,8 @@ class TaskListViewController: UITableViewController {
         // Set the title to match the priority
         title = priority?.name
         
-        // Edit and Add buttons in the top right
-        let addButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addButtonTapped))
-        navigationItem.rightBarButtonItems = [addButtonItem, editButtonItem]
+        // Edit button - top right
+        navigationItem.rightBarButtonItem = editButtonItem
         
 //        // Track the detail view controller
 //        if let split = self.splitViewController {
@@ -59,20 +58,13 @@ class TaskListViewController: UITableViewController {
         tableView.reloadData()
     }
 
-    /**
-     Add button event handler
-     Segues to the new task interface
-     */
-    func addButtonTapped() {
-        print(#function)
-        
-        performSegue(withIdentifier: Segues.showNewTask.rawValue, sender: self)
-    }
+    
     
     
     // MARK: - Segues
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
 //        print(#function)
         
         // Task detail
@@ -87,11 +79,15 @@ class TaskListViewController: UITableViewController {
 
     // Number of rows = number of priorities
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        super.tableView(tableView, numberOfRowsInSection: section)
+        
         return priority?.tasks.count ?? 0
     }
 
     // Cell creation
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        super.tableView(tableView, cellForRowAt: indexPath)
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         cell.textLabel?.text = priority?.tasks[indexPath.row].name
         return cell
@@ -101,6 +97,8 @@ class TaskListViewController: UITableViewController {
     override func tableView(_ tableView: UITableView,
                             commit editingStyle: UITableViewCellEditingStyle,
                             forRowAt indexPath: IndexPath) {
+        super.tableView(tableView, commit: editingStyle, forRowAt: indexPath)
+        
         // Delete task, update data model
         if editingStyle == .delete {
             priority?.removeTask(at: indexPath.row)
