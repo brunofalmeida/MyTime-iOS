@@ -133,7 +133,7 @@ class TaskDetailViewController: UITableViewController {
 //            print("Navigation stack: \(navigationController.viewControllers)")
             
             // Remove the new task view controller if it exists (2nd last in navigation stack)
-            if (navigationController.viewControllers[navigationController.viewControllers.count - 2] is NewTaskViewController) {
+            if (navigationController.viewControllers[navigationController.viewControllers.count - 2] is NewTaskTimerViewController) {
                 navigationController.viewControllers.remove(at: navigationController.viewControllers.count - 2)
             }
             
