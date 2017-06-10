@@ -18,13 +18,11 @@ class PriorityListViewController: UITableViewController {
         super.viewDidLoad()
         
         print("dataModel: \(dataModel as Any)")
-
-        // Edit button in top left
-        navigationItem.leftBarButtonItem = editButtonItem
         
-        // Add button in top right
+        // Edit, Add button in top right
         let addButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addButtonTapped))
         navigationItem.rightBarButtonItem = addButtonItem
+        navigationItem.rightBarButtonItems = [addButtonItem, editButtonItem]
         
         // Clear row selection on apperance
         clearsSelectionOnViewWillAppear = true
@@ -40,7 +38,6 @@ class PriorityListViewController: UITableViewController {
     
     /**
      Add button event handler
-     
      Prompts the user to create a new priority
      */
     func addButtonTapped() {
