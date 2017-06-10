@@ -38,7 +38,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GKv-Sp-GWR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1831" y="-1377"/>
+            <point key="canvasLocation" x="1697" y="-1378"/>
         </scene>
         <!--Tasks-->
         <scene sceneID="oLe-Tk-ohg">
@@ -55,7 +55,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LS8-kl-L7q" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="911" y="-1377"/>
+            <point key="canvasLocation" x="900" y="-1379"/>
         </scene>
         <!--Time Analysis-->
         <scene sceneID="EKN-Md-zYh">
@@ -84,7 +84,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vpw-Wp-lmc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1854" y="-630"/>
+            <point key="canvasLocation" x="1697" y="-630"/>
         </scene>
         <!--Analysis-->
         <scene sceneID="Cuw-FH-bVS">
@@ -101,7 +101,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="71M-sN-oCT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="910" y="-630"/>
+            <point key="canvasLocation" x="900" y="-630"/>
         </scene>
         <!--New Task-->
         <scene sceneID="Tvd-qv-jrv">
@@ -114,20 +114,41 @@
                         <sections>
                             <tableViewSection id="HfC-re-5OY">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Gfz-dx-G7D">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="KDu-L2-05M" style="IBUITableViewCellStyleDefault" id="Gfz-dx-G7D">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Gfz-dx-G7D" id="Qsr-yH-04C">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="From Timer" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="KDu-L2-05M">
+                                                    <rect key="frame" x="15" y="0.0" width="345" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="1bz-hO-tsT" kind="show" id="l2G-qi-YnZ"/>
+                                        </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="z9x-iE-zWn">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="1Gw-AG-bok" style="IBUITableViewCellStyleDefault" id="z9x-iE-zWn">
                                         <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="z9x-iE-zWn" id="yKY-dr-czb">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="From Memory" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="1Gw-AG-bok">
+                                                    <rect key="frame" x="15" y="0.0" width="345" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </cells>
@@ -523,7 +544,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="21d-it-A2m" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3524" y="-2125"/>
+            <point key="canvasLocation" x="2545" y="-2812"/>
         </scene>
         <!--Task List View Controller-->
         <scene sceneID="ffS-H2-Jk7">
@@ -560,13 +581,10 @@
                             <outlet property="delegate" destination="P3l-ei-WSs" id="KXr-2V-V5M"/>
                         </connections>
                     </tableView>
-                    <connections>
-                        <segue destination="1bz-hO-tsT" kind="show" identifier="showNewTask" id="f8v-ts-36G"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XaD-mp-GSL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2628" y="-2125"/>
+            <point key="canvasLocation" x="2546" y="-2125"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="r7l-gg-dq7">
@@ -613,6 +631,6 @@
         <image name="organize" width="21" height="18"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="zMa-Lu-QVj"/>
+        <segue reference="ie0-Y3-AmA"/>
     </inferredMetricsTieBreakers>
 </document>
