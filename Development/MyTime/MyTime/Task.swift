@@ -20,7 +20,7 @@ class Task: NSObject, NSCoding {
     }
     
     var name: String
-    var priority: Priority? = nil
+    var priority: Priority?
     
     let startTime: Date
     let endTime: Date
@@ -60,6 +60,10 @@ class Task: NSObject, NSCoding {
         }
         
         self.init(name: name, startTime: startTime, endTime: endTime)
+    }
+    
+    func removeFromPriority() {
+        priority?.removeTask(self)
     }
     
 }

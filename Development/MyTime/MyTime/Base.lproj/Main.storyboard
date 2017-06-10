@@ -546,10 +546,10 @@
             </objects>
             <point key="canvasLocation" x="2545" y="-2812"/>
         </scene>
-        <!--Task List View Controller-->
+        <!--Priority Task List View Controller-->
         <scene sceneID="ffS-H2-Jk7">
             <objects>
-                <tableViewController id="P3l-ei-WSs" customClass="TaskListViewController" customModule="MyTime" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="P3l-ei-WSs" customClass="PriorityTaskListViewController" customModule="MyTime" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="qTe-yN-449">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -631,6 +631,6 @@
         <image name="organize" width="21" height="18"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="ie0-Y3-AmA"/>
+        <segue reference="zMa-Lu-QVj"/>
     </inferredMetricsTieBreakers>
 </document>

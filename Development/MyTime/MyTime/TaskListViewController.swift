@@ -8,6 +8,9 @@
 
 import UIKit
 
+/**
+ A generic view of a list of tasks.
+ */
 class TaskListViewController: UITableViewController {
 
     fileprivate enum Segues: String {
@@ -19,15 +22,11 @@ class TaskListViewController: UITableViewController {
     
     fileprivate weak var dataModel = (UIApplication.shared.delegate as? AppDelegate)?.dataModel
     
-    fileprivate var priority: Priority? {
-        didSet {
-//            print("\(#function): priority received")
-        }
-    }
+    /// The list of tasks to display
+    fileprivate var tasks: [Task] = []
     
-    
-    func setup(priority: Priority?) {
-        self.priority = priority
+    func setup(tasks: [Task]) {
+        self.tasks = tasks
     }
     
     // MARK: - View Management
@@ -35,8 +34,8 @@ class TaskListViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Set the title to match the priority
-        title = priority?.name
+        // Default title
+        title = "Tasks"
         
         // Edit button - top right
         navigationItem.rightBarButtonItem = editButtonItem
@@ -70,7 +69,7 @@ class TaskListViewController: UITableViewController {
         // Task detail
         if let destination = segue.destination as? TaskDetailViewController,
                 let indexPath = tableView.indexPathForSelectedRow {
-            destination.setup(task: priority?.tasks[indexPath.row])
+            destination.setup(task: tasks[indexPath.row])
         }
     }
 
@@ -81,7 +80,7 @@ class TaskListViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         super.tableView(tableView, numberOfRowsInSection: section)
         
-        return priority?.tasks.count ?? 0
+        return tasks.count
     }
 
     // Cell creation
@@ -89,7 +88,7 @@ class TaskListViewController: UITableViewController {
         super.tableView(tableView, cellForRowAt: indexPath)
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        cell.textLabel?.text = priority?.tasks[indexPath.row].name
+        cell.textLabel?.text = tasks[indexPath.row].name
         return cell
     }
     
@@ -97,11 +96,12 @@ class TaskListViewController: UITableViewController {
     override func tableView(_ tableView: UITableView,
                             commit editingStyle: UITableViewCellEditingStyle,
                             forRowAt indexPath: IndexPath) {
-        super.tableView(tableView, commit: editingStyle, forRowAt: indexPath)
+        let row = indexPath.row
         
         // Delete task, update data model
         if editingStyle == .delete {
-            priority?.removeTask(at: indexPath.row)
+            tasks[row].removeFromPriority()
+            tasks.remove(at: row)
             tableView.deleteRows(at: [indexPath], with: .fade)
             dataModel?.writeToFile()
         }

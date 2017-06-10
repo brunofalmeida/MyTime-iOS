@@ -119,9 +119,10 @@ class PriorityListViewController: UITableViewController {
 
     // Preparate for segue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let destination = segue.destination as? TaskListViewController,
-                let indexPath = tableView.indexPathForSelectedRow {
-            destination.setup(priority: dataModel?.priorities[indexPath.row])
+        if let destination = segue.destination as? PriorityTaskListViewController,
+                let indexPath = tableView.indexPathForSelectedRow,
+                let dataModel = dataModel {
+            destination.setup(priority: dataModel.priorities[indexPath.row])
         }
     }
 
