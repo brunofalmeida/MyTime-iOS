@@ -28,6 +28,10 @@ class DataModel: NSObject, NSCoding {
         return nil
     }
     
+    var allTasks: [Task] {
+        return priorities.flatMap { $0.tasks }
+    }
+    
     init(priorities: [Priority] = []) {
         self.priorities = priorities
         super.init()

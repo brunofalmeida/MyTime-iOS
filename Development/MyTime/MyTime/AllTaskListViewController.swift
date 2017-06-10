@@ -1,5 +1,5 @@
 //
-//  PriorityTaskListViewController.swift
+//  AllTaskListViewController.swift
 //  MyTime
 //
 //  Created by Bruno Almeida on 2017-06-10.
@@ -8,26 +8,15 @@
 
 import UIKit
 
-/**
- A list of tasks for a specific priority.
- */
-class PriorityTaskListViewController: TaskListViewController {
+class AllTaskListViewController: TaskListViewController {
 
-    fileprivate var priority: Priority?
-    
-    func setup(priority: Priority) {
-        super.setup(tasks: priority.tasks)
-        
-        self.priority = priority
-    }
+    fileprivate weak var dataModel = (UIApplication.shared.delegate as? AppDelegate)?.dataModel
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Set the title to match the priority
-        title = priority?.name
+        setup(tasks: dataModel?.allTasks ?? [])
     }
-
 
     /*
     // MARK: - Navigation

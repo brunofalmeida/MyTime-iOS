@@ -35,7 +35,7 @@ class TaskListViewController: UITableViewController {
         super.viewDidLoad()
         
         // Default title
-        title = "Tasks"
+//        title = "Tasks"
         
         // Edit button - top right
         navigationItem.rightBarButtonItem = editButtonItem
