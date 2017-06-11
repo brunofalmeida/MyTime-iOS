@@ -8,7 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		151740DE1EEC406B00F7B7E1 /* PriorityTaskListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 151740DD1EEC406B00F7B7E1 /* PriorityTaskListViewController.swift */; };
+		151818AC1EECD1B800E51B79 /* TestAnalysisViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 151818AB1EECD1B800E51B79 /* TestAnalysisViewController.swift */; };
 		151BCBF71E7CC87100B89CF0 /* PriorityListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 151BCBF61E7CC87100B89CF0 /* PriorityListViewController.swift */; };
+		1520656A1EEC716800F3B342 /* AnalysisViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 152065691EEC716800F3B342 /* AnalysisViewController.swift */; };
 		155D77731E024CBF00560215 /* NewTaskTimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 155D77721E024CBF00560215 /* NewTaskTimerViewController.swift */; };
 		157F79C71E15CFC400ED6452 /* TimeInterval.swift in Sources */ = {isa = PBXBuildFile; fileRef = 157F79C61E15CFC400ED6452 /* TimeInterval.swift */; };
 		157F79C91E15DA7000ED6452 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 157F79C81E15DA7000ED6452 /* Task.swift */; };
@@ -49,7 +51,9 @@
 
 /* Begin PBXFileReference section */
 		151740DD1EEC406B00F7B7E1 /* PriorityTaskListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PriorityTaskListViewController.swift; sourceTree = "<group>"; };
+		151818AB1EECD1B800E51B79 /* TestAnalysisViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestAnalysisViewController.swift; sourceTree = "<group>"; };
 		151BCBF61E7CC87100B89CF0 /* PriorityListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PriorityListViewController.swift; sourceTree = "<group>"; };
+		152065691EEC716800F3B342 /* AnalysisViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalysisViewController.swift; sourceTree = "<group>"; };
 		155D77721E024CBF00560215 /* NewTaskTimerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewTaskTimerViewController.swift; sourceTree = "<group>"; };
 		157F79C61E15CFC400ED6452 /* TimeInterval.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeInterval.swift; sourceTree = "<group>"; };
 		157F79C81E15DA7000ED6452 /* Task.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
@@ -143,6 +147,7 @@
 				151BCBF61E7CC87100B89CF0 /* PriorityListViewController.swift */,
 				151740DD1EEC406B00F7B7E1 /* PriorityTaskListViewController.swift */,
 				15D6488B1EEC501A00826CEA /* AllTaskListViewController.swift */,
+				152065691EEC716800F3B342 /* AnalysisViewController.swift */,
 				15E9BB8F1E024815007004C8 /* TaskDetailViewController.swift */,
 				158DF2CA1EBA53E100AD98E0 /* PrioritySelectionViewController.swift */,
 				15B776781E73B96E00595C27 /* Model */,
@@ -162,6 +167,7 @@
 				15CDA3C91E7C39690032CFD0 /* TestTask.swift */,
 				15CDA3CB1E7C39860032CFD0 /* TestTimeInterval.swift */,
 				15E9BBA41E024815007004C8 /* Info.plist */,
+				151818AB1EECD1B800E51B79 /* TestAnalysisViewController.swift */,
 			);
 			path = MyTimeTests;
 			sourceTree = "<group>";
@@ -317,6 +323,7 @@
 				15E9BB8E1E024815007004C8 /* TaskListViewController.swift in Sources */,
 				158DF2CB1EBA53E100AD98E0 /* PrioritySelectionViewController.swift in Sources */,
 				15B776751E73B63C00595C27 /* Priority.swift in Sources */,
+				1520656A1EEC716800F3B342 /* AnalysisViewController.swift in Sources */,
 				155D77731E024CBF00560215 /* NewTaskTimerViewController.swift in Sources */,
 				157F79C91E15DA7000ED6452 /* Task.swift in Sources */,
 				15D6488C1EEC501A00826CEA /* AllTaskListViewController.swift in Sources */,
@@ -336,6 +343,7 @@
 				15CDA3CC1E7C39860032CFD0 /* TestTimeInterval.swift in Sources */,
 				15E9BBA31E024815007004C8 /* MyTimeTests.swift in Sources */,
 				15CDA3C81E7C38CF0032CFD0 /* TestDataModel.swift in Sources */,
+				151818AC1EECD1B800E51B79 /* TestAnalysisViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

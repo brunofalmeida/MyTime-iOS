@@ -63,7 +63,7 @@
         <!--Time Analysis-->
         <scene sceneID="EKN-Md-zYh">
             <objects>
-                <tableViewController id="2sg-Oo-LRD" sceneMemberID="viewController">
+                <tableViewController id="2sg-Oo-LRD" customClass="AnalysisViewController" customModule="MyTime" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="l7i-o1-7Hz">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
