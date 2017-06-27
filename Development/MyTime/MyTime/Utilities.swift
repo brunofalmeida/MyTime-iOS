@@ -102,7 +102,7 @@ func print(optional: Any?) {
 }
 
 /**
- A convenience function for taking integer powers without having to cast to Double.
+ A convenience function for taking Int powers without having to cast to Double.
  */
 func pow(base: Int, exponent: Int) -> Int {
     return Int( pow(Double(base), Double(exponent)) )

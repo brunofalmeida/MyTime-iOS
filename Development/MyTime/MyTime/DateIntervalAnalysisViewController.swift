@@ -1,0 +1,105 @@
+//
+//  DateIntervalAnalysisViewController.swift
+//  MyTime
+//
+//  Created by Bruno Almeida on 2017-06-18.
+//  Copyright © 2017 Bruno Almeida. All rights reserved.
+//
+
+import UIKit
+
+/// Displays the priorities with tasks in the given date interval.
+class DateIntervalAnalysisViewController: UITableViewController {
+
+    /// The length of the date interval being examined.
+    enum DateIntervalLength {
+        case day
+        case week
+        case month
+    }
+    
+    /// The date interval being examined for time analysis.
+    var dateInterval: DateInterval?
+    /// The tasks that occurred in the date interval.
+    var tasks: [Task] = []
+    /// The length of the date interval, used for string formatting.
+    var dateIntervalLength: DateIntervalLength?
+    
+    /// The priorities mapped to their contained tasks that occured in the date interval.
+    var prioritiesToTasks: [Priority: [Task]] = [:]
+    /// `prioritiesToTasks` as a sorted array.
+    var prioritiesToTasksArray: [(key: Priority, value: [Task])] = []
+    
+    
+    
+    
+    func setup(dateInterval: DateInterval, tasks: [Task], dateIntervalLength: DateIntervalLength) {
+        self.dateInterval = dateInterval
+        self.tasks = tasks
+        self.dateIntervalLength = dateIntervalLength
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        populatePrioritiesToTasks()
+        
+        // Set up the view's title to match the length of the date interval examined
+        if let dateInterval = dateInterval, let dateIntervalLength = dateIntervalLength {
+            if dateIntervalLength == .week {
+                title = dateInterval.formatForWeek
+            }
+        }
+    }
+    
+    /// Populates `prioritiesToTasks` and `prioritiesToTasksArray`.
+    func populatePrioritiesToTasks() {
+        prioritiesToTasks = [:]
+        
+        // For each task
+        for task in tasks {
+            if let priority = task.priority {
+                // Check if the priority is already stored, and add the task appropriately
+                if prioritiesToTasks.keys.contains(priority) {
+                    prioritiesToTasks[priority]?.append(task)
+                } else {
+                    prioritiesToTasks[priority] = [task]
+                }
+            }
+        }
+        
+        // Convert the dictionary to an array
+        prioritiesToTasksArray = Array(prioritiesToTasks)
+        
+        // TODO - sort priorities in descending order of the sum of their tasks' times elapsed
+        // Use reduce to sum time intervals?
+    }
+
+
+    // MARK: - Table view data source
+
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return prioritiesToTasksArray.count
+    }
+
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        cell.textLabel?.text = prioritiesToTasksArray[indexPath.row].key.name
+        return cell
+    }
+ 
+
+    /*
+    // MARK: - Navigation
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+    }
+    */
+
+}
+
+
+

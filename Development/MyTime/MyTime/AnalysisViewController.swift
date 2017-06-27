@@ -12,47 +12,64 @@ class AnalysisViewController: UITableViewController {
     
     fileprivate weak var dataModel = (UIApplication.shared.delegate as? AppDelegate)?.dataModel
     
-    var dateIntervals: [DateInterval] = []
+    /// The date intervals containing saved tasks, mapped to their corresponding tasks.
+    var intervalsToTasks: [DateInterval: [Task]] = [:]
+    /// `intervalsToTasks` as a sorted array.
+    var intervalsToTasksArray: [(key: DateInterval, value: [Task])] = []
+    
+    
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        populateDateIntervals()
+        populateIntervalsToTasks()
     }
     
-    /// Populates `dateIntervals` with weeks containing one or more tasks.
-    func populateDateIntervals() {
+    /// Populates `intervalsToTasks` and `intervalsToTasksArray` with date intervals and the corresponding tasks.
+    func populateIntervalsToTasks() {
+//        print(#function)
+        
+        intervalsToTasks = [:]
+        
         if let dataModel = dataModel {
-            // Map each task to the date interval of the week of its start time
-            let rawDateIntervals = dataModel.allTasks.map { $0.startTime.dateIntervalForWeek() }
-            
-            // Remove duplicates
-            dateIntervals = Array<DateInterval>(Set<DateInterval>(rawDateIntervals))
-            
-            // Sort (most recent first)
-            dateIntervals.sort()
-            dateIntervals.reverse()
+            // For each task saved
+            for task in dataModel.allTasks {
+                // Get the date interval for the week containing this task
+                let interval = task.startTime.dateIntervalForWeek()
+                
+                // Check whether the date interval is already stored, and add the task appropriately
+                if intervalsToTasks.keys.contains(interval) {
+                    intervalsToTasks[interval]?.append(task)
+                } else {
+                    intervalsToTasks[interval] = [task]
+                }
+            }
         }
+        
+        // Convert the dictionary to a sorted array (most recent date interval first)
+        intervalsToTasksArray = Array(intervalsToTasks).sorted(by: { $0.key > $1.key })
     }
     
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if let destination = segue.destination as? DateIntervalAnalysisViewController,
+                let row = tableView.indexPathForSelectedRow?.row {
+            destination.setup(dateInterval: intervalsToTasksArray[row].key, tasks: intervalsToTasksArray[row].value, dateIntervalLength: .week)
+        }
     }
-    */
+ 
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return dateIntervals.count
+        return intervalsToTasksArray.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        cell.textLabel?.text = dateIntervals[indexPath.row].formatForWeek
+        cell.textLabel?.text = intervalsToTasksArray[indexPath.row].key.formatForWeek
         return cell
     }
 
