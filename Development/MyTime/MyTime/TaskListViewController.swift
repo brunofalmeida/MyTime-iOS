@@ -76,7 +76,7 @@ class TaskListViewController: UITableViewController {
     
     // MARK: - Table View
 
-    // Number of rows = number of priorities
+    // Number of rows
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         super.tableView(tableView, numberOfRowsInSection: section)
         
@@ -85,10 +85,11 @@ class TaskListViewController: UITableViewController {
 
     // Cell creation
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        super.tableView(tableView, cellForRowAt: indexPath)
-        
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        
         cell.textLabel?.text = tasks[indexPath.row].name
+        cell.detailTextLabel?.text = tasks[indexPath.row].timeSpent.listDescription
+        
         return cell
     }
     
