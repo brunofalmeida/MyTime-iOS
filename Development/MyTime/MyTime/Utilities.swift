@@ -91,6 +91,17 @@ extension DateInterval {
 }
 
 
+extension Array where Element == Task {
+    
+    /// The sum of the time spent on all tasks
+    var totalTimeSpent: TimeInterval {
+        return reduce(TimeInterval(totalSeconds: 0)) { (result, task) in
+            result + task.timeSpent
+        }
+    }
+}
+
+
 
 
 /**

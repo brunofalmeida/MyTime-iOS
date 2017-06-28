@@ -69,7 +69,10 @@ class AnalysisViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        
         cell.textLabel?.text = intervalsToTasksArray[indexPath.row].key.formatForWeek
+        cell.detailTextLabel?.text = intervalsToTasksArray[indexPath.row].value.totalTimeSpent.listDescription
+        
         return cell
     }
 

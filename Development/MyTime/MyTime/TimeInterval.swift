@@ -9,7 +9,7 @@
 import Foundation
 
 
-/// A period of time elapsed. Only stores the length of time elapsed, not when it started and ended
+/// A period of time elapsed. Only stores the length of time elapsed, not when it started and ended.
 class TimeInterval: NSObject, NSCoding {
     
     /// Keys for reading/writing the object from/to a file
@@ -23,10 +23,8 @@ class TimeInterval: NSObject, NSCoding {
     
     /// Hours time component
     let hours: Int
-    
     /// Minutes time component
     let minutes: Int
-    
     /// Seconds time component
     let seconds: Int
     
@@ -93,6 +91,10 @@ func ==(left: TimeInterval, right: TimeInterval) -> Bool {
 
 func !=(left: TimeInterval, right: TimeInterval) -> Bool {
     return !(left == right)
+}
+
+func +(left: TimeInterval, right: TimeInterval) -> TimeInterval {
+    return TimeInterval(totalSeconds: left.totalSeconds + right.totalSeconds)
 }
 
 

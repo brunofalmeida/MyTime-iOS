@@ -85,11 +85,16 @@ class DateIntervalAnalysisViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        
         cell.textLabel?.text = prioritiesToTasksArray[indexPath.row].key.name
+        cell.detailTextLabel?.text = prioritiesToTasksArray[indexPath.row].value.totalTimeSpent.listDescription
+    
         return cell
     }
+    
  
 
+    
     /*
     // MARK: - Navigation
 
