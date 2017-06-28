@@ -25,7 +25,7 @@ class DateIntervalAnalysisViewController: UITableViewController {
     /// The length of the date interval, used for string formatting.
     var dateIntervalLength: DateIntervalLength?
     
-    /// The priorities mapped to their contained tasks that occured in the date interval.
+    /// Priorities mapped to their tasks that occured in the date interval.
     var prioritiesToTasks: [Priority: [Task]] = [:]
     /// `prioritiesToTasks` as a sorted array.
     var prioritiesToTasksArray: [(key: Priority, value: [Task])] = []
@@ -39,8 +39,9 @@ class DateIntervalAnalysisViewController: UITableViewController {
         self.dateIntervalLength = dateIntervalLength
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
         populatePrioritiesToTasks()
         
         // Set up the view's title to match the length of the date interval examined
