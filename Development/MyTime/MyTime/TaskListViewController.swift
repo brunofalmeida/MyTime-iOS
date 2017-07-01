@@ -100,8 +100,9 @@ class TaskListViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! ThreeLabelCell
         
         // TODO - refactor date formatting with TaskDetailViewController
+        // Unicode standard: http://www.unicode.org/reports/tr35/tr35-31/tr35-dates.html#Date_Format_Patterns
         let dateFormat = DateFormatter()
-        dateFormat.dateFormat = "EEEE, MMMM d"
+        dateFormat.dateFormat = "EEE MMM d"
         
         let task = tasks[indexPath.row]
         
