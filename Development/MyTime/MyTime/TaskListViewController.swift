@@ -18,6 +18,15 @@ class TaskListViewController: UITableViewController {
         case showTaskDetail
     }
     
+    /// The storyboard cell reuse identifier and .xib file name for the table view cell.
+    let cellIdentifier: String = "ThreeLabelCell"
+    
+    /**
+     The storyboard identifier of the segue to TaskDetailViewController.
+     Must be overriden for each unique segue.
+     */
+    var segueIdentifier: String = "FIXME"
+    
     // MARK: - Properties
     
     fileprivate weak var dataModel = (UIApplication.shared.delegate as? AppDelegate)?.dataModel
@@ -33,6 +42,9 @@ class TaskListViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Register the custom cell so it can be used in the table
+        tableView.register(UINib(nibName: cellIdentifier, bundle: nil), forCellReuseIdentifier: cellIdentifier)
         
         // Default title
 //        title = "Tasks"
@@ -85,10 +97,17 @@ class TaskListViewController: UITableViewController {
 
     // Cell creation
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! ThreeLabelCell
         
-        cell.textLabel?.text = tasks[indexPath.row].name
-        cell.detailTextLabel?.text = tasks[indexPath.row].timeSpent.listDescription
+        // TODO - refactor date formatting with TaskDetailViewController
+        let dateFormat = DateFormatter()
+        dateFormat.dateFormat = "EEEE, MMMM d"
+        
+        let task = tasks[indexPath.row]
+        
+        cell.primaryLabel?.text = task.name
+        cell.secondaryLabel?.text = dateFormat.string(from: task.startTime)
+        cell.detailLabel?.text = task.timeSpent.listDescription
         
         return cell
     }
@@ -106,6 +125,11 @@ class TaskListViewController: UITableViewController {
             tableView.deleteRows(at: [indexPath], with: .fade)
             dataModel?.writeToFile()
         }
+    }
+    
+    // Must manually perform the cell selection segue because it is a custom cell.
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: segueIdentifier, sender: self)
     }
 
 }

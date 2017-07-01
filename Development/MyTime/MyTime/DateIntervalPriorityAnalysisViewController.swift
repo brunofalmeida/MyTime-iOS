@@ -28,6 +28,8 @@ class DateIntervalPriorityAnalysisViewController: TaskListViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        segueIdentifier = "DateIntervalPriorityAnalysis_Task"
 
         // Set up the view's title to match the length of the date interval and the priority
         if let dateInterval = dateInterval, let priority = priority, let dateIntervalLength = dateIntervalLength {
@@ -36,8 +38,5 @@ class DateIntervalPriorityAnalysisViewController: TaskListViewController {
             }
         }
     }
-    
-    
-    
 
 }

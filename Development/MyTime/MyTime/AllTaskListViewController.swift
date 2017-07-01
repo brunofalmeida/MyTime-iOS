@@ -15,6 +15,8 @@ class AllTaskListViewController: TaskListViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        segueIdentifier = "AllTask_Task"
+        
         setup(tasks: dataModel?.allTasks ?? [])
     }
 

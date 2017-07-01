@@ -24,6 +24,8 @@ class PriorityTaskListViewController: TaskListViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        segueIdentifier = "PriorityTaskList_Task"
+        
         // Set the title to match the priority
         title = priority?.name
     }
