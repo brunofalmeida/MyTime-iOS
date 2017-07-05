@@ -8,8 +8,7 @@
 
 import Foundation
 
-
-/// A distinct activity or event for the user to keep track of
+/// An activity or event that the user keeps track of.
 class Task: NSObject, NSCoding {
     
     /// Keys for reading/writing the object from/to a file
@@ -26,7 +25,8 @@ class Task: NSObject, NSCoding {
     let endTime: Date
     var timeSpent: TimeInterval {
         // Make it at least 1 second
-        return TimeInterval(totalSeconds: Int( max(endTime.timeIntervalSince(startTime), 1) ))
+        return TimeInterval(
+            totalSeconds: Int( max(endTime.timeIntervalSince(startTime), 1) ))
     }
     
     
@@ -34,6 +34,7 @@ class Task: NSObject, NSCoding {
         self.name = name
         self.startTime = startTime
         self.endTime = endTime
+        
         super.init()
     }
     

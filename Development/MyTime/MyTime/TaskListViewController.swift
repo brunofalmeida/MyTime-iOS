@@ -44,7 +44,8 @@ class TaskListViewController: UITableViewController {
         super.viewDidLoad()
         
         // Register the custom cell so it can be used in the table
-        tableView.register(UINib(nibName: cellIdentifier, bundle: nil), forCellReuseIdentifier: cellIdentifier)
+        tableView.register(UINib(nibName: cellIdentifier, bundle: nil),
+                           forCellReuseIdentifier: cellIdentifier)
         
         // Default title
 //        title = "Tasks"
@@ -89,15 +90,18 @@ class TaskListViewController: UITableViewController {
     // MARK: - Table View
 
     // Number of rows
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView,
+                            numberOfRowsInSection section: Int) -> Int {
         super.tableView(tableView, numberOfRowsInSection: section)
         
         return tasks.count
     }
 
     // Cell creation
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! ThreeLabelCell
+    override func tableView(_ tableView: UITableView,
+                            cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier,
+                                                 for: indexPath) as! ThreeLabelCell
         
         // TODO - refactor date formatting with TaskDetailViewController
         // Unicode standard: http://www.unicode.org/reports/tr35/tr35-31/tr35-dates.html#Date_Format_Patterns
@@ -129,7 +133,8 @@ class TaskListViewController: UITableViewController {
     }
     
     // Must manually perform the cell selection segue because it is a custom cell.
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView,
+                            didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: segueIdentifier, sender: self)
     }
 

@@ -133,11 +133,14 @@ class TaskDetailViewController: UITableViewController {
 //            print("Navigation stack: \(navigationController.viewControllers)")
             
             // Remove the new task view controller if it exists (2nd last in navigation stack)
-            if (navigationController.viewControllers[navigationController.viewControllers.count - 2] is NewTaskTimerViewController) {
-                navigationController.viewControllers.remove(at: navigationController.viewControllers.count - 2)
+            if (navigationController.viewControllers[navigationController.viewControllers.count - 2]
+                    is NewTaskTimerViewController) {
+                navigationController.viewControllers.remove(
+                    at: navigationController.viewControllers.count - 2)
             }
             
-            // To verify, print the navigation stack after 1 second since the remove operation doesn't appear immediately
+            // To verify, print the navigation stack after 1 second
+            // since the remove operation doesn't appear immediately
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
 //                print("Navigation stack: \(navigationController.viewControllers)")
             }
@@ -163,11 +166,14 @@ class TaskDetailViewController: UITableViewController {
 extension TaskDetailViewController: UITextFieldDelegate {
     
     // Be alerted when the text in the field changes
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+    func textField(_ textField: UITextField,
+                   shouldChangeCharactersIn range: NSRange,
+                   replacementString string: String) -> Bool {
         print(#function)
         
         // Get the modified text
-        if let newName: String = (textField.text as NSString?)?.replacingCharacters(in: range, with: string) {
+        if let newName: String = (textField.text as NSString?)?
+                .replacingCharacters(in: range, with: string) {
             // Update the model and view title
             task?.name = newName
             title = newName

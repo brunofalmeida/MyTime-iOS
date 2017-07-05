@@ -8,13 +8,16 @@
 
 import Foundation
 
+/// Contains the entire set of stored data for the application.
 class DataModel: NSObject, NSCoding {
     
     static let defaultPriorityName = "General"
     static let defaultTaskName = "Untitled"
     
+    /// All saved priorities.
     var priorities: [Priority]
     
+    /// The default (General) priority.
     var defaultPriority: Priority? {
         ensureDefaultPriorityExists()
         
@@ -28,19 +31,21 @@ class DataModel: NSObject, NSCoding {
         return nil
     }
     
+    /// All saved tasks.
     var allTasks: [Task] {
         return priorities.flatMap { $0.tasks }
     }
     
     init(priorities: [Priority] = []) {
         self.priorities = priorities
+        
         super.init()
         
         ensureDefaultPriorityExists()
         ensureCorrect()
     }
     
-    /// Adds the default priority if it does not exist
+    /// Adds the default priority if it does not exist.
     fileprivate func ensureDefaultPriorityExists() {
         if (!priorities.map { $0.name }.contains(DataModel.defaultPriorityName)) {
             priorities.insert(Priority(name: DataModel.defaultPriorityName), at: 0)
@@ -59,12 +64,12 @@ class DataModel: NSObject, NSCoding {
     
     // MARK: NSCoding
     
-    /// Keys for reading/writing the object from/to a file
+    /// Keys for encoding (writing) and decoding (reading) the object
     fileprivate enum CodingKeys: String {
         case priorities
     }
     
-    // Reads from file
+    // Decode (read)
     required convenience init?(coder aDecoder: NSCoder) {
         guard let priorities = aDecoder.decodeObject(forKey: CodingKeys.priorities.rawValue) as? [Priority] else {
             return nil
@@ -73,7 +78,7 @@ class DataModel: NSObject, NSCoding {
         self.init(priorities: priorities)
     }
     
-    // Writes to file
+    // Encode (write)
     func encode(with aCoder: NSCoder) {
         aCoder.encode(priorities, forKey: CodingKeys.priorities.rawValue)
     }
@@ -99,7 +104,7 @@ class DataModel: NSObject, NSCoding {
         return url
     }
     
-    /// Name of actual file to store the data model
+    /// Name of file to store the data model
     fileprivate static var dataModelFilePath = "DataModel.plist"
     
     /// URL to the main tasks file

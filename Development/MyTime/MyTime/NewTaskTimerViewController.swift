@@ -19,6 +19,7 @@ class NewTaskTimerViewController: UIViewController {
     @IBOutlet weak var circleView: UIView!
     @IBOutlet weak var timerLabel: UILabel!
     
+    /// The timer that fires to update the interface with the time elapsed
     fileprivate var timer: Timer?
     
     // The timer's start time (set a temporary value so it's non-nil)
@@ -41,7 +42,10 @@ class NewTaskTimerViewController: UIViewController {
         // Set the timer circle's size and colour
         // rgb(135,206,250) - lightskyblue (http://www.rapidtables.com/web/color/blue-color.htm)
         circleView.layer.cornerRadius = circleView.frame.size.width / 2
-        circleView.backgroundColor = UIColor(red: 135/255.0, green: 206/255.0, blue: 250/255.0, alpha: 0.5)
+        circleView.backgroundColor = UIColor(red: 135/255.0,
+                                             green: 206/255.0,
+                                             blue: 250/255.0,
+                                             alpha: 0.5)
         
         cancelTimer()
     }
@@ -53,7 +57,10 @@ class NewTaskTimerViewController: UIViewController {
         navigationItem.leftBarButtonItem = nil
         
         // Start button in top right
-        let startButton = UIBarButtonItem(title: "Start", style: .done, target: self, action: #selector(startButtonTapped))
+        let startButton = UIBarButtonItem(title: "Start",
+                                          style: .done,
+                                          target: self,
+                                          action: #selector(startButtonTapped))
         navigationItem.rightBarButtonItem = startButton
         
         // Stop the timer
@@ -67,11 +74,15 @@ class NewTaskTimerViewController: UIViewController {
         print(#function)
         
         // Cancel button in top left
-        let cancelButton = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelButtonTapped))
+        let cancelButton = UIBarButtonItem(barButtonSystemItem: .cancel,
+                                           target: self,
+                                           action: #selector(cancelButtonTapped))
         navigationItem.leftBarButtonItem = cancelButton
         
         // Done button in top right
-        let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneButtonTapped))
+        let doneButton = UIBarButtonItem(barButtonSystemItem: .done,
+                                         target: self,
+                                         action: #selector(doneButtonTapped))
         navigationItem.rightBarButtonItem = doneButton
         
         // Initialize the timer's start time
@@ -128,7 +139,9 @@ class NewTaskTimerViewController: UIViewController {
             
             // Create a new task - default priority and name, end time is now
             let priority = dataModel?.defaultPriority
-            let task = Task(name: DataModel.defaultTaskName, startTime: startTime, endTime: Date())
+            let task = Task(name: DataModel.defaultTaskName,
+                            startTime: startTime,
+                            endTime: Date())
             priority?.addTask(task)
             
             destination.setup(task: task)

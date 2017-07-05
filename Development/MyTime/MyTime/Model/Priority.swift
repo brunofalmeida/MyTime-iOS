@@ -8,6 +8,7 @@
 
 import Foundation
 
+/// One of the user's priorities, such as programming, design, or reading.
 class Priority: NSObject, NSCoding {
     
     fileprivate enum CodingKeys: String {

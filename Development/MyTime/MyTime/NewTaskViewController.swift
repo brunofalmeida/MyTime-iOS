@@ -12,18 +12,6 @@ class NewTaskViewController: UITableViewController {
 
     fileprivate weak var dataModel = (UIApplication.shared.delegate as? AppDelegate)?.dataModel
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-
     
     // MARK: - Navigation
 
@@ -33,15 +21,14 @@ class NewTaskViewController: UITableViewController {
             
             // Create a new task - default priority and name, start and end time are now
             let priority = dataModel?.defaultPriority
-            let task = Task(name: DataModel.defaultTaskName, startTime: Date(), endTime: Date())
+            let task = Task(name: DataModel.defaultTaskName,
+                            startTime: Date(),
+                            endTime: Date())
             priority?.addTask(task)
             
             destination.setup(task: task)
         }
     }
  
-
 }
-
-
 

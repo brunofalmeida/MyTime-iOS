@@ -20,7 +20,9 @@ class PriorityListViewController: UITableViewController {
         print("dataModel: \(dataModel as Any)")
         
         // Edit, Add button in top right
-        let addButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addButtonTapped))
+        let addButtonItem = UIBarButtonItem(barButtonSystemItem: .add,
+                                            target: self,
+                                            action: #selector(addButtonTapped))
         navigationItem.rightBarButtonItem = addButtonItem
         navigationItem.rightBarButtonItems = [addButtonItem, editButtonItem]
         
@@ -44,12 +46,17 @@ class PriorityListViewController: UITableViewController {
         print(#function)
         
         // Create an alert
-        let nameAlert = UIAlertController(title: "New Priority", message: nil, preferredStyle: .alert)
+        let nameAlert = UIAlertController(title: "New Priority",
+                                          message: nil,
+                                          preferredStyle: .alert)
         nameAlert.addTextField(configurationHandler: nil)
         
-        nameAlert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: nil))
+        nameAlert.addAction(UIAlertAction(title: "Cancel",
+                                          style: .default,
+                                          handler: nil))
         nameAlert.addAction(UIAlertAction(title: "OK", style: .default) { alertAction in
-            self.dataModel?.priorities.append(Priority(name: nameAlert.textFields?[0].text ?? DataModel.defaultPriorityName))
+            self.dataModel?.priorities.append(Priority(
+                name: nameAlert.textFields?[0].text ?? DataModel.defaultPriorityName))
             self.tableView.reloadData()
             
             print(self.dataModel as Any)
@@ -63,19 +70,23 @@ class PriorityListViewController: UITableViewController {
     // MARK: - Table view data source
 
     // Number of rows = number of priorities
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView,
+                            numberOfRowsInSection section: Int) -> Int {
         return dataModel?.priorities.count ?? 0
     }
 
     // Cell creation
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView,
+                            cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         cell.textLabel?.text = dataModel?.priorities[indexPath.row].name
         return cell
     }
     
     // Support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView,
+                            commit editingStyle: UITableViewCellEditingStyle,
+                            forRowAt indexPath: IndexPath) {
         // Delete the row from the data source
         if editingStyle == .delete {
             dataModel?.priorities.remove(at: indexPath.row)
@@ -90,7 +101,8 @@ class PriorityListViewController: UITableViewController {
     }
     
     // Allow all rows to be deleted except the first row (default priority)
-    override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
+    override func tableView(_ tableView: UITableView,
+                            editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
         if dataModel?.priorities[indexPath.row].name == DataModel.defaultPriorityName {
             return .none
         } else {
@@ -98,22 +110,6 @@ class PriorityListViewController: UITableViewController {
         }
     }
 
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    
     
     // MARK: - Navigation
 

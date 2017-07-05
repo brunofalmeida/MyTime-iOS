@@ -13,6 +13,7 @@ import UIKit
  */
 class PriorityTaskListViewController: TaskListViewController {
 
+    /// The priority to display tasks for.
     fileprivate var priority: Priority?
     
     func setup(priority: Priority) {
@@ -42,6 +43,4 @@ class PriorityTaskListViewController: TaskListViewController {
     */
 
 }
-
-
 

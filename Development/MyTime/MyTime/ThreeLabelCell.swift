@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// A custom table view cell with three labels.
 class ThreeLabelCell: UITableViewCell {
 
     @IBOutlet weak var primaryLabel: UILabel!

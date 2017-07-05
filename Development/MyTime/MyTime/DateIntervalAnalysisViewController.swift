@@ -33,7 +33,9 @@ class DateIntervalAnalysisViewController: UITableViewController {
     
     
     
-    func setup(dateInterval: DateInterval, tasks: [Task], dateIntervalLength: DateIntervalLength) {
+    func setup(dateInterval: DateInterval,
+               tasks: [Task],
+               dateIntervalLength: DateIntervalLength) {
         self.dateInterval = dateInterval
         self.tasks = tasks
         self.dateIntervalLength = dateIntervalLength
@@ -45,7 +47,8 @@ class DateIntervalAnalysisViewController: UITableViewController {
         populatePrioritiesToTasks()
         
         // Set up the view's title to match the length of the date interval examined
-        if let dateInterval = dateInterval, let dateIntervalLength = dateIntervalLength {
+        if let dateInterval = dateInterval,
+                let dateIntervalLength = dateIntervalLength {
             if dateIntervalLength == .week {
                 title = dateInterval.formatForWeek
             }
@@ -78,16 +81,19 @@ class DateIntervalAnalysisViewController: UITableViewController {
 
     // MARK: - Table view data source
 
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView,
+                            numberOfRowsInSection section: Int) -> Int {
         return prioritiesToTasksArray.count
     }
 
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView,
+                            cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         
         cell.textLabel?.text = prioritiesToTasksArray[indexPath.row].key.name
-        cell.detailTextLabel?.text = prioritiesToTasksArray[indexPath.row].value.totalTimeSpent.listDescription
+        cell.detailTextLabel?.text =
+            prioritiesToTasksArray[indexPath.row].value.totalTimeSpent.listDescription
     
         return cell
     }
@@ -104,11 +110,13 @@ class DateIntervalAnalysisViewController: UITableViewController {
                 let row = tableView.indexPathForSelectedRow?.row,
                 let dateInterval = dateInterval,
                 let dateIntervalLength = dateIntervalLength {
-            destination.setup(tasks: prioritiesToTasksArray[row].value, dateInterval: dateInterval, priority: prioritiesToTasksArray[row].key, dateIntervalLength: dateIntervalLength)
+            destination.setup(tasks: prioritiesToTasksArray[row].value,
+                              dateInterval: dateInterval,
+                              priority: prioritiesToTasksArray[row].key,
+                              dateIntervalLength: dateIntervalLength)
         }
     }
  
-
 }
 
 

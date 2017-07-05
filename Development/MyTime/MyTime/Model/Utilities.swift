@@ -91,7 +91,8 @@ extension DateInterval {
 }
 
 
-// TODO - Add search method - filter all tasks for those with specific parameters (priority, date interval, etc.)
+// TODO - Add search method - filter all tasks for those with specific parameters
+// (priority, date interval, etc.)
 // Can specify some parameters and not others
 extension Array where Element == Task {
     
@@ -108,7 +109,7 @@ extension Array where Element == Task {
 
 /**
  A convenience function for printing an optional value without having to cast to Any.
- Not explicitly casting to Any produces a warning.
+ Normally, not explicitly casting to Any produces a warning.
  */
 func print(optional: Any?) {
     print(optional as Any)

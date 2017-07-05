@@ -18,7 +18,10 @@ class DateIntervalPriorityAnalysisViewController: TaskListViewController {
     var dateIntervalLength: DateIntervalAnalysisViewController.DateIntervalLength?
     
     
-    func setup(tasks: [Task], dateInterval: DateInterval, priority: Priority, dateIntervalLength: DateIntervalAnalysisViewController.DateIntervalLength) {
+    func setup(tasks: [Task],
+               dateInterval: DateInterval,
+               priority: Priority,
+               dateIntervalLength: DateIntervalAnalysisViewController.DateIntervalLength) {
         super.setup(tasks: tasks)
         
         self.dateInterval = dateInterval
@@ -32,7 +35,9 @@ class DateIntervalPriorityAnalysisViewController: TaskListViewController {
         segueIdentifier = "DateIntervalPriorityAnalysis_Task"
 
         // Set up the view's title to match the length of the date interval and the priority
-        if let dateInterval = dateInterval, let priority = priority, let dateIntervalLength = dateIntervalLength {
+        if let dateInterval = dateInterval,
+                let priority = priority,
+                let dateIntervalLength = dateIntervalLength {
             if dateIntervalLength == .week {
                 title = "\(dateInterval.formatForWeek) (\(priority.name))"
             }
@@ -40,3 +45,4 @@ class DateIntervalPriorityAnalysisViewController: TaskListViewController {
     }
 
 }
+

@@ -25,7 +25,7 @@ class AnalysisViewController: UITableViewController {
         populateIntervalsToTasks()
     }
     
-    /// Populates `intervalsToTasks` and `intervalsToTasksArray` with date intervals and the corresponding tasks.
+    /// Populates `intervalsToTasks` and `intervalsToTasksArray`.
     func populateIntervalsToTasks() {
 //        print(#function)
         
@@ -58,20 +58,27 @@ class AnalysisViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let destination = segue.destination as? DateIntervalAnalysisViewController,
                 let row = tableView.indexPathForSelectedRow?.row {
-            destination.setup(dateInterval: intervalsToTasksArray[row].key, tasks: intervalsToTasksArray[row].value, dateIntervalLength: .week)
+            destination.setup(dateInterval: intervalsToTasksArray[row].key,
+                              tasks: intervalsToTasksArray[row].value,
+                              dateIntervalLength: .week)
         }
     }
  
-    
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    // Number of rows
+    override func tableView(_ tableView: UITableView,
+                            numberOfRowsInSection section: Int) -> Int {
         return intervalsToTasksArray.count
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    // Cell creation
+    override func tableView(_ tableView: UITableView,
+                            cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         
-        cell.textLabel?.text = intervalsToTasksArray[indexPath.row].key.formatForWeek
-        cell.detailTextLabel?.text = intervalsToTasksArray[indexPath.row].value.totalTimeSpent.listDescription
+        cell.textLabel?.text =
+            intervalsToTasksArray[indexPath.row].key.formatForWeek
+        cell.detailTextLabel?.text =
+            intervalsToTasksArray[indexPath.row].value.totalTimeSpent.listDescription
         
         return cell
     }
