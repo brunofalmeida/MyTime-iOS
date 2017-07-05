@@ -116,6 +116,54 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		15362D561F0C750900F4B2B7 /* NewTab */ = {
+			isa = PBXGroup;
+			children = (
+				15D648871EEC4B9900826CEA /* NewTaskViewController.swift */,
+				155D77721E024CBF00560215 /* NewTaskTimerViewController.swift */,
+			);
+			name = NewTab;
+			sourceTree = "<group>";
+		};
+		15362D571F0C753C00F4B2B7 /* PrioritiesTab */ = {
+			isa = PBXGroup;
+			children = (
+				151BCBF61E7CC87100B89CF0 /* PriorityListViewController.swift */,
+				151740DD1EEC406B00F7B7E1 /* PriorityTaskListViewController.swift */,
+			);
+			name = PrioritiesTab;
+			sourceTree = "<group>";
+		};
+		15362D581F0C754500F4B2B7 /* TasksTab */ = {
+			isa = PBXGroup;
+			children = (
+				15D6488B1EEC501A00826CEA /* AllTaskListViewController.swift */,
+			);
+			name = TasksTab;
+			sourceTree = "<group>";
+		};
+		15362D591F0C754A00F4B2B7 /* AnalysisTab */ = {
+			isa = PBXGroup;
+			children = (
+				152065691EEC716800F3B342 /* AnalysisViewController.swift */,
+				15211EEF1EF6CE9A00AF07CE /* DateIntervalAnalysisViewController.swift */,
+				15EC386E1F045F7E00912718 /* DateIntervalPriorityAnalysisViewController.swift */,
+			);
+			name = AnalysisTab;
+			sourceTree = "<group>";
+		};
+		15362D5A1F0C75D100F4B2B7 /* AllTabs */ = {
+			isa = PBXGroup;
+			children = (
+				15EC38701F046A9000912718 /* ThreeLabelCell.swift */,
+				15EC38711F046A9000912718 /* ThreeLabelCell.xib */,
+				15E9BB8D1E024815007004C8 /* TaskListViewController.swift */,
+				15E9BB8F1E024815007004C8 /* TaskDetailViewController.swift */,
+				158DF2CA1EBA53E100AD98E0 /* PrioritySelectionViewController.swift */,
+			);
+			name = AllTabs;
+			sourceTree = "<group>";
+		};
 		15B776781E73B96E00595C27 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -152,24 +200,16 @@
 			isa = PBXGroup;
 			children = (
 				15E9BB8B1E024815007004C8 /* AppDelegate.swift */,
-				15E9BB8D1E024815007004C8 /* TaskListViewController.swift */,
-				15D648871EEC4B9900826CEA /* NewTaskViewController.swift */,
-				155D77721E024CBF00560215 /* NewTaskTimerViewController.swift */,
-				151BCBF61E7CC87100B89CF0 /* PriorityListViewController.swift */,
-				151740DD1EEC406B00F7B7E1 /* PriorityTaskListViewController.swift */,
-				15D6488B1EEC501A00826CEA /* AllTaskListViewController.swift */,
-				152065691EEC716800F3B342 /* AnalysisViewController.swift */,
-				15211EEF1EF6CE9A00AF07CE /* DateIntervalAnalysisViewController.swift */,
-				15EC386E1F045F7E00912718 /* DateIntervalPriorityAnalysisViewController.swift */,
-				15E9BB8F1E024815007004C8 /* TaskDetailViewController.swift */,
-				158DF2CA1EBA53E100AD98E0 /* PrioritySelectionViewController.swift */,
+				15362D5A1F0C75D100F4B2B7 /* AllTabs */,
+				15362D561F0C750900F4B2B7 /* NewTab */,
+				15362D571F0C753C00F4B2B7 /* PrioritiesTab */,
+				15362D581F0C754500F4B2B7 /* TasksTab */,
+				15362D591F0C754A00F4B2B7 /* AnalysisTab */,
 				15B776781E73B96E00595C27 /* Model */,
 				15E9BB911E024815007004C8 /* Main.storyboard */,
-				15E9BB941E024815007004C8 /* Assets.xcassets */,
 				15E9BB961E024815007004C8 /* LaunchScreen.storyboard */,
+				15E9BB941E024815007004C8 /* Assets.xcassets */,
 				15E9BB991E024815007004C8 /* Info.plist */,
-				15EC38701F046A9000912718 /* ThreeLabelCell.swift */,
-				15EC38711F046A9000912718 /* ThreeLabelCell.xib */,
 			);
 			path = MyTime;
 			sourceTree = "<group>";
