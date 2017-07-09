@@ -32,10 +32,13 @@ class AnalysisViewController: UITableViewController {
         intervalsToTasks = [:]
         
         if let dataModel = dataModel {
+            
             // For each task saved
             for task in dataModel.allTasks {
+                
                 // Get the date interval for the week containing this task
-                let interval = task.startTime.dateIntervalForWeek()
+                // TODO - change interval length
+                let interval = task.startTime.dateInterval(for: .week)
                 
                 // Check whether the date interval is already stored, and add the task appropriately
                 if intervalsToTasks.keys.contains(interval) {

@@ -12,10 +12,22 @@ import UIKit
 class DateIntervalAnalysisViewController: UITableViewController {
 
     /// The length of the date interval being examined.
-    enum DateIntervalLength {
-        case day
-        case week
-        case month
+    enum DateIntervalLength: String {
+        
+        case day = "Day"
+        case week = "Week"
+        case month = "Month"
+        
+        var calendarComponent: Calendar.Component {
+            switch self {
+            case .day:
+                return .day
+            case .week:
+                return .weekOfYear
+            case .month:
+                return .month
+            }
+        }
     }
     
     /// The date interval being examined for time analysis.

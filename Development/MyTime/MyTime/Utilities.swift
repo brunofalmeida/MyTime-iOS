@@ -21,34 +21,22 @@ extension Date {
         return self.components([component]).value(for: component)
     }
     
-    /// - Returns: The date interval for the week containing the date.
-    func dateIntervalForWeek() -> DateInterval {
-//        print(#function)
+    /// - Returns: The date interval for the given unit of time containing the date.
+    func dateInterval(for length: DateIntervalAnalysisViewController.DateIntervalLength) -> DateInterval {
         
-        let now = Date()
-        var interval = DateInterval()
-        
-        // Monday, 0:00 AM
-        var startMatching = DateComponents()
-        startMatching.weekday = 2
-        startMatching.hour = 0
-        startMatching.minute = 0
-        startMatching.second = 0
-        startMatching.nanosecond = 0
-        interval.start = Calendar.current.nextDate(after: self, matching: startMatching, matchingPolicy: .strict, repeatedTimePolicy: .last, direction: .backward) ?? now
-        
-        // Sunday, 11:59 PM
-        var endMatching = DateComponents()
-        endMatching.weekday = 1
-        endMatching.hour = 23
-        endMatching.minute = 59
-        endMatching.second = 59
-        endMatching.nanosecond = pow(base: 10, exponent: 8) - 1 // Using (10^9 - 1) would round to the next day
-        interval.end = Calendar.current.nextDate(after: self, matching: endMatching, matchingPolicy: .strict, repeatedTimePolicy: .last, direction: .forward) ?? now
-        
-//        print("Interval: \(interval)")
-        
-        return interval
+        // Get the date interval for the unit of time containing this task
+        if var interval = Calendar.current.dateInterval(of: length.calendarComponent, for: self) {
+            
+            // Subtract 1 ms from the end so the interval's string doesn't overlap to the next interval
+            // e.g. July 2-8 and July 9-15 instead of July 2-9 and July 9-16
+            interval.end -= 0.001
+            
+            return interval
+            
+        } else {
+            assertionFailure()
+            return DateInterval()
+        }
     }
     
 }
