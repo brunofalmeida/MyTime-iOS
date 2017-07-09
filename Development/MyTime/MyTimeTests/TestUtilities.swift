@@ -12,13 +12,13 @@ import XCTest
 class TestUtilities: XCTestCase {
     
     func testDateIntervalFormatting1() {
-        // June 10, 2017, 9:41 PM
-        XCTAssertEqual(Date(timeIntervalSinceReferenceDate: 518838113).dateIntervalForWeek().formatForWeek, "June 5-11")
+        // Saturday June 10, 2017, 9:41 PM
+        XCTAssertEqual(Date(timeIntervalSinceReferenceDate: 518838113).dateInterval(for: .week).format(for: .week), "June 4-10")
     }
     
     func testDateIntervalFormatting2() {
-        // June 30, 2017, 9:16 PM
-        XCTAssertEqual(Date(timeIntervalSinceReferenceDate: 520564601).dateIntervalForWeek().formatForWeek, "June 26 - July 2")
+        // Friday June 30, 2017, 9:16 PM
+        XCTAssertEqual(Date(timeIntervalSinceReferenceDate: 520564601).dateInterval(for: .week).format(for: .week), "June 25 - July 1")
     }
     
 }

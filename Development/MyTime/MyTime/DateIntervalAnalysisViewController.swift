@@ -62,7 +62,7 @@ class DateIntervalAnalysisViewController: UITableViewController {
         if let dateInterval = dateInterval,
                 let dateIntervalLength = dateIntervalLength {
             if dateIntervalLength == .week {
-                title = dateInterval.formatForWeek
+                title = dateInterval.format(for: .week)
             }
         }
     }

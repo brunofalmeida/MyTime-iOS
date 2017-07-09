@@ -79,7 +79,7 @@ class AnalysisViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         
         cell.textLabel?.text =
-            intervalsToTasksArray[indexPath.row].key.formatForWeek
+            intervalsToTasksArray[indexPath.row].key.format(for: .week)
         cell.detailTextLabel?.text =
             intervalsToTasksArray[indexPath.row].value.totalTimeSpent.listDescription
         

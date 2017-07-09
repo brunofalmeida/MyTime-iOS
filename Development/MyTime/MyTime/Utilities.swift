@@ -49,31 +49,47 @@ extension DateInterval {
      For example, returns "June 5-11" (when the months are the same)
      or "June 26 - July 2" (when the months are different).
      */
-    var formatForWeek: String {
+    func format(for length: DateIntervalAnalysisViewController.DateIntervalLength) -> String {
         // TODO - update to use DateIntervalFormatter?
         
-        var text = ""
-        
-        let startFormat = DateFormatter()
-        let endFormat = DateFormatter()
-        
-        // Full month name (MMMM), day with at least 1 digit (d)
-        startFormat.dateFormat = "MMMM d"
-        text += "\(startFormat.string(from: start))"
-        
-        if start.component(.month) == end.component(.month) {
-            // Same months
-            text += "-"
-            endFormat.dateFormat = "d"
-        } else {
-            // Different months
-            text += " - "
-            endFormat.dateFormat = "MMMM d"
+        switch length {
+            
+        case .day:
+            let format = DateFormatter()
+            format.dateFormat = "MMMM d"
+            return format.string(from: start)
+            
+        case .week:
+            var text = ""
+            
+            let startFormat = DateFormatter()
+            let endFormat = DateFormatter()
+            
+            // Full month name (MMMM), day with at least 1 digit (d)
+            startFormat.dateFormat = "MMMM d"
+            text += startFormat.string(from: start)
+            
+            if start.component(.month) == end.component(.month) {
+                // If same month
+                text += "-"
+                endFormat.dateFormat = "d"
+            } else {
+                // If different months
+                text += " - "
+                endFormat.dateFormat = "MMMM d"
+            }
+            
+            text += "\(endFormat.string(from: end))"
+            
+            return text
+            
+        case .month:
+            let format = DateFormatter()
+            format.dateFormat = "MMMM"
+            return format.string(from: start)
+            
         }
         
-        text += "\(endFormat.string(from: end))"
-        
-        return text
     }
     
 }
