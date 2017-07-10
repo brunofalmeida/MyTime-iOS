@@ -1,5 +1,5 @@
 //
-//  AnalysisViewController.swift
+//  DateIntervalListViewController.swift
 //  MyTime
 //
 //  Created by Bruno Almeida on 2017-06-10.
@@ -8,7 +8,8 @@
 
 import UIKit
 
-class AnalysisViewController: UITableViewController {
+// TODO - make this screen a selection of by day, week, or month
+class DateIntervalListViewController: UITableViewController {
     
     fileprivate weak var dataModel = (UIApplication.shared.delegate as? AppDelegate)?.dataModel
     

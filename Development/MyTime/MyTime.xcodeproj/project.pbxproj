@@ -11,7 +11,7 @@
 		151818AC1EECD1B800E51B79 /* TestUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 151818AB1EECD1B800E51B79 /* TestUtilities.swift */; };
 		151818AE1EECD9EB00E51B79 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 151818AD1EECD9EB00E51B79 /* Utilities.swift */; };
 		151BCBF71E7CC87100B89CF0 /* PriorityListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 151BCBF61E7CC87100B89CF0 /* PriorityListViewController.swift */; };
-		1520656A1EEC716800F3B342 /* AnalysisViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 152065691EEC716800F3B342 /* AnalysisViewController.swift */; };
+		1520656A1EEC716800F3B342 /* DateIntervalListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 152065691EEC716800F3B342 /* DateIntervalListViewController.swift */; };
 		15211EF01EF6CE9A00AF07CE /* DateIntervalAnalysisViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15211EEF1EF6CE9A00AF07CE /* DateIntervalAnalysisViewController.swift */; };
 		155D77731E024CBF00560215 /* NewTaskTimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 155D77721E024CBF00560215 /* NewTaskTimerViewController.swift */; };
 		157F79C71E15CFC400ED6452 /* TimeInterval.swift in Sources */ = {isa = PBXBuildFile; fileRef = 157F79C61E15CFC400ED6452 /* TimeInterval.swift */; };
@@ -59,7 +59,7 @@
 		151818AB1EECD1B800E51B79 /* TestUtilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestUtilities.swift; sourceTree = "<group>"; };
 		151818AD1EECD9EB00E51B79 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		151BCBF61E7CC87100B89CF0 /* PriorityListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PriorityListViewController.swift; sourceTree = "<group>"; };
-		152065691EEC716800F3B342 /* AnalysisViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalysisViewController.swift; sourceTree = "<group>"; };
+		152065691EEC716800F3B342 /* DateIntervalListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateIntervalListViewController.swift; sourceTree = "<group>"; };
 		15211EEF1EF6CE9A00AF07CE /* DateIntervalAnalysisViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateIntervalAnalysisViewController.swift; sourceTree = "<group>"; };
 		155D77721E024CBF00560215 /* NewTaskTimerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewTaskTimerViewController.swift; sourceTree = "<group>"; };
 		157F79C61E15CFC400ED6452 /* TimeInterval.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeInterval.swift; sourceTree = "<group>"; };
@@ -145,7 +145,7 @@
 		15362D591F0C754A00F4B2B7 /* AnalysisTab */ = {
 			isa = PBXGroup;
 			children = (
-				152065691EEC716800F3B342 /* AnalysisViewController.swift */,
+				152065691EEC716800F3B342 /* DateIntervalListViewController.swift */,
 				15211EEF1EF6CE9A00AF07CE /* DateIntervalAnalysisViewController.swift */,
 				15EC386E1F045F7E00912718 /* DateIntervalPriorityAnalysisViewController.swift */,
 			);
@@ -381,7 +381,7 @@
 				151818AE1EECD9EB00E51B79 /* Utilities.swift in Sources */,
 				158DF2CB1EBA53E100AD98E0 /* PrioritySelectionViewController.swift in Sources */,
 				15B776751E73B63C00595C27 /* Priority.swift in Sources */,
-				1520656A1EEC716800F3B342 /* AnalysisViewController.swift in Sources */,
+				1520656A1EEC716800F3B342 /* DateIntervalListViewController.swift in Sources */,
 				155D77731E024CBF00560215 /* NewTaskTimerViewController.swift in Sources */,
 				157F79C91E15DA7000ED6452 /* Task.swift in Sources */,
 				15211EF01EF6CE9A00AF07CE /* DateIntervalAnalysisViewController.swift in Sources */,
