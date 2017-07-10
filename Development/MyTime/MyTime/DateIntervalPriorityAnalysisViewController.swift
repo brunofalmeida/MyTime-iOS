@@ -38,9 +38,7 @@ class DateIntervalPriorityAnalysisViewController: TaskListViewController {
         if let dateInterval = dateInterval,
                 let priority = priority,
                 let dateIntervalLength = dateIntervalLength {
-            if dateIntervalLength == .week {
-                title = "\(dateInterval.format(for: .week)) (\(priority.name))"
-            }
+            title = "\(dateInterval.format(for: dateIntervalLength)) (\(priority.name))"
         }
     }
 
