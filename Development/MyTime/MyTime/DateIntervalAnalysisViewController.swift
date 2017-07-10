@@ -10,38 +10,6 @@ import UIKit
 
 /// Displays the priorities with tasks in the given date interval.
 class DateIntervalAnalysisViewController: UITableViewController {
-
-    /// The length of the date interval being examined.
-    enum DateIntervalLength: String {
-        
-        case day = "Day"
-        case week = "Week"
-        case month = "Month"
-        
-        static let allCases: [DateIntervalLength] = [.day, .week, .month]
-        
-        var calendarComponent: Calendar.Component {
-            switch self {
-            case .day:
-                return .day
-            case .week:
-                return .weekOfYear
-            case .month:
-                return .month
-            }
-        }
-        
-        var adjective: String {
-            switch self {
-            case .day:
-                return "Daily"
-            case .week:
-                return "Weekly"
-            case .month:
-                return "Monthly"
-            }
-        }
-    }
     
     /// The date interval being examined for time analysis.
     var dateInterval: DateInterval?

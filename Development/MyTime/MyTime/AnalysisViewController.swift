@@ -25,13 +25,13 @@ class AnalysisViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return DateIntervalAnalysisViewController.DateIntervalLength.allCases.count
+        return DateIntervalLength.allCases.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        cell.textLabel?.text = "By \(DateIntervalAnalysisViewController.DateIntervalLength.allCases[indexPath.row].rawValue)"
+        cell.textLabel?.text = "By \(DateIntervalLength.allCases[indexPath.row].rawValue)"
         return cell
     }
 
@@ -42,7 +42,7 @@ class AnalysisViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let destination = segue.destination as? DateIntervalListViewController,
                 let row = tableView.indexPathForSelectedRow?.row {
-            destination.setup(dateIntervalLength: DateIntervalAnalysisViewController.DateIntervalLength.allCases[row])
+            destination.setup(dateIntervalLength: DateIntervalLength.allCases[row])
         }
     }
     

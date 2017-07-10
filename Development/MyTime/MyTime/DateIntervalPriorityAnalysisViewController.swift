@@ -15,13 +15,13 @@ class DateIntervalPriorityAnalysisViewController: TaskListViewController {
     /// The priority being analyzed.
     var priority: Priority?
     /// The length of the date interval, used for string formatting.
-    var dateIntervalLength: DateIntervalAnalysisViewController.DateIntervalLength?
+    var dateIntervalLength: DateIntervalLength?
     
     
     func setup(tasks: [Task],
                dateInterval: DateInterval,
                priority: Priority,
-               dateIntervalLength: DateIntervalAnalysisViewController.DateIntervalLength) {
+               dateIntervalLength: DateIntervalLength) {
         super.setup(tasks: tasks)
         
         self.dateInterval = dateInterval

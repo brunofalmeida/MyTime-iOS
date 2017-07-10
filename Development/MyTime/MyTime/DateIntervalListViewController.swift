@@ -12,7 +12,7 @@ class DateIntervalListViewController: UITableViewController {
     
     fileprivate weak var dataModel = (UIApplication.shared.delegate as? AppDelegate)?.dataModel
     
-    var dateIntervalLength: DateIntervalAnalysisViewController.DateIntervalLength?
+    var dateIntervalLength: DateIntervalLength?
     /// The date intervals containing saved tasks, mapped to their corresponding tasks.
     var intervalsToTasks: [DateInterval: [Task]] = [:]
     /// `intervalsToTasks` as a sorted array.
@@ -21,7 +21,7 @@ class DateIntervalListViewController: UITableViewController {
     
     
     
-    func setup(dateIntervalLength: DateIntervalAnalysisViewController.DateIntervalLength) {
+    func setup(dateIntervalLength: DateIntervalLength) {
         self.dateIntervalLength = dateIntervalLength
     }
     
