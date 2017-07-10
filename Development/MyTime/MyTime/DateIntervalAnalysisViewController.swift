@@ -18,6 +18,8 @@ class DateIntervalAnalysisViewController: UITableViewController {
         case week = "Week"
         case month = "Month"
         
+        static let allCases: [DateIntervalLength] = [.day, .week, .month]
+        
         var calendarComponent: Calendar.Component {
             switch self {
             case .day:
@@ -26,6 +28,17 @@ class DateIntervalAnalysisViewController: UITableViewController {
                 return .weekOfYear
             case .month:
                 return .month
+            }
+        }
+        
+        var adjective: String {
+            switch self {
+            case .day:
+                return "Daily"
+            case .week:
+                return "Weekly"
+            case .month:
+                return "Monthly"
             }
         }
     }

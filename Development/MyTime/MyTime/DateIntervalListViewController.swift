@@ -8,11 +8,11 @@
 
 import UIKit
 
-// TODO - make this screen a selection of by day, week, or month
 class DateIntervalListViewController: UITableViewController {
     
     fileprivate weak var dataModel = (UIApplication.shared.delegate as? AppDelegate)?.dataModel
     
+    var dateIntervalLength: DateIntervalAnalysisViewController.DateIntervalLength?
     /// The date intervals containing saved tasks, mapped to their corresponding tasks.
     var intervalsToTasks: [DateInterval: [Task]] = [:]
     /// `intervalsToTasks` as a sorted array.
@@ -20,6 +20,18 @@ class DateIntervalListViewController: UITableViewController {
     
     
     
+    
+    func setup(dateIntervalLength: DateIntervalAnalysisViewController.DateIntervalLength) {
+        self.dateIntervalLength = dateIntervalLength
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        if let dateIntervalLength = dateIntervalLength {
+            title = "\(dateIntervalLength.adjective) Analysis"
+        }
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -32,14 +44,13 @@ class DateIntervalListViewController: UITableViewController {
         
         intervalsToTasks = [:]
         
-        if let dataModel = dataModel {
+        if let dataModel = dataModel, let dateIntervalLength = dateIntervalLength {
             
             // For each task saved
             for task in dataModel.allTasks {
                 
-                // Get the date interval for the week containing this task
-                // TODO - change interval length
-                let interval = task.startTime.dateInterval(for: .week)
+                // Get the appropriate date interval containing this task
+                let interval = task.startTime.dateInterval(for: dateIntervalLength)
                 
                 // Check whether the date interval is already stored, and add the task appropriately
                 if intervalsToTasks.keys.contains(interval) {
@@ -61,10 +72,11 @@ class DateIntervalListViewController: UITableViewController {
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let destination = segue.destination as? DateIntervalAnalysisViewController,
-                let row = tableView.indexPathForSelectedRow?.row {
+                let row = tableView.indexPathForSelectedRow?.row,
+                let dateIntervalLength = dateIntervalLength {
             destination.setup(dateInterval: intervalsToTasksArray[row].key,
                               tasks: intervalsToTasksArray[row].value,
-                              dateIntervalLength: .week)
+                              dateIntervalLength: dateIntervalLength)
         }
     }
  
@@ -79,8 +91,10 @@ class DateIntervalListViewController: UITableViewController {
                             cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         
-        cell.textLabel?.text =
-            intervalsToTasksArray[indexPath.row].key.format(for: .week)
+        if let dateIntervalLength = dateIntervalLength {
+            cell.textLabel?.text =
+                intervalsToTasksArray[indexPath.row].key.format(for: dateIntervalLength)
+        }
         cell.detailTextLabel?.text =
             intervalsToTasksArray[indexPath.row].value.totalTimeSpent.listDescription
         

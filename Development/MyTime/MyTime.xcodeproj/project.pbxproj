@@ -147,10 +147,10 @@
 		15362D591F0C754A00F4B2B7 /* AnalysisTab */ = {
 			isa = PBXGroup;
 			children = (
+				156F25D41F14290500B9087F /* AnalysisViewController.swift */,
 				152065691EEC716800F3B342 /* DateIntervalListViewController.swift */,
 				15211EEF1EF6CE9A00AF07CE /* DateIntervalAnalysisViewController.swift */,
 				15EC386E1F045F7E00912718 /* DateIntervalPriorityAnalysisViewController.swift */,
-				156F25D41F14290500B9087F /* AnalysisViewController.swift */,
 			);
 			name = AnalysisTab;
 			sourceTree = "<group>";
