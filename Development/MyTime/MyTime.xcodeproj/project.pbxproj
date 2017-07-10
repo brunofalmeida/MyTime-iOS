@@ -14,6 +14,7 @@
 		1520656A1EEC716800F3B342 /* DateIntervalListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 152065691EEC716800F3B342 /* DateIntervalListViewController.swift */; };
 		15211EF01EF6CE9A00AF07CE /* DateIntervalAnalysisViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15211EEF1EF6CE9A00AF07CE /* DateIntervalAnalysisViewController.swift */; };
 		155D77731E024CBF00560215 /* NewTaskTimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 155D77721E024CBF00560215 /* NewTaskTimerViewController.swift */; };
+		156F25D51F14290500B9087F /* AnalysisViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 156F25D41F14290500B9087F /* AnalysisViewController.swift */; };
 		157F79C71E15CFC400ED6452 /* TimeInterval.swift in Sources */ = {isa = PBXBuildFile; fileRef = 157F79C61E15CFC400ED6452 /* TimeInterval.swift */; };
 		157F79C91E15DA7000ED6452 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 157F79C81E15DA7000ED6452 /* Task.swift */; };
 		158DF2CB1EBA53E100AD98E0 /* PrioritySelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158DF2CA1EBA53E100AD98E0 /* PrioritySelectionViewController.swift */; };
@@ -62,6 +63,7 @@
 		152065691EEC716800F3B342 /* DateIntervalListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateIntervalListViewController.swift; sourceTree = "<group>"; };
 		15211EEF1EF6CE9A00AF07CE /* DateIntervalAnalysisViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateIntervalAnalysisViewController.swift; sourceTree = "<group>"; };
 		155D77721E024CBF00560215 /* NewTaskTimerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewTaskTimerViewController.swift; sourceTree = "<group>"; };
+		156F25D41F14290500B9087F /* AnalysisViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalysisViewController.swift; sourceTree = "<group>"; };
 		157F79C61E15CFC400ED6452 /* TimeInterval.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeInterval.swift; sourceTree = "<group>"; };
 		157F79C81E15DA7000ED6452 /* Task.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		158DF2CA1EBA53E100AD98E0 /* PrioritySelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrioritySelectionViewController.swift; sourceTree = "<group>"; };
@@ -148,6 +150,7 @@
 				152065691EEC716800F3B342 /* DateIntervalListViewController.swift */,
 				15211EEF1EF6CE9A00AF07CE /* DateIntervalAnalysisViewController.swift */,
 				15EC386E1F045F7E00912718 /* DateIntervalPriorityAnalysisViewController.swift */,
+				156F25D41F14290500B9087F /* AnalysisViewController.swift */,
 			);
 			name = AnalysisTab;
 			sourceTree = "<group>";
@@ -380,6 +383,7 @@
 				15E9BB8E1E024815007004C8 /* TaskListViewController.swift in Sources */,
 				151818AE1EECD9EB00E51B79 /* Utilities.swift in Sources */,
 				158DF2CB1EBA53E100AD98E0 /* PrioritySelectionViewController.swift in Sources */,
+				156F25D51F14290500B9087F /* AnalysisViewController.swift in Sources */,
 				15B776751E73B63C00595C27 /* Priority.swift in Sources */,
 				1520656A1EEC716800F3B342 /* DateIntervalListViewController.swift in Sources */,
 				155D77731E024CBF00560215 /* NewTaskTimerViewController.swift in Sources */,
