@@ -8,6 +8,7 @@
 
 import UIKit
 
+// TODO - stop timer automatically at (24h - 1s)
 class NewTaskTimerViewController: UIViewController {
     
     fileprivate enum Segues: String {

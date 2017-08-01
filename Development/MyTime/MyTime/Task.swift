@@ -21,8 +21,17 @@ class Task: NSObject, NSCoding {
     var name: String
     var priority: Priority?
     
-    let startTime: Date
-    let endTime: Date
+    var startTime: Date {
+        didSet {
+            validateStartAndEndTimes()
+        }
+    }
+    var endTime: Date {
+        didSet {
+            validateStartAndEndTimes()
+        }
+    }
+    
     var timeSpent: TimeInterval {
         // Make it at least 1 second
         return TimeInterval(
@@ -40,6 +49,19 @@ class Task: NSObject, NSCoding {
     
     convenience init(name: String, startTime: Date, timeSpent: TimeInterval) {
         self.init(name: name, startTime: startTime, endTime: startTime + Double(timeSpent.totalSeconds))
+    }
+    
+    /// Ensures `startTime` and `endTime` are valid with respect to each other.
+    func validateStartAndEndTimes() {
+        // While end time comes before start time, add 1 day to end time
+        while endTime < startTime {
+            endTime += Date.secondsPerDay
+        }
+        
+        // While end time is more than 24 hours after start time, subtract 1 day from end time
+        while endTime >= startTime + Date.secondsPerDay {
+            endTime -= Date.secondsPerDay
+        }
     }
     
     

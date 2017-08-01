@@ -105,13 +105,11 @@ class TaskListViewController: UITableViewController {
         
         // TODO - refactor date formatting with TaskDetailViewController
         // Unicode standard: http://www.unicode.org/reports/tr35/tr35-31/tr35-dates.html#Date_Format_Patterns
-        let dateFormat = DateFormatter()
-        dateFormat.dateFormat = "EEE MMM d"
         
         let task = tasks[indexPath.row]
         
         cell.primaryLabel?.text = task.name
-        cell.secondaryLabel?.text = dateFormat.string(from: task.startTime)
+        cell.secondaryLabel?.text = task.startTime.string(withFormat: "EEE MMM d")
         cell.detailLabel?.text = task.timeSpent.listDescription
         
         return cell

@@ -44,6 +44,13 @@ enum DateIntervalLength: String {
 
 extension Date {
     
+    // Time unit conversions
+    static let secondsPerMinute = 60
+    static let minutesPerHour = 60
+    static let hoursPerDay = 24
+    
+    static let secondsPerDay: Foundation.TimeInterval = Double(Date.secondsPerMinute * Date.minutesPerHour * Date.hoursPerDay)
+    
     /// Gets date components for the current calendar.
     func components(_ components: Set<Calendar.Component>) -> DateComponents {
         return Calendar.current.dateComponents(components, from: self)
@@ -72,6 +79,27 @@ extension Date {
         }
     }
     
+    /**
+     Formats the date according to the given format string,
+     without having to create a DateFormatter object.
+     */
+    func string(withFormat format: String) -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = format
+        return formatter.string(from: self)
+    }
+    
+    /**
+     Formats the date according to the given date and time styles,
+     without having to create a DateFormatter object.
+     */
+    func string(withDateStyle dateStyle: DateFormatter.Style = .none, withTimeStyle timeStyle: DateFormatter.Style = .none) -> String {
+        let formatter = DateFormatter()
+        formatter.dateStyle = dateStyle
+        formatter.timeStyle = timeStyle
+        return formatter.string(from: self)
+    }
+    
 }
 
 
@@ -88,43 +116,53 @@ extension DateInterval {
         switch length {
             
         case .day:
-            let format = DateFormatter()
-            format.dateFormat = "MMMM d"
-            return format.string(from: start)
+            return start.string(withFormat: "MMMM d")
             
         case .week:
             var text = ""
             
-            let startFormat = DateFormatter()
-            let endFormat = DateFormatter()
-            
             // Full month name (MMMM), day with at least 1 digit (d)
-            startFormat.dateFormat = "MMMM d"
-            text += startFormat.string(from: start)
+            text += start.string(withFormat: "MMMM d")
             
             if start.component(.month) == end.component(.month) {
                 // If same month
                 text += "-"
-                endFormat.dateFormat = "d"
+                text += end.string(withFormat: "d")
             } else {
                 // If different months
                 text += " - "
-                endFormat.dateFormat = "MMMM d"
+                text += end.string(withFormat: "MMMM d")
             }
-            
-            text += "\(endFormat.string(from: end))"
             
             return text
             
         case .month:
-            let format = DateFormatter()
-            format.dateFormat = "MMMM"
-            return format.string(from: start)
-            
+            return start.string(withFormat: "MMMM")
         }
         
     }
     
+}
+
+extension Calendar.Component {
+    func all() -> Set<Calendar.Component> {
+        return [.calendar,
+                .day,
+                .era,
+                .hour,
+                .minute,
+                .month,
+                .nanosecond,
+                .quarter,
+                .second,
+                .timeZone,
+                .weekOfMonth,
+                .weekOfYear,
+                .weekday,
+                .weekdayOrdinal,
+                .year,
+                .yearForWeekOfYear]
+    }
 }
 
 

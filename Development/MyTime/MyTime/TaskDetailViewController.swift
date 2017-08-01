@@ -10,6 +10,8 @@ import UIKit
 
 class TaskDetailViewController: UITableViewController {
     
+    fileprivate weak var dataModel = (UIApplication.shared.delegate as? AppDelegate)?.dataModel
+    
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var priorityLabel: UILabel!
     
@@ -75,32 +77,29 @@ class TaskDetailViewController: UITableViewController {
         // http://www.codingexplorer.com/swiftly-getting-human-readable-date-nsdateformatter/
         
         // Date format - Full day name, full month name, day with at least 1 digit
-        let dateFormat = DateFormatter()
-        dateFormat.dateFormat = "EEEE, MMMM d"
+        let dateFormat = "EEEE, MMMM d"
         
         // Time format - Hour, minute, AM/PM
-        let timeFormat = DateFormatter()
-        timeFormat.timeStyle = .short
-        
+        let timeStyle = DateFormatter.Style.short
         
         if let task = task {
             // Date
             if let dateTextField = self.dateTextField {
-                dateTextField.text = dateFormat.string(from: task.startTime)
+                dateTextField.text = task.startTime.string(withFormat: dateFormat)
             } else {
                 assertionFailure()
             }
             
             // Start time
             if let startTextField = self.startTextField {
-                startTextField.text = timeFormat.string(from: task.startTime)
+                startTextField.text = task.startTime.string(withTimeStyle: timeStyle)
             } else {
                 assertionFailure()
             }
             
             // End time
             if let endTextField = self.endTextField {
-                endTextField.text = timeFormat.string(from: task.endTime)
+                endTextField.text = task.endTime.string(withTimeStyle: timeStyle)
             } else {
                 assertionFailure()
             }
@@ -149,10 +148,103 @@ class TaskDetailViewController: UITableViewController {
 //            navigationController.popToRootViewController(animated: true)
         }
         
+        let datePicker = UIDatePicker()
+        let startPicker = UIDatePicker()
+        let endPicker = UIDatePicker()
         
-        dateTextField.inputView = UIDatePicker()
-        startTextField.inputView = UIDatePicker()
-        endTextField.inputView = UIDatePicker()
+        datePicker.datePickerMode = .date
+        startPicker.datePickerMode = .time
+        endPicker.datePickerMode = .time
+        
+        if let task = task {
+            datePicker.date = task.startTime
+            startPicker.date = task.startTime
+            endPicker.date = task.endTime
+        }
+        
+        datePicker.addTarget(self, action: #selector(datePickerValueChanged), for: .valueChanged)
+        startPicker.addTarget(self, action: #selector(startPickerValueChanged), for: .valueChanged)
+        endPicker.addTarget(self, action: #selector(endPickerValueChanged), for: .valueChanged)
+        
+        dateTextField.inputView = datePicker
+        startTextField.inputView = startPicker
+        endTextField.inputView = endPicker
+    }
+    
+    func datePickerValueChanged(sender: UIDatePicker) {
+        print("Date changed: \(sender.date)")
+        
+        if let task = task {
+            // Get the date components from the picker
+            var startComponents = sender.date.components([.calendar, .year, .month, .day])
+            
+            // Get the time components from the existing start time
+            startComponents.setValue(task.startTime.component(.hour), for: .hour)
+            startComponents.setValue(task.startTime.component(.minute), for: .minute)
+            startComponents.setValue(task.startTime.component(.second), for: .second)
+            
+            if let startDate = startComponents.date {
+                task.startTime = startDate
+            } else {
+                assertionFailure("Could not create a date from the components")
+            }
+        } else {
+            assertionFailure()
+        }
+        
+        configureDateAndTimeTableSection()
+        dataModel?.writeToFile()
+    }
+    
+    func startPickerValueChanged(sender: UIDatePicker) {
+        print("Start changed: \(sender.date)")
+        
+        if let task = task {
+            // Get the time components from the picker
+            var startComponents = sender.date.components([.calendar, .hour, .minute, .second])
+            
+            // Get the date components from the existing start time
+            startComponents.setValue(task.startTime.component(.year), for: .year)
+            startComponents.setValue(task.startTime.component(.month), for: .month)
+            startComponents.setValue(task.startTime.component(.day), for: .day)
+            startComponents.setValue(0, for: .nanosecond)
+            
+            if let startDate = startComponents.date {
+                task.startTime = startDate
+            } else {
+                assertionFailure("Could not create a date from the components")
+            }
+        } else {
+            assertionFailure()
+        }
+        
+        configureDateAndTimeTableSection()
+        dataModel?.writeToFile()
+    }
+    
+    func endPickerValueChanged(sender: UIDatePicker) {
+        print("End changed: \(sender.date)")
+        
+        if let task = task {
+            // Get the time components from the picker
+            var endComponents = sender.date.components([.calendar, .hour, .minute, .second])
+            
+            // Get the date components from the existing start time
+            endComponents.setValue(task.startTime.component(.year), for: .year)
+            endComponents.setValue(task.startTime.component(.month), for: .month)
+            endComponents.setValue(task.startTime.component(.day), for: .day)
+            
+            if let endDate = endComponents.date {
+                task.endTime = endDate
+            } else {
+                assertionFailure("Could not create a date from the components")
+            }
+        } else {
+            assertionFailure()
+        }
+        
+        configureDateAndTimeTableSection()
+        dataModel?.writeToFile()
     }
     
     
