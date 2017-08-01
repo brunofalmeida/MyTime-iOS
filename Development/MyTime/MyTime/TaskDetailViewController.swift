@@ -13,9 +13,9 @@ class TaskDetailViewController: UITableViewController {
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var priorityLabel: UILabel!
     
-    @IBOutlet weak var dateLabel: UILabel!
-    @IBOutlet weak var startTimeLabel: UILabel!
-    @IBOutlet weak var endTimeLabel: UILabel!
+    @IBOutlet weak var dateTextField: UITextField!
+    @IBOutlet weak var startTextField: UITextField!
+    @IBOutlet weak var endTextField: UITextField!
     @IBOutlet weak var timeSpentLabel: UILabel!
     
     // The task to display and edit
@@ -85,22 +85,22 @@ class TaskDetailViewController: UITableViewController {
         
         if let task = task {
             // Date
-            if let dateLabel = self.dateLabel {
-                dateLabel.text = dateFormat.string(from: task.startTime)
+            if let dateTextField = self.dateTextField {
+                dateTextField.text = dateFormat.string(from: task.startTime)
             } else {
                 assertionFailure()
             }
             
             // Start time
-            if let startTimeLabel = self.startTimeLabel {
-                startTimeLabel.text = timeFormat.string(from: task.startTime)
+            if let startTextField = self.startTextField {
+                startTextField.text = timeFormat.string(from: task.startTime)
             } else {
                 assertionFailure()
             }
             
             // End time
-            if let endTimeLabel = self.endTimeLabel {
-                endTimeLabel.text = timeFormat.string(from: task.endTime)
+            if let endTextField = self.endTextField {
+                endTextField.text = timeFormat.string(from: task.endTime)
             } else {
                 assertionFailure()
             }
@@ -148,6 +148,11 @@ class TaskDetailViewController: UITableViewController {
 //            // Might need this later
 //            navigationController.popToRootViewController(animated: true)
         }
+        
+        
+        dateTextField.inputView = UIDatePicker()
+        startTextField.inputView = UIDatePicker()
+        endTextField.inputView = UIDatePicker()
     }
     
     
