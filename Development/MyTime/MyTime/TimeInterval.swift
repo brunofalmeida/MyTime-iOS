@@ -93,6 +93,10 @@ func !=(left: TimeInterval, right: TimeInterval) -> Bool {
     return !(left == right)
 }
 
+func >(left: TimeInterval, right: TimeInterval) -> Bool {
+    return left.totalSeconds > right.totalSeconds
+}
+
 func +(left: TimeInterval, right: TimeInterval) -> TimeInterval {
     return TimeInterval(totalSeconds: left.totalSeconds + right.totalSeconds)
 }

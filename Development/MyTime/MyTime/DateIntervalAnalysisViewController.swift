@@ -61,11 +61,8 @@ class DateIntervalAnalysisViewController: UITableViewController {
             }
         }
         
-        // Convert the dictionary to an array
-        prioritiesToTasksArray = Array(prioritiesToTasks)
-        
-        // TODO - sort priorities in descending order of the sum of their tasks' times elapsed
-        // Use reduce to sum time intervals?
+        // Convert the dictionary to an array, sorted in descending order of the total time spent on tasks
+        prioritiesToTasksArray = Array(prioritiesToTasks).sorted(by: { $0.value.totalTimeSpent > $1.value.totalTimeSpent })
     }
 
 
