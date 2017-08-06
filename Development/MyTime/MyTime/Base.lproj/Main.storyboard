@@ -149,7 +149,7 @@
             </objects>
             <point key="canvasLocation" x="1697" y="-630"/>
         </scene>
-        <!--Date Interval Analysis View Controller-->
+        <!--Title-->
         <scene sceneID="Pl9-i3-JJc">
             <objects>
                 <tableViewController id="jTq-AP-MxV" customClass="DateIntervalAnalysisViewController" customModule="MyTime" customModuleProvider="target" sceneMemberID="viewController">
@@ -191,10 +191,37 @@
                             <outlet property="delegate" destination="jTq-AP-MxV" id="Xd6-zZ-oYd"/>
                         </connections>
                     </tableView>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Title" id="SdK-2u-9GO">
+                        <barButtonItem key="rightBarButtonItem" title="Graph" id="Lvc-8l-Mge">
+                            <connections>
+                                <segue destination="crL-fg-nwO" kind="show" id="2da-Jz-8pr"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bCW-79-g8V" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3382" y="-630"/>
+        </scene>
+        <!--Graph Analysis View Controller-->
+        <scene sceneID="MoP-sF-lcN">
+            <objects>
+                <viewController id="crL-fg-nwO" customClass="GraphAnalysisViewController" customModule="MyTime" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="0I0-b5-1Fa"/>
+                        <viewControllerLayoutGuide type="bottom" id="7WO-EU-WI5"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="qvs-wk-xgd">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="k9V-TF-Lw5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4220" y="-1379"/>
         </scene>
         <!--Date Interval Priority Analysis View Controller-->
         <scene sceneID="L85-eJ-H0v">

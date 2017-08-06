@@ -20,6 +20,7 @@
 		158DF2CB1EBA53E100AD98E0 /* PrioritySelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158DF2CA1EBA53E100AD98E0 /* PrioritySelectionViewController.swift */; };
 		159D7AAE1F376DD700CE232B /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 159D7AAB1F376D4800CE232B /* Charts.framework */; };
 		159D7AAF1F376DD700CE232B /* Charts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 159D7AAB1F376D4800CE232B /* Charts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		15A2072A1F37DCCB00E9CCAF /* GraphAnalysisViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A207291F37DCCB00E9CCAF /* GraphAnalysisViewController.swift */; };
 		15B776751E73B63C00595C27 /* Priority.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B776741E73B63C00595C27 /* Priority.swift */; };
 		15B776771E73B8E700595C27 /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B776761E73B8E700595C27 /* DataModel.swift */; };
 		15CDA3C81E7C38CF0032CFD0 /* TestDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15CDA3C71E7C38CF0032CFD0 /* TestDataModel.swift */; };
@@ -105,6 +106,7 @@
 		157F79C81E15DA7000ED6452 /* Task.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		158DF2CA1EBA53E100AD98E0 /* PrioritySelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrioritySelectionViewController.swift; sourceTree = "<group>"; };
 		159D7AA51F376D4800CE232B /* Charts.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Charts.xcodeproj; path = Charts/Charts.xcodeproj; sourceTree = "<group>"; };
+		15A207291F37DCCB00E9CCAF /* GraphAnalysisViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphAnalysisViewController.swift; sourceTree = "<group>"; };
 		15B776741E73B63C00595C27 /* Priority.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Priority.swift; sourceTree = "<group>"; };
 		15B776761E73B8E700595C27 /* DataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
 		15CDA3C71E7C38CF0032CFD0 /* TestDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestDataModel.swift; sourceTree = "<group>"; };
@@ -189,6 +191,7 @@
 				156F25D41F14290500B9087F /* AnalysisViewController.swift */,
 				152065691EEC716800F3B342 /* DateIntervalListViewController.swift */,
 				15211EEF1EF6CE9A00AF07CE /* DateIntervalAnalysisViewController.swift */,
+				15A207291F37DCCB00E9CCAF /* GraphAnalysisViewController.swift */,
 				15EC386E1F045F7E00912718 /* DateIntervalPriorityAnalysisViewController.swift */,
 			);
 			name = AnalysisTab;
@@ -454,6 +457,7 @@
 				15E9BB901E024815007004C8 /* TaskDetailViewController.swift in Sources */,
 				157F79C71E15CFC400ED6452 /* TimeInterval.swift in Sources */,
 				15EC38721F046A9000912718 /* ThreeLabelCell.swift in Sources */,
+				15A2072A1F37DCCB00E9CCAF /* GraphAnalysisViewController.swift in Sources */,
 				15E9BB8E1E024815007004C8 /* TaskListViewController.swift in Sources */,
 				151818AE1EECD9EB00E51B79 /* Utilities.swift in Sources */,
 				158DF2CB1EBA53E100AD98E0 /* PrioritySelectionViewController.swift in Sources */,
