@@ -18,6 +18,8 @@
 		157F79C71E15CFC400ED6452 /* TimeInterval.swift in Sources */ = {isa = PBXBuildFile; fileRef = 157F79C61E15CFC400ED6452 /* TimeInterval.swift */; };
 		157F79C91E15DA7000ED6452 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 157F79C81E15DA7000ED6452 /* Task.swift */; };
 		158DF2CB1EBA53E100AD98E0 /* PrioritySelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158DF2CA1EBA53E100AD98E0 /* PrioritySelectionViewController.swift */; };
+		159D7AAE1F376DD700CE232B /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 159D7AAB1F376D4800CE232B /* Charts.framework */; };
+		159D7AAF1F376DD700CE232B /* Charts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 159D7AAB1F376D4800CE232B /* Charts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		15B776751E73B63C00595C27 /* Priority.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B776741E73B63C00595C27 /* Priority.swift */; };
 		15B776771E73B8E700595C27 /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B776761E73B8E700595C27 /* DataModel.swift */; };
 		15CDA3C81E7C38CF0032CFD0 /* TestDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15CDA3C71E7C38CF0032CFD0 /* TestDataModel.swift */; };
@@ -39,6 +41,27 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		159D7AAA1F376D4800CE232B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 159D7AA51F376D4800CE232B /* Charts.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 06165F241D8110E600722320;
+			remoteInfo = Charts;
+		};
+		159D7AAC1F376D4800CE232B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 159D7AA51F376D4800CE232B /* Charts.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 06165F2E1D8110E600722320;
+			remoteInfo = ChartsTests;
+		};
+		159D7AB01F376DD700CE232B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 159D7AA51F376D4800CE232B /* Charts.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 06165F231D8110E600722320;
+			remoteInfo = Charts;
+		};
 		15E9BB9F1E024815007004C8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 15E9BB801E024814007004C8 /* Project object */;
@@ -55,6 +78,20 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		159D7AB21F376DD700CE232B /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				159D7AAF1F376DD700CE232B /* Charts.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		151740DD1EEC406B00F7B7E1 /* PriorityTaskListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PriorityTaskListViewController.swift; sourceTree = "<group>"; };
 		151818AB1EECD1B800E51B79 /* TestUtilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestUtilities.swift; sourceTree = "<group>"; };
@@ -67,6 +104,7 @@
 		157F79C61E15CFC400ED6452 /* TimeInterval.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeInterval.swift; sourceTree = "<group>"; };
 		157F79C81E15DA7000ED6452 /* Task.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		158DF2CA1EBA53E100AD98E0 /* PrioritySelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrioritySelectionViewController.swift; sourceTree = "<group>"; };
+		159D7AA51F376D4800CE232B /* Charts.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Charts.xcodeproj; path = Charts/Charts.xcodeproj; sourceTree = "<group>"; };
 		15B776741E73B63C00595C27 /* Priority.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Priority.swift; sourceTree = "<group>"; };
 		15B776761E73B8E700595C27 /* DataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
 		15CDA3C71E7C38CF0032CFD0 /* TestDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestDataModel.swift; sourceTree = "<group>"; };
@@ -98,6 +136,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				159D7AAE1F376DD700CE232B /* Charts.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -167,6 +206,15 @@
 			name = AllTabs;
 			sourceTree = "<group>";
 		};
+		159D7AA61F376D4800CE232B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				159D7AAB1F376D4800CE232B /* Charts.framework */,
+				159D7AAD1F376D4800CE232B /* ChartsTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		15B776781E73B96E00595C27 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -183,6 +231,7 @@
 			isa = PBXGroup;
 			children = (
 				15E9BB8A1E024815007004C8 /* MyTime */,
+				159D7AA51F376D4800CE232B /* Charts.xcodeproj */,
 				15E9BBA11E024815007004C8 /* MyTimeTests */,
 				15E9BBAC1E024815007004C8 /* MyTimeUITests */,
 				15E9BB891E024815007004C8 /* Products */,
@@ -249,10 +298,12 @@
 				15E9BB841E024815007004C8 /* Sources */,
 				15E9BB851E024815007004C8 /* Frameworks */,
 				15E9BB861E024815007004C8 /* Resources */,
+				159D7AB21F376DD700CE232B /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				159D7AB11F376DD700CE232B /* PBXTargetDependency */,
 			);
 			name = MyTime;
 			productName = MyTime;
@@ -335,6 +386,12 @@
 			mainGroup = 15E9BB7F1E024814007004C8;
 			productRefGroup = 15E9BB891E024815007004C8 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 159D7AA61F376D4800CE232B /* Products */;
+					ProjectRef = 159D7AA51F376D4800CE232B /* Charts.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				15E9BB871E024815007004C8 /* MyTime */,
@@ -343,6 +400,23 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		159D7AAB1F376D4800CE232B /* Charts.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Charts.framework;
+			remoteRef = 159D7AAA1F376D4800CE232B /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		159D7AAD1F376D4800CE232B /* ChartsTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = ChartsTests.xctest;
+			remoteRef = 159D7AAC1F376D4800CE232B /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		15E9BB861E024815007004C8 /* Resources */ = {
@@ -422,6 +496,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		159D7AB11F376DD700CE232B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Charts;
+			targetProxy = 159D7AB01F376DD700CE232B /* PBXContainerItemProxy */;
+		};
 		15E9BBA01E024815007004C8 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 15E9BB871E024815007004C8 /* MyTime */;
@@ -552,6 +631,7 @@
 		15E9BBB31E024815007004C8 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = Q8A32W8MGA;
 				INFOPLIST_FILE = MyTime/Info.plist;
@@ -565,6 +645,7 @@
 		15E9BBB41E024815007004C8 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = Q8A32W8MGA;
 				INFOPLIST_FILE = MyTime/Info.plist;
