@@ -109,7 +109,7 @@ class TaskListViewController: UITableViewController {
         let task = tasks[indexPath.row]
         
         cell.primaryLabel?.text = task.name
-        cell.secondaryLabel?.text = task.startTime.string(withFormat: "EEE MMM d")
+        cell.secondaryLabel?.text = task.startTime.string(withStringLength: .long)
         cell.detailLabel?.text = task.timeSpent.listDescription
         
         return cell

@@ -79,6 +79,23 @@ extension Date {
         }
     }
     
+    /// A length for string formatting.
+    enum StringLength {
+        case short
+        case long
+    }
+    
+    func string(withStringLength stringLength: StringLength) -> String {
+        switch stringLength {
+            
+        case .short:
+            return string(withFormat: "EEE MMM d")
+        case .long:
+            return string(withFormat: "EEEE, MMMM d")
+            
+        }
+    }
+    
     /**
      Formats the date according to the given format string,
      without having to create a DateFormatter object.

@@ -76,30 +76,24 @@ class TaskDetailViewController: UITableViewController {
         // Date and time formatting
         // http://www.codingexplorer.com/swiftly-getting-human-readable-date-nsdateformatter/
         
-        // Date format - Full day name, full month name, day with at least 1 digit
-        let dateFormat = "EEEE, MMMM d"
-        
-        // Time format - Hour, minute, AM/PM
-        let timeStyle = DateFormatter.Style.short
-        
         if let task = task {
             // Date
             if let dateTextField = self.dateTextField {
-                dateTextField.text = task.startTime.string(withFormat: dateFormat)
+                dateTextField.text = task.startTime.string(withStringLength: .long)
             } else {
                 assertionFailure()
             }
             
             // Start time
             if let startTextField = self.startTextField {
-                startTextField.text = task.startTime.string(withTimeStyle: timeStyle)
+                startTextField.text = task.startTime.string(withTimeStyle: DateFormatter.Style.short)
             } else {
                 assertionFailure()
             }
             
             // End time
             if let endTextField = self.endTextField {
-                endTextField.text = task.endTime.string(withTimeStyle: timeStyle)
+                endTextField.text = task.endTime.string(withTimeStyle: DateFormatter.Style.short)
             } else {
                 assertionFailure()
             }
