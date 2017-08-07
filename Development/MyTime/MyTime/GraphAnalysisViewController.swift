@@ -9,8 +9,13 @@
 import UIKit
 import Charts
 
-/// Displays a pie chart of the amount of time spent on each priority in the given date interval.
-class GraphAnalysisViewController: UIViewController {
+/**
+ Displays a pie graph of the amount of time spent on each priority in the given date interval.
+ 
+ The words "graph" and "chart" are used interchangeably here,
+ since "graph" makes more sense to the user but the Charts library uses the term "chart".
+ */
+class GraphAnalysisViewController: UIViewController, IValueFormatter {
     
     @IBOutlet weak var pieChartView: PieChartView!
     
@@ -25,11 +30,19 @@ class GraphAnalysisViewController: UIViewController {
     /// `prioritiesToTimeIntervals` as a sorted array.
     var prioritiesToTimeIntervalsArray: [(key: Priority, value: TimeInterval)] = []
     
-    /// Some standard colours for the graph.
+    /// Calculates the sum of all time intervals.
+    var totalTimeInterval: TimeInterval {
+        return TimeInterval(totalSeconds: prioritiesToTimeIntervalsArray
+            .map { pair in pair.value }                                                 // Get the time intervals
+            .reduce(0) { (result, timeInterval) in result + timeInterval.totalSeconds } // Sum the time intervals
+        )
+    }
+    
+    /// Some standard colours for the chart.
     static let standardColours: [UIColor] = [
-        UIColor.red, UIColor.blue, UIColor.yellow,
-        UIColor.purple, UIColor.green, UIColor.orange,
-        UIColor.cyan, UIColor.magenta
+        UIColor.red, UIColor.blue, UIColor.yellow,      // Primary
+        UIColor.purple, UIColor.green, UIColor.orange,  // Secondary
+        UIColor.cyan, UIColor.magenta                   // Other
     ]
 
     
@@ -60,11 +73,11 @@ class GraphAnalysisViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        setupGraph()
+        setupChart()
     }
     
-    /// Sets up and displays the data on the pie graph.
-    func setupGraph() {
+    /// Sets up and displays the data on the pie chart.
+    func setupChart() {
         var values: [PieChartDataEntry] = []
         var colours: [UIColor] = []
         
@@ -90,11 +103,36 @@ class GraphAnalysisViewController: UIViewController {
             }
         }
         
-        // Create the data set and graph
+        // Data set
         let dataSet = PieChartDataSet(values: values, label: nil)
         dataSet.colors = colours
+        dataSet.valueFormatter = self
+        
+        // Data
         let data = PieChartData(dataSet: dataSet)
+        
+        // Chart
+        pieChartView.drawHoleEnabled = false
+        pieChartView.legend.enabled = false
+        pieChartView.chartDescription?.text = nil
         pieChartView.data = data
+    }
+    
+    
+    // MARK: - IValueFormatter
+    
+    // Formats the text labels for each entry in the pie chart
+    func stringForValue(_ value: Double,
+                        entry: ChartDataEntry,
+                        dataSetIndex: Int,
+                        viewPortHandler: ViewPortHandler?) -> String {
+        
+        let timeIntervalString = TimeInterval(totalSeconds: Int(value.rounded())).listDescription
+        
+        let percent = value / Double(totalTimeInterval.totalSeconds) * 100.0
+        let percentString = String.init(format: "%.1f", percent) + "%"
+        
+        return "\(timeIntervalString) (\(percentString))"
     }
 
 
@@ -107,6 +145,8 @@ class GraphAnalysisViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    
 
 }
 
