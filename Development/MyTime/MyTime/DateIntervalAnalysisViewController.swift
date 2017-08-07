@@ -93,14 +93,28 @@ class DateIntervalAnalysisViewController: UITableViewController {
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
         if let destination = segue.destination as? DateIntervalPriorityAnalysisViewController,
                 let row = tableView.indexPathForSelectedRow?.row,
                 let dateInterval = dateInterval,
                 let dateIntervalLength = dateIntervalLength {
+            
             destination.setup(tasks: prioritiesToTasksArray[row].value,
                               dateInterval: dateInterval,
                               priority: prioritiesToTasksArray[row].key,
                               dateIntervalLength: dateIntervalLength)
+        }
+        
+        else if let destination = segue.destination as? GraphAnalysisViewController,
+                let dateInterval = dateInterval,
+                let dateIntervalLength = dateIntervalLength {
+            
+            var prioritiesToTimeIntervals: [Priority: TimeInterval] = [:]
+            for (key, value) in prioritiesToTasks {
+                prioritiesToTimeIntervals[key] = value.totalTimeSpent
+            }
+            
+            destination.setup(dateInterval: dateInterval, dateIntervalLength: dateIntervalLength, prioritiesToTimeIntervals: prioritiesToTimeIntervals)
         }
     }
  

@@ -216,8 +216,23 @@
                     <view key="view" contentMode="scaleToFill" id="qvs-wk-xgd">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="COL-wW-Kf2" customClass="PieChartView" customModule="Charts">
+                                <rect key="frame" x="16" y="64" width="343" height="559"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="7WO-EU-WI5" firstAttribute="top" secondItem="COL-wW-Kf2" secondAttribute="bottom" id="63K-nf-Eov"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="COL-wW-Kf2" secondAttribute="trailing" id="R82-gL-pJ0"/>
+                            <constraint firstItem="COL-wW-Kf2" firstAttribute="leading" secondItem="qvs-wk-xgd" secondAttribute="leadingMargin" id="bzY-79-Wzq"/>
+                            <constraint firstItem="COL-wW-Kf2" firstAttribute="top" secondItem="0I0-b5-1Fa" secondAttribute="bottom" id="xHe-qw-usq"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="pieChartView" destination="COL-wW-Kf2" id="ooJ-4Q-3DL"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="k9V-TF-Lw5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -675,7 +690,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="le5-YM-kEi">
-                                <rect key="frame" x="87" y="233" width="200" height="200"/>
+                                <rect key="frame" x="87.5" y="233.5" width="200" height="200"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0:00" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iwj-g1-Wzp">
                                         <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>

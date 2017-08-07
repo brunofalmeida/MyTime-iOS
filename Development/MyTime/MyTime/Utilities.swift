@@ -7,7 +7,7 @@
 //
 
 import Foundation
-
+import UIKit
 
 /// The length of time for a date interval.
 enum DateIntervalLength: String {
@@ -177,6 +177,41 @@ extension Array where Element == Task {
             result + task.timeSpent
         }
     }
+}
+
+
+extension Int {
+    
+    /// - Returns: A random integer in the range [min, max] (inclusive).
+    static func random(min: Int, max: Int) -> Int {
+        return Int(arc4random()) % (max - min + 1) + min
+    }
+    
+}
+
+extension Double {
+    
+    /// - Returns: A random double in the range [0, 1] (inclusive).
+    private static func random0To1() -> Double {
+        return Double(arc4random()) / Double(UInt32.max)
+    }
+    
+    /// - Returns: A random double in the range [min, max] (inclusive).
+    static func random(min: Double, max: Double) -> Double {
+        return random0To1() * (max - min) + min
+    }
+    
+}
+
+
+extension UIColor {
+    
+    /// A convenience initializer to use `Double` values without having to convert to `CGFloat`.
+    @nonobjc
+    convenience init(red: Double, green: Double, blue: Double, alpha: Double) {
+        self.init(red: CGFloat(red), green: CGFloat(green), blue: CGFloat(blue), alpha: CGFloat(alpha))
+    }
+    
 }
 
 
