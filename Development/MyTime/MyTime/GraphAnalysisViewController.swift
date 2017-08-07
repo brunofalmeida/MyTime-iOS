@@ -61,7 +61,7 @@ class GraphAnalysisViewController: UIViewController, IValueFormatter {
         
         // Title
         if let dateIntervalLength = dateIntervalLength {
-            title = dateInterval?.format(for: dateIntervalLength)
+            title = dateInterval?.format(for: dateIntervalLength, stringLength: .long)
         } else {
             assertionFailure()
         }

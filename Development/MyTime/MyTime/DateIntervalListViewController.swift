@@ -93,7 +93,7 @@ class DateIntervalListViewController: UITableViewController {
         
         if let dateIntervalLength = dateIntervalLength {
             cell.textLabel?.text =
-                intervalsToTasksArray[indexPath.row].key.format(for: dateIntervalLength)
+                intervalsToTasksArray[indexPath.row].key.format(for: dateIntervalLength, stringLength: .long)
         }
         cell.detailTextLabel?.text =
             intervalsToTasksArray[indexPath.row].value.totalTimeSpent.listDescription

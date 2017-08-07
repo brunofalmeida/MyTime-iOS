@@ -102,27 +102,43 @@ extension Date {
     
 }
 
+// Unicode date/time formatting standard: http://www.unicode.org/reports/tr35/tr35-31/tr35-dates.html#Date_Format_Patterns
 
 extension DateInterval {
+    
+    /// A length for string formatting.
+    enum StringLength {
+        case short
+        case long
+    }
     
     /**
      Formats the date interval to a string with the months and days.
      For example, returns "June 5-11" (when the months are the same)
      or "June 26 - July 2" (when the months are different).
      */
-    func format(for length: DateIntervalLength) -> String {
+    func format(for length: DateIntervalLength, stringLength: StringLength) -> String {
         // TODO - update to use DateIntervalFormatter?
+        
+        // Use short format by default
+        var dayFormat = "MMM d"
+        var monthFormat = "MMM"
+        
+        // If long format
+        if stringLength == .long {
+            dayFormat = "MMMM d"
+            monthFormat = "MMMM"
+        }
         
         switch length {
             
         case .day:
-            return start.string(withFormat: "MMMM d")
+            return start.string(withFormat: dayFormat)
             
         case .week:
             var text = ""
             
-            // Full month name (MMMM), day with at least 1 digit (d)
-            text += start.string(withFormat: "MMMM d")
+            text += start.string(withFormat: dayFormat)
             
             if start.component(.month) == end.component(.month) {
                 // If same month
@@ -131,13 +147,14 @@ extension DateInterval {
             } else {
                 // If different months
                 text += " - "
-                text += end.string(withFormat: "MMMM d")
+                text += end.string(withFormat: dayFormat)
             }
             
             return text
             
         case .month:
-            return start.string(withFormat: "MMMM")
+            return start.string(withFormat: monthFormat)
+            
         }
         
     }

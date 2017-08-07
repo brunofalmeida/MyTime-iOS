@@ -34,15 +34,19 @@ class DateIntervalAnalysisViewController: UITableViewController {
         self.dateIntervalLength = dateIntervalLength
     }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        // Set up the view's title to match the length of the date interval examined
+        if let dateInterval = dateInterval, let dateIntervalLength = dateIntervalLength {
+            title = dateInterval.format(for: dateIntervalLength, stringLength: .long)
+        }
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         populatePrioritiesToTasks()
-        
-        // Set up the view's title to match the length of the date interval examined
-        if let dateInterval = dateInterval, let dateIntervalLength = dateIntervalLength {
-            title = dateInterval.format(for: dateIntervalLength)
-        }
     }
     
     /// Populates `prioritiesToTasks` and `prioritiesToTasksArray`.
