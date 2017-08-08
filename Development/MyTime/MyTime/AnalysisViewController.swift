@@ -31,7 +31,7 @@ class AnalysisViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        cell.textLabel?.text = "By \(DateIntervalLength.allCases[indexPath.row].rawValue)"
+        cell.textLabel?.text = DateIntervalLength.allCases[indexPath.row].adjective
         return cell
     }
 
@@ -42,6 +42,9 @@ class AnalysisViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let destination = segue.destination as? DateIntervalListViewController,
                 let row = tableView.indexPathForSelectedRow?.row {
+            
+            setBackButtonTitle("Analysis")
+            
             destination.setup(dateIntervalLength: DateIntervalLength.allCases[row])
         }
     }

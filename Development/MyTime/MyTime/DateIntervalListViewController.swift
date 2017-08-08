@@ -74,6 +74,9 @@ class DateIntervalListViewController: UITableViewController {
         if let destination = segue.destination as? DateIntervalAnalysisViewController,
                 let row = tableView.indexPathForSelectedRow?.row,
                 let dateIntervalLength = dateIntervalLength {
+            
+            setBackButtonTitle(dateIntervalLength.adjective)
+            
             destination.setup(dateInterval: intervalsToTasksArray[row].key,
                               tasks: intervalsToTasksArray[row].value,
                               dateIntervalLength: dateIntervalLength)

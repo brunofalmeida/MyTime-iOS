@@ -34,17 +34,13 @@ class DateIntervalAnalysisViewController: UITableViewController {
         self.dateIntervalLength = dateIntervalLength
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
         // Set up the view's title to match the length of the date interval examined
         if let dateInterval = dateInterval, let dateIntervalLength = dateIntervalLength {
             title = dateInterval.format(for: dateIntervalLength, stringLength: .long)
         }
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
         
         populatePrioritiesToTasks()
     }
@@ -112,6 +108,8 @@ class DateIntervalAnalysisViewController: UITableViewController {
         else if let destination = segue.destination as? GraphAnalysisViewController,
                 let dateInterval = dateInterval,
                 let dateIntervalLength = dateIntervalLength {
+            
+            setBackButtonTitleAsBack()
             
             var prioritiesToTimeIntervals: [Priority: TimeInterval] = [:]
             for (key, value) in prioritiesToTasks {

@@ -249,6 +249,23 @@ extension UIColor {
 }
 
 
+extension UIViewController {
+    
+    func setBackButtonTitle(_ title: String) {
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: title, style: .plain, target: nil, action: nil)
+    }
+    
+    func setBackButtonTitleAsEmpty() {
+        setBackButtonTitle("")
+    }
+    
+    func setBackButtonTitleAsBack() {
+        setBackButtonTitle("Back")
+    }
+    
+}
+
+
 
 
 /**

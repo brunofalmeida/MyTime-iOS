@@ -9,6 +9,7 @@
 import UIKit
 
 // TODO - stop timer automatically at (24h - 1s)
+// TODO - change time display so it has a constant width
 class NewTaskTimerViewController: UIViewController {
     
     fileprivate enum Segues: String {
