@@ -13,7 +13,7 @@ class TaskDetailViewController: UITableViewController {
     fileprivate weak var dataModel = (UIApplication.shared.delegate as? AppDelegate)?.dataModel
     
     @IBOutlet weak var nameTextField: UITextField!
-    @IBOutlet weak var priorityLabel: UILabel!
+    @IBOutlet weak var priorityTextField: UITextField!
     
     @IBOutlet weak var dateTextField: UITextField!
     @IBOutlet weak var startTextField: UITextField!
@@ -60,8 +60,8 @@ class TaskDetailViewController: UITableViewController {
             }
             
             // Priority
-            if let priorityLabel = self.priorityLabel {
-                priorityLabel.text = task.priority?.description
+            if let priorityTextField = self.priorityTextField {
+                priorityTextField.text = task.priority?.description
             } else {
                 assertionFailure()
             }
@@ -142,6 +142,14 @@ class TaskDetailViewController: UITableViewController {
 //            navigationController.popToRootViewController(animated: true)
         }
         
+        let priorityPicker = UIPickerView()
+        priorityPicker.dataSource = self
+        priorityPicker.delegate = self
+        if let priority = task?.priority, let index = dataModel?.priorities.index(of: priority) {
+            priorityPicker.selectRow(index, inComponent: 0, animated: true)
+        }
+        priorityTextField.inputView = priorityPicker
+        
         let datePicker = UIDatePicker()
         let startPicker = UIDatePicker()
         let endPicker = UIDatePicker()
@@ -163,6 +171,13 @@ class TaskDetailViewController: UITableViewController {
         dateTextField.inputView = datePicker
         startTextField.inputView = startPicker
         endTextField.inputView = endPicker
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        print(#function)
+        super.viewWillDisappear(animated)
+        
+        dataModel?.writeToFile()
     }
     
     func datePickerValueChanged(sender: UIDatePicker) {
@@ -272,6 +287,43 @@ extension TaskDetailViewController: UITextFieldDelegate {
         
         // Proceed with modifying the text field text
         return true
+    }
+    
+}
+
+
+
+extension TaskDetailViewController: UIPickerViewDataSource, UIPickerViewDelegate {
+    
+    @available(iOS 2.0, *)
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        print(#function)
+        return 1
+    }
+    
+    @available(iOS 2.0, *)
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        print(#function)
+        return dataModel?.priorities.count ?? 0
+    }
+
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        print(#function)
+        return dataModel?.priorities[row].name
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        print(#function)
+        
+        if let task = task {
+            task.removeFromPriority()
+            
+            if let priority = dataModel?.priorities[row] {
+                task.addToPriority(priority: priority)
+            }
+        }
+        
+        configureGeneralTableSection()
     }
     
 }

@@ -428,32 +428,34 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="02x-Vy-HxS" detailTextLabel="QBB-66-AUY" style="IBUITableViewCellStyleValue1" id="iu2-tY-FWh">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="iu2-tY-FWh">
                                         <rect key="frame" x="0.0" y="79" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="iu2-tY-FWh" id="e1o-R6-10a">
-                                            <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Priority" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="02x-Vy-HxS">
-                                                    <rect key="frame" x="15" y="12" width="55" height="20.5"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Priority" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4cH-LG-41t">
+                                                    <rect key="frame" x="16" y="11" width="55" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="None" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="QBB-66-AUY">
-                                                    <rect key="frame" x="299" y="12" width="41" height="20.5"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="None" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8ES-Ob-VY1">
+                                                    <rect key="frame" x="121" y="11.5" width="238" height="21"/>
+                                                    <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                </textField>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="8ES-Ob-VY1" secondAttribute="trailing" constant="16" id="6tb-QF-jsb"/>
+                                                <constraint firstItem="8ES-Ob-VY1" firstAttribute="leading" secondItem="4cH-LG-41t" secondAttribute="trailing" constant="50" id="PR5-eC-ry0"/>
+                                                <constraint firstItem="4cH-LG-41t" firstAttribute="leading" secondItem="e1o-R6-10a" secondAttribute="leadingMargin" constant="8" id="XBr-Ok-ief"/>
+                                                <constraint firstItem="8ES-Ob-VY1" firstAttribute="centerY" secondItem="e1o-R6-10a" secondAttribute="centerY" id="cTq-ix-7Du"/>
+                                                <constraint firstItem="4cH-LG-41t" firstAttribute="centerY" secondItem="e1o-R6-10a" secondAttribute="centerY" id="wJd-f7-BHZ"/>
+                                            </constraints>
                                         </tableViewCellContentView>
-                                        <connections>
-                                            <segue destination="HTC-Mt-MNT" kind="show" id="i5k-gC-Ohp"/>
-                                        </connections>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -583,7 +585,7 @@
                         <outlet property="dateTextField" destination="uss-bY-NbD" id="aah-m6-SzQ"/>
                         <outlet property="endTextField" destination="Aec-ID-g8z" id="hLI-oS-5Pb"/>
                         <outlet property="nameTextField" destination="jiB-s0-znG" id="VGy-cF-f7m"/>
-                        <outlet property="priorityLabel" destination="QBB-66-AUY" id="k8r-q1-cbt"/>
+                        <outlet property="priorityTextField" destination="8ES-Ob-VY1" id="hQ9-t2-FmT"/>
                         <outlet property="startTextField" destination="88h-jq-567" id="D4s-te-DXl"/>
                         <outlet property="timeSpentLabel" destination="ou5-R1-q5S" id="K76-Mq-jqe"/>
                     </connections>
@@ -591,34 +593,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hmG-SM-s5k" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3477.5999999999999" y="232.53373313343329"/>
-        </scene>
-        <!--Priorities-->
-        <scene sceneID="qKQ-8c-8ad">
-            <objects>
-                <tableViewController title="Priorities" id="HTC-Mt-MNT" customClass="PrioritySelectionViewController" customModule="MyTime" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="vOX-17-2ns">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="g09-IJ-8Ff">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="g09-IJ-8Ff" id="7VS-UR-Nxb">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="HTC-Mt-MNT" id="yTX-qW-CSd"/>
-                            <outlet property="delegate" destination="HTC-Mt-MNT" id="VLB-VB-7HB"/>
-                        </connections>
-                    </tableView>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="L1k-ug-vJd" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="4274" y="233"/>
         </scene>
         <!--Split View Controller-->
         <scene sceneID="Nki-YV-4Qg">

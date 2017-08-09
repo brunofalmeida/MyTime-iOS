@@ -89,6 +89,10 @@ class Task: NSObject, NSCoding {
         priority?.removeTask(self)
     }
     
+    func addToPriority(priority: Priority) {
+        priority.addTask(self)
+    }
+    
 }
 
 
