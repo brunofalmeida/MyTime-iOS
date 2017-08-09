@@ -1,16 +1,15 @@
 # Design
 
-This application will be designed to allow the user to track their time spend on certain areas and tasks.
+This application will be designed to allow the user to track their time spend on certain priorities and tasks.
+
 
 ## Requirements
-
-(Applying my newfound engineering design process knowledge)
 
 ### Primary Function
 
 - Track the user's use of time and provide feedback
 
-### Secondary Functions/Objectives
+### Secondary Functions
 
 - Set goals per day, week, month, etc. (how much time to spend on areas/tasks)
 - Track use of time in real-time
@@ -18,19 +17,19 @@ This application will be designed to allow the user to track their time spend on
 - Compare goals to actual use of time
 - Actively provide suggestions and advice for time management
 
+
 ## Version History
 
 0.1: Start and stop a timer
 
 0.2: Store a list of tasks and the time spent on each
 
-## Future Development Stages
+0.3: Group tasks by priority, view each task's details
+
+
+## Ideas for Future Features
 
 - Add a description and notes for each task
-
-- Group tasks into categories (e.g. courses, priorities)
-
-- View grouped time statistics (e.g. time spent on calculus this week)
 
 - Set goals for time to spend on categories/tasks
 
