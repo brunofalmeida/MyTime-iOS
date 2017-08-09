@@ -39,7 +39,7 @@ class DateIntervalAnalysisViewController: UITableViewController {
         
         // Set up the view's title to match the length of the date interval examined
         if let dateInterval = dateInterval, let dateIntervalLength = dateIntervalLength {
-            title = dateInterval.format(for: dateIntervalLength, stringLength: .long)
+            title = dateInterval.format(for: dateIntervalLength, stringLength: .short)
         }
         
         populatePrioritiesToTasks()

@@ -32,7 +32,11 @@ class TaskListViewController: UITableViewController {
     fileprivate weak var dataModel = (UIApplication.shared.delegate as? AppDelegate)?.dataModel
     
     /// The list of tasks to display
-    fileprivate var tasks: [Task] = []
+    fileprivate var tasks: [Task] = [] {
+        didSet {
+            tasks.sort { $0.startTime > $1.startTime }
+        }
+    }
     
     func setup(tasks: [Task]) {
         self.tasks = tasks
