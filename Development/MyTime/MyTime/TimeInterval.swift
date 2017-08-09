@@ -73,9 +73,9 @@ extension TimeInterval {
         if hours == 0 && minutes == 0 {
             return "\(seconds)s"
         } else if hours == 0 {
-            return "\(minutes)m, \(seconds)s"
+            return "\(minutes)m \(seconds)s"
         } else {
-            return "\(hours)h, \(minutes)m, \(seconds)s"
+            return "\(hours)h \(minutes)m \(seconds)s"
         }
     }
     
