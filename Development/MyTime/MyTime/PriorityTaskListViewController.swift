@@ -17,8 +17,6 @@ class PriorityTaskListViewController: TaskListViewController {
     fileprivate var priority: Priority?
     
     func setup(priority: Priority) {
-        super.setup(tasks: priority.tasks)
-        
         self.priority = priority
     }
     
@@ -29,6 +27,12 @@ class PriorityTaskListViewController: TaskListViewController {
         
         // Set the title to match the priority
         title = priority?.name
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        if let priority = priority {
+            super.setup(tasks: priority.tasks)
+        }
     }
 
 

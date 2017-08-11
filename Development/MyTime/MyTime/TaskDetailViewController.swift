@@ -20,6 +20,10 @@ class TaskDetailViewController: UITableViewController {
     @IBOutlet weak var endTextField: UITextField!
     @IBOutlet weak var timeSpentLabel: UILabel!
     
+    @IBOutlet weak var taskDescriptionTextField: UITextField!
+    @IBOutlet weak var notesTextView: UITextView!
+    
+    
     // The task to display and edit
     fileprivate var task: Task? {
         didSet {
@@ -45,6 +49,7 @@ class TaskDetailViewController: UITableViewController {
         // Table view
         configureGeneralTableSection()
         configureDateAndTimeTableSection()
+        configureDetailsTableSection()
     
         // Clear the priority row's highlighted selection
         tableView.deselectRow(at: IndexPath(row: 1, section: 0), animated: true)
@@ -106,6 +111,28 @@ class TaskDetailViewController: UITableViewController {
             }
         }
         
+        else {
+            assertionFailure()
+        }
+    }
+    
+    fileprivate func configureDetailsTableSection() {
+        if let task = task {
+            // Name
+            if let taskDescriptionTextField = self.taskDescriptionTextField {
+                taskDescriptionTextField.text = task.taskDescription
+            } else {
+                assertionFailure()
+            }
+            
+            // Priority
+            if let notesTextView = self.notesTextView {
+                notesTextView.text = task.notes
+            } else {
+                assertionFailure()
+            }
+        }
+            
         else {
             assertionFailure()
         }
@@ -277,12 +304,38 @@ extension TaskDetailViewController: UITextFieldDelegate {
                    replacementString string: String) -> Bool {
         print(#function)
         
-        // Get the modified text
-        if let newName: String = (textField.text as NSString?)?
-                .replacingCharacters(in: range, with: string) {
-            // Update the model and view title
-            task?.name = newName
-            title = newName
+        if textField == nameTextField {
+            // Get the modified text
+            if let newName: String = (textField.text as NSString?)?
+                    .replacingCharacters(in: range, with: string) {
+                // Update the model and view title
+                task?.name = newName
+                title = newName
+            }
+        }
+        
+        else if (textField == taskDescriptionTextField) {
+            if let task = task {
+                task.taskDescription = (task.taskDescription as NSString).replacingCharacters(in: range, with: string)
+            }
+        }
+        
+        // Proceed with modifying the text field text
+        return true
+    }
+    
+}
+
+extension TaskDetailViewController: UITextViewDelegate {
+    
+    func textView(_ textView: UITextView,
+                  shouldChangeTextIn range: NSRange,
+                  replacementText text: String) -> Bool {
+        print(#function)
+        
+        if let task = task {
+            task.notes = (task.notes as NSString)
+                .replacingCharacters(in: range, with: text)
         }
         
         // Proceed with modifying the text field text

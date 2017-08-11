@@ -40,6 +40,7 @@ class TaskListViewController: UITableViewController {
     
     func setup(tasks: [Task]) {
         self.tasks = tasks
+        tableView.reloadData()
     }
     
     // MARK: - View Management

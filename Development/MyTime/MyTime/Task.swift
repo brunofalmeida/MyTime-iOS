@@ -16,6 +16,8 @@ class Task: NSObject, NSCoding {
         case name
         case startTime
         case endTime
+        case taskDescription
+        case notes
     }
     
     var name: String
@@ -34,21 +36,29 @@ class Task: NSObject, NSCoding {
     
     var timeSpent: TimeInterval {
         // Make it at least 1 second
-        return TimeInterval(
-            totalSeconds: Int( max(endTime.timeIntervalSince(startTime), 1) ))
+        return TimeInterval(totalSeconds:
+            Int( max(endTime.timeIntervalSince(startTime), 1) ))
     }
     
+    /// Can't use `description` identifier since it is reserved in Swift
+    var taskDescription: String = ""
+    var notes: String = ""
     
-    init(name: String, startTime: Date, endTime: Date) {
+    
+    
+    
+    init(name: String, startTime: Date, endTime: Date, taskDescription: String? = nil, notes: String? = nil) {
         self.name = name
         self.startTime = startTime
         self.endTime = endTime
+        self.taskDescription = taskDescription ?? ""
+        self.notes = notes ?? ""
         
         super.init()
     }
     
-    convenience init(name: String, startTime: Date, timeSpent: TimeInterval) {
-        self.init(name: name, startTime: startTime, endTime: startTime + Double(timeSpent.totalSeconds))
+    convenience init(name: String, startTime: Date, timeSpent: TimeInterval, taskDescription: String?, notes: String?) {
+        self.init(name: name, startTime: startTime, endTime: startTime + Double(timeSpent.totalSeconds), taskDescription: taskDescription, notes: notes)
     }
     
     /// Ensures `startTime` and `endTime` are valid with respect to each other.
@@ -72,6 +82,8 @@ class Task: NSObject, NSCoding {
         aCoder.encode(name, forKey: CodingKeys.name.rawValue)
         aCoder.encode(startTime, forKey: CodingKeys.startTime.rawValue)
         aCoder.encode(endTime, forKey: CodingKeys.endTime.rawValue)
+        aCoder.encode(taskDescription, forKey: CodingKeys.taskDescription.rawValue)
+        aCoder.encode(notes, forKey: CodingKeys.notes.rawValue)
     }
     
     // Read from file
@@ -82,7 +94,10 @@ class Task: NSObject, NSCoding {
             return nil
         }
         
-        self.init(name: name, startTime: startTime, endTime: endTime)
+        let taskDescription = aDecoder.decodeObject(forKey: CodingKeys.taskDescription.rawValue) as? String
+        let notes = aDecoder.decodeObject(forKey: CodingKeys.notes.rawValue) as? String
+        
+        self.init(name: name, startTime: startTime, endTime: endTime, taskDescription: taskDescription, notes: notes)
     }
     
     func removeFromPriority() {

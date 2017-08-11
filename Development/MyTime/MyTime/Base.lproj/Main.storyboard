@@ -432,7 +432,7 @@
                                         <rect key="frame" x="0.0" y="79" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="iu2-tY-FWh" id="e1o-R6-10a">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Priority" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4cH-LG-41t">
@@ -574,6 +574,60 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
+                            <tableViewSection id="GLg-JB-bLj">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="rv5-KF-day">
+                                        <rect key="frame" x="0.0" y="371" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rv5-KF-day" id="OAx-fZ-Y9A">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Description" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DEo-6t-hjK">
+                                                    <rect key="frame" x="16" y="12.5" width="343" height="17"/>
+                                                    <nil key="textColor"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="AiH-ON-QXM" id="kTr-da-Aqq"/>
+                                                    </connections>
+                                                </textField>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="DEo-6t-hjK" secondAttribute="trailing" constant="16" id="2z1-YP-Bfv"/>
+                                                <constraint firstItem="DEo-6t-hjK" firstAttribute="leading" secondItem="OAx-fZ-Y9A" secondAttribute="leading" constant="16" id="Upi-P4-9CB"/>
+                                                <constraint firstItem="DEo-6t-hjK" firstAttribute="centerY" secondItem="OAx-fZ-Y9A" secondAttribute="centerY" id="vn4-ZO-ZMX"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="160" id="bON-j3-caR">
+                                        <rect key="frame" x="0.0" y="415" width="375" height="160"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bON-j3-caR" id="Bpa-pp-Uqi">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="160"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="0W1-rJ-zs1">
+                                                    <rect key="frame" x="12" y="4" width="351" height="151.5"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="AiH-ON-QXM" id="bdG-Jg-ayJ"/>
+                                                    </connections>
+                                                </textView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="0W1-rJ-zs1" firstAttribute="leading" secondItem="Bpa-pp-Uqi" secondAttribute="leading" constant="12" id="PrM-ZW-ZlQ"/>
+                                                <constraint firstItem="0W1-rJ-zs1" firstAttribute="centerY" secondItem="Bpa-pp-Uqi" secondAttribute="centerY" id="XUc-n6-i72"/>
+                                                <constraint firstAttribute="bottom" secondItem="0W1-rJ-zs1" secondAttribute="bottom" constant="4" id="i64-WN-j74"/>
+                                                <constraint firstItem="0W1-rJ-zs1" firstAttribute="top" secondItem="Bpa-pp-Uqi" secondAttribute="top" constant="4" id="orr-Ui-4ZV"/>
+                                                <constraint firstAttribute="trailing" secondItem="0W1-rJ-zs1" secondAttribute="trailing" constant="12" id="vaC-vK-bjD"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
                         </sections>
                         <connections>
                             <outlet property="dataSource" destination="AiH-ON-QXM" id="RAA-w7-JyX"/>
@@ -585,8 +639,10 @@
                         <outlet property="dateTextField" destination="uss-bY-NbD" id="aah-m6-SzQ"/>
                         <outlet property="endTextField" destination="Aec-ID-g8z" id="hLI-oS-5Pb"/>
                         <outlet property="nameTextField" destination="jiB-s0-znG" id="VGy-cF-f7m"/>
+                        <outlet property="notesTextView" destination="0W1-rJ-zs1" id="Hqp-Xb-3Lh"/>
                         <outlet property="priorityTextField" destination="8ES-Ob-VY1" id="hQ9-t2-FmT"/>
                         <outlet property="startTextField" destination="88h-jq-567" id="D4s-te-DXl"/>
+                        <outlet property="taskDescriptionTextField" destination="DEo-6t-hjK" id="ede-0g-YDw"/>
                         <outlet property="timeSpentLabel" destination="ou5-R1-q5S" id="K76-Mq-jqe"/>
                     </connections>
                 </tableViewController>
