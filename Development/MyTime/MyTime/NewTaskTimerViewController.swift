@@ -8,8 +8,6 @@
 
 import UIKit
 
-// TODO - stop timer automatically at (24h - 1s)
-// TODO - change time display so it has a constant width
 class NewTaskTimerViewController: UIViewController {
     
     fileprivate enum Segues: String {
@@ -23,6 +21,8 @@ class NewTaskTimerViewController: UIViewController {
     
     /// The timer that fires to update the interface with the time elapsed
     fileprivate var timer: Timer?
+    /// The timer that fires to check if the task has gone past 24h
+    fileprivate var overflowTimer: Timer?
     
     // The timer's start time (set a temporary value so it's non-nil)
     fileprivate var startTime: Date = Date()
@@ -49,6 +49,9 @@ class NewTaskTimerViewController: UIViewController {
                                              blue: 250/255.0,
                                              alpha: 0.5)
         
+        // Make the time font monospaced
+        timerLabel.font = UIFont.monospacedDigitSystemFont(ofSize: 48, weight: UIFontWeightRegular)
+        
         cancelTimer()
     }
     
@@ -65,9 +68,11 @@ class NewTaskTimerViewController: UIViewController {
                                           action: #selector(startButtonTapped))
         navigationItem.rightBarButtonItem = startButton
         
-        // Stop the timer
+        // Stop the timers
         timer?.invalidate()
         timer = nil
+        overflowTimer?.invalidate()
+        overflowTimer = nil
         
         timerLabel.text = "0:00"
     }
@@ -97,6 +102,12 @@ class NewTaskTimerViewController: UIViewController {
                                      selector: #selector(timerFired),
                                      userInfo: nil,
                                      repeats: true)
+        
+        overflowTimer = Timer.scheduledTimer(timeInterval: 30,
+                                             target: self,
+                                             selector: #selector(overflowTimerFired),
+                                             userInfo: nil,
+                                             repeats: true)
     }
     
     func startButtonTapped() {
@@ -128,6 +139,17 @@ class NewTaskTimerViewController: UIViewController {
      */
     func timerFired() {
         timerLabel.text = elapsedTimeInterval.description
+    }
+    
+    /**
+     Overflow timer firing handler
+     Checks if 24h has elapsed
+     */
+    func overflowTimerFired() {
+        // If the time is greater than (24h - 2m), stop the timer
+        if (Double(elapsedTimeInSeconds) >= (Date.secondsPerDay - Double(2 * Date.secondsPerMinute))) {
+            doneButtonTapped()
+        }
     }
 
     
