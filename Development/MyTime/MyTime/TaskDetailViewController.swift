@@ -84,7 +84,7 @@ class TaskDetailViewController: UITableViewController {
         if let task = task {
             // Date
             if let dateTextField = self.dateTextField {
-                dateTextField.text = task.startTime.string(withStringLength: .long)
+                dateTextField.text = task.startTime.string(withStringLength: .short)
             } else {
                 assertionFailure()
             }
@@ -221,6 +221,7 @@ class TaskDetailViewController: UITableViewController {
             
             if let startDate = startComponents.date {
                 task.startTime = startDate
+                print(task)
             } else {
                 assertionFailure("Could not create a date from the components")
             }

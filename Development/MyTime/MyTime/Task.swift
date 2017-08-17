@@ -33,6 +33,9 @@ class Task: NSObject, NSCoding {
             validateStartAndEndTimes()
         }
     }
+    var dateInterval: DateInterval {
+        return DateInterval(start: startTime, end: endTime)
+    }
     
     var timeSpent: TimeInterval {
         // Make it at least 1 second
@@ -57,7 +60,7 @@ class Task: NSObject, NSCoding {
         super.init()
     }
     
-    convenience init(name: String, startTime: Date, timeSpent: TimeInterval, taskDescription: String?, notes: String?) {
+    convenience init(name: String, startTime: Date, timeSpent: TimeInterval, taskDescription: String? = nil, notes: String? = nil) {
         self.init(name: name, startTime: startTime, endTime: startTime + Double(timeSpent.totalSeconds), taskDescription: taskDescription, notes: notes)
     }
     

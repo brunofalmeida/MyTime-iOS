@@ -40,7 +40,6 @@ class TaskListViewController: UITableViewController {
     
     func setup(tasks: [Task]) {
         self.tasks = tasks
-        tableView.reloadData()
     }
     
     // MARK: - View Management
@@ -114,7 +113,6 @@ class TaskListViewController: UITableViewController {
         let task = tasks[indexPath.row]
         
         cell.primaryLabel?.text = task.name
-        cell.secondaryLabel?.text = task.startTime.string(withStringLength: .long)
         cell.detailLabel?.text = task.timeSpent.listDescription
         
         return cell

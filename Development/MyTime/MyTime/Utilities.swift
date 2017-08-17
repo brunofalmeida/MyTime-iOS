@@ -86,14 +86,23 @@ extension Date {
     }
     
     func string(withStringLength stringLength: StringLength) -> String {
+        var format = ""
+        
         switch stringLength {
-            
+        
         case .short:
-            return string(withFormat: "EEE MMM d")
+            format = "EEE MMM d"
         case .long:
-            return string(withFormat: "EEEE, MMMM d")
-            
+            format = "EEEE, MMMM d"
+        
         }
+
+        // If the year is not the current year, display it
+        if component(.year) != Date().component(.year) {
+            format = format + ", yyyy"
+        }
+        
+        return string(withFormat: format)
     }
     
     /**
@@ -135,45 +144,32 @@ extension DateInterval {
      or "June 26 - July 2" (when the months are different).
      */
     func format(for length: DateIntervalLength, stringLength: StringLength) -> String {
-        // TODO - update to use DateIntervalFormatter?
-        
-        // Use short format by default
-        var dayFormat = "MMM d"
-        var monthFormat = "MMM"
-        
-        // If long format
-        if stringLength == .long {
-            dayFormat = "MMMM d"
-            monthFormat = "MMMM"
+        if length == .day {
+            return start.string(withStringLength: .short)
         }
         
-        switch length {
-            
-        case .day:
-            return start.string(withFormat: dayFormat)
-            
-        case .week:
-            var text = ""
-            
-            text += start.string(withFormat: dayFormat)
-            
-            if start.component(.month) == end.component(.month) {
-                // If same month
-                text += "-"
-                text += end.string(withFormat: "d")
-            } else {
-                // If different months
-                text += " - "
-                text += end.string(withFormat: dayFormat)
-            }
-            
-            return text
-            
-        case .month:
-            return start.string(withFormat: monthFormat)
-            
+        
+        var format = ""
+        
+        switch stringLength {
+        case .short:
+            format += "MMM"
+        case .long:
+            format += "MMMM"
         }
         
+        if length == .week {
+            format += " d"
+        }
+        
+        // If the year is not the current year, display it
+        if start.component(.year) != Date().component(.year) {
+            format += "yyyy"
+        }
+        
+        let formatter = DateIntervalFormatter()
+        formatter.dateTemplate = format
+        return formatter.string(from: start, to: end)
     }
     
 }
