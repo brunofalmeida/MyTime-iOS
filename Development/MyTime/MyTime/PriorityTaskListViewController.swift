@@ -30,11 +30,11 @@ class PriorityTaskListViewController: TaskListViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
         if let priority = priority {
             super.setup(tasks: priority.tasks)
         }
+        
+        super.viewWillAppear(animated)
     }
 
 

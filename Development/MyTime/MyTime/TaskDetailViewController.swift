@@ -18,6 +18,7 @@ class TaskDetailViewController: UITableViewController {
     @IBOutlet weak var dateTextField: UITextField!
     @IBOutlet weak var startTextField: UITextField!
     @IBOutlet weak var endTextField: UITextField!
+    
     @IBOutlet weak var timeSpentLabel: UILabel!
     
     @IBOutlet weak var notesTextView: UITextView!
