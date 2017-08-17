@@ -20,7 +20,6 @@ class TaskDetailViewController: UITableViewController {
     @IBOutlet weak var endTextField: UITextField!
     @IBOutlet weak var timeSpentLabel: UILabel!
     
-    @IBOutlet weak var taskDescriptionTextField: UITextField!
     @IBOutlet weak var notesTextView: UITextView!
     
     
@@ -49,7 +48,7 @@ class TaskDetailViewController: UITableViewController {
         // Table view
         configureGeneralTableSection()
         configureDateAndTimeTableSection()
-        configureDetailsTableSection()
+        configureNotesTableSection()
     
         // Clear the priority row's highlighted selection
         tableView.deselectRow(at: IndexPath(row: 1, section: 0), animated: true)
@@ -116,16 +115,8 @@ class TaskDetailViewController: UITableViewController {
         }
     }
     
-    fileprivate func configureDetailsTableSection() {
+    fileprivate func configureNotesTableSection() {
         if let task = task {
-            // Name
-            if let taskDescriptionTextField = self.taskDescriptionTextField {
-                taskDescriptionTextField.text = task.taskDescription
-            } else {
-                assertionFailure()
-            }
-            
-            // Priority
             if let notesTextView = self.notesTextView {
                 notesTextView.text = task.notes
             } else {
@@ -312,12 +303,6 @@ extension TaskDetailViewController: UITextFieldDelegate {
                 // Update the model and view title
                 task?.name = newName
                 title = newName
-            }
-        }
-        
-        else if (textField == taskDescriptionTextField) {
-            if let task = task {
-                task.taskDescription = (task.taskDescription as NSString).replacingCharacters(in: range, with: string)
             }
         }
         

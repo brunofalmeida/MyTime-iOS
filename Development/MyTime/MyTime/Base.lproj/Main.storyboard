@@ -574,34 +574,10 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection id="GLg-JB-bLj">
+                            <tableViewSection headerTitle="Notes" id="GLg-JB-bLj">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="rv5-KF-day">
-                                        <rect key="frame" x="0.0" y="371" width="375" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rv5-KF-day" id="OAx-fZ-Y9A">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Description" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DEo-6t-hjK">
-                                                    <rect key="frame" x="16" y="12.5" width="343" height="17"/>
-                                                    <nil key="textColor"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
-                                                    <connections>
-                                                        <outlet property="delegate" destination="AiH-ON-QXM" id="kTr-da-Aqq"/>
-                                                    </connections>
-                                                </textField>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="DEo-6t-hjK" secondAttribute="trailing" constant="16" id="2z1-YP-Bfv"/>
-                                                <constraint firstItem="DEo-6t-hjK" firstAttribute="leading" secondItem="OAx-fZ-Y9A" secondAttribute="leading" constant="16" id="Upi-P4-9CB"/>
-                                                <constraint firstItem="DEo-6t-hjK" firstAttribute="centerY" secondItem="OAx-fZ-Y9A" secondAttribute="centerY" id="vn4-ZO-ZMX"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="160" id="bON-j3-caR">
-                                        <rect key="frame" x="0.0" y="415" width="375" height="160"/>
+                                        <rect key="frame" x="0.0" y="391" width="375" height="160"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bON-j3-caR" id="Bpa-pp-Uqi">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="160"/>
@@ -642,7 +618,6 @@
                         <outlet property="notesTextView" destination="0W1-rJ-zs1" id="Hqp-Xb-3Lh"/>
                         <outlet property="priorityTextField" destination="8ES-Ob-VY1" id="hQ9-t2-FmT"/>
                         <outlet property="startTextField" destination="88h-jq-567" id="D4s-te-DXl"/>
-                        <outlet property="taskDescriptionTextField" destination="DEo-6t-hjK" id="ede-0g-YDw"/>
                         <outlet property="timeSpentLabel" destination="ou5-R1-q5S" id="K76-Mq-jqe"/>
                     </connections>
                 </tableViewController>
