@@ -32,11 +32,7 @@ class TaskListViewController: UITableViewController {
     fileprivate weak var dataModel = (UIApplication.shared.delegate as? AppDelegate)?.dataModel
     
     /// The list of tasks to display
-    fileprivate var tasks: [Task] = [] {
-        didSet {
-            tasks.sort { $0.startTime > $1.startTime }
-        }
-    }
+    fileprivate var tasks: [Task] = []
     
     func setup(tasks: [Task]) {
         self.tasks = tasks
@@ -50,6 +46,8 @@ class TaskListViewController: UITableViewController {
         // Register the custom cell so it can be used in the table
         tableView.register(UINib(nibName: cellIdentifier, bundle: nil),
                            forCellReuseIdentifier: cellIdentifier)
+        
+        
         
         // Default title
 //        title = "Tasks"
@@ -65,12 +63,18 @@ class TaskListViewController: UITableViewController {
         
 //        // Show the primary and secondary view controllers side by side
 //        splitViewController?.preferredDisplayMode = .allVisible
+        
+        clearsSelectionOnViewWillAppear = splitViewController?.isCollapsed ?? true
+        print(clearsSelectionOnViewWillAppear)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        clearsSelectionOnViewWillAppear = splitViewController?.isCollapsed ?? true
+        tasks.sort { $0.startTime > $1.startTime }
+        
+        
+        
         tableView.reloadData()
     }
 
@@ -113,6 +117,7 @@ class TaskListViewController: UITableViewController {
         let task = tasks[indexPath.row]
         
         cell.primaryLabel?.text = task.name
+        cell.secondaryLabel?.text = task.startTime.string(withStringLength: .short)
         cell.detailLabel?.text = task.timeSpent.listDescription
         
         return cell
