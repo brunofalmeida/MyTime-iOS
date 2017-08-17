@@ -31,6 +31,9 @@ class TaskDetailViewController: UITableViewController {
         }
     }
 
+    
+    
+    
     func setup(task: Task?) {
         self.task = task
     }
@@ -91,14 +94,14 @@ class TaskDetailViewController: UITableViewController {
             
             // Start time
             if let startTextField = self.startTextField {
-                startTextField.text = task.startTime.string(withTimeStyle: DateFormatter.Style.short)
+                startTextField.text = task.startTime.format(withTimeStyle: DateFormatter.Style.short)
             } else {
                 assertionFailure()
             }
             
             // End time
             if let endTextField = self.endTextField {
-                endTextField.text = task.endTime.string(withTimeStyle: DateFormatter.Style.short)
+                endTextField.text = task.endTime.format(withTimeStyle: DateFormatter.Style.short)
             } else {
                 assertionFailure()
             }

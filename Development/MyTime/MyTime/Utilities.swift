@@ -42,14 +42,17 @@ enum DateIntervalLength: String {
 }
 
 
+// Unicode date/time formatting standard: http://www.unicode.org/reports/tr35/tr35-31/tr35-dates.html#Date_Format_Patterns
+
+
 extension Date {
     
     // Time unit conversions
-    static let secondsPerMinute = 60
-    static let minutesPerHour = 60
-    static let hoursPerDay = 24
+    static let secondsPerMinute: Double = 60
+    static let minutesPerHour: Double = 60
+    static let hoursPerDay: Double = 24
     
-    static let secondsPerDay: Foundation.TimeInterval = Double(Date.secondsPerMinute * Date.minutesPerHour * Date.hoursPerDay)
+    static let secondsPerDay: Foundation.TimeInterval = Date.secondsPerMinute * Date.minutesPerHour * Date.hoursPerDay
     
     /// Gets date components for the current calendar.
     func components(_ components: Set<Calendar.Component>) -> DateComponents {
@@ -85,6 +88,16 @@ extension Date {
         case long
     }
     
+    /**
+     Formats the date according to the given format string,
+     without having to create a DateFormatter object.
+     */
+    fileprivate func format(withString format: String) -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = format
+        return formatter.string(from: self)
+    }
+    
     func string(withStringLength stringLength: StringLength) -> String {
         var format = ""
         
@@ -102,24 +115,14 @@ extension Date {
             format = format + ", yyyy"
         }
         
-        return string(withFormat: format)
-    }
-    
-    /**
-     Formats the date according to the given format string,
-     without having to create a DateFormatter object.
-     */
-    func string(withFormat format: String) -> String {
-        let formatter = DateFormatter()
-        formatter.dateFormat = format
-        return formatter.string(from: self)
+        return self.format(withString: format)
     }
     
     /**
      Formats the date according to the given date and time styles,
      without having to create a DateFormatter object.
      */
-    func string(withDateStyle dateStyle: DateFormatter.Style = .none, withTimeStyle timeStyle: DateFormatter.Style = .none) -> String {
+    func format(withDateStyle dateStyle: DateFormatter.Style = .none, withTimeStyle timeStyle: DateFormatter.Style = .none) -> String {
         let formatter = DateFormatter()
         formatter.dateStyle = dateStyle
         formatter.timeStyle = timeStyle
@@ -128,7 +131,6 @@ extension Date {
     
 }
 
-// Unicode date/time formatting standard: http://www.unicode.org/reports/tr35/tr35-31/tr35-dates.html#Date_Format_Patterns
 
 extension DateInterval {
     

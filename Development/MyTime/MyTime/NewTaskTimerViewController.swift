@@ -147,7 +147,7 @@ class NewTaskTimerViewController: UIViewController {
      */
     func overflowTimerFired() {
         // If the time is greater than (24h - 2m), stop the timer
-        if (Double(elapsedTimeInSeconds) >= (Date.secondsPerDay - Double(2 * Date.secondsPerMinute))) {
+        if (Double(elapsedTimeInSeconds) >= (Date.secondsPerDay - (2 * Date.secondsPerMinute))) {
             doneButtonTapped()
         }
     }
