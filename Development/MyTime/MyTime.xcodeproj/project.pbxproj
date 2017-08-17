@@ -28,6 +28,9 @@
 		15CDA3CC1E7C39860032CFD0 /* TestTimeInterval.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15CDA3CB1E7C39860032CFD0 /* TestTimeInterval.swift */; };
 		15D648881EEC4B9900826CEA /* NewTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D648871EEC4B9900826CEA /* NewTaskViewController.swift */; };
 		15D6488C1EEC501A00826CEA /* AllTaskListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D6488B1EEC501A00826CEA /* AllTaskListViewController.swift */; };
+		15D6F3651F46585700A3FE45 /* iOSUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D6F3641F46585700A3FE45 /* iOSUtilities.swift */; };
+		15D6F3671F4658F400A3FE45 /* FoundationUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D6F3661F4658F400A3FE45 /* FoundationUtilities.swift */; };
+		15D6F3691F46594900A3FE45 /* SwiftUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D6F3681F46594900A3FE45 /* SwiftUtilities.swift */; };
 		15E9BB8C1E024815007004C8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15E9BB8B1E024815007004C8 /* AppDelegate.swift */; };
 		15E9BB8E1E024815007004C8 /* TaskListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15E9BB8D1E024815007004C8 /* TaskListViewController.swift */; };
 		15E9BB901E024815007004C8 /* TaskDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15E9BB8F1E024815007004C8 /* TaskDetailViewController.swift */; };
@@ -114,6 +117,9 @@
 		15CDA3CB1E7C39860032CFD0 /* TestTimeInterval.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestTimeInterval.swift; sourceTree = "<group>"; };
 		15D648871EEC4B9900826CEA /* NewTaskViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewTaskViewController.swift; sourceTree = "<group>"; };
 		15D6488B1EEC501A00826CEA /* AllTaskListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllTaskListViewController.swift; sourceTree = "<group>"; };
+		15D6F3641F46585700A3FE45 /* iOSUtilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = iOSUtilities.swift; sourceTree = "<group>"; };
+		15D6F3661F4658F400A3FE45 /* FoundationUtilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoundationUtilities.swift; sourceTree = "<group>"; };
+		15D6F3681F46594900A3FE45 /* SwiftUtilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftUtilities.swift; sourceTree = "<group>"; };
 		15E9BB881E024815007004C8 /* MyTime.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyTime.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		15E9BB8B1E024815007004C8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		15E9BB8D1E024815007004C8 /* TaskListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListViewController.swift; sourceTree = "<group>"; };
@@ -225,9 +231,19 @@
 				15B776741E73B63C00595C27 /* Priority.swift */,
 				157F79C81E15DA7000ED6452 /* Task.swift */,
 				157F79C61E15CFC400ED6452 /* TimeInterval.swift */,
-				151818AD1EECD9EB00E51B79 /* Utilities.swift */,
 			);
 			name = Model;
+			sourceTree = "<group>";
+		};
+		15D6F3621F46580A00A3FE45 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				151818AD1EECD9EB00E51B79 /* Utilities.swift */,
+				15D6F3641F46585700A3FE45 /* iOSUtilities.swift */,
+				15D6F3661F4658F400A3FE45 /* FoundationUtilities.swift */,
+				15D6F3681F46594900A3FE45 /* SwiftUtilities.swift */,
+			);
+			name = Utilities;
 			sourceTree = "<group>";
 		};
 		15E9BB7F1E024814007004C8 = {
@@ -261,6 +277,7 @@
 				15362D581F0C754500F4B2B7 /* TasksTab */,
 				15362D591F0C754A00F4B2B7 /* AnalysisTab */,
 				15B776781E73B96E00595C27 /* Model */,
+				15D6F3621F46580A00A3FE45 /* Utilities */,
 				15E9BB911E024815007004C8 /* Main.storyboard */,
 				15E9BB961E024815007004C8 /* LaunchScreen.storyboard */,
 				15E9BB941E024815007004C8 /* Assets.xcassets */,
@@ -462,6 +479,7 @@
 				151818AE1EECD9EB00E51B79 /* Utilities.swift in Sources */,
 				158DF2CB1EBA53E100AD98E0 /* PrioritySelectionViewController.swift in Sources */,
 				156F25D51F14290500B9087F /* AnalysisViewController.swift in Sources */,
+				15D6F3691F46594900A3FE45 /* SwiftUtilities.swift in Sources */,
 				15B776751E73B63C00595C27 /* Priority.swift in Sources */,
 				1520656A1EEC716800F3B342 /* DateIntervalListViewController.swift in Sources */,
 				155D77731E024CBF00560215 /* NewTaskTimerViewController.swift in Sources */,
@@ -471,6 +489,8 @@
 				151740DE1EEC406B00F7B7E1 /* PriorityTaskListViewController.swift in Sources */,
 				15E9BB8C1E024815007004C8 /* AppDelegate.swift in Sources */,
 				15B776771E73B8E700595C27 /* DataModel.swift in Sources */,
+				15D6F3671F4658F400A3FE45 /* FoundationUtilities.swift in Sources */,
+				15D6F3651F46585700A3FE45 /* iOSUtilities.swift in Sources */,
 				15D648881EEC4B9900826CEA /* NewTaskViewController.swift in Sources */,
 				151BCBF71E7CC87100B89CF0 /* PriorityListViewController.swift in Sources */,
 				15EC386F1F045F7E00912718 /* DateIntervalPriorityAnalysisViewController.swift in Sources */,

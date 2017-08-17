@@ -9,7 +9,8 @@
 import Foundation
 import UIKit
 
-/// The length of time for a date interval.
+
+/// The length of time that a date interval covers.
 enum DateIntervalLength: String {
     
     case day = "Day"
@@ -42,27 +43,8 @@ enum DateIntervalLength: String {
 }
 
 
-// Unicode date/time formatting standard: http://www.unicode.org/reports/tr35/tr35-31/tr35-dates.html#Date_Format_Patterns
-
-
+/// Unicode date/time formatting standard: http://www.unicode.org/reports/tr35/tr35-31/tr35-dates.html#Date_Format_Patterns
 extension Date {
-    
-    // Time unit conversions
-    static let secondsPerMinute: Double = 60
-    static let minutesPerHour: Double = 60
-    static let hoursPerDay: Double = 24
-    
-    static let secondsPerDay: Foundation.TimeInterval = Date.secondsPerMinute * Date.minutesPerHour * Date.hoursPerDay
-    
-    /// Gets date components for the current calendar.
-    func components(_ components: Set<Calendar.Component>) -> DateComponents {
-        return Calendar.current.dateComponents(components, from: self)
-    }
-    
-    /// Gets a specific date component for the current calendar
-    func component(_ component: Calendar.Component) -> Int? {
-        return self.components([component]).value(for: component)
-    }
     
     /// - Returns: The date interval for the given unit of time containing the date.
     func dateInterval(for length: DateIntervalLength) -> DateInterval {
@@ -88,28 +70,18 @@ extension Date {
         case long
     }
     
-    /**
-     Formats the date according to the given format string,
-     without having to create a DateFormatter object.
-     */
-    fileprivate func format(withString format: String) -> String {
-        let formatter = DateFormatter()
-        formatter.dateFormat = format
-        return formatter.string(from: self)
-    }
-    
     func string(withStringLength stringLength: StringLength) -> String {
         var format = ""
         
         switch stringLength {
-        
+            
         case .short:
             format = "EEE MMM d"
         case .long:
             format = "EEEE, MMMM d"
-        
+            
         }
-
+        
         // If the year is not the current year, display it
         if component(.year) != Date().component(.year) {
             format = format + ", yyyy"
@@ -118,20 +90,10 @@ extension Date {
         return self.format(withString: format)
     }
     
-    /**
-     Formats the date according to the given date and time styles,
-     without having to create a DateFormatter object.
-     */
-    func format(withDateStyle dateStyle: DateFormatter.Style = .none, withTimeStyle timeStyle: DateFormatter.Style = .none) -> String {
-        let formatter = DateFormatter()
-        formatter.dateStyle = dateStyle
-        formatter.timeStyle = timeStyle
-        return formatter.string(from: self)
-    }
-    
 }
 
 
+/// Unicode date/time formatting standard: http://www.unicode.org/reports/tr35/tr35-31/tr35-dates.html#Date_Format_Patterns
 extension DateInterval {
     
     /// A length for string formatting.
@@ -176,27 +138,6 @@ extension DateInterval {
     
 }
 
-extension Calendar.Component {
-    func all() -> Set<Calendar.Component> {
-        return [.calendar,
-                .day,
-                .era,
-                .hour,
-                .minute,
-                .month,
-                .nanosecond,
-                .quarter,
-                .second,
-                .timeZone,
-                .weekOfMonth,
-                .weekOfYear,
-                .weekday,
-                .weekdayOrdinal,
-                .year,
-                .yearForWeekOfYear]
-    }
-}
-
 
 // TODO - Add search method - filter all tasks for those with specific parameters
 // (priority, date interval, etc.)
@@ -209,76 +150,6 @@ extension Array where Element == Task {
             result + task.timeSpent
         }
     }
-}
-
-
-extension Int {
-    
-    /// - Returns: A random integer in the range [min, max] (inclusive).
-    static func random(min: Int, max: Int) -> Int {
-        return Int(arc4random()) % (max - min + 1) + min
-    }
-    
-}
-
-extension Double {
-    
-    /// - Returns: A random double in the range [0, 1] (inclusive).
-    private static func random0To1() -> Double {
-        return Double(arc4random()) / Double(UInt32.max)
-    }
-    
-    /// - Returns: A random double in the range [min, max] (inclusive).
-    static func random(min: Double, max: Double) -> Double {
-        return random0To1() * (max - min) + min
-    }
-    
-}
-
-
-extension UIColor {
-    
-    /// A convenience initializer to use `Double` values without having to convert to `CGFloat`.
-    @nonobjc
-    convenience init(red: Double, green: Double, blue: Double, alpha: Double) {
-        self.init(red: CGFloat(red), green: CGFloat(green), blue: CGFloat(blue), alpha: CGFloat(alpha))
-    }
-    
-}
-
-
-extension UIViewController {
-    
-    func setBackButtonTitle(_ title: String) {
-        navigationItem.backBarButtonItem = UIBarButtonItem(title: title, style: .plain, target: nil, action: nil)
-    }
-    
-    func setBackButtonTitleAsEmpty() {
-        setBackButtonTitle("")
-    }
-    
-    func setBackButtonTitleAsBack() {
-        setBackButtonTitle("Back")
-    }
-    
-}
-
-
-
-
-/**
- A convenience function for printing an optional value without having to cast to Any.
- Normally, not explicitly casting to Any produces a warning.
- */
-func print(optional: Any?) {
-    print(optional as Any)
-}
-
-/**
- A convenience function for taking Int powers without having to cast to Double.
- */
-func pow(base: Int, exponent: Int) -> Int {
-    return Int( pow(Double(base), Double(exponent)) )
 }
 
 
