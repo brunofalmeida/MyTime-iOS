@@ -12,10 +12,12 @@ class AllTaskListViewController: TaskListViewController {
 
     fileprivate weak var dataModel = (UIApplication.shared.delegate as? AppDelegate)?.dataModel
     
+    override var segueIdentifier: String {
+        return "AllTask_Task"
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        segueIdentifier = "AllTask_Task"
         
         setup(tasks: dataModel?.allTasks ?? [])
     }

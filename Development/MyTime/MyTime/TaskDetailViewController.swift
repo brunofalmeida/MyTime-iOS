@@ -340,18 +340,18 @@ extension TaskDetailViewController: UIPickerViewDataSource, UIPickerViewDelegate
     
     @available(iOS 2.0, *)
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        print(#function)
+//        print(#function)
         return 1
     }
     
     @available(iOS 2.0, *)
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        print(#function)
+//        print(#function)
         return dataModel?.priorities.count ?? 0
     }
 
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        print(#function)
+//        print(#function)
         return dataModel?.priorities[row].name
     }
     

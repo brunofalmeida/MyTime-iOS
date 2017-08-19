@@ -16,14 +16,16 @@ class PriorityTaskListViewController: TaskListViewController {
     /// The priority to display tasks for.
     fileprivate var priority: Priority?
     
+    override var segueIdentifier: String {
+        return "PriorityTaskList_Task"
+    }
+    
     func setup(priority: Priority) {
         self.priority = priority
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        segueIdentifier = "PriorityTaskList_Task"
         
         // Set the title to match the priority
         title = priority?.name

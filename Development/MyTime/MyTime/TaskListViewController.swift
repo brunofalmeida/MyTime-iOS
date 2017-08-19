@@ -8,15 +8,8 @@
 
 import UIKit
 
-/**
- A generic view of a list of tasks.
- */
+/// A generic list of tasks.
 class TaskListViewController: UITableViewController {
-
-    fileprivate enum Segues: String {
-        case showNewTask
-        case showTaskDetail
-    }
     
     /// The storyboard cell reuse identifier and .xib file name for the table view cell.
     let cellIdentifier: String = "ThreeLabelCell"
@@ -25,7 +18,10 @@ class TaskListViewController: UITableViewController {
      The storyboard identifier of the segue to TaskDetailViewController.
      Must be overriden for each unique segue.
      */
-    var segueIdentifier: String = "FIXME"
+    var segueIdentifier: String {
+        assertionFailure()
+        return "FIXME"
+    }
     
     // MARK: - Properties
     
