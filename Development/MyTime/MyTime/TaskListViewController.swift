@@ -30,6 +30,7 @@ class TaskListViewController: UITableViewController {
         self.tasks = tasks
     }
     
+    
     // MARK: - View Management
 
     override func viewDidLoad() {
@@ -95,7 +96,7 @@ class TaskListViewController: UITableViewController {
         return cell
     }
     
-    // Table view editing
+    // Editing
     override func tableView(_ tableView: UITableView,
                             commit editingStyle: UITableViewCellEditingStyle,
                             forRowAt indexPath: IndexPath) {
@@ -109,18 +110,20 @@ class TaskListViewController: UITableViewController {
         }
     }
     
-    // Must manually perform the cell selection segue because it is a custom cell.
+    // Cell selection
+    // Must manually perform the segue because it is a custom cell.
     override func tableView(_ tableView: UITableView,
                             didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: segueIdentifier, sender: self)
     }
     
     
-    // MARK: - Segues
+    // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        print(#function)
+        
         super.prepare(for: segue, sender: sender)
-        //        print(#function)
         
         // Task detail
         if let destination = segue.destination as? TaskDetailViewController,

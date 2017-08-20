@@ -56,6 +56,9 @@ class GraphAnalysisViewController: UIViewController, IValueFormatter {
         self.prioritiesToTimeIntervals = prioritiesToTimeIntervals
     }
     
+    
+    // MARK: - View Management
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

@@ -34,6 +34,9 @@ class DateIntervalAnalysisViewController: UITableViewController {
         self.dateIntervalLength = dateIntervalLength
     }
     
+    
+    // MARK: - View Management
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -66,7 +69,7 @@ class DateIntervalAnalysisViewController: UITableViewController {
     }
 
 
-    // MARK: - Table view data source
+    // MARK: - Table View
 
     override func tableView(_ tableView: UITableView,
                             numberOfRowsInSection section: Int) -> Int {
@@ -86,9 +89,6 @@ class DateIntervalAnalysisViewController: UITableViewController {
     }
     
  
-
-    
-    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation

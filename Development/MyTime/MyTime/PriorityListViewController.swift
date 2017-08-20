@@ -10,6 +10,8 @@ import UIKit
 
 class PriorityListViewController: UITableViewController {    
     
+    // MARK: - View Management
+    
     override func viewDidLoad() {
 //        print(#function)
         super.viewDidLoad()
@@ -63,7 +65,7 @@ class PriorityListViewController: UITableViewController {
     }
 
     
-    // MARK: - Table view data source
+    // MARK: - Table View
 
     // Number of rows = number of priorities
     override func tableView(_ tableView: UITableView,

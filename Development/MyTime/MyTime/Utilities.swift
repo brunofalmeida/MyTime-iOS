@@ -9,6 +9,12 @@
 import Foundation
 import UIKit
 
+/*
+ Date and time formatting
+ Unicode standard: http://www.unicode.org/reports/tr35/tr35-31/tr35-dates.html#Date_Format_Patterns
+ Tutorial: http://www.codingexplorer.com/swiftly-getting-human-readable-date-nsdateformatter/
+ */
+
 
 /// The length of time that a date interval covers.
 enum DateIntervalLength: String {
@@ -43,7 +49,6 @@ enum DateIntervalLength: String {
 }
 
 
-/// Unicode date/time formatting standard: http://www.unicode.org/reports/tr35/tr35-31/tr35-dates.html#Date_Format_Patterns
 extension Date {
     
     /// - Returns: The date interval for the given unit of time containing the date.
@@ -93,7 +98,6 @@ extension Date {
 }
 
 
-/// Unicode date/time formatting standard: http://www.unicode.org/reports/tr35/tr35-31/tr35-dates.html#Date_Format_Patterns
 extension DateInterval {
     
     /// A length for string formatting.

@@ -10,6 +10,8 @@ import UIKit
 
 class AnalysisViewController: UITableViewController {
 
+    // MARK: - View Management
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -21,7 +23,7 @@ class AnalysisViewController: UITableViewController {
     }
 
 
-    // MARK: - Table view data source
+    // MARK: - Table View
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows

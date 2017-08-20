@@ -23,11 +23,7 @@ class TaskDetailViewController: UITableViewController {
     
     
     // The task to display and edit
-    fileprivate var task: Task? {
-        didSet {
-//            print("\(#function): \(String(describing: task))")
-        }
-    }
+    fileprivate var task: Task?
 
     
     
@@ -35,104 +31,12 @@ class TaskDetailViewController: UITableViewController {
     func setup(task: Task?) {
         self.task = task
     }
+    
+    
+    // MARK: - View Management
 
-    /// Updates the interface
-    fileprivate func configureView() {
-        clearsSelectionOnViewWillAppear = true
-        
-        // Title - task name
-        if let task = task {
-            title = task.name
-        } else {
-            assertionFailure()
-        }
-        
-        // Table view
-        configureGeneralTableSection()
-        configureDateAndTimeTableSection()
-        configureNotesTableSection()
-    
-        // Clear the priority row's highlighted selection
-        tableView.deselectRow(at: IndexPath(row: 1, section: 0), animated: true)
-    }
-    
-    fileprivate func configureGeneralTableSection() {
-        if let task = task {
-            // Name
-            if let nameTextField = self.nameTextField {
-                nameTextField.text = task.name
-            } else {
-                assertionFailure()
-            }
-            
-            // Priority
-            if let priorityTextField = self.priorityTextField {
-                priorityTextField.text = task.priority?.description
-            } else {
-                assertionFailure()
-            }
-        }
-        
-        else {
-            assertionFailure()
-        }
-    }
-    
-    fileprivate func configureDateAndTimeTableSection() {
-        // Date and time formatting
-        // http://www.codingexplorer.com/swiftly-getting-human-readable-date-nsdateformatter/
-        
-        if let task = task {
-            // Date
-            if let dateTextField = self.dateTextField {
-                dateTextField.text = task.startTime.string(withStringLength: .short)
-            } else {
-                assertionFailure()
-            }
-            
-            // Start time
-            if let startTextField = self.startTextField {
-                startTextField.text = task.startTime.format(withTimeStyle: DateFormatter.Style.short)
-            } else {
-                assertionFailure()
-            }
-            
-            // End time
-            if let endTextField = self.endTextField {
-                endTextField.text = task.endTime.format(withTimeStyle: DateFormatter.Style.short)
-            } else {
-                assertionFailure()
-            }
-            
-            // Time spent
-            if let timeSpentLabel = self.timeSpentLabel {
-                timeSpentLabel.text = task.timeSpent.listDescription
-            } else {
-                assertionFailure()
-            }
-        }
-        
-        else {
-            assertionFailure()
-        }
-    }
-    
-    fileprivate func configureNotesTableSection() {
-        if let task = task {
-            if let notesTextView = self.notesTextView {
-                notesTextView.text = task.notes
-            } else {
-                assertionFailure()
-            }
-        }
-            
-        else {
-            assertionFailure()
-        }
-    }
-    
     override func viewWillAppear(_ animated: Bool) {
-//        print(#function)
+        //        print(#function)
         super.viewWillAppear(animated)
         
         configureView()
@@ -142,12 +46,12 @@ class TaskDetailViewController: UITableViewController {
         
         // If there are 2 or more view controllers in the navigation controller
         if let navigationController = navigationController,
-                navigationController.viewControllers.count >= 2 {
-//            print("Navigation stack: \(navigationController.viewControllers)")
+            navigationController.viewControllers.count >= 2 {
+            //            print("Navigation stack: \(navigationController.viewControllers)")
             
             // Remove the new task view controller if it exists (2nd last in navigation stack)
             if (navigationController.viewControllers[navigationController.viewControllers.count - 2]
-                    is NewTaskTimerViewController) {
+                is NewTaskTimerViewController) {
                 navigationController.viewControllers.remove(
                     at: navigationController.viewControllers.count - 2)
             }
@@ -155,11 +59,8 @@ class TaskDetailViewController: UITableViewController {
             // To verify, print the navigation stack after 1 second
             // since the remove operation doesn't appear immediately
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-//                print("Navigation stack: \(navigationController.viewControllers)")
+                //                print("Navigation stack: \(navigationController.viewControllers)")
             }
-            
-//            // Might need this later
-//            navigationController.popToRootViewController(animated: true)
         }
         
         let priorityPicker = UIPickerView()
@@ -191,6 +92,103 @@ class TaskDetailViewController: UITableViewController {
         dateTextField.inputView = datePicker
         startTextField.inputView = startPicker
         endTextField.inputView = endPicker
+    }
+    
+    /// Updates the interface
+    fileprivate func configureView() {
+        clearsSelectionOnViewWillAppear = true
+        
+        // Title - task name
+        if let task = task {
+            title = task.name
+        } else {
+            assertionFailure()
+        }
+        
+        // Table view
+        configureGeneralTableSection()
+        configureDateAndTimeTableSection()
+        configureTimeSpentTableSection()
+        configureNotesTableSection()
+    
+        // Clear the priority row's highlighted selection
+        tableView.deselectRow(at: IndexPath(row: 1, section: 0), animated: true)
+    }
+    
+    fileprivate func configureGeneralTableSection() {
+        if let task = task {
+            // Name
+            if let nameTextField = self.nameTextField {
+                nameTextField.text = task.name
+            } else {
+                assertionFailure()
+            }
+            
+            // Priority
+            if let priorityTextField = self.priorityTextField {
+                priorityTextField.text = task.priority?.description
+            } else {
+                assertionFailure()
+            }
+        }
+        
+        else {
+            assertionFailure()
+        }
+    }
+    
+    fileprivate func configureDateAndTimeTableSection() {
+        if let task = task {
+            // Date
+            if let dateTextField = self.dateTextField {
+                dateTextField.text = task.startTime.string(withStringLength: .short)
+            } else {
+                assertionFailure()
+            }
+            
+            // Start time
+            if let startTextField = self.startTextField {
+                startTextField.text = task.startTime.format(withTimeStyle: DateFormatter.Style.short)
+            } else {
+                assertionFailure()
+            }
+            
+            // End time
+            if let endTextField = self.endTextField {
+                endTextField.text = task.endTime.format(withTimeStyle: DateFormatter.Style.short)
+            } else {
+                assertionFailure()
+            }
+        }
+        
+        else {
+            assertionFailure()
+        }
+    }
+    
+    fileprivate func configureTimeSpentTableSection() {
+        if let task = task {
+            // Time spent
+            if let timeSpentLabel = self.timeSpentLabel {
+                timeSpentLabel.text = task.timeSpent.listDescription
+            } else {
+                assertionFailure()
+            }
+        }
+    }
+    
+    fileprivate func configureNotesTableSection() {
+        if let task = task {
+            if let notesTextView = self.notesTextView {
+                notesTextView.text = task.notes
+            } else {
+                assertionFailure()
+            }
+        }
+            
+        else {
+            assertionFailure()
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -273,18 +271,11 @@ class TaskDetailViewController: UITableViewController {
         
         configureDateAndTimeTableSection()
     }
-    
-    
-    // MARK: - Navigation
-
-    // Prepare before segues
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let destination = segue.destination as? PrioritySelectionViewController {
-            destination.setup(task: task)
-        }
-    }
 
 }
+
+
+// MARK: - Text Input Views
 
 /// Delegate for the task name text field
 extension TaskDetailViewController: UITextFieldDelegate {
@@ -330,6 +321,7 @@ extension TaskDetailViewController: UITextViewDelegate {
 }
 
 
+// MARK: - Picker Views
 
 extension TaskDetailViewController: UIPickerViewDataSource, UIPickerViewDelegate {
     

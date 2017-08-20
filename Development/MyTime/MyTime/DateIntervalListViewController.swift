@@ -23,6 +23,9 @@ class DateIntervalListViewController: UITableViewController {
         self.dateIntervalLength = dateIntervalLength
     }
     
+    
+    // MARK: - View Management
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -64,23 +67,8 @@ class DateIntervalListViewController: UITableViewController {
     }
     
 
+    // MARK: - Table View
     
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let destination = segue.destination as? DateIntervalAnalysisViewController,
-                let row = tableView.indexPathForSelectedRow?.row,
-                let dateIntervalLength = dateIntervalLength {
-            
-            setBackButtonTitle(dateIntervalLength.adjective)
-            
-            destination.setup(dateInterval: intervalsToTasksArray[row].key,
-                              tasks: intervalsToTasksArray[row].value,
-                              dateIntervalLength: dateIntervalLength)
-        }
-    }
- 
     // Number of rows
     override func tableView(_ tableView: UITableView,
                             numberOfRowsInSection section: Int) -> Int {
@@ -100,6 +88,23 @@ class DateIntervalListViewController: UITableViewController {
             intervalsToTasksArray[indexPath.row].value.totalTimeSpent.listDescription
         
         return cell
+    }
+    
+    
+    // MARK: - Navigation
+    
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destination = segue.destination as? DateIntervalAnalysisViewController,
+            let row = tableView.indexPathForSelectedRow?.row,
+            let dateIntervalLength = dateIntervalLength {
+            
+            setBackButtonTitle(dateIntervalLength.adjective)
+            
+            destination.setup(dateInterval: intervalsToTasksArray[row].key,
+                              tasks: intervalsToTasksArray[row].value,
+                              dateIntervalLength: dateIntervalLength)
+        }
     }
 
 }
