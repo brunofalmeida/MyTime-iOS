@@ -68,7 +68,7 @@ class PriorityListViewController: UITableViewController {
     
     // MARK: - Table View
 
-    // Number of rows = number of priorities
+    // Number of rows
     override func tableView(_ tableView: UITableView,
                             numberOfRowsInSection section: Int) -> Int {
         return DataModel.default.priorities.count
@@ -86,16 +86,13 @@ class PriorityListViewController: UITableViewController {
     override func tableView(_ tableView: UITableView,
                             commit editingStyle: UITableViewCellEditingStyle,
                             forRowAt indexPath: IndexPath) {
-        // Delete the row from the data source
+        // Delete the row from the data source and the table view
         if editingStyle == .delete {
             DataModel.default.priorities.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
             
             debugPrint(DataModel.default)
         }
-//        else if editingStyle == .insert {
-//            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-//        }
     }
     
     // Allow all rows to be deleted except the first row (default priority)
@@ -111,7 +108,7 @@ class PriorityListViewController: UITableViewController {
     
     // MARK: - Navigation
 
-    // Preparate for segue
+    // Prepare for segue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let destination = segue.destination as? PriorityTaskListViewController,
                 let indexPath = tableView.indexPathForSelectedRow {

@@ -56,6 +56,9 @@ class NewTaskTimerViewController: UIViewController {
         cancelTimer()
     }
     
+    
+    // MARK: - Timer
+    
     func cancelTimer() {
         print(#function)
         
@@ -115,39 +118,29 @@ class NewTaskTimerViewController: UIViewController {
         startTimer()
     }
     
-    /**
-     Cancel button event handler
-     Pop to root view controller (priority list)
-     */
+    /// Cancel button event handler
     func cancelButtonTapped() {
         print(#function)
         cancelTimer()
-//        _ = navigationController?.popViewController(animated: true)
     }
     
-    /**
-     Done button event handler
-     Segue to task detail view
-     */
+    /// Done button event handler
     func doneButtonTapped() {
         print(#function)
+        
+        // Segue to task detail view
         performSegue(withIdentifier: Segue.showTaskDetail.rawValue, sender: self)
     }
     
-    /**
-     Timer firing handler
-     Updates the timer label text
-     */
+    /// Timer firing handler
     func timerFired() {
+        // Update the timer label text
         timerLabel.text = elapsedTimeInterval.description
     }
     
-    /**
-     Overflow timer firing handler
-     Checks if 24h has elapsed
-     */
+    /// Overflow timer firing handler
     func overflowTimerFired() {
-        // If the time is greater than (24h - 2m), stop the timer
+        // If the time elapsed is greater than (24h - 2m), stop the timer
         if (Double(elapsedTimeInSeconds) >= (Date.secondsPerDay - (2 * Date.secondsPerMinute))) {
             doneButtonTapped()
         }

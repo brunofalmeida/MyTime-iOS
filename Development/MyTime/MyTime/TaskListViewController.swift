@@ -56,7 +56,9 @@ class TaskListViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        // Sort tasks with the most recent first
         tasks.sort { $0.startTime > $1.startTime }
+        
         tableView.reloadData()
     }
     

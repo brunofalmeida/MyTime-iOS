@@ -38,7 +38,7 @@ class TimeInterval: NSObject, NSCoding {
     }
     
     
-    // MARK: NSCoding
+    // MARK: - NSCoding
     
     // Read from a file
     required convenience init?(coder aDecoder: NSCoder) {
@@ -59,6 +59,7 @@ class TimeInterval: NSObject, NSCoding {
 }
 
 
+// MARK: - String Descriptions
 extension TimeInterval {
     override var description: String {
         if hours == 0 {
@@ -83,6 +84,8 @@ extension TimeInterval {
     }
 }
 
+
+// MARK: - Operators
 
 func ==(left: TimeInterval, right: TimeInterval) -> Bool {
     return left.totalSeconds == right.totalSeconds

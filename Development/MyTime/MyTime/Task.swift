@@ -114,6 +114,7 @@ class Task: NSObject, NSCoding {
 }
 
 
+// MARK: - String Descriptions
 extension Task {
     override var description: String {
         return "\(name) (\(timeSpent))"
@@ -124,6 +125,8 @@ extension Task {
     }
 }
 
+
+// MARK: - Operators
 
 func ==(left: Task, right: Task) -> Bool {
     return left.name == right.name &&

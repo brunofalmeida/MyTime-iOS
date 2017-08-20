@@ -95,6 +95,16 @@ class TaskDetailViewController: UITableViewController {
         endTextField.inputView = endPicker
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        print(#function)
+        super.viewWillDisappear(animated)
+        
+        DataModel.default.writeToFile()
+    }
+    
+    
+    // MARK: - Interface Configuration
+    
     /// Updates the interface
     fileprivate func configureView() {
         clearsSelectionOnViewWillAppear = true
@@ -196,12 +206,8 @@ class TaskDetailViewController: UITableViewController {
         }
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        print(#function)
-        super.viewWillDisappear(animated)
-        
-        DataModel.default.writeToFile()
-    }
+    
+    // MARK: - Date Picker Value Updates
     
     func datePickerValueChanged(sender: UIDatePicker) {
         print("Date changed: \(sender.date)")

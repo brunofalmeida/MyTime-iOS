@@ -201,6 +201,7 @@ class DataModel: NSObject, NSCoding {
 }
 
 
+// MARK: - String Descriptions
 extension DataModel {
     override var description: String {
         return type(of: self).description()
@@ -210,6 +211,8 @@ extension DataModel {
     }
 }
 
+
+// MARK: - Operators
 
 func ==(left: DataModel, right: DataModel) -> Bool {
     return left.priorities == right.priorities

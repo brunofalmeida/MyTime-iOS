@@ -63,6 +63,7 @@ class Priority: NSObject, NSCoding {
 }
 
 
+// MARK: - String Descriptions
 extension Priority {
     override var description: String {
         return name
@@ -72,6 +73,8 @@ extension Priority {
     }
 }
 
+
+// MARK: - Operators
 
 func ==(left: Priority, right: Priority) -> Bool {
     return left.name == right.name && left.tasks == right.tasks
