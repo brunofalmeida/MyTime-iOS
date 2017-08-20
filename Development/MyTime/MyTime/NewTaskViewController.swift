@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// Allows the user to select how to create a new task.
 class NewTaskViewController: UITableViewController {
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation

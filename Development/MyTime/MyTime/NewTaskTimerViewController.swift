@@ -8,9 +8,10 @@
 
 import UIKit
 
+/// Uses a timer to measure the time spent on a task.
 class NewTaskTimerViewController: UIViewController {
     
-    fileprivate enum Segues: String {
+    fileprivate enum Segue: String {
         case showTaskDetail
     }
     
@@ -130,7 +131,7 @@ class NewTaskTimerViewController: UIViewController {
      */
     func doneButtonTapped() {
         print(#function)
-        performSegue(withIdentifier: Segues.showTaskDetail.rawValue, sender: self)
+        performSegue(withIdentifier: Segue.showTaskDetail.rawValue, sender: self)
     }
     
     /**

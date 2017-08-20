@@ -56,8 +56,14 @@ class Task: NSObject, NSCoding {
         super.init()
     }
     
-    convenience init(name: String, startTime: Date, timeSpent: TimeInterval, notes: String? = nil) {
-        self.init(name: name, startTime: startTime, endTime: startTime + Double(timeSpent.totalSeconds), notes: notes)
+    convenience init(name: String,
+                     startTime: Date,
+                     timeSpent: TimeInterval,
+                     notes: String? = nil) {
+        self.init(name: name,
+                  startTime: startTime,
+                  endTime: startTime + Double(timeSpent.totalSeconds),
+                  notes: notes)
     }
     
     /// Ensures `startTime` and `endTime` are valid with respect to each other.
@@ -120,7 +126,9 @@ extension Task {
 
 
 func ==(left: Task, right: Task) -> Bool {
-    return left.name == right.name && left.startTime == right.startTime && left.endTime == right.endTime
+    return left.name == right.name &&
+        left.startTime == right.startTime &&
+        left.endTime == right.endTime
 }
 
 func !=(left: Task, right: Task) -> Bool {

@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// A list of all tasks.
 class AllTaskListViewController: TaskListViewController {
     
     override var segueIdentifier: String {

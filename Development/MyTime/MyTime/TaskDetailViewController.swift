@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// A view of a task's details and properties, most of which can be edited.
 class TaskDetailViewController: UITableViewController {
     
     @IBOutlet weak var nameTextField: UITextField!
@@ -277,7 +278,7 @@ class TaskDetailViewController: UITableViewController {
 
 // MARK: - Text Input Views
 
-/// Delegate for the task name text field
+/// Delegate for the name text field
 extension TaskDetailViewController: UITextFieldDelegate {
     
     // Be alerted when the text in the field changes
@@ -302,6 +303,7 @@ extension TaskDetailViewController: UITextFieldDelegate {
     
 }
 
+/// Delegate for the notes text view
 extension TaskDetailViewController: UITextViewDelegate {
     
     func textView(_ textView: UITextView,
@@ -332,17 +334,20 @@ extension TaskDetailViewController: UIPickerViewDataSource, UIPickerViewDelegate
     }
     
     @available(iOS 2.0, *)
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+    func pickerView(_ pickerView: UIPickerView,
+                    numberOfRowsInComponent component: Int) -> Int {
 //        print(#function)
         return DataModel.default.priorities.count
     }
 
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int,
+                    forComponent component: Int) -> String? {
 //        print(#function)
         return DataModel.default.priorities[row].name
     }
     
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int,
+                    inComponent component: Int) {
         print(#function)
         
         if let task = task {

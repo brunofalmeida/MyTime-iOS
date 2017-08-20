@@ -8,9 +8,7 @@
 
 import UIKit
 
-/**
- A list of tasks for a specific priority.
- */
+/// A list of tasks for a specific priority.
 class PriorityTaskListViewController: TaskListViewController {
 
     /// The priority to display tasks for.

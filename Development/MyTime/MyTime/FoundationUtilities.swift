@@ -42,7 +42,8 @@ extension Date {
      Formats the date according to the given date and time styles,
      without having to create a `DateFormatter` object.
      */
-    func format(withDateStyle dateStyle: DateFormatter.Style = .none, withTimeStyle timeStyle: DateFormatter.Style = .none) -> String {
+    func format(withDateStyle dateStyle: DateFormatter.Style = .none,
+                withTimeStyle timeStyle: DateFormatter.Style = .none) -> String {
         let formatter = DateFormatter()
         formatter.dateStyle = dateStyle
         formatter.timeStyle = timeStyle

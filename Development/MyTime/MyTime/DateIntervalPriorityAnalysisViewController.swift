@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// A list of tasks for a given date interval and priority.
 class DateIntervalPriorityAnalysisViewController: TaskListViewController {
 
     /// The date interval being analyzed.

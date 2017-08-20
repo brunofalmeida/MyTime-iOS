@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// A list of all priorities.
 class PriorityListViewController: UITableViewController {    
     
     // MARK: - View Management

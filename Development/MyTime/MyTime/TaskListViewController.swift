@@ -26,6 +26,9 @@ class TaskListViewController: UITableViewController {
     /// The list of tasks to display
     fileprivate var tasks: [Task] = []
     
+    
+    
+    
     func setup(tasks: [Task]) {
         self.tasks = tasks
     }
@@ -122,10 +125,8 @@ class TaskListViewController: UITableViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 //        print(#function)
-        
         super.prepare(for: segue, sender: sender)
         
-        // Task detail
         if let destination = segue.destination as? TaskDetailViewController,
             let indexPath = tableView.indexPathForSelectedRow {
             destination.setup(task: tasks[indexPath.row])

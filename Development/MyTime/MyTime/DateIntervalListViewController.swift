@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// A list of all possible date intervals for a given date interval length.
 class DateIntervalListViewController: UITableViewController {
         
     var dateIntervalLength: DateIntervalLength?

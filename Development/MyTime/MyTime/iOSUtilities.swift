@@ -15,7 +15,10 @@ extension UIColor {
     /// A convenience initializer to use `Double` values without having to convert to `CGFloat`.
     @nonobjc
     convenience init(red: Double, green: Double, blue: Double, alpha: Double) {
-        self.init(red: CGFloat(red), green: CGFloat(green), blue: CGFloat(blue), alpha: CGFloat(alpha))
+        self.init(red: CGFloat(red),
+                  green: CGFloat(green),
+                  blue: CGFloat(blue),
+                  alpha: CGFloat(alpha))
     }
     
 }
@@ -24,7 +27,10 @@ extension UIColor {
 extension UIViewController {
     
     func setBackButtonTitle(_ title: String) {
-        navigationItem.backBarButtonItem = UIBarButtonItem(title: title, style: .plain, target: nil, action: nil)
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: title,
+                                                           style: .plain,
+                                                           target: nil,
+                                                           action: nil)
     }
     
     func setBackButtonTitleAsEmpty() {

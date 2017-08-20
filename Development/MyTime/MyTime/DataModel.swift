@@ -8,7 +8,7 @@
 
 import Foundation
 
-/// Contains the entire set of stored data for the application.
+/// The entire set of stored data for the application.
 class DataModel: NSObject, NSCoding {
     
     static var `default`: DataModel = DataModel()

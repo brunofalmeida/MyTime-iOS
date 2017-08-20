@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Charts
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDelegate {

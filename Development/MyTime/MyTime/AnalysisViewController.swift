@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// Allows the user to choose which date interval length to analyze.
 class AnalysisViewController: UITableViewController {
 
     // MARK: - View Management
@@ -25,13 +26,15 @@ class AnalysisViewController: UITableViewController {
 
     // MARK: - Table View
 
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView,
+                            numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return DateIntervalLength.allCases.count
     }
 
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView,
+                            cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         cell.textLabel?.text = DateIntervalLength.allCases[indexPath.row].adjective
         return cell

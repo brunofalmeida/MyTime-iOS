@@ -8,7 +8,6 @@
 
 import Foundation
 
-
 /// A period of time elapsed. Only stores the length of time elapsed, not when it started and ended.
 class TimeInterval: NSObject, NSCoding {
     

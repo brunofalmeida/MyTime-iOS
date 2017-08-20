@@ -8,7 +8,7 @@
 
 import UIKit
 
-/// Displays the priorities with tasks in the given date interval.
+/// A list of priorities that have tasks in the given date interval.
 class DateIntervalAnalysisViewController: UITableViewController {
     
     /// The date interval being examined for time analysis.
@@ -116,7 +116,9 @@ class DateIntervalAnalysisViewController: UITableViewController {
                 prioritiesToTimeIntervals[key] = value.totalTimeSpent
             }
             
-            destination.setup(dateInterval: dateInterval, dateIntervalLength: dateIntervalLength, prioritiesToTimeIntervals: prioritiesToTimeIntervals)
+            destination.setup(dateInterval: dateInterval,
+                              dateIntervalLength: dateIntervalLength,
+                              prioritiesToTimeIntervals: prioritiesToTimeIntervals)
         }
     }
  
