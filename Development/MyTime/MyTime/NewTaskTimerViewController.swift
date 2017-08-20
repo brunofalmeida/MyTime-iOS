@@ -13,8 +13,6 @@ class NewTaskTimerViewController: UIViewController {
     fileprivate enum Segues: String {
         case showTaskDetail
     }
-
-    fileprivate weak var dataModel = (UIApplication.shared.delegate as? AppDelegate)?.dataModel
     
     @IBOutlet weak var circleView: UIView!
     @IBOutlet weak var timerLabel: UILabel!
@@ -162,7 +160,7 @@ class NewTaskTimerViewController: UIViewController {
         if let destination = segue.destination as? TaskDetailViewController {
             
             // Create a new task - default priority and name, end time is now
-            let priority = dataModel?.defaultPriority
+            let priority = DataModel.default.defaultPriority
             let task = Task(name: DataModel.defaultTaskName,
                             startTime: startTime,
                             endTime: Date())

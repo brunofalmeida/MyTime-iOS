@@ -9,8 +9,6 @@
 import UIKit
 
 class PrioritySelectionViewController: UITableViewController {
-
-    fileprivate weak var dataModel = (UIApplication.shared.delegate as? AppDelegate)?.dataModel
     
     /// The task whose priority is being selected
     fileprivate var task: Task?
@@ -29,10 +27,9 @@ class PrioritySelectionViewController: UITableViewController {
         tableView.reloadData()
         
         // Select the task's existing priority
-        if let dataModel = dataModel,
-                let task = task,
+        if let task = task,
                 let priority = task.priority,
-                let index = dataModel.priorities.index(of: priority) {
+                let index = DataModel.default.priorities.index(of: priority) {
             tableView(tableView, didSelectRowAt: IndexPath(row: index, section: 0))
         } else {
             assertionFailure()
@@ -42,7 +39,7 @@ class PrioritySelectionViewController: UITableViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
-        dataModel?.writeToFile()
+        DataModel.default.writeToFile()
     }
     
 
@@ -51,14 +48,14 @@ class PrioritySelectionViewController: UITableViewController {
     // Number of rows = number of priorities
     override func tableView(_ tableView: UITableView,
                             numberOfRowsInSection section: Int) -> Int {
-        return dataModel?.priorities.count ?? 0
+        return DataModel.default.priorities.count
     }
 
     // Cell creation
     override func tableView(_ tableView: UITableView,
                             cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        cell.textLabel?.text = dataModel?.priorities[indexPath.row].name
+        cell.textLabel?.text = DataModel.default.priorities[indexPath.row].name
         return cell
     }
  
@@ -80,8 +77,8 @@ class PrioritySelectionViewController: UITableViewController {
                 indexPath != selectedIndexPath {
             if let task = task {
                 // Delete the task from the previous priority, add it to the new priority
-                dataModel?.priorities[selectedIndexPath.row].removeTask(task)
-                dataModel?.priorities[indexPath.row].addTask(task)
+                DataModel.default.priorities[selectedIndexPath.row].removeTask(task)
+                DataModel.default.priorities[indexPath.row].addTask(task)
             } else {
                 assertionFailure("Task not available")
             }

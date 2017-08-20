@@ -11,6 +11,8 @@ import Foundation
 /// Contains the entire set of stored data for the application.
 class DataModel: NSObject, NSCoding {
     
+    static var `default`: DataModel = DataModel()
+    
     static let defaultPriorityName = "General"
     static let defaultTaskName = "Untitled"
     

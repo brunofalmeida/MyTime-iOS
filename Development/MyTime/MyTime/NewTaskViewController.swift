@@ -9,9 +9,6 @@
 import UIKit
 
 class NewTaskViewController: UITableViewController {
-
-    fileprivate weak var dataModel = (UIApplication.shared.delegate as? AppDelegate)?.dataModel
-    
     
     // MARK: - Navigation
 
@@ -20,7 +17,7 @@ class NewTaskViewController: UITableViewController {
         if let destination = segue.destination as? TaskDetailViewController {
             
             // Create a new task - default priority and name, start and end time are now
-            let priority = dataModel?.defaultPriority
+            let priority = DataModel.default.defaultPriority
             let task = Task(name: DataModel.defaultTaskName,
                             startTime: Date(),
                             endTime: Date())

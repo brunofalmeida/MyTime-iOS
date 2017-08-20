@@ -13,8 +13,6 @@ import Charts
 class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDelegate {
 
     var window: UIWindow?
-
-    let dataModel: DataModel = DataModel.readFromFile() ?? DataModel()
     
     
     func application(_ application: UIApplication,
@@ -29,6 +27,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         navigationController.topViewController!.navigationItem.leftBarButtonItem =
             splitViewController.displayModeButtonItem
         splitViewController.delegate = self
+        
+        // Read and set up the data model
+        DataModel.default = DataModel.readFromFile() ?? DataModel()
+        
         return true
     }
 

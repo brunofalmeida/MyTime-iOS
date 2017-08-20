@@ -9,9 +9,7 @@
 import UIKit
 
 class DateIntervalListViewController: UITableViewController {
-    
-    fileprivate weak var dataModel = (UIApplication.shared.delegate as? AppDelegate)?.dataModel
-    
+        
     var dateIntervalLength: DateIntervalLength?
     /// The date intervals containing saved tasks, mapped to their corresponding tasks.
     var intervalsToTasks: [DateInterval: [Task]] = [:]
@@ -44,10 +42,10 @@ class DateIntervalListViewController: UITableViewController {
         
         intervalsToTasks = [:]
         
-        if let dataModel = dataModel, let dateIntervalLength = dateIntervalLength {
+        if let dateIntervalLength = dateIntervalLength {
             
             // For each task saved
-            for task in dataModel.allTasks {
+            for task in DataModel.default.allTasks {
                 
                 // Get the appropriate date interval containing this task
                 let interval = task.startTime.dateInterval(for: dateIntervalLength)

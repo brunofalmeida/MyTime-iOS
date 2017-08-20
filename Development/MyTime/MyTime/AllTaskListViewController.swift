@@ -9,8 +9,6 @@
 import UIKit
 
 class AllTaskListViewController: TaskListViewController {
-
-    fileprivate weak var dataModel = (UIApplication.shared.delegate as? AppDelegate)?.dataModel
     
     override var segueIdentifier: String {
         return "AllTask_Task"
@@ -19,7 +17,7 @@ class AllTaskListViewController: TaskListViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setup(tasks: dataModel?.allTasks ?? [])
+        setup(tasks: DataModel.default.allTasks)
     }
 
     /*

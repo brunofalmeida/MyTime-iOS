@@ -25,8 +25,6 @@ class TaskListViewController: UITableViewController {
     
     // MARK: - Properties
     
-    fileprivate weak var dataModel = (UIApplication.shared.delegate as? AppDelegate)?.dataModel
-    
     /// The list of tasks to display
     fileprivate var tasks: [Task] = []
     
@@ -127,7 +125,7 @@ class TaskListViewController: UITableViewController {
             tasks[row].removeFromPriority()
             tasks.remove(at: row)
             tableView.deleteRows(at: [indexPath], with: .fade)
-            dataModel?.writeToFile()
+            DataModel.default.writeToFile()
         }
     }
     

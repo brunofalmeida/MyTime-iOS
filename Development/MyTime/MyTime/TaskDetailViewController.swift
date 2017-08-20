@@ -10,8 +10,6 @@ import UIKit
 
 class TaskDetailViewController: UITableViewController {
     
-    fileprivate weak var dataModel = (UIApplication.shared.delegate as? AppDelegate)?.dataModel
-    
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var priorityTextField: UITextField!
     
@@ -167,7 +165,7 @@ class TaskDetailViewController: UITableViewController {
         let priorityPicker = UIPickerView()
         priorityPicker.dataSource = self
         priorityPicker.delegate = self
-        if let priority = task?.priority, let index = dataModel?.priorities.index(of: priority) {
+        if let priority = task?.priority, let index = DataModel.default.priorities.index(of: priority) {
             priorityPicker.selectRow(index, inComponent: 0, animated: true)
         }
         priorityTextField.inputView = priorityPicker
@@ -199,7 +197,7 @@ class TaskDetailViewController: UITableViewController {
         print(#function)
         super.viewWillDisappear(animated)
         
-        dataModel?.writeToFile()
+        DataModel.default.writeToFile()
     }
     
     func datePickerValueChanged(sender: UIDatePicker) {
@@ -225,7 +223,7 @@ class TaskDetailViewController: UITableViewController {
         }
         
         configureDateAndTimeTableSection()
-        dataModel?.writeToFile()
+        DataModel.default.writeToFile()
     }
     
     func startPickerValueChanged(sender: UIDatePicker) {
@@ -251,7 +249,7 @@ class TaskDetailViewController: UITableViewController {
         }
         
         configureDateAndTimeTableSection()
-        dataModel?.writeToFile()
+        DataModel.default.writeToFile()
     }
     
     func endPickerValueChanged(sender: UIDatePicker) {
@@ -276,7 +274,7 @@ class TaskDetailViewController: UITableViewController {
         }
         
         configureDateAndTimeTableSection()
-        dataModel?.writeToFile()
+        DataModel.default.writeToFile()
     }
     
     
@@ -347,12 +345,12 @@ extension TaskDetailViewController: UIPickerViewDataSource, UIPickerViewDelegate
     @available(iOS 2.0, *)
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
 //        print(#function)
-        return dataModel?.priorities.count ?? 0
+        return DataModel.default.priorities.count
     }
 
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
 //        print(#function)
-        return dataModel?.priorities[row].name
+        return DataModel.default.priorities[row].name
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
@@ -360,10 +358,7 @@ extension TaskDetailViewController: UIPickerViewDataSource, UIPickerViewDelegate
         
         if let task = task {
             task.removeFromPriority()
-            
-            if let priority = dataModel?.priorities[row] {
-                task.addToPriority(priority: priority)
-            }
+            task.addToPriority(priority: DataModel.default.priorities[row])
         }
         
         configureGeneralTableSection()

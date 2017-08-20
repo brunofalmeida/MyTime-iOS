@@ -142,6 +142,7 @@ extension DateInterval {
 // TODO - Add search method - filter all tasks for those with specific parameters
 // (priority, date interval, etc.)
 // Can specify some parameters and not others
+// Can simplify all task list views to a single class, pass parameters into setup()
 extension Array where Element == Task {
     
     /// The sum of the time spent on all tasks
