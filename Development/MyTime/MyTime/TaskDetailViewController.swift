@@ -103,7 +103,7 @@ class TaskDetailViewController: UITableViewController {
         if let task = task {
             title = task.name
         } else {
-            assertionFailure()
+//            assertionFailure()
         }
         
         // Table view
@@ -134,7 +134,7 @@ class TaskDetailViewController: UITableViewController {
         }
         
         else {
-            assertionFailure()
+//            assertionFailure()
         }
     }
     
@@ -163,7 +163,7 @@ class TaskDetailViewController: UITableViewController {
         }
         
         else {
-            assertionFailure()
+//            assertionFailure()
         }
     }
     
@@ -175,6 +175,10 @@ class TaskDetailViewController: UITableViewController {
             } else {
                 assertionFailure()
             }
+        }
+        
+        else {
+//            assertionFailure()
         }
     }
     
@@ -188,7 +192,7 @@ class TaskDetailViewController: UITableViewController {
         }
             
         else {
-            assertionFailure()
+//            assertionFailure()
         }
     }
     

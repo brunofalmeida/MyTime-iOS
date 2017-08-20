@@ -49,15 +49,6 @@ class TaskListViewController: UITableViewController {
         // Edit button - top right
         navigationItem.rightBarButtonItem = editButtonItem
         
-//        // Track the detail view controller
-//        if let split = self.splitViewController {
-//            let controllers = split.viewControllers
-//            self.detailViewController = (controllers[controllers.count - 1] as! UINavigationController).topViewController as? TaskDetailViewController
-//        }
-        
-//        // Show the primary and secondary view controllers side by side
-//        splitViewController?.preferredDisplayMode = .allVisible
-        
         clearsSelectionOnViewWillAppear = splitViewController?.isCollapsed ?? true
         print(clearsSelectionOnViewWillAppear)
     }

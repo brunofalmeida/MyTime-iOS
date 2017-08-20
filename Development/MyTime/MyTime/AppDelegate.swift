@@ -26,6 +26,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         navigationController.topViewController!.navigationItem.leftBarButtonItem =
             splitViewController.displayModeButtonItem
         splitViewController.delegate = self
+                
+        // Show the primary and secondary view controllers side by side
+        splitViewController.preferredDisplayMode = .allVisible
         
         // Read and set up the data model
         DataModel.default = DataModel.readFromFile() ?? DataModel()
