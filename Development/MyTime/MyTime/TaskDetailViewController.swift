@@ -223,7 +223,6 @@ class TaskDetailViewController: UITableViewController {
         }
         
         configureDateAndTimeTableSection()
-        DataModel.default.writeToFile()
     }
     
     func startPickerValueChanged(sender: UIDatePicker) {
@@ -249,7 +248,6 @@ class TaskDetailViewController: UITableViewController {
         }
         
         configureDateAndTimeTableSection()
-        DataModel.default.writeToFile()
     }
     
     func endPickerValueChanged(sender: UIDatePicker) {
@@ -274,7 +272,6 @@ class TaskDetailViewController: UITableViewController {
         }
         
         configureDateAndTimeTableSection()
-        DataModel.default.writeToFile()
     }
     
     

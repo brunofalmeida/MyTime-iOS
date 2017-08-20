@@ -23,8 +23,6 @@ class TaskListViewController: UITableViewController {
         return "FIXME"
     }
     
-    // MARK: - Properties
-    
     /// The list of tasks to display
     fileprivate var tasks: [Task] = []
     
@@ -40,8 +38,6 @@ class TaskListViewController: UITableViewController {
         // Register the custom cell so it can be used in the table
         tableView.register(UINib(nibName: cellIdentifier, bundle: nil),
                            forCellReuseIdentifier: cellIdentifier)
-        
-        
         
         // Default title
 //        title = "Tasks"
@@ -66,26 +62,13 @@ class TaskListViewController: UITableViewController {
         super.viewWillAppear(animated)
         
         tasks.sort { $0.startTime > $1.startTime }
-        
-        
-        
         tableView.reloadData()
     }
-
     
-    
-    
-    // MARK: - Segues
-
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        super.prepare(for: segue, sender: sender)
-//        print(#function)
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
         
-        // Task detail
-        if let destination = segue.destination as? TaskDetailViewController,
-                let indexPath = tableView.indexPathForSelectedRow {
-            destination.setup(task: tasks[indexPath.row])
-        }
+        DataModel.default.writeToFile()
     }
 
     
@@ -94,8 +77,6 @@ class TaskListViewController: UITableViewController {
     // Number of rows
     override func tableView(_ tableView: UITableView,
                             numberOfRowsInSection section: Int) -> Int {
-        super.tableView(tableView, numberOfRowsInSection: section)
-        
         return tasks.count
     }
 
@@ -125,7 +106,6 @@ class TaskListViewController: UITableViewController {
             tasks[row].removeFromPriority()
             tasks.remove(at: row)
             tableView.deleteRows(at: [indexPath], with: .fade)
-            DataModel.default.writeToFile()
         }
     }
     
@@ -133,6 +113,20 @@ class TaskListViewController: UITableViewController {
     override func tableView(_ tableView: UITableView,
                             didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: segueIdentifier, sender: self)
+    }
+    
+    
+    // MARK: - Segues
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
+        //        print(#function)
+        
+        // Task detail
+        if let destination = segue.destination as? TaskDetailViewController,
+            let indexPath = tableView.indexPathForSelectedRow {
+            destination.setup(task: tasks[indexPath.row])
+        }
     }
 
 }

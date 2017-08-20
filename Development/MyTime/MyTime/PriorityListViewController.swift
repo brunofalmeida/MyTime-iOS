@@ -31,7 +31,6 @@ class PriorityListViewController: UITableViewController {
 //        print(#function)
         super.viewWillDisappear(animated)
         
-        // Save data
         DataModel.default.writeToFile()
     }
     
@@ -88,7 +87,6 @@ class PriorityListViewController: UITableViewController {
         if editingStyle == .delete {
             DataModel.default.priorities.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
-            DataModel.default.writeToFile()
             
             debugPrint(DataModel.default)
         }
