@@ -64,7 +64,7 @@ class DataModel: NSObject, NSCoding {
     }
     
     
-    // MARK: NSCoding
+    // MARK: - NSCoding
     
     /// Keys for encoding (writing) and decoding (reading) the object
     fileprivate enum CodingKeys: String {
@@ -85,6 +85,8 @@ class DataModel: NSObject, NSCoding {
         aCoder.encode(priorities, forKey: CodingKeys.priorities.rawValue)
     }
     
+    
+    // MARK: - File I/O
 
     /// URL to documents directory
     static var documentsURL: URL? {
@@ -116,7 +118,10 @@ class DataModel: NSObject, NSCoding {
     
     
     
-    
+    /**
+     This is synchronous because reading data from a file might be critical for the
+     application to continue running, such as when the app starts.
+     */
     static func readFromFile(url: URL? = dataModelURL) -> DataModel? {
         //print()
         print(#function)
@@ -143,7 +148,13 @@ class DataModel: NSObject, NSCoding {
         }
     }
     
-    /// Deletes the file if it exists
+    
+    /**
+     Deletes a given file if it exists.
+     
+     This is synchronous because deleting a file might be critical for the
+     application to continue running.
+     */
     static func deleteFile(url: URL? = dataModelURL) {
         //print()
         print(#function)
@@ -153,8 +164,8 @@ class DataModel: NSObject, NSCoding {
             return
         }
         
-        print("Path: \(url.path)")
-        print("File existence: \(FileManager.default.fileExists(atPath: url.path))")
+//        print("Path: \(url.path)")
+//        print("File existence: \(FileManager.default.fileExists(atPath: url.path))")
         
         do {
             try FileManager.default.removeItem(atPath: url.path)
@@ -167,34 +178,46 @@ class DataModel: NSObject, NSCoding {
     }
     
     /**
-     - Returns: true if the write operation succeeded
-    */
-    @discardableResult
-    func writeToFile(url: URL? = dataModelURL) -> Bool {
-        //print()
-        print(#function)
-        
-        guard let url = url else {
-            print("URL is nil")
-            return false
-        }
-        
-//        print("Path: \(url.path)")
-        print("Data: \(self.debugDescription)")
-        defer {
-//            print("File existence: \(FileManager.default.fileExists(atPath: url.path))")
-        }
-        
-        if NSKeyedArchiver.archiveRootObject(self, toFile: url.path) {
-            print("Write succeeded")
+     This is asynchronous because writing the data to a file does not need to be
+     done immediatey for the application to continue running.
+     
+     - Parameter result:
+        A closure to execute after the file writing is done.
+        The `Bool` passed to the closure will be `true` if the write operation was successful.
+     */
+    func writeToFile(url: URL? = dataModelURL, result: @escaping (Bool) -> Void = { _ in }) {
+        DispatchQueue.global(qos: .background).async {
+            //print()
+            print(#function)
             
-            //print("Written data model:")
-            //debugPrint(self)
+            guard let url = url else {
+                print("URL is nil")
+                assertionFailure()
+                
+                result(false)
+                return
+            }
             
-            return true
-        } else {
-            print("Write failed")
-            return false
+    //        print("Path: \(url.path)")
+            print("Data: \(self.debugDescription)")
+    //        defer {
+    //            print("File existence: \(FileManager.default.fileExists(atPath: url.path))")
+    //        }
+            
+            if NSKeyedArchiver.archiveRootObject(self, toFile: url.path) {
+                print("Write succeeded")
+                
+                result(true)
+                
+                //print("Written data model:")
+                //debugPrint(self)
+                
+            } else {
+                print("Write failed")
+                assertionFailure()
+                
+                result(false)
+            }
         }
     }
     

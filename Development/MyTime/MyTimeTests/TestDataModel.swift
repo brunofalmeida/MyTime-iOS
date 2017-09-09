@@ -44,19 +44,22 @@ class TestDataModel: XCTestCase {
         XCTAssertFalse(FileManager.default.fileExists(atPath: url.path))
         
         // Write data
-        XCTAssert(dataModel.writeToFile(url: url))
-        print("Written data model:")
-        debugPrint(dataModel)
-        XCTAssert(FileManager.default.fileExists(atPath: url.path))
-        
-        // Read data
-        if let readDataModel = DataModel.readFromFile(url: url) {
-            print("Read data model:")
-            debugPrint(readDataModel)
+        dataModel.writeToFile(url: url) { result in
+            XCTAssert(result)
             
-            XCTAssert(dataModel == readDataModel)
-        } else {
-            XCTFail()
+            print("Written data model:")
+            debugPrint(dataModel)
+            XCTAssert(FileManager.default.fileExists(atPath: url.path))
+            
+            // Read data
+            if let readDataModel = DataModel.readFromFile(url: url) {
+                print("Read data model:")
+                debugPrint(readDataModel)
+                
+                XCTAssert(dataModel == readDataModel)
+            } else {
+                XCTFail()
+            }
         }
     }
     
