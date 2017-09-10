@@ -1,6 +1,6 @@
 # Design
 
-This application will be designed to allow the user to track their time spend on certain priorities and tasks.
+This application allows the user to track their time spent on certain priorities and tasks.
 
 
 ## Requirements
@@ -11,11 +11,9 @@ This application will be designed to allow the user to track their time spend on
 
 ### Secondary Functions
 
-- Set goals per day, week, month, etc. (how much time to spend on areas/tasks)
-- Track use of time in real-time
-- View time spent on areas/tasks this day, week, month, etc.
-- Compare goals to actual use of time
-- Actively provide suggestions and advice for time management
+- Time tasks in real-time or record tasks from memory
+- View tasks by priority or a list of all tasks
+- Analyze and graph time spent on priorities by day, week, month
 
 
 ## Version History
@@ -29,12 +27,10 @@ This application will be designed to allow the user to track their time spend on
 
 ## Ideas for Future Features
 
-- Add a description and notes for each task
-
-- Set goals for time to spend on categories/tasks
+- Set goals for time to spend on priorities per day, week, month, etc.
 
 - Interactively compare goals to results
 
 - Allow tasks timer to run in the background, provide notification reminders (e.g. take a break, 30 minutes elapsed)
 
-- Provide general notifications for time management tips
+- Actively provide suggestions and advice for time management (could be in-app or as notifications)
