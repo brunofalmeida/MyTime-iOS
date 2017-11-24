@@ -1,8 +1,5 @@
 # Design
 
-This application allows the user to track their time spent on certain priorities and tasks.
-
-
 ## Requirements
 
 ### Primary Function
@@ -18,11 +15,13 @@ This application allows the user to track their time spent on certain priorities
 
 ## Version History
 
-0.1: Start and stop a timer
+0.1: Can start and stop a timer
 
-0.2: Store a list of tasks and the time spent on each
+0.2: Can store a list of tasks and the time spent on each
 
-0.3: Group tasks by priority, view each task's details
+0.3: Can group tasks by priority and view each task's details
+
+0.4: Can add task notes, designed an app icon
 
 
 ## Ideas for Future Features
