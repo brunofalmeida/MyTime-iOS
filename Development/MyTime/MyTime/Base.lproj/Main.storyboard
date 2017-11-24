@@ -43,11 +43,11 @@
             </objects>
             <point key="canvasLocation" x="1697" y="-1378"/>
         </scene>
-        <!--Tasks-->
+        <!--All Tasks-->
         <scene sceneID="oLe-Tk-ohg">
             <objects>
                 <navigationController id="QFj-Bo-Tsg" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Tasks" image="mostviewed" id="6OG-J7-WuQ"/>
+                    <tabBarItem key="tabBarItem" title="All Tasks" image="list-simple-7" id="6OG-J7-WuQ"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Qfe-qx-e10">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -273,7 +273,7 @@
         <scene sceneID="Cuw-FH-bVS">
             <objects>
                 <navigationController id="j9Z-cT-hDI" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Analysis" image="history" id="B5x-Va-9zG"/>
+                    <tabBarItem key="tabBarItem" title="Analysis" image="clock-7" id="B5x-Va-9zG"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="mvV-3B-aP8">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -355,7 +355,7 @@
         <scene sceneID="75x-fG-g43">
             <objects>
                 <navigationController id="ZMQ-qH-0UK" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="New" image="add" id="HCp-S3-6eA"/>
+                    <tabBarItem key="tabBarItem" title="New" image="plus-simple-7" id="HCp-S3-6eA"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="njJ-8R-LIZ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -372,7 +372,7 @@
         <scene sceneID="pY4-Hu-kfo">
             <objects>
                 <navigationController title="Master" id="RMx-3f-FxP" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Priorities" image="organize" id="zBf-za-iva"/>
+                    <tabBarItem key="tabBarItem" title="Priorities" image="folder-7" id="zBf-za-iva"/>
                     <navigationBar key="navigationBar" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="Pmd-2v-anx">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -806,12 +806,12 @@
         </scene>
     </scenes>
     <resources>
-        <image name="add" width="15" height="15"/>
-        <image name="history" width="25" height="25"/>
-        <image name="mostviewed" width="23" height="23"/>
-        <image name="organize" width="21" height="18"/>
+        <image name="clock-7" width="30" height="30"/>
+        <image name="folder-7" width="30" height="30"/>
+        <image name="list-simple-7" width="30" height="30"/>
+        <image name="plus-simple-7" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="ie0-Y3-AmA"/>
+        <segue reference="wUV-Ru-c7N"/>
     </inferredMetricsTieBreakers>
 </document>

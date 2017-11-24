@@ -7,3 +7,9 @@ An iOS application that helps you track and analyze how you are spending your ti
 ## Inspiration
 
 As a student, I can relate to those times when you think you're spending a lot of time working, but actually accomplish very little. With MyTime, you can figure out how you're actually spending your time on different areas of your life.
+
+## Attributions
+
+Charts library: Daniel Gindi (https://github.com/danielgindi/Charts)
+
+Tab bar icons: IconBeast (http://www.iconbeast.com/free/)
