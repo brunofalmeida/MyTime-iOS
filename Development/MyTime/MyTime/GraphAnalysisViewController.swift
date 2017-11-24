@@ -40,7 +40,7 @@ class GraphAnalysisViewController: UIViewController, IValueFormatter {
     
     /// Some standard colours for the chart.
     static let standardColours: [UIColor] = [
-        UIColor.red, UIColor.blue, UIColor.yellow,      // Primary
+        UIColor.red, UIColor.blue,                      // Primary
         UIColor.purple, UIColor.green, UIColor.orange,  // Secondary
         UIColor.cyan, UIColor.magenta                   // Other
     ]
@@ -132,10 +132,10 @@ class GraphAnalysisViewController: UIViewController, IValueFormatter {
         
         let timeIntervalString = TimeInterval(totalSeconds: Int(value.rounded())).listDescription
         
-        let percent = value / Double(totalTimeInterval.totalSeconds) * 100.0
-        let percentString = String.init(format: "%.1f", percent) + "%"
+//        let percent = value / Double(totalTimeInterval.totalSeconds) * 100.0
+//        let percentString = String.init(format: "%.1f", percent) + "%"
         
-        return "\(timeIntervalString) (\(percentString))"
+        return timeIntervalString
     }
 
 

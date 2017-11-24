@@ -232,6 +232,7 @@ class TaskDetailViewController: UITableViewController {
         }
         
         configureDateAndTimeTableSection()
+        configureTimeSpentTableSection()
     }
     
     func startPickerValueChanged(sender: UIDatePicker) {
@@ -257,6 +258,7 @@ class TaskDetailViewController: UITableViewController {
         }
         
         configureDateAndTimeTableSection()
+        configureTimeSpentTableSection()
     }
     
     func endPickerValueChanged(sender: UIDatePicker) {
@@ -281,6 +283,7 @@ class TaskDetailViewController: UITableViewController {
         }
         
         configureDateAndTimeTableSection()
+        configureTimeSpentTableSection()
     }
 
 }

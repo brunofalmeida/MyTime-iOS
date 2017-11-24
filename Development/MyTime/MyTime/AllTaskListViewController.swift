@@ -15,10 +15,9 @@ class AllTaskListViewController: TaskListViewController {
         return "AllTask_Task"
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
+    override func viewWillAppear(_ animated: Bool) {
         setup(tasks: DataModel.default.allTasks)
+        super.viewWillAppear(animated)
     }
 
     /*
